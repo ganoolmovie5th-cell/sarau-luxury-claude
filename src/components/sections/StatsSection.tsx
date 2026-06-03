@@ -9,7 +9,7 @@ const stats = [
   { icon: Trophy, value: 500,  suffix: '+', label: 'Event Sukses',        desc: 'Outing & outbound terlaksana' },
   { icon: Users,  value: 200,  suffix: '+', label: 'Perusahaan Klien',    desc: 'Dari berbagai industri' },
   { icon: MapPin, value: 50,   suffix: '+', label: 'Destinasi Wisata',    desc: 'Di seluruh Indonesia' },
-  { icon: Star,   value: 4.9,  suffix: '',  label: 'Rating Kepuasan',     desc: 'Dari klien kami', decimal: 1 },
+  { icon: Star,   value: 5.0,  suffix: '',  label: 'Rating Google',       desc: 'Rating kepuasan klien', decimal: 1 },
 ]
 
 export default function StatsSection() {
