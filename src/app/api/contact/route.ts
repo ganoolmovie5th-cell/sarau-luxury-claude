@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
         // Email to admin
         await resend.emails.send({
           from:    'Sarau Luxury <noreply@sarau-luxury.com>',
-          to:      [process.env.CONTACT_EMAIL || 'info@sarau-luxury.com'],
+          to:      [process.env.CONTACT_EMAIL || 'bandungindonesiasinergi@gmail.com'],
           replyTo: body.email,
           subject: `${subjectPrefix} dari ${body.name} – ${body.company}`,
           html: `<!DOCTYPE html><html><body style="font-family:sans-serif;background:#f9f5f0;padding:24px;margin:0">
@@ -101,8 +101,8 @@ export async function POST(req: NextRequest) {
                 ${refHtml}
                 <div style="margin-top:24px;padding:16px;background:#f9f5f0;border-radius:10px;font-size:13px;color:#666">
                   <strong>Info Kontak Kami:</strong><br/>
-                  📞 +62 812-3456-7890<br/>
-                  📧 info@sarau-luxury.com<br/>
+                  📞 +62 857-1178-6561<br/>
+                  📧 bandungindonesiasinergi@gmail.com<br/>
                   ⏰ Senin–Sabtu, 08.00–20.00 WIB
                 </div>
               </div>

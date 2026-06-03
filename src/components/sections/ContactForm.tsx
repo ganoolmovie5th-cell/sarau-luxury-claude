@@ -6,10 +6,10 @@ import { useInView } from 'react-intersection-observer'
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
 
 const contactInfo = [
-  { icon: Phone,  label: 'Telepon',  value: '+62 812-3456-7890',          href: 'tel:+6281234567890' },
-  { icon: Mail,   label: 'Email',    value: 'info@sarau-luxury.com',       href: 'mailto:info@sarau-luxury.com' },
-  { icon: MapPin, label: 'Kantor',   value: 'Jl. Sudirman No. 123, Jakarta Selatan', href: '#' },
-  { icon: Clock,  label: 'Jam Kerja',value: 'Senin – Sabtu, 08.00 – 20.00 WIB', href: null },
+  { icon: Phone,  label: 'Telepon',   value: '+62 857-1178-6561',              href: 'tel:+6285711786561' },
+  { icon: Mail,   label: 'Email',     value: 'bandungindonesiasinergi@gmail.com', href: 'mailto:bandungindonesiasinergi@gmail.com' },
+  { icon: MapPin, label: 'Kantor',    value: 'Binong Permai Blok R-10/14',      href: 'https://maps.google.com/?q=Binong+Permai+Blok+R-10/14' },
+  { icon: Clock,  label: 'Jam Kerja', value: 'Senin – Sabtu, 08.00 – 20.00 WIB', href: null },
 ]
 
 export default function ContactForm() {
@@ -112,7 +112,7 @@ export default function ContactForm() {
 
             {/* WA quick contact */}
             <a
-              href="https://wa.me/6281234567890?text=Halo%20Sarau%20Luxury%2C%20saya%20ingin%20konsultasi!"
+              href="https://wa.me/6285711786561?text=Halo%20Sarau%20Luxury%2C%20saya%20ingin%20konsultasi!"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 p-6 bg-white rounded-2xl border border-earth/10 shadow-sm hover:shadow-forest/15 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"

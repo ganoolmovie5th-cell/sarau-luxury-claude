@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 const navLinks = [
   { href: '/',         label: 'Beranda' },
@@ -45,9 +46,15 @@ export default function Navbar() {
     >
       <div className="container-wide flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl gradient-forest flex items-center justify-center shadow-forest group-hover:scale-105 transition-transform">
-            <span className="text-cream font-display font-bold text-lg">S</span>
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="relative w-12 h-12 flex-shrink-0">
+            <Image
+              src="/logo.svg"
+              alt="Sarau Luxury Logo"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
           <div>
             <div className={`font-display font-bold text-xl leading-tight transition-colors ${

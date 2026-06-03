@@ -44,7 +44,7 @@ export default function CtaSection() {
                 Konsultasi Gratis <ArrowRight size={18} />
               </Link>
               <a
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '6281234567890'}?text=Halo%20Sarau%20Luxury%2C%20saya%20ingin%20konsultasi%20event%20perusahaan%20kami.`}
+                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '6285711786561'}?text=Halo%20Sarau%20Luxury%2C%20saya%20ingin%20konsultasi%20event%20perusahaan%20kami.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold text-cream border-2 border-white/30 hover:bg-white/10 transition-all duration-300 hover:-translate-y-0.5 text-base"
