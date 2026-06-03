@@ -4,25 +4,25 @@ import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react'
 
 const footerLinks = {
   layanan: [
-    { label: 'Outing Perusahaan',   href: '/services#outing' },
-    { label: 'Outbound Training',   href: '/services#outbound' },
-    { label: 'Team Building',       href: '/services#teambuilding' },
-    { label: 'Family Gathering',    href: '/services#family' },
-    { label: 'MICE Event',          href: '/services#mice' },
+    { label: 'Company Gathering',  href: '/services#gathering' },
+    { label: 'Outing Perusahaan',  href: '/services#outing' },
+    { label: 'Outbound Training',  href: '/services#outbound' },
+    { label: 'Team Building',      href: '/services#teambuilding' },
+    { label: 'Family Gathering',   href: '/services#family' },
+    { label: 'Meeting Package',    href: '/services#meeting' },
   ],
   perusahaan: [
     { label: 'Tentang Kami',  href: '/about' },
     { label: 'Tim Kami',      href: '/about#team' },
+    { label: 'Klien Kami',    href: '/clients' },
     { label: 'Galeri',        href: '/gallery' },
     { label: 'Blog & Tips',   href: '/blog' },
-    { label: 'Karier',        href: '/careers' },
   ],
   bantuan: [
-    { label: 'FAQ',            href: '/faq' },
-    { label: 'Booking',        href: '/booking' },
-    { label: 'Kontak',         href: '/contact' },
-    { label: 'Kebijakan Privasi', href: '/privacy' },
-    { label: 'Syarat & Ketentuan', href: '/terms' },
+    { label: 'FAQ',      href: '/faq' },
+    { label: 'Paket',    href: '/packages' },
+    { label: 'Booking',  href: '/booking' },
+    { label: 'Kontak',   href: '/contact' },
   ],
 }
 
