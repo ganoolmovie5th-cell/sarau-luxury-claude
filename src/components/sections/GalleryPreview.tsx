@@ -1,25 +1,21 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ArrowRight, ImageIcon } from 'lucide-react'
+import { ArrowRight, ZoomIn } from 'lucide-react'
 
-// Placeholder gallery items (replace with Sanity images)
+const gd = (id: string) => `https://lh3.googleusercontent.com/d/${id}`
+
 const galleryItems = [
-  { id: 1, title: 'Outbound Lembang',     category: 'Outbound',    aspect: 'tall',   color: 'bg-forest/20' },
-  { id: 2, title: 'Team Building Bali',   category: 'Team Building', aspect: 'wide', color: 'bg-earth/20' },
-  { id: 3, title: 'Family Day Puncak',    category: 'Gathering',   aspect: 'square', color: 'bg-sun/20' },
-  { id: 4, title: 'Corporate Outing',     category: 'Outing',      aspect: 'square', color: 'bg-leaf/30' },
-  { id: 5, title: 'MICE Jakarta',         category: 'MICE',        aspect: 'tall',   color: 'bg-moss/20' },
-  { id: 6, title: 'Adventure Bromo',      category: 'Outbound',    aspect: 'wide',   color: 'bg-forest/30' },
+  { id: 1, src: gd('1HhH1QIB3rAGDFk6T1-fPh7EUwKujYTax'), title: 'Outbound Seru',          category: 'Outbound',      span: 'row-span-2' },
+  { id: 2, src: gd('1HSx1QewH2BMjSGxdam5z04W2UpXozPym'), title: 'Team Building',            category: 'Team Building', span: '' },
+  { id: 3, src: gd('1JT3QZM0QZaXPTYLE7QUfQiwtEW7GVpCx'), title: 'Gathering Kebersamaan',   category: 'Gathering',     span: '' },
+  { id: 4, src: gd('1uTefPFMuCEufqDWhoxk-T4CJdXZRPMyq'), title: 'Outing Petualangan',      category: 'Outing',        span: 'col-span-2' },
+  { id: 5, src: gd('1zzHVnSRhIcKY9og6COA743wgc8ej6yMP'), title: 'Fun Game Seru',           category: 'Outbound',      span: '' },
+  { id: 6, src: gd('1DIOEfTC0AGwVhBWPx_e_sHp1S4whYsnj'), title: 'Momen Kebersamaan',       category: 'Team Building', span: 'row-span-2' },
 ]
-
-const aspectMap = {
-  tall:   'row-span-2',
-  wide:   'col-span-2',
-  square: '',
-}
 
 export default function GalleryPreview() {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
@@ -27,6 +23,7 @@ export default function GalleryPreview() {
   return (
     <section ref={ref} className="section-padding bg-cream relative overflow-hidden">
       <div className="container-wide relative z-10">
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -46,42 +43,54 @@ export default function GalleryPreview() {
           </Link>
         </motion.div>
 
-        {/* Masonry-style grid */}
+        {/* Grid */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[200px] gap-4"
         >
-          {galleryItems.map(({ id, title, category, aspect, color }, i) => (
+          {galleryItems.map(({ id, src, title, category, span }, i) => (
             <motion.div
               key={id}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: i * 0.07 }}
-              className={`${aspectMap[aspect as keyof typeof aspectMap]} rounded-2xl overflow-hidden group cursor-pointer relative ${color}`}
+              className={`${span} rounded-2xl overflow-hidden group cursor-pointer relative bg-earth/10`}
             >
-              {/* Placeholder image area */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <ImageIcon size={32} className="text-forest/30" />
-              </div>
-
+              <Image
+                src={src}
+                alt={title}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
               {/* Overlay */}
-              <div className="absolute inset-0 bg-bark/0 group-hover:bg-bark/50 transition-all duration-500" />
-
+              <div className="absolute inset-0 bg-bark/0 group-hover:bg-bark/55 transition-all duration-500" />
               {/* Caption */}
               <div className="absolute inset-0 p-5 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                 <span className="text-xs font-semibold text-leaf mb-1">{category}</span>
                 <span className="font-display font-semibold text-cream text-sm leading-tight">{title}</span>
               </div>
+              {/* Zoom icon */}
+              <div className="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <ZoomIn size={14} className="text-white" />
+              </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Note */}
-        <p className="text-center text-earth/50 text-xs mt-6">
-          * Gambar galeri akan ditampilkan dari Sanity CMS setelah konfigurasi selesai
-        </p>
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="text-center mt-10"
+        >
+          <Link href="/gallery" className="btn-primary inline-flex items-center gap-2">
+            Lihat Semua Foto <ArrowRight size={16} />
+          </Link>
+        </motion.div>
       </div>
     </section>
   )

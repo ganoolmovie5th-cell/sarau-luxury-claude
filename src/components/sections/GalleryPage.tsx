@@ -1,38 +1,60 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ImageIcon, Filter } from 'lucide-react'
+import { X, ZoomIn } from 'lucide-react'
 
-const categories = ['Semua', 'Outbound', 'Outing', 'Team Building', 'Gathering', 'MICE']
+// ─── Direct link helper ───────────────────────────────────────────────────────
+const gd = (id: string) => `https://lh3.googleusercontent.com/d/${id}`
 
-const items = Array.from({ length: 24 }, (_, i) => ({
-  id: i + 1,
-  title: `Event ${i + 1}`,
-  category: categories[(i % (categories.length - 1)) + 1],
-  color: ['bg-forest/15', 'bg-earth/15', 'bg-sun/15', 'bg-leaf/20', 'bg-moss/15'][i % 5],
-  tall: i % 5 === 0 || i % 7 === 0,
-}))
+// ─── Gallery data ─────────────────────────────────────────────────────────────
+const items = [
+  { id: 1,  src: gd('1HhH1QIB3rAGDFk6T1-fPh7EUwKujYTax'), title: 'Outbound Seru Bersama',       category: 'Outbound',      tall: true  },
+  { id: 2,  src: gd('1HSx1QewH2BMjSGxdam5z04W2UpXozPym'), title: 'Team Building Kompak',         category: 'Team Building', tall: false },
+  { id: 3,  src: gd('1JT3QZM0QZaXPTYLE7QUfQiwtEW7GVpCx'), title: 'Gathering Kebersamaan',        category: 'Gathering',     tall: false },
+  { id: 4,  src: gd('1uTefPFMuCEufqDWhoxk-T4CJdXZRPMyq'), title: 'Outing Petualangan',           category: 'Outing',        tall: true  },
+  { id: 5,  src: gd('1zzHVnSRhIcKY9og6COA743wgc8ej6yMP'), title: 'Fun Game Penuh Energi',        category: 'Outbound',      tall: false },
+  { id: 6,  src: gd('1DIOEfTC0AGwVhBWPx_e_sHp1S4whYsnj'), title: 'Momen Kebersamaan Tim',        category: 'Team Building', tall: false },
+  { id: 7,  src: gd('1pYXYZ3HWfZzjWLQLPWlRWZZ9hmy7DtML'), title: 'Family Gathering Bahagia',     category: 'Gathering',     tall: true  },
+  { id: 8,  src: gd('1mFaFZoSo2eJlsnpGyy-5HaSiGVk0eriq'), title: 'Seru Bersama di Alam Terbuka', category: 'Outing',        tall: false },
+]
+
+const categories = ['Semua', 'Outbound', 'Team Building', 'Gathering', 'Outing']
 
 export default function GalleryPage() {
-  const [active, setActive] = useState('Semua')
+  const [active,   setActive]   = useState('Semua')
+  const [lightbox, setLightbox] = useState<typeof items[0] | null>(null)
 
   const filtered = active === 'Semua' ? items : items.filter((it) => it.category === active)
 
   return (
     <div className="pt-32 pb-24 bg-cream min-h-screen">
       <div className="container-wide">
+
         {/* Header */}
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-12"
+        >
           <span className="section-tag mb-4 inline-flex">📸 Galeri</span>
           <h1 className="font-display text-5xl md:text-6xl font-bold text-bark mb-4">
             Momen <span className="gradient-text">Berkesan</span>
           </h1>
-          <p className="text-earth/70 text-lg">Ratusan event, ribuan kenangan indah bersama klien kami.</p>
+          <p className="text-earth/70 text-lg max-w-xl mx-auto">
+            Setiap foto menyimpan cerita kebersamaan yang tak terlupakan bersama klien Sarau Luxury.
+          </p>
         </motion.div>
 
         {/* Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-3 mb-12"
+        >
           {categories.map((cat) => (
             <button
               key={cat}
@@ -46,36 +68,107 @@ export default function GalleryPage() {
               {cat}
             </button>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Grid */}
-        <motion.div layout className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-          <AnimatePresence>
-            {filtered.map((item) => (
+        {/* Masonry Grid */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.35 }}
+            className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4"
+          >
+            {filtered.map((item, i) => (
               <motion.div
                 key={item.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.93 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                className={`break-inside-avoid rounded-2xl overflow-hidden group cursor-pointer relative ${item.color} ${item.tall ? 'h-80' : 'h-52'} mb-4 flex items-center justify-center`}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                onClick={() => setLightbox(item)}
+                className={`break-inside-avoid rounded-2xl overflow-hidden group cursor-pointer relative mb-4 bg-earth/10 ${
+                  item.tall ? 'h-80' : 'h-52'
+                }`}
               >
-                <ImageIcon size={28} className="text-forest/20" />
+                <Image
+                  src={item.src}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                />
+                {/* Overlay */}
                 <div className="absolute inset-0 bg-bark/0 group-hover:bg-bark/50 transition-all duration-300" />
+                {/* Caption */}
                 <div className="absolute inset-0 p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                  <span className="text-xs font-semibold text-leaf">{item.category}</span>
-                  <span className="font-display font-semibold text-cream text-sm">{item.title}</span>
+                  <span className="text-xs font-semibold text-leaf mb-1">{item.category}</span>
+                  <span className="font-display font-semibold text-cream text-sm leading-tight">{item.title}</span>
+                </div>
+                {/* Zoom icon */}
+                <div className="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <ZoomIn size={14} className="text-white" />
                 </div>
               </motion.div>
             ))}
-          </AnimatePresence>
-        </motion.div>
 
-        <p className="text-center text-earth/50 text-xs mt-10">
-          * Gambar akan ditampilkan dari Sanity CMS setelah konfigurasi selesai
-        </p>
+            {filtered.length === 0 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="col-span-4 text-center py-20 text-earth/50"
+              >
+                <div className="text-5xl mb-4">📭</div>
+                <p className="text-lg">Belum ada foto di kategori ini.</p>
+              </motion.div>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
+
+      {/* ── Lightbox ── */}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-bark/90 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={() => setLightbox(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-4xl w-full max-h-[85vh] rounded-3xl overflow-hidden shadow-2xl"
+            >
+              <div className="relative w-full h-[70vh]">
+                <Image
+                  src={lightbox.src}
+                  alt={lightbox.title}
+                  fill
+                  className="object-contain"
+                  sizes="100vw"
+                />
+              </div>
+              {/* Caption bar */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-bark/90 to-transparent p-6">
+                <span className="text-xs font-semibold text-leaf">{lightbox.category}</span>
+                <p className="font-display font-bold text-cream text-lg">{lightbox.title}</p>
+              </div>
+              {/* Close button */}
+              <button
+                onClick={() => setLightbox(null)}
+                className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+              >
+                <X size={18} />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
