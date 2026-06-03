@@ -1,6 +1,73 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { submitContact } from '@/lib/strapi'
 
+// ─── WhatsApp notification via Fonnte ────────────────────────────────────────
+async function sendWhatsAppNotif(body: {
+  name: string
+  company: string
+  email: string
+  phone?: string
+  service?: string
+  participants?: string
+  message: string
+  type?: string
+}) {
+  const token   = process.env.FONNTE_TOKEN
+  const waTarget = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '6285711786561'
+
+  if (!token) {
+    console.warn('[WA] FONNTE_TOKEN tidak diset, skip WhatsApp notif.')
+    return
+  }
+
+  const isBooking = body.type === 'booking'
+  const label     = isBooking ? '📋 BOOKING INQUIRY BARU' : '📬 PESAN KONTAK BARU'
+  const receivedAt = new Date().toLocaleString('id-ID', {
+    dateStyle: 'full',
+    timeStyle: 'short',
+    timeZone: 'Asia/Jakarta',
+  })
+
+  const lines = [
+    `*${label}*`,
+    `_${receivedAt}_`,
+    '',
+    `👤 *Nama:* ${body.name}`,
+    `🏢 *Perusahaan:* ${body.company}`,
+    `📧 *Email:* ${body.email}`,
+    body.phone        ? `📱 *WhatsApp:* ${body.phone}`          : null,
+    body.service      ? `🎯 *Layanan:* ${body.service}`          : null,
+    body.participants ? `👥 *Peserta:* ${body.participants}`      : null,
+    '',
+    `💬 *Pesan:*\n${body.message}`,
+    '',
+    `---`,
+    `Balas pesan ini atau hubungi via WhatsApp: https://wa.me/${body.phone?.replace(/\D/g, '') || ''}`,
+  ]
+    .filter((l) => l !== null)
+    .join('\n')
+
+  const res = await fetch('https://api.fonnte.com/send', {
+    method: 'POST',
+    headers: {
+      'Authorization': token,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      target:  waTarget,
+      message: lines,
+    }),
+  })
+
+  const result = await res.json()
+  if (!result.status) {
+    console.warn('[WA] Fonnte error:', result)
+  } else {
+    console.log('[WA] Notifikasi WhatsApp terkirim ke', waTarget)
+  }
+}
+
+// ─── Main handler ─────────────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
@@ -16,10 +83,10 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const isBooking = body.type === 'booking'
+    const isBooking     = body.type === 'booking'
     const subjectPrefix = isBooking ? '📋 Booking Inquiry' : '📬 Pesan Kontak'
 
-    // Save to Strapi (only if configured)
+    // ── 1. Save to Strapi (only if configured) ───────────────────────────────
     if (process.env.NEXT_PUBLIC_STRAPI_URL && process.env.STRAPI_API_TOKEN) {
       try {
         await submitContact(body)
@@ -28,11 +95,11 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Send email via Resend (only if API key is set)
+    // ── 2. Email via Resend ───────────────────────────────────────────────────
     if (process.env.RESEND_API_KEY) {
       try {
         const { Resend } = await import('resend')
-        const resend = new Resend(process.env.RESEND_API_KEY)
+        const resend     = new Resend(process.env.RESEND_API_KEY)
 
         const rows: [string, string][] = [
           ['Nama / PIC',     body.name],
@@ -53,10 +120,12 @@ export async function POST(req: NextRequest) {
           )
           .join('')
 
-        const receivedAt = new Date().toLocaleString('id-ID', { dateStyle: 'full', timeStyle: 'short' })
+        const receivedAt = new Date().toLocaleString('id-ID', {
+          dateStyle: 'full',
+          timeStyle: 'short',
+          timeZone: 'Asia/Jakarta',
+        })
 
-        // Email to admin — kirim ke akun Resend (ganoolmovie5th@gmail.com) karena belum ada verified domain
-        // Setelah domain diverifikasi, ganti to[] dengan CONTACT_EMAIL
         await resend.emails.send({
           from:    'Sarau Luxury <onboarding@resend.dev>',
           to:      ['ganoolmovie5th@gmail.com'],
@@ -79,13 +148,17 @@ export async function POST(req: NextRequest) {
           </body></html>`,
         })
 
-        // Auto-reply to sender — dinonaktifkan sementara karena belum ada verified domain
-        // Aktifkan kembali setelah domain sarau-luxury.com diverifikasi di Resend
-        // await resend.emails.send({ from: 'Sarau Luxury <noreply@sarau-luxury.com>', to: [body.email], ... })
-        console.log(`[contact] Pesan dari ${body.email} berhasil diterima dan diteruskan ke admin.`)
+        console.log(`[email] Notifikasi terkirim ke ganoolmovie5th@gmail.com`)
       } catch (emailErr) {
-        console.warn('Email send skipped:', emailErr)
+        console.warn('[email] Send skipped:', emailErr)
       }
+    }
+
+    // ── 3. WhatsApp notification via Fonnte (backup) ──────────────────────────
+    try {
+      await sendWhatsAppNotif(body)
+    } catch (waErr) {
+      console.warn('[WA] Notifikasi WA gagal:', waErr)
     }
 
     return NextResponse.json({ success: true }, { status: 200 })
