@@ -3,14 +3,22 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ArrowRight, Tent, Users, Mountain, Heart, Presentation, Camera } from 'lucide-react'
+import { ArrowRight, Tent, Mountain, Users, Heart, Presentation, Camera, PartyPopper } from 'lucide-react'
 
 const services = [
+  {
+    icon: PartyPopper,
+    title: 'Company Gathering',
+    slug: 'gathering',
+    desc: 'Paket gathering lengkap 2D1N dengan penginapan, makan, kolam renang, fun game, dan pilihan rafting/paintball. Mulai Rp 525.000/pax.',
+    color: 'bg-sun/20 text-amber-700 group-hover:bg-sun group-hover:text-bark',
+    tag: 'Terlaris',
+  },
   {
     icon: Tent,
     title: 'Outing Perusahaan',
     slug: 'outing',
-    desc: 'Wisata keluar kantor yang menyenangkan, mempererat hubungan antar tim dengan destinasi pilihan terbaik.',
+    desc: 'Wisata keluar kantor yang menyenangkan dengan destinasi pilihan — Lembang, Bali, Bromo, dan banyak lagi.',
     color: 'bg-forest/10 text-forest group-hover:bg-forest group-hover:text-cream',
     tag: 'Populer',
   },
@@ -18,7 +26,7 @@ const services = [
     icon: Mountain,
     title: 'Outbound Training',
     slug: 'outbound',
-    desc: 'Program pelatihan di alam terbuka yang meningkatkan kepercayaan diri, komunikasi, dan kerja sama tim.',
+    desc: 'Program pelatihan di alam terbuka — rafting, paintball, ATV, offroad, trekking, dan fun game. Mulai Rp 125.000/pax.',
     color: 'bg-earth/10 text-earth group-hover:bg-earth group-hover:text-cream',
     tag: 'Unggulan',
   },
@@ -26,7 +34,7 @@ const services = [
     icon: Users,
     title: 'Team Building',
     slug: 'teambuilding',
-    desc: 'Aktivitas indoor dan outdoor kreatif yang dirancang khusus untuk memperkuat sinergi tim Anda.',
+    desc: 'Aktivitas kreatif indoor & outdoor yang memperkuat sinergi dan komunikasi tim Anda. Fleksibel dari 3 jam hingga full day.',
     color: 'bg-sun/20 text-earth-dark group-hover:bg-sun group-hover:text-bark',
     tag: null,
   },
@@ -34,23 +42,23 @@ const services = [
     icon: Heart,
     title: 'Family Gathering',
     slug: 'family',
-    desc: 'Rayakan kebersamaan bersama keluarga besar perusahaan dalam suasana hangat dan penuh kegembiraan.',
+    desc: 'Rayakan kebersamaan seluruh keluarga besar perusahaan dengan BBQ, hiburan live, games, dan doorprize menarik.',
     color: 'bg-leaf/20 text-forest group-hover:bg-leaf group-hover:text-bark',
     tag: null,
   },
   {
     icon: Presentation,
-    title: 'MICE Event',
-    slug: 'mice',
-    desc: 'Meeting, incentive, conference, dan exhibition profesional dengan fasilitas terbaik dan tim berpengalaman.',
+    title: 'Meeting Package',
+    slug: 'meeting',
+    desc: 'Halfday & Fullday meeting package lengkap dengan ruangan, konsumsi, dan dokumentasi. Mulai Rp 225.000/pax.',
     color: 'bg-forest/10 text-forest group-hover:bg-forest group-hover:text-cream',
-    tag: 'Premium',
+    tag: null,
   },
   {
     icon: Camera,
     title: 'Dokumentasi Event',
     slug: 'documentation',
-    desc: 'Abadikan setiap momen berharga dengan tim fotografer dan videografer profesional kami.',
+    desc: 'Abadikan setiap momen berharga dengan tim fotografer dan videografer profesional kami, termasuk drone footage.',
     color: 'bg-earth/10 text-earth group-hover:bg-earth group-hover:text-cream',
     tag: null,
   },
@@ -79,8 +87,8 @@ export default function ServicesPreview() {
             <span className="gradient-text">Butuhkan</span>
           </h2>
           <p className="text-earth/80 text-lg max-w-xl mx-auto leading-relaxed">
-            Dari outing santai hingga outbound penuh tantangan — kami hadirkan solusi lengkap
-            untuk setiap kebutuhan event perusahaan Anda.
+            Dari gathering seru 2D1N, outing petualangan, outbound training, hingga family gathering
+            — kami hadirkan solusi lengkap untuk setiap kebutuhan event perusahaan Anda.
           </p>
         </motion.div>
 
