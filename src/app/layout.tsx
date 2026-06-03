@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer'
 import WhatsAppButton from '@/components/ui/WhatsAppButton'
 import PageTransition from '@/components/ui/PageTransition'
 import ScrollProgressBar from '@/components/ui/ScrollProgressBar'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   title: {
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </PageTransition>
         <Footer />
         <WhatsAppButton />
+        <SpeedInsights />
       </body>
     </html>
   )
