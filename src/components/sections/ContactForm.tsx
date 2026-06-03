@@ -25,8 +25,6 @@ export default function ContactForm() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const [error, setError] = useState<string | null>(null)
-
   const handleSubmit = async (e: React.MouseEvent) => {
     e.preventDefault()
     setError(null)
