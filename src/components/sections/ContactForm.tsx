@@ -16,6 +16,7 @@ export default function ContactForm() {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading]     = useState(false)
+  const [error, setError]         = useState<string | null>(null)
   const [form, setForm] = useState({
     name: '', company: '', email: '', phone: '', service: '', participants: '', message: '',
   })
@@ -24,13 +25,37 @@ export default function ContactForm() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
+  const [error, setError] = useState<string | null>(null)
+
   const handleSubmit = async (e: React.MouseEvent) => {
     e.preventDefault()
+    setError(null)
+
+    // Basic validation
+    if (!form.name || !form.company || !form.email || !form.message) {
+      setError('Mohon lengkapi field yang wajib diisi (Nama, Perusahaan, Email, Pesan).')
+      return
+    }
+
     setLoading(true)
-    // Replace with actual API call to Strapi or Resend
-    await new Promise((r) => setTimeout(r, 1500))
-    setLoading(false)
-    setSubmitted(true)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error || 'Terjadi kesalahan. Coba lagi.')
+      }
+
+      setSubmitted(true)
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Gagal mengirim pesan. Silakan coba lagi.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -183,6 +208,13 @@ export default function ContactForm() {
                       className="input-base resize-none"
                     />
                   </div>
+
+                  {error && (
+                    <div className="flex items-start gap-3 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm">
+                      <span className="flex-shrink-0 mt-0.5">⚠️</span>
+                      <span>{error}</span>
+                    </div>
+                  )}
 
                   <button
                     onClick={handleSubmit}
