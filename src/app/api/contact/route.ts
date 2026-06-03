@@ -54,17 +54,12 @@ export async function POST(req: NextRequest) {
           .join('')
 
         const receivedAt = new Date().toLocaleString('id-ID', { dateStyle: 'full', timeStyle: 'short' })
-        const refNumber  = 'SL-' + Date.now().toString().slice(-6)
-        const replyLabel = isBooking ? 'Inquiry booking Anda telah berhasil kami terima.' : 'Pesan Anda telah berhasil kami terima.'
-        const autoReplySubject = isBooking ? 'Inquiry' : 'Pesan'
-        const refHtml = isBooking
-          ? `<p style="color:#4a3728;line-height:1.6">Nomor referensi Anda: <strong style="color:#2d4a2d">${refNumber}</strong></p>`
-          : ''
 
-        // Email to admin
+        // Email to admin — kirim ke akun Resend (ganoolmovie5th@gmail.com) karena belum ada verified domain
+        // Setelah domain diverifikasi, ganti to[] dengan CONTACT_EMAIL
         await resend.emails.send({
           from:    'Sarau Luxury <onboarding@resend.dev>',
-          to:      [process.env.CONTACT_EMAIL || 'bandungindonesiasinergi@gmail.com'],
+          to:      ['ganoolmovie5th@gmail.com'],
           replyTo: body.email,
           subject: `${subjectPrefix} dari ${body.name} – ${body.company}`,
           html: `<!DOCTYPE html><html><body style="font-family:sans-serif;background:#f9f5f0;padding:24px;margin:0">
@@ -84,31 +79,10 @@ export async function POST(req: NextRequest) {
           </body></html>`,
         })
 
-        // Auto-reply to sender
-        await resend.emails.send({
-          from:    'Sarau Luxury <onboarding@resend.dev>',
-          to:      [body.email],
-          subject: `✅ ${autoReplySubject} Anda telah kami terima – Sarau Luxury`,
-          html: `<!DOCTYPE html><html><body style="font-family:sans-serif;background:#f9f5f0;padding:24px;margin:0">
-            <div style="max-width:520px;margin:0 auto;background:#fff;border-radius:16px;overflow:hidden;border:1px solid #e5ddd5">
-              <div style="background:linear-gradient(135deg,#2d4a2d,#4a7c59);padding:28px 32px;text-align:center">
-                <h2 style="color:#fff;margin:0;font-size:22px">🌿 Sarau Luxury</h2>
-              </div>
-              <div style="padding:32px">
-                <h3 style="color:#2d4a2d;margin-top:0">Halo, ${body.name}!</h3>
-                <p style="color:#4a3728;line-height:1.6">Terima kasih telah menghubungi <strong>Sarau Luxury</strong>. ${replyLabel}</p>
-                <p style="color:#4a3728;line-height:1.6">Tim kami akan menghubungi Anda melalui <strong>WhatsApp atau email</strong> dalam <strong>1×24 jam kerja</strong>.</p>
-                ${refHtml}
-                <div style="margin-top:24px;padding:16px;background:#f9f5f0;border-radius:10px;font-size:13px;color:#666">
-                  <strong>Info Kontak Kami:</strong><br/>
-                  📞 +62 857-1178-6561<br/>
-                  📧 bandungindonesiasinergi@gmail.com<br/>
-                  ⏰ Senin–Sabtu, 08.00–20.00 WIB
-                </div>
-              </div>
-            </div>
-          </body></html>`,
-        })
+        // Auto-reply to sender — dinonaktifkan sementara karena belum ada verified domain
+        // Aktifkan kembali setelah domain sarau-luxury.com diverifikasi di Resend
+        // await resend.emails.send({ from: 'Sarau Luxury <noreply@sarau-luxury.com>', to: [body.email], ... })
+        console.log(`[contact] Pesan dari ${body.email} berhasil diterima dan diteruskan ke admin.`)
       } catch (emailErr) {
         console.warn('Email send skipped:', emailErr)
       }
