@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { motion } from 'framer-motion'
 import AboutHero from '@/components/sections/AboutHero'
 import MissionVision from '@/components/sections/MissionVision'
 import TeamSection from '@/components/sections/TeamSection'

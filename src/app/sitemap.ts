@@ -1,6 +1,15 @@
 import { MetadataRoute } from 'next'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
+const BASE_URL = 'https://sarau-luxury-claude.vercel.app'
+
+const blogSlugs = [
+  '10-ide-team-building-kreatif',
+  'destinasi-outing-terbaik-jawa-bali',
+  'perbedaan-outing-outbound',
+  'venue-team-building-jakarta',
+  'tips-sukses-family-gathering',
+  'manfaat-outbound-untuk-produktivitas',
+]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
@@ -16,10 +25,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/booking',   priority: 0.9,  changeFrequency: 'monthly' },
   ] as const
 
-  return routes.map(({ url, priority, changeFrequency }) => ({
-    url: `${BASE_URL}${url}`,
+  const blogRoutes = blogSlugs.map((slug) => ({
+    url: `${BASE_URL}/blog/${slug}`,
     lastModified: new Date(),
-    changeFrequency,
-    priority,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
   }))
+
+  return [
+    ...routes.map(({ url, priority, changeFrequency }) => ({
+      url: `${BASE_URL}${url}`,
+      lastModified: new Date(),
+      changeFrequency,
+      priority,
+    })),
+    ...blogRoutes,
+  ]
 }
