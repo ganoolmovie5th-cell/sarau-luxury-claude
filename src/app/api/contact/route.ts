@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
 
         // Email to admin
         await resend.emails.send({
-          from:    'Sarau Luxury <noreply@sarau-luxury.com>',
+          from:    'Sarau Luxury <onboarding@resend.dev>',
           to:      [process.env.CONTACT_EMAIL || 'bandungindonesiasinergi@gmail.com'],
           replyTo: body.email,
           subject: `${subjectPrefix} dari ${body.name} – ${body.company}`,
@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
 
         // Auto-reply to sender
         await resend.emails.send({
-          from:    'Sarau Luxury <noreply@sarau-luxury.com>',
+          from:    'Sarau Luxury <onboarding@resend.dev>',
           to:      [body.email],
           subject: `✅ ${autoReplySubject} Anda telah kami terima – Sarau Luxury`,
           html: `<!DOCTYPE html><html><body style="font-family:sans-serif;background:#f9f5f0;padding:24px;margin:0">
