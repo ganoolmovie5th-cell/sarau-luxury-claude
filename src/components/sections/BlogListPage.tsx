@@ -1,7 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Clock, ArrowRight, BookOpen } from 'lucide-react'
 
 const posts = [
@@ -16,6 +17,13 @@ const posts = [
 const cats = ['Semua', 'Tips', 'Destinasi', 'Panduan', 'Insight']
 
 export default function BlogListPage() {
+  const [activeCategory, setActiveCategory] = useState('Semua')
+
+  const filteredPosts =
+    activeCategory === 'Semua'
+      ? posts
+      : posts.filter((p) => p.category === activeCategory)
+
   return (
     <div className="pt-32 pb-24 bg-cream min-h-screen">
       <div className="container-wide">
@@ -32,43 +40,71 @@ export default function BlogListPage() {
         {/* Category filters */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {cats.map((c) => (
-            <button key={c} className="px-5 py-2 rounded-full text-sm font-semibold bg-white border border-earth/20 text-earth/80 hover:border-forest/40 hover:text-forest transition-all">
+            <button
+              key={c}
+              onClick={() => setActiveCategory(c)}
+              className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all ${
+                activeCategory === c
+                  ? 'bg-forest text-cream border-forest shadow-md shadow-forest/20'
+                  : 'bg-white border-earth/20 text-earth/80 hover:border-forest/40 hover:text-forest'
+              }`}
+            >
               {c}
             </button>
           ))}
         </div>
 
         {/* Posts grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-          {posts.map(({ slug, title, excerpt, category, readTime, emoji, date }, i) => (
-            <motion.div
-              key={slug}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-            >
-              <Link href={`/blog/${slug}`} className="card-base block group h-full">
-                <div className="h-48 bg-gradient-to-br from-forest/10 to-leaf/20 flex items-center justify-center text-6xl rounded-t-3xl">
-                  {emoji}
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-forest/10 text-forest">{category}</span>
-                    <span className="flex items-center gap-1 text-xs text-earth/60"><Clock size={11} /> {readTime}</span>
-                    <span className="text-xs text-earth/40 ml-auto">{date}</span>
-                  </div>
-                  <h2 className="font-display font-semibold text-lg text-bark leading-snug mb-3 group-hover:text-forest transition-colors">
-                    {title}
-                  </h2>
-                  <p className="text-earth/70 text-sm leading-relaxed mb-4 line-clamp-3">{excerpt}</p>
-                  <span className="flex items-center gap-2 text-forest text-sm font-semibold">
-                    <BookOpen size={14} /> Baca Selengkapnya
-                  </span>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.35 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"
+          >
+            {filteredPosts.length > 0 ? (
+              filteredPosts.map(({ slug, title, excerpt, category, readTime, emoji, date }, i) => (
+                <motion.div
+                  key={slug}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                >
+                  <Link href={`/blog/${slug}`} className="card-base block group h-full">
+                    <div className="h-48 bg-gradient-to-br from-forest/10 to-leaf/20 flex items-center justify-center text-6xl rounded-t-3xl">
+                      {emoji}
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-xs font-semibold px-3 py-1 rounded-full bg-forest/10 text-forest">{category}</span>
+                        <span className="flex items-center gap-1 text-xs text-earth/60"><Clock size={11} /> {readTime}</span>
+                        <span className="text-xs text-earth/40 ml-auto">{date}</span>
+                      </div>
+                      <h2 className="font-display font-semibold text-lg text-bark leading-snug mb-3 group-hover:text-forest transition-colors">
+                        {title}
+                      </h2>
+                      <p className="text-earth/70 text-sm leading-relaxed mb-4 line-clamp-3">{excerpt}</p>
+                      <span className="flex items-center gap-2 text-forest text-sm font-semibold">
+                        <BookOpen size={14} /> Baca Selengkapnya
+                      </span>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="col-span-3 text-center py-20 text-earth/50"
+              >
+                <div className="text-5xl mb-4">📭</div>
+                <p className="text-lg font-medium">Belum ada artikel di kategori ini.</p>
+              </motion.div>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   )

@@ -31,6 +31,7 @@ export default function BookingForm() {
   const [form,      setForm]      = useState<FormData>(initialData)
   const [submitted, setSubmitted] = useState(false)
   const [loading,   setLoading]   = useState(false)
+  const [error,     setError]     = useState<string | null>(null)
 
   const update = (field: keyof FormData) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -40,10 +41,52 @@ export default function BookingForm() {
   const prev = () => setStep((s) => Math.max(s - 1, 1))
 
   const submit = async () => {
+    setError(null)
+
+    // Basic validation
+    if (!form.companyName || !form.picName || !form.email || !form.phone) {
+      setError('Mohon lengkapi data perusahaan (Nama, PIC, Email, WhatsApp).')
+      return
+    }
+
     setLoading(true)
-    await new Promise((r) => setTimeout(r, 1800))
-    setLoading(false)
-    setSubmitted(true)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:         form.picName,
+          company:      form.companyName,
+          email:        form.email,
+          phone:        form.phone,
+          service:      form.service,
+          participants: form.participants,
+          message: [
+            form.notes && `Catatan: ${form.notes}`,
+            form.destination && `Destinasi: ${form.destination}`,
+            form.eventDate && `Tanggal: ${form.eventDate}`,
+            form.duration && `Durasi: ${form.duration}`,
+            form.budget && `Budget: Rp ${form.budget} Juta`,
+            form.ageGroup && `Kelompok Usia: ${form.ageGroup}`,
+            form.specialNeeds && `Kebutuhan Khusus: ${form.specialNeeds}`,
+          ]
+            .filter(Boolean)
+            .join('\n') || '(Tidak ada catatan tambahan)',
+          type: 'booking',
+        }),
+      })
+
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error || 'Terjadi kesalahan. Coba lagi.')
+      }
+
+      setSubmitted(true)
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Gagal mengirim inquiry. Silakan coba lagi.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   if (submitted) {
@@ -251,9 +294,16 @@ export default function BookingForm() {
                 Lanjut <ArrowRight size={17} />
               </button>
             ) : (
-              <button onClick={submit} disabled={loading} className="btn-primary py-3 px-8 disabled:opacity-60">
-                {loading ? 'Mengirim...' : 'Kirim Inquiry 🌿'}
-              </button>
+              <div className="flex flex-col items-end gap-3">
+                {error && (
+                  <div className="flex items-start gap-2 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm max-w-xs text-right">
+                    <span>⚠️ {error}</span>
+                  </div>
+                )}
+                <button onClick={submit} disabled={loading} className="btn-primary py-3 px-8 disabled:opacity-60">
+                  {loading ? 'Mengirim...' : 'Kirim Inquiry 🌿'}
+                </button>
+              </div>
             )}
           </div>
         </div>
