@@ -236,6 +236,40 @@ export default function ContactForm() {
             </div>
           </motion.div>
         </div>
+
+        {/* Google Maps embed */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="mt-10"
+        >
+          <div className="rounded-3xl overflow-hidden border border-earth/10 shadow-sm" style={{ height: 340 }}>
+            <iframe
+              title="Lokasi Sarau Luxury"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.5!2d107.6591!3d-6.9175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBinong+Permai+Blok+R-10%2F14%2C+Bandung!5e0!3m2!1sid!2sid!4v1"
+              width="100%"
+              height="340"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+            />
+          </div>
+          <div className="flex items-center gap-2 mt-3 text-earth/60 text-sm">
+            <MapPin size={14} className="text-forest" />
+            <span>Binong Permai Blok R-10/14, Bandung, Jawa Barat</span>
+            <a
+              href="https://maps.google.com/?q=Binong+Permai+Blok+R-10/14+Bandung"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-auto text-forest font-semibold hover:underline text-xs"
+            >
+              Buka di Google Maps →
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

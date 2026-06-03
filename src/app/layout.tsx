@@ -30,13 +30,13 @@ export const metadata: Metadata = {
     title: 'Sarau Luxury | Where Teams Grow Together',
     description: 'Event organizer profesional untuk outing dan outbound perusahaan.',
     siteName: 'Sarau Luxury',
-    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630 }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Sarau Luxury | Where Teams Grow Together',
     description: 'Event organizer profesional untuk outing dan outbound perusahaan.',
-    images: ['/images/og-image.jpg'],
+    images: ['/opengraph-image'],
   },
   robots: { index: true, follow: true },
 }

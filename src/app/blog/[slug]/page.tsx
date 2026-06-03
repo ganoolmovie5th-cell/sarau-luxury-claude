@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, Clock, Calendar, User, Tag, ArrowRight } from 'lucide-react'
+import { ArrowLeft, Clock, Calendar, Tag, ArrowRight } from 'lucide-react'
 import CtaSection from '@/components/sections/CtaSection'
+
+// ─── Share Buttons (client component) ────────────────────────────────────────
+import ShareButtons from './ShareButtons'
 
 // ─── POST DATA ────────────────────────────────────────────────────────────────
 type Post = {
@@ -315,18 +318,23 @@ export default function BlogPostPage({ params }: Props) {
             {renderContent(post.content)}
           </div>
 
-          {/* Share / CTA mini */}
-          <div className="mt-8 p-6 bg-white rounded-2xl border border-earth/8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
-              <div className="font-semibold text-bark mb-1">Artikel ini bermanfaat?</div>
-              <div className="text-earth/60 text-sm">Bagikan ke rekan kerja Anda!</div>
+          {/* Share + CTA */}
+          <div className="mt-8 p-6 bg-white rounded-2xl border border-earth/8">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+              <div>
+                <div className="font-semibold text-bark mb-1">Artikel ini bermanfaat?</div>
+                <div className="text-earth/60 text-sm">Bagikan ke rekan kerja Anda!</div>
+              </div>
+              <Link href="/contact" className="btn-primary whitespace-nowrap flex items-center gap-2">
+                Konsultasi Gratis <ArrowRight size={15} />
+              </Link>
             </div>
-            <Link
-              href="/contact"
-              className="btn-primary whitespace-nowrap flex items-center gap-2"
-            >
-              Konsultasi Gratis <ArrowRight size={15} />
-            </Link>
+
+            {/* Share buttons */}
+            <div className="mt-5 pt-5 border-t border-earth/10">
+              <div className="text-xs font-semibold text-earth/50 uppercase tracking-widest mb-3">Bagikan artikel ini</div>
+              <ShareButtons />
+            </div>
           </div>
         </div>
       </div>
