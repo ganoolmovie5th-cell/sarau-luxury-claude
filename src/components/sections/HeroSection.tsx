@@ -95,8 +95,8 @@ export default function HeroSection() {
           >
             {[
               { value: '500+', label: 'Event Sukses' },
-              { value: '200+', label: 'Perusahaan Klien' },
-              { value: '15+', label: 'Tahun Pengalaman' },
+              { value: '11+', label: 'Perusahaan Klien' },
+              { value: '8+',  label: 'Tahun Pengalaman' },
             ].map((stat) => (
               <div key={stat.label} className="flex items-center gap-3">
                 <div className="text-sun font-display font-bold text-3xl">{stat.value}</div>
