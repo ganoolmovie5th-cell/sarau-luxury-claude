@@ -16,6 +16,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'img.logo.dev',
+      },
+      {
+        protocol: 'https',
         hostname: 'drive.google.com',
       },
       {
