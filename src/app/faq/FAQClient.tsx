@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: 'Apakah termasuk asuransi peserta?',
-    a: 'Paket Professional dan Luxury sudah termasuk asuransi kecelakaan peserta selama event berlangsung. Untuk paket Starter, asuransi tersedia sebagai add-on.',
+    a: 'Paket Gathering Gold dan Platinum sudah termasuk asuransi kecelakaan peserta selama event berlangsung. Untuk paket Silver dan aktivitas satuan, asuransi tersedia sebagai add-on.',
   },
 ]
 
