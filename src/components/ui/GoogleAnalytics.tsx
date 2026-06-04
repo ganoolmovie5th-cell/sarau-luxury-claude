@@ -2,28 +2,26 @@
 
 import Script from 'next/script'
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID
+// Fallback ke Measurement ID hardcoded jika env belum di-set
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-1SJ8G9TVER'
 
 export default function GoogleAnalytics() {
   if (!GA_ID) return null
 
   return (
     <>
-      {/* Load GA script */}
+      {/* Google tag (gtag.js) */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
         strategy="afterInteractive"
+        async
       />
-      {/* Initialize GA */}
       <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${GA_ID}', {
-            page_path: window.location.pathname,
-            send_page_view: true
-          });
+          gtag('config', '${GA_ID}');
         `}
       </Script>
     </>
