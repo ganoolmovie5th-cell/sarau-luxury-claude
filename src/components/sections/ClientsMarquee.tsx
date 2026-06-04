@@ -1,11 +1,10 @@
 'use client'
 
-import Image from 'next/image'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
-const logo = (domain: string) => `https://img.logo.dev/${domain}?token=pk_X3ZNBkRoREWZEXuuXf5C5Q&size=80&format=png`
+const logo = (domain: string) => `https://cdn.brandfetch.io/${domain}/w/128/h/128/logo?c=1idxFGPkb7rQ0O7bwbG`
 
 const clients = [
   { name: 'Bank BCA',                      domain: 'bca.co.id',             color: '#006cb7' },
@@ -60,12 +59,13 @@ function LogoCard({ name, domain, color }: { name: string; domain: string; color
     <div className="flex-shrink-0 flex items-center gap-3 h-16 px-5 bg-white rounded-2xl shadow-sm border border-earth/10 hover:border-forest/30 hover:shadow-forest/10 hover:shadow-lg transition-all duration-300 group">
       <div className="w-8 h-8 relative flex-shrink-0 flex items-center justify-center">
         {!imgError ? (
-          <Image
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
             src={logo(domain)}
             alt={name}
-            fill
-            className="object-contain"
-            sizes="32px"
+            width={32}
+            height={32}
+            className="object-contain w-full h-full"
             onError={() => setImgError(true)}
           />
         ) : (

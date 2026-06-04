@@ -7,8 +7,9 @@ import { useState } from 'react'
 import TestimonialsSection from './TestimonialsSection'
 import CtaSection from './CtaSection'
 
-// ─── Logo helper — Logo.dev terbukti jalan ───────────────────────────────────
-const logo = (domain: string) => `https://img.logo.dev/${domain}?token=pk_X3ZNBkRoREWZEXuuXf5C5Q&size=160&format=png`
+// ─── Logo helpers ─────────────────────────────────────────────────────────────
+// Brandfetch CDN — reliable, no auth needed untuk logo preview
+const logo = (domain: string) => `https://cdn.brandfetch.io/${domain}/w/400/h/400/logo?c=1idxFGPkb7rQ0O7bwbG`
 
 // ─── Client data ──────────────────────────────────────────────────────────────
 const clients = [
@@ -103,12 +104,13 @@ function ClientCard({ client, i, inView }: {
     >
       <div className="w-16 h-16 relative flex items-center justify-center flex-shrink-0">
         {!imgError ? (
-          <Image
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
             src={logo(client.domain)}
             alt={`Logo ${client.name}`}
-            fill
-            className="object-contain"
-            sizes="64px"
+            width={64}
+            height={64}
+            className="object-contain w-full h-full"
             onError={() => setImgError(true)}
           />
         ) : (

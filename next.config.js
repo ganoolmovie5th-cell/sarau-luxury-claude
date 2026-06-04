@@ -20,6 +20,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'cdn.brandfetch.io',
+      },
+      {
+        protocol: 'https',
         hostname: 'drive.google.com',
       },
       {
