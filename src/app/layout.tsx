@@ -6,6 +6,8 @@ import WhatsAppButton from '@/components/ui/WhatsAppButton'
 import PageTransition from '@/components/ui/PageTransition'
 import ScrollProgressBar from '@/components/ui/ScrollProgressBar'
 import GoogleAnalytics from '@/components/ui/GoogleAnalytics'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   title: {
@@ -146,6 +148,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </PageTransition>
         <Footer />
         <WhatsAppButton />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
