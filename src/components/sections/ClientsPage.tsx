@@ -7,9 +7,66 @@ import { useState } from 'react'
 import TestimonialsSection from './TestimonialsSection'
 import CtaSection from './CtaSection'
 
-// ─── Logo helper — pakai URL langsung, fallback ke Logo.dev ──────────────────
-const logodev = (domain: string) => `https://img.logo.dev/${domain}?token=pk_X3ZNBkRoREWZEXuuXf5C5Q&size=80&format=png`
-const logo = (domain: string, url?: string) => url || logodev(domain)
+// ─── Logo helper — Logo.dev terbukti jalan ───────────────────────────────────
+const logo = (domain: string) => `https://img.logo.dev/${domain}?token=pk_X3ZNBkRoREWZEXuuXf5C5Q&size=160&format=png`
+
+// ─── Client data ──────────────────────────────────────────────────────────────
+const clients = [
+  // ── Hospitality ──
+  { name: 'Hotel Mercure',                 domain: 'mercure.com',            industry: 'Hospitality', color: '#003580' },
+  { name: 'Grand Soll Marina Hotel',       domain: 'sollmarinahotel.com',    industry: 'Hospitality', color: '#1b4332' },
+  { name: 'Aloft Hotel',                   domain: 'alofthotels.com',        industry: 'Hospitality', color: '#e31837' },
+  { name: 'Four Points Hotel',             domain: 'fourpoints.com',         industry: 'Hospitality', color: '#8b1a1a' },
+  // ── Otomotif ──
+  { name: 'PT. Hino Motors',               domain: 'hino.co.id',             industry: 'Otomotif', color: '#CC0000' },
+  { name: 'PT. Toyota Indonesia',          domain: 'toyota.astra.co.id',     industry: 'Otomotif', color: '#eb0a1e' },
+  { name: 'PT. Indomobil Bussan Trucking', domain: 'indomobil.co.id',        industry: 'Otomotif', color: '#003087' },
+  { name: 'PT. Asia Parts',               domain: 'asiaparts.co.id',         industry: 'Otomotif', color: '#c0392b' },
+  // ── Manufaktur ──
+  { name: 'PT. Nippon Steel',              domain: 'nipponsteel.com',        industry: 'Manufaktur', color: '#1a1a2e' },
+  { name: 'PT. Nippon Steel Chemical',     domain: 'nssmc.com',              industry: 'Manufaktur', color: '#2c3e7a' },
+  { name: 'PT. Clariant Indonesia',        domain: 'clariant.com',           industry: 'Manufaktur', color: '#e2001a' },
+  { name: 'PT. Modena Indonesia',          domain: 'modena.id',              industry: 'Manufaktur', color: '#c0392b' },
+  { name: 'PT. Escalier Indonesia',        domain: 'escalier.co.id',         industry: 'Manufaktur', color: '#2980b9' },
+  { name: 'PT. Trisakti Mekar Mandiri',    domain: 'trisakti.co.id',         industry: 'Manufaktur', color: '#1a5276' },
+  { name: 'PT. Mahawira Putra Teknik',     domain: 'mahawira.co.id',         industry: 'Manufaktur', color: '#117a65' },
+  { name: 'PT. Tata Mulia',               domain: 'tatamulia.co.id',         industry: 'Konstruksi', color: '#e67e22' },
+  // ── Energi ──
+  { name: 'PT. Adaro Energy',              domain: 'adaro.com',              industry: 'Energi', color: '#003366' },
+  { name: 'PT. Sarana Energi Hutama',      domain: 'saranaenergi.co.id',     industry: 'Energi', color: '#e67e22' },
+  // ── Teknologi ──
+  { name: 'PT. Epson Indonesia',           domain: 'epson.co.id',            industry: 'Teknologi', color: '#00539f' },
+  { name: 'PT. Fluid Science D',           domain: 'fluidscienced.com',      industry: 'Teknologi', color: '#0077b6' },
+  { name: 'PT. Sahabat Jaya Solusindo',    domain: 'sahabatjaya.co.id',      industry: 'Teknologi', color: '#1abc9c' },
+  // ── Keuangan ──
+  { name: 'Bank BCA',                      domain: 'bca.co.id',              industry: 'Keuangan', color: '#006cb7' },
+  { name: 'Bank Mandiri',                  domain: 'bankmandiri.co.id',      industry: 'Keuangan', color: '#003d79' },
+  { name: 'Bank BNI',                      domain: 'bni.co.id',              industry: 'Keuangan', color: '#f77f00' },
+  { name: 'MNC Bank',                      domain: 'mncbank.co.id',          industry: 'Keuangan', color: '#e31837' },
+  { name: 'PT. Lippo General Insurance',   domain: 'lippoinsurance.com',     industry: 'Keuangan', color: '#d4380d' },
+  { name: 'Pegadaian',                     domain: 'pegadaian.co.id',        industry: 'Keuangan', color: '#009444' },
+  // ── Kecantikan & Retail ──
+  { name: 'PT. Aulia Cosmetic Indonesia',  domain: 'auliacosmetic.com',      industry: 'Kecantikan', color: '#e91e8c' },
+  { name: 'Hugo Store',                    domain: 'hugoboss.com',           industry: 'Retail', color: '#1a1a1a' },
+  { name: 'Vinno Jaya',                    domain: 'vinnojaya.co.id',        industry: 'Retail', color: '#7b2d8b' },
+  { name: 'Toko Mayham Perabot',           domain: 'mayham.co.id',           industry: 'Retail', color: '#8b4513' },
+  { name: 'Auly Chelly Fashion',           domain: 'aulychelly.com',         industry: 'Fashion', color: '#ff69b4' },
+  // ── F&B ──
+  { name: 'Konnichiwa Group',              domain: 'konichiwagroup.com',     industry: 'F&B', color: '#d62828' },
+  // ── Distribusi & Konstruksi ──
+  { name: 'PT. Primasid Andalan Utama',    domain: 'primasid.com',           industry: 'Distribusi', color: '#ff6b35' },
+  { name: 'PT. Asfindo Berkah Mandiri',    domain: 'asfindo.com',            industry: 'Konstruksi', color: '#2d6a4f' },
+  // ── Farmasi ──
+  { name: 'PT. Kalbe Farma',               domain: 'kalbe.co.id',            industry: 'Farmasi', color: '#007bff' },
+  // ── Kesehatan ──
+  { name: 'RS. Siloam',                    domain: 'siloamhospitals.com',    industry: 'Kesehatan', color: '#005baa' },
+  { name: 'Klinik Lab. Cakra Medika',      domain: 'cakramedika.co.id',      industry: 'Kesehatan', color: '#e74c3c' },
+  // ── Travel ──
+  { name: 'Mas Travel',                    domain: 'mastravel.co.id',        industry: 'Travel', color: '#16a085' },
+  // ── Hukum & Pendidikan ──
+  { name: 'Notaris Lola Pandeglang',       domain: 'notarislola.co.id',      industry: 'Hukum', color: '#2c3e50' },
+  { name: 'SDN Daya Bersama',              domain: 'sdndayabersama.sch.id',  industry: 'Pendidikan', color: '#27ae60' },
+]
 
 // ─── Client data ──────────────────────────────────────────────────────────────
 const clients = [
@@ -94,7 +151,6 @@ function ClientCard({ client, i, inView }: {
   client: typeof clients[0]; i: number; inView: boolean
 }) {
   const [imgError, setImgError] = useState(false)
-  const src = client.logoUrl || logo(client.domain)
 
   return (
     <motion.div
@@ -103,11 +159,10 @@ function ClientCard({ client, i, inView }: {
       transition={{ duration: 0.5, delay: i * 0.06 }}
       className="bg-white rounded-2xl border border-earth/10 p-5 flex flex-col items-center justify-center gap-4 hover:shadow-lg hover:shadow-forest/10 hover:-translate-y-1 hover:border-forest/20 transition-all duration-300 group min-h-[140px]"
     >
-      {/* Logo or initials */}
       <div className="w-16 h-16 relative flex items-center justify-center flex-shrink-0">
         {!imgError ? (
           <Image
-            src={src}
+            src={logo(client.domain)}
             alt={`Logo ${client.name}`}
             fill
             className="object-contain"
@@ -115,17 +170,14 @@ function ClientCard({ client, i, inView }: {
             onError={() => setImgError(true)}
           />
         ) : (
-          /* Fallback: initial letters dalam warna brand */
           <div
             className="w-14 h-14 rounded-xl flex items-center justify-center text-white font-display font-bold text-lg"
             style={{ backgroundColor: client.color }}
           >
-            {client.name.replace(/^PT\.\s*/i, '').trim().slice(0, 2).toUpperCase()}
+            {client.name.replace(/^(PT\.|Bank|RS\.)\s*/i, '').trim().slice(0, 2).toUpperCase()}
           </div>
         )}
       </div>
-
-      {/* Name & industry */}
       <div className="text-center">
         <div className="font-semibold text-bark text-sm leading-tight mb-1.5 group-hover:text-forest transition-colors">
           {client.name}
