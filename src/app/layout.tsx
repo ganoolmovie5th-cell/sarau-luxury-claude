@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     images: ['/opengraph-image'],
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: 'pEw-CXIVMv8NSSGvdlOtNwSWWdIWmsANEaYXG9lN-8o',
+  },
 }
 
 const jsonLd = {
