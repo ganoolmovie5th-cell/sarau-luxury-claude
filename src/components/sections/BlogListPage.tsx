@@ -11,7 +11,7 @@ const posts = [
   { slug: 'tips-sukses-family-gathering', title: 'Tips Sukses Family Gathering Ratusan Peserta', excerpt: 'Step-by-step panduan menggelar family gathering besar yang berkesan dan sesuai anggaran.', category: 'Panduan', readTime: '6 menit', emoji: '👨‍👩‍👧‍👦', date: '20 Mei 2025' },
   { slug: 'manfaat-outbound-untuk-produktivitas', title: 'Bagaimana Outbound Meningkatkan Produktivitas Tim', excerpt: 'Riset dan fakta tentang dampak nyata program outbound terhadap kinerja tim pasca event.', category: 'Insight', readTime: '7 menit', emoji: '📈', date: '10 Mei 2025' },
   { slug: 'perbedaan-outing-outbound', title: 'Outing vs Outbound: Apa Bedanya dan Mana yang Cocok?', excerpt: 'Panduan memilih antara outing santai dan outbound training sesuai kebutuhan tim Anda.', category: 'Tips', readTime: '4 menit', emoji: '🤔', date: '5 Mei 2025' },
-  { slug: 'venue-team-building-jakarta', title: '15 Venue Team Building Terbaik di Jakarta & Sekitarnya', excerpt: 'Rekomendasi venue indoor dan outdoor terbaik untuk berbagai jenis aktivitas team building.', category: 'Destinasi', readTime: '9 menit', emoji: '📍', date: '25 Apr 2025' },
+  { slug: 'venue-team-building-bandung', title: '15 Venue Team Building Terbaik di Bandung & Sekitarnya', excerpt: 'Rekomendasi venue indoor dan outdoor terbaik untuk berbagai jenis aktivitas team building.', category: 'Destinasi', readTime: '9 menit', emoji: '📍', date: '25 Apr 2025' },
 ]
 
 const cats = ['Semua', 'Tips', 'Destinasi', 'Panduan', 'Insight']

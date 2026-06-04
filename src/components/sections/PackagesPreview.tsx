@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Check, ArrowRight, Bus, Gamepad2, Waves, Mountain, Tent, Bike, Users, Utensils, Music, TreePine, Mic2 } from 'lucide-react'
+import { Check, ArrowRight, Bus, Gamepad2, Waves, Mountain, Tent, Bike, Users, Utensils, TreePine, Mic2 } from 'lucide-react'
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -240,13 +240,6 @@ const meetingAddOns: AddOnItem[] = [
     price: '3.500.000',
     unit: '/paket',
     features: ['Durasi 2–3 Jam'],
-  },
-  {
-    icon: Music,
-    name: 'Trekking',
-    price: '200.000',
-    unit: '/Pax/Orang',
-    features: ['Tiketing', 'Guide', 'P3K', 'Snack dan Mineral', 'Jalur trekking', 'Perizinan', 'Dokumentasi'],
   },
 ]
 

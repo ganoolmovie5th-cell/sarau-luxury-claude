@@ -16,7 +16,7 @@ const urls = [
   { loc: `${BASE_URL}/blog/10-ide-team-building-kreatif`,         priority: '0.7', changefreq: 'monthly' },
   { loc: `${BASE_URL}/blog/destinasi-outing-terbaik-jawa-bali`,   priority: '0.7', changefreq: 'monthly' },
   { loc: `${BASE_URL}/blog/perbedaan-outing-outbound`,            priority: '0.7', changefreq: 'monthly' },
-  { loc: `${BASE_URL}/blog/venue-team-building-jakarta`,          priority: '0.7', changefreq: 'monthly' },
+  { loc: `${BASE_URL}/blog/venue-team-building-bandung`,          priority: '0.7', changefreq: 'monthly' },
   { loc: `${BASE_URL}/blog/tips-sukses-family-gathering`,         priority: '0.7', changefreq: 'monthly' },
   { loc: `${BASE_URL}/blog/manfaat-outbound-untuk-produktivitas`, priority: '0.7', changefreq: 'monthly' },
 ]

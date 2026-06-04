@@ -134,7 +134,7 @@ const posts: Record<string, Post> = {
       { type: 'tip', text: 'Konsultasikan dengan Sarau Luxury — kami akan membantu menganalisis kebutuhan tim Anda dan merekomendasikan program yang paling tepat dan efektif.' },
     ],
   },
-  'venue-team-building-jakarta': {
+  'venue-team-building-bandung': {
     title: '15 Venue Team Building Terbaik di Bandung & Sekitarnya',
     category: 'Destinasi', readTime: '9 menit', date: '25 Apr 2025',
     author: 'Muhammad Dwi Muhaimin', emoji: '📍',

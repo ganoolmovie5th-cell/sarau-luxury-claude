@@ -8,7 +8,7 @@ const postMeta: Record<string, { emoji: string; title: string; category: string 
   '10-ide-team-building-kreatif':          { emoji: '🎯', title: '10 Ide Team Building Kreatif yang Wajib Dicoba',         category: 'Tips' },
   'destinasi-outing-terbaik-jawa-bali':    { emoji: '🗺️', title: 'Destinasi Outing Terbaik di Jawa & Bali',               category: 'Destinasi' },
   'perbedaan-outing-outbound':             { emoji: '🤔', title: 'Outing vs Outbound: Apa Bedanya?',                       category: 'Tips' },
-  'venue-team-building-jakarta':           { emoji: '📍', title: '15 Venue Team Building Terbaik di Bandung',               category: 'Destinasi' },
+  'venue-team-building-bandung':           { emoji: '📍', title: '15 Venue Team Building Terbaik di Bandung',               category: 'Destinasi' },
   'tips-sukses-family-gathering':          { emoji: '👨‍👩‍👧‍👦', title: 'Tips Sukses Family Gathering Ratusan Peserta',      category: 'Panduan' },
   'manfaat-outbound-untuk-produktivitas':  { emoji: '📈', title: 'Bagaimana Outbound Meningkatkan Produktivitas Tim',       category: 'Insight' },
 }

@@ -7,7 +7,7 @@ import { Shield, Clock, Sparkles, Headphones, Map, Award } from 'lucide-react'
 const reasons = [
   { icon: Shield,      title: 'Terpercaya & Berpengalaman', desc: '8+ tahun sejak 2018 menggelar ratusan event sukses di seluruh Indonesia.' },
   { icon: Sparkles,    title: 'Konsep Kreatif & Custom',    desc: 'Setiap event kami rancang unik sesuai karakter dan kebutuhan perusahaan Anda.' },
-  { icon: Map,         title: '50+ Destinasi Pilihan',      desc: 'Jaringan destinasi terluas dari Sabang sampai Merauke untuk pilihan lokasi terbaik.' },
+  { icon: Map,         title: '20+ Destinasi Pilihan',      desc: 'Pilihan destinasi terbaik di Jawa, Bali, dan sekitarnya untuk event yang berkesan.' },
   { icon: Headphones,  title: 'Support 24/7',               desc: 'Tim kami siap melayani pertanyaan dan kebutuhan Anda kapan saja, sebelum hingga setelah event.' },
   { icon: Clock,       title: 'Tepat Waktu & On-Budget',    desc: 'Kami menjamin pelaksanaan sesuai jadwal dan anggaran yang telah disepakati.' },
   { icon: Award,       title: 'Vendor Terkurasi',           desc: 'Bekerja sama dengan vendor dan venue terbaik yang telah tersertifikasi.' },

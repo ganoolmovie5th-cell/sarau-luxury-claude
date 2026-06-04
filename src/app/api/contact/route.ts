@@ -128,7 +128,7 @@ export async function POST(req: NextRequest) {
 
         await resend.emails.send({
           from:    'Sarau Luxury <onboarding@resend.dev>',
-          to:      ['ganoolmovie5th@gmail.com'],
+          to:      [process.env.CONTACT_EMAIL || 'bandungindonesiasinergi@gmail.com'],
           replyTo: body.email,
           subject: `${subjectPrefix} dari ${body.name} – ${body.company}`,
           html: `<!DOCTYPE html><html><body style="font-family:sans-serif;background:#f9f5f0;padding:24px;margin:0">
@@ -148,7 +148,7 @@ export async function POST(req: NextRequest) {
           </body></html>`,
         })
 
-        console.log(`[email] Notifikasi terkirim ke ganoolmovie5th@gmail.com`)
+        console.log(`[email] Notifikasi terkirim ke ${process.env.CONTACT_EMAIL || 'bandungindonesiasinergi@gmail.com'}`)
       } catch (emailErr) {
         console.warn('[email] Send skipped:', emailErr)
       }
