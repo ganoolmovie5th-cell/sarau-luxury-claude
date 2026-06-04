@@ -4,24 +4,80 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ArrowRight, ZoomIn } from 'lucide-react'
+import { ArrowRight, Images } from 'lucide-react'
 
 const gd = (id: string) => `https://lh3.googleusercontent.com/d/${id}`
 
-const galleryItems = [
-  { id: 1,  src: gd('19Z0PLEUY2THTrafQ_NTJezJhfEZYF_V8'), title: 'Semangat Tim yang Membara',    category: 'Outbound',      span: 'row-span-2' },
-  { id: 2,  src: gd('1lrnK9HRhjD0W-8uPDPQLWkGHBnEWmnQN'), title: 'Kebersamaan yang Nyata',       category: 'Gathering',     span: '' },
-  { id: 3,  src: gd('1IVOSqzmigs7hd6bGF34SASET2Kcf8-lq'), title: 'Kolaborasi Tim Solid',         category: 'Team Building', span: '' },
-  { id: 4,  src: gd('1e0Tuw7vsNhRpJv0dD09zkF-F6qjQgUXN'), title: 'Petualangan Tak Terlupakan',   category: 'Outing',        span: 'col-span-2' },
-  { id: 5,  src: gd('1F5cVgjHxEB2NeGsKpp3LiNohL5mq_mKc'), title: 'Energi Positif Outbound',      category: 'Outbound',      span: '' },
-  { id: 6,  src: gd('1JBJPpk5dPPdUUln30xDVPtJmp6foxEMp'), title: 'Games Seru & Kompetitif',      category: 'Team Building', span: 'row-span-2' },
+// Layout bento — 7 foto dengan posisi yang lebih dinamis
+const photos = [
+  { id: 1,  src: gd('19Z0PLEUY2THTrafQ_NTJezJhfEZYF_V8'), title: 'Semangat Tim yang Membara',  category: 'Outbound'      },
+  { id: 2,  src: gd('1lrnK9HRhjD0W-8uPDPQLWkGHBnEWmnQN'), title: 'Kebersamaan yang Nyata',     category: 'Gathering'     },
+  { id: 3,  src: gd('1IVOSqzmigs7hd6bGF34SASET2Kcf8-lq'), title: 'Kolaborasi Tim Solid',       category: 'Team Building' },
+  { id: 4,  src: gd('1e0Tuw7vsNhRpJv0dD09zkF-F6qjQgUXN'), title: 'Petualangan Tak Terlupakan', category: 'Outing'        },
+  { id: 5,  src: gd('1F5cVgjHxEB2NeGsKpp3LiNohL5mq_mKc'), title: 'Energi Positif Outbound',    category: 'Outbound'      },
+  { id: 6,  src: gd('1JBJPpk5dPPdUUln30xDVPtJmp6foxEMp'), title: 'Games Seru & Kompetitif',    category: 'Team Building' },
+  { id: 7,  src: gd('1cydhBNrsRQDtXFpMwNtMJc3-fTSkOVBJ'), title: 'Keceriaan Bersama Keluarga', category: 'Gathering'     },
 ]
 
+const categoryColor: Record<string, string> = {
+  'Outbound':      'bg-forest/80',
+  'Gathering':     'bg-sun/80',
+  'Team Building': 'bg-earth/80',
+  'Outing':        'bg-moss/80',
+}
+
+function PhotoCard({ photo, className, delay, inView }: {
+  photo: typeof photos[0]
+  className: string
+  delay: number
+  inView: boolean
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={`${className} relative overflow-hidden rounded-2xl md:rounded-3xl group cursor-pointer bg-earth/10`}
+    >
+      <Image
+        src={photo.src}
+        alt={photo.title}
+        fill
+        className="object-cover transition-transform duration-700 group-hover:scale-110"
+        sizes="(max-width: 768px) 100vw, 50vw"
+      />
+      {/* Gradient overlay — always visible at bottom */}
+      <div className="absolute inset-0 bg-gradient-to-t from-bark/70 via-transparent to-transparent" />
+
+      {/* Category badge */}
+      <div className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-cream text-xs font-bold ${categoryColor[photo.category] ?? 'bg-bark/70'} backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300`}>
+        {photo.category}
+      </div>
+
+      {/* Caption always at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+        <p className="font-display font-semibold text-cream text-sm leading-tight drop-shadow-md">
+          {photo.title}
+        </p>
+      </div>
+
+      {/* Shine effect on hover */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%)' }}
+      />
+    </motion.div>
+  )
+}
+
 export default function GalleryPreview() {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
+  const { ref, inView } = useInView({ threshold: 0.08, triggerOnce: true })
 
   return (
-    <section ref={ref} className="section-padding bg-cream relative overflow-hidden">
+    <section ref={ref} className="section-padding bg-white relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-leaf/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-sun/10 rounded-full blur-3xl pointer-events-none translate-y-1/2 -translate-x-1/2" />
+
       <div className="container-wide relative z-10">
 
         {/* Header */}
@@ -37,60 +93,92 @@ export default function GalleryPreview() {
               Kenangan yang{' '}
               <span className="gradient-text">Tak Terlupakan</span>
             </h2>
+            <p className="text-earth/60 mt-3 max-w-md">
+              Setiap momen berharga terabadikan — dari tawa, kerja sama, hingga pencapaian bersama.
+            </p>
           </div>
-          <Link href="/gallery" className="btn-secondary flex-shrink-0">
+          <Link href="/gallery" className="btn-secondary flex-shrink-0 self-start md:self-auto">
             Lihat Semua <ArrowRight size={17} />
           </Link>
         </motion.div>
 
-        {/* Grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[200px] gap-4"
-        >
-          {galleryItems.map(({ id, src, title, category, span }, i) => (
-            <motion.div
-              key={id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
-              className={`${span} rounded-2xl overflow-hidden group cursor-pointer relative bg-earth/10`}
-            >
-              <Image
-                src={src}
-                alt={title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 768px) 50vw, 25vw"
-              />
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-bark/0 group-hover:bg-bark/55 transition-all duration-500" />
-              {/* Caption */}
-              <div className="absolute inset-0 p-5 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <span className="text-xs font-semibold text-leaf mb-1">{category}</span>
-                <span className="font-display font-semibold text-cream text-sm leading-tight">{title}</span>
-              </div>
-              {/* Zoom icon */}
-              <div className="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                <ZoomIn size={14} className="text-white" />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* ── Bento grid layout ── */}
+        <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-[220px_220px_220px] md:grid-rows-[260px_260px] gap-3 md:gap-4">
+
+          {/* Foto 1 — besar kiri, span 2 row */}
+          <PhotoCard
+            photo={photos[0]}
+            className="col-span-1 md:col-span-2 row-span-2"
+            delay={0.1}
+            inView={inView}
+          />
+
+          {/* Foto 2 — kanan atas kecil */}
+          <PhotoCard
+            photo={photos[1]}
+            className="col-span-1 row-span-1"
+            delay={0.2}
+            inView={inView}
+          />
+
+          {/* Foto 3 — kanan atas kecil */}
+          <PhotoCard
+            photo={photos[2]}
+            className="col-span-1 row-span-1"
+            delay={0.25}
+            inView={inView}
+          />
+
+          {/* Foto 4 — kanan bawah lebar */}
+          <PhotoCard
+            photo={photos[3]}
+            className="col-span-2 row-span-1"
+            delay={0.3}
+            inView={inView}
+          />
+
+          {/* Foto 5 — bawah kiri */}
+          <PhotoCard
+            photo={photos[4]}
+            className="col-span-1 row-span-1"
+            delay={0.35}
+            inView={inView}
+          />
+
+          {/* Foto 6 — bawah tengah */}
+          <PhotoCard
+            photo={photos[5]}
+            className="col-span-1 row-span-1"
+            delay={0.4}
+            inView={inView}
+          />
+
+          {/* Foto 7 — bawah kanan lebar */}
+          <PhotoCard
+            photo={photos[6]}
+            className="col-span-2 row-span-1"
+            delay={0.45}
+            inView={inView}
+          />
+
+        </div>
 
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center mt-10"
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
         >
+          <div className="flex items-center gap-2 text-earth/60 text-sm">
+            <Images size={16} className="text-forest" />
+            <span>23+ foto dari berbagai event</span>
+          </div>
           <Link href="/gallery" className="btn-primary inline-flex items-center gap-2">
             Lihat Semua Foto <ArrowRight size={16} />
           </Link>
         </motion.div>
+
       </div>
     </section>
   )
