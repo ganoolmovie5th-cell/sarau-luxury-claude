@@ -7,65 +7,66 @@ import { useState } from 'react'
 import TestimonialsSection from './TestimonialsSection'
 import CtaSection from './CtaSection'
 
-// ─── Logo helper via Logo.dev (gratis, no auth) ───────────────────────────────
-const logo = (domain: string) => `https://img.logo.dev/${domain}?token=pk_X3ZNBkRoREWZEXuuXf5C5Q&size=80&format=png`
+// ─── Logo helper — pakai URL langsung, fallback ke Logo.dev ──────────────────
+const logodev = (domain: string) => `https://img.logo.dev/${domain}?token=pk_X3ZNBkRoREWZEXuuXf5C5Q&size=80&format=png`
+const logo = (domain: string, url?: string) => url || logodev(domain)
 
 // ─── Client data ──────────────────────────────────────────────────────────────
 const clients = [
   // ── Hospitality ──
-  { name: 'Hotel Mercure',           domain: 'mercure.com',          industry: 'Hospitality',      color: '#003580' },
-  { name: 'Grand Soll Marina Hotel', domain: 'sollmarinahotel.com',  industry: 'Hospitality',      color: '#1b4332' },
-  { name: 'Aloft Hotel',             domain: 'alofthotels.com',      industry: 'Hospitality',      color: '#e31837' },
-  { name: 'Four Points Hotel',       domain: 'fourpoints.com',       industry: 'Hospitality',      color: '#8b1a1a' },
+  { name: 'Hotel Mercure',           domain: 'mercure.com',          logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Mercure_logo.svg/320px-Mercure_logo.svg.png',                 industry: 'Hospitality', color: '#003580' },
+  { name: 'Grand Soll Marina Hotel', domain: 'sollmarinahotel.com',  logoUrl: undefined,                                                                                                                   industry: 'Hospitality', color: '#1b4332' },
+  { name: 'Aloft Hotel',             domain: 'alofthotels.com',      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Aloft_Hotels_logo.svg/320px-Aloft_Hotels_logo.svg.png',         industry: 'Hospitality', color: '#e31837' },
+  { name: 'Four Points Hotel',       domain: 'fourpoints.com',       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Four_Points_by_Sheraton_logo.svg/320px-Four_Points_by_Sheraton_logo.svg.png', industry: 'Hospitality', color: '#8b1a1a' },
   // ── Otomotif ──
-  { name: 'PT. Hino Motors',                   domain: 'hino-global.com',       industry: 'Otomotif', color: '#CC0000' },
-  { name: 'PT. Toyota Indonesia',              domain: 'toyota.astra.co.id',    industry: 'Otomotif', color: '#eb0a1e' },
-  { name: 'PT. Indomobil Bussan Trucking',     domain: 'indomobil.co.id',       industry: 'Otomotif', color: '#003087' },
+  { name: 'PT. Hino Motors',                   domain: 'hino-global.com',    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Hino_logo.svg/320px-Hino_logo.svg.png',              industry: 'Otomotif', color: '#CC0000' },
+  { name: 'PT. Toyota Indonesia',              domain: 'toyota.co.id',       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/320px-Toyota_carlogo.svg.png',     industry: 'Otomotif', color: '#eb0a1e' },
+  { name: 'PT. Indomobil Bussan Trucking',     domain: 'indomobil.co.id',    logoUrl: undefined,                                                                                                        industry: 'Otomotif', color: '#003087' },
+  { name: 'PT. Asia Parts',                    domain: 'asiaparts.co.id',    logoUrl: undefined,                                                                                                        industry: 'Otomotif', color: '#c0392b' },
   // ── Manufaktur & Industri ──
-  { name: 'PT. Nippon Steel',                  domain: 'nipponsteel.com',       industry: 'Manufaktur', color: '#1a1a2e' },
-  { name: 'PT. Nippon Steel Chemical',         domain: 'nssmc.com',             industry: 'Manufaktur', color: '#2c3e7a' },
-  { name: 'PT. Clariant Indonesia',            domain: 'clariant.com',          industry: 'Manufaktur', color: '#e2001a' },
-  { name: 'PT. Modena Indonesia',              domain: 'modena.id',             industry: 'Manufaktur', color: '#c0392b' },
-  { name: 'PT. Escalier Indonesia',            domain: 'escalier.co.id',        industry: 'Manufaktur', color: '#2980b9' },
-  { name: 'PT. Trisakti Mekar Mandiri',        domain: 'trisakti.co.id',        industry: 'Manufaktur', color: '#1a5276' },
-  { name: 'PT. Mahawira Putra Teknik',         domain: 'mahawira.co.id',        industry: 'Manufaktur', color: '#117a65' },
-  // ── Energi & Pertambangan ──
-  { name: 'PT. Adaro Energy',                  domain: 'adaro.com',             industry: 'Energi',   color: '#003366' },
-  { name: 'PT. Sarana Energi Hutama',          domain: 'saranaenergi.co.id',    industry: 'Energi',   color: '#e67e22' },
+  { name: 'PT. Nippon Steel',                  domain: 'nipponsteel.com',    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Nippon_Steel_logo.svg/320px-Nippon_Steel_logo.svg.png', industry: 'Manufaktur', color: '#1a1a2e' },
+  { name: 'PT. Nippon Steel Chemical',         domain: 'nssmc.com',          logoUrl: undefined,                                                                                                        industry: 'Manufaktur', color: '#2c3e7a' },
+  { name: 'PT. Clariant Indonesia',            domain: 'clariant.com',       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Clariant_logo.svg/320px-Clariant_logo.svg.png',       industry: 'Manufaktur', color: '#e2001a' },
+  { name: 'PT. Modena Indonesia',              domain: 'modena.id',          logoUrl: undefined,                                                                                                        industry: 'Manufaktur', color: '#c0392b' },
+  { name: 'PT. Escalier Indonesia',            domain: 'escalier.co.id',     logoUrl: undefined,                                                                                                        industry: 'Manufaktur', color: '#2980b9' },
+  { name: 'PT. Trisakti Mekar Mandiri',        domain: 'trisakti.co.id',     logoUrl: undefined,                                                                                                        industry: 'Manufaktur', color: '#1a5276' },
+  { name: 'PT. Mahawira Putra Teknik',         domain: 'mahawira.co.id',     logoUrl: undefined,                                                                                                        industry: 'Manufaktur', color: '#117a65' },
+  { name: 'PT. Tata Mulia',                    domain: 'tatamulia.co.id',    logoUrl: undefined,                                                                                                        industry: 'Konstruksi', color: '#e67e22' },
+  // ── Energi ──
+  { name: 'PT. Adaro Energy',                  domain: 'adaro.com',          logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Adaro_Energy_logo.svg/320px-Adaro_Energy_logo.svg.png', industry: 'Energi', color: '#003366' },
+  { name: 'PT. Sarana Energi Hutama',          domain: 'saranaenergi.co.id', logoUrl: undefined,                                                                                                        industry: 'Energi', color: '#e67e22' },
   // ── Teknologi & Elektronik ──
-  { name: 'PT. Epson Indonesia',               domain: 'epson.co.id',           industry: 'Teknologi', color: '#00539f' },
-  { name: 'PT. Fluid Science D',               domain: 'fluidscienced.com',     industry: 'Teknologi', color: '#0077b6' },
-  { name: 'PT. Sahabat Jaya Solusindo',        domain: 'sahabatjaya.co.id',     industry: 'Teknologi', color: '#1abc9c' },
+  { name: 'PT. Epson Indonesia',               domain: 'epson.co.id',        logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Epson_logo.svg/320px-Epson_logo.svg.png',             industry: 'Teknologi', color: '#00539f' },
+  { name: 'PT. Fluid Science D',               domain: 'fluidscienced.com',  logoUrl: undefined,                                                                                                        industry: 'Teknologi', color: '#0077b6' },
+  { name: 'PT. Sahabat Jaya Solusindo',        domain: 'sahabatjaya.co.id',  logoUrl: undefined,                                                                                                        industry: 'Teknologi', color: '#1abc9c' },
   // ── Keuangan & Perbankan ──
-  { name: 'Bank BCA',                          domain: 'bca.co.id',             industry: 'Keuangan', color: '#006cb7' },
-  { name: 'MNC Bank',                          domain: 'mncbank.co.id',         industry: 'Keuangan', color: '#e31837' },
-  { name: 'PT. Lippo General Insurance',       domain: 'lippoinsurance.com',    industry: 'Keuangan', color: '#d4380d' },
-  { name: 'Pegadaian',                         domain: 'pegadaian.co.id',       industry: 'Keuangan', color: '#009444' },
+  { name: 'Bank BCA',                          domain: 'bca.co.id',          logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/320px-Bank_Central_Asia.svg.png',  industry: 'Keuangan', color: '#006cb7' },
+  { name: 'Bank Mandiri',                      domain: 'bankmandiri.co.id',  logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/320px-Bank_Mandiri_logo_2016.svg.png', industry: 'Keuangan', color: '#003d79' },
+  { name: 'Bank BNI',                          domain: 'bni.co.id',          logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logo_BNI.png/320px-Logo_BNI.png',                    industry: 'Keuangan', color: '#f77f00' },
+  { name: 'MNC Bank',                          domain: 'mncbank.co.id',      logoUrl: undefined,                                                                                                        industry: 'Keuangan', color: '#e31837' },
+  { name: 'PT. Lippo General Insurance',       domain: 'lippoinsurance.com', logoUrl: undefined,                                                                                                        industry: 'Keuangan', color: '#d4380d' },
+  { name: 'Pegadaian',                         domain: 'pegadaian.co.id',    logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Pegadaian_logo.svg/320px-Pegadaian_logo.svg.png',    industry: 'Keuangan', color: '#009444' },
   // ── Kecantikan & Retail ──
-  { name: 'PT. Aulia Cosmetic Indonesia',      domain: 'auliacosmetic.com',     industry: 'Kecantikan', color: '#e91e8c' },
-  { name: 'Hugo Store',                        domain: 'hugoboss.com',          industry: 'Retail',   color: '#1a1a1a' },
-  { name: 'Vinno Jaya',                        domain: 'vinnojaya.co.id',       industry: 'Retail',   color: '#7b2d8b' },
-  // ── Food & Beverage ──
-  { name: 'Konnichiwa Group',                  domain: 'konichiwagroup.com',    industry: 'F&B',      color: '#d62828' },
+  { name: 'PT. Aulia Cosmetic Indonesia',      domain: 'auliacosmetic.com',  logoUrl: undefined,                                                                                                        industry: 'Kecantikan', color: '#e91e8c' },
+  { name: 'Hugo Store',                        domain: 'hugoboss.com',       logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Hugo_Boss_logo.svg/320px-Hugo_Boss_logo.svg.png',    industry: 'Retail', color: '#1a1a1a' },
+  { name: 'Vinno Jaya',                        domain: 'vinnojaya.co.id',    logoUrl: undefined,                                                                                                        industry: 'Retail', color: '#7b2d8b' },
+  { name: 'Toko Mayham Perabot',               domain: 'mayham.co.id',       logoUrl: undefined,                                                                                                        industry: 'Retail', color: '#8b4513' },
+  { name: 'Auly Chelly Fashion',               domain: 'aulychelly.com',     logoUrl: undefined,                                                                                                        industry: 'Fashion', color: '#ff69b4' },
+  // ── F&B ──
+  { name: 'Konnichiwa Group',                  domain: 'konichiwagroup.com', logoUrl: undefined,                                                                                                        industry: 'F&B', color: '#d62828' },
   // ── Distribusi & Logistik ──
-  { name: 'PT. Primasid Andalan Utama',        domain: 'primasid.com',          industry: 'Distribusi', color: '#ff6b35' },
-  { name: 'PT. Asfindo Berkah Mandiri',        domain: 'asfindo.com',           industry: 'Konstruksi', color: '#2d6a4f' },
-  // ── Kesehatan & Pendidikan ──
-  { name: 'RS. Siloam',                        domain: 'siloamhospitals.com',   industry: 'Kesehatan', color: '#005baa' },
-  { name: 'Klinik Lab. Cakra Medika',          domain: 'cakramedika.co.id',     industry: 'Kesehatan', color: '#e74c3c' },
-  { name: 'SDN Daya Bersama',                  domain: 'sdndayabersama.sch.id', industry: 'Pendidikan', color: '#27ae60' },
-  // ── Perbankan Baru ──
-  { name: 'Bank Mandiri',                      domain: 'bankmandiri.co.id',     industry: 'Keuangan', color: '#003d79' },
-  { name: 'Bank BNI',                          domain: 'bni.co.id',             industry: 'Keuangan', color: '#f77f00' },
+  { name: 'PT. Primasid Andalan Utama',        domain: 'primasid.com',       logoUrl: undefined,                                                                                                        industry: 'Distribusi', color: '#ff6b35' },
+  { name: 'PT. Asfindo Berkah Mandiri',        domain: 'asfindo.com',        logoUrl: undefined,                                                                                                        industry: 'Konstruksi', color: '#2d6a4f' },
   // ── Farmasi ──
-  { name: 'PT. Kalbe Farma',                   domain: 'kalbe.co.id',           industry: 'Farmasi',  color: '#007bff' },
-  // ── UMKM & Lokal ──
-  { name: 'Toko Mayham Perabot',               domain: 'mayham.co.id',          industry: 'Retail',   color: '#8b4513' },
-  { name: 'Auly Chelly Fashion',               domain: 'aulychelly.com',        industry: 'Fashion',  color: '#ff69b4' },
-  { name: 'PT. Tata Mulia',                    domain: 'tatamulia.co.id',       industry: 'Konstruksi', color: '#e67e22' },
-  { name: 'Mas Travel',                        domain: 'mastravel.co.id',       industry: 'Travel',   color: '#16a085' },
-  { name: 'PT. Asia Parts',                    domain: 'asiaparts.co.id',       industry: 'Otomotif', color: '#c0392b' },
-  { name: 'Notaris Lola Pandeglang',           domain: 'notarislola.co.id',     industry: 'Hukum',    color: '#2c3e50' },
+  { name: 'PT. Kalbe Farma',                   domain: 'kalbe.co.id',        logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Kalbe_Farma_logo.svg/320px-Kalbe_Farma_logo.svg.png', industry: 'Farmasi', color: '#007bff' },
+  // ── Kesehatan ──
+  { name: 'RS. Siloam',                        domain: 'siloamhospitals.com',logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Siloam_Hospitals.svg/320px-Siloam_Hospitals.svg.png', industry: 'Kesehatan', color: '#005baa' },
+  { name: 'Klinik Lab. Cakra Medika',          domain: 'cakramedika.co.id',  logoUrl: undefined,                                                                                                        industry: 'Kesehatan', color: '#e74c3c' },
+  // ── Travel ──
+  { name: 'Mas Travel',                        domain: 'mastravel.co.id',    logoUrl: undefined,                                                                                                        industry: 'Travel', color: '#16a085' },
+  // ── Hukum & Pendidikan ──
+  { name: 'Notaris Lola Pandeglang',           domain: 'notarislola.co.id',  logoUrl: undefined,                                                                                                        industry: 'Hukum', color: '#2c3e50' },
+  { name: 'SDN Daya Bersama',                  domain: 'sdndayabersama.sch.id', logoUrl: undefined,                                                                                                     industry: 'Pendidikan', color: '#27ae60' },
 ]
 
 const industries = [
@@ -93,6 +94,7 @@ function ClientCard({ client, i, inView }: {
   client: typeof clients[0]; i: number; inView: boolean
 }) {
   const [imgError, setImgError] = useState(false)
+  const src = client.logoUrl || logo(client.domain)
 
   return (
     <motion.div
@@ -105,7 +107,7 @@ function ClientCard({ client, i, inView }: {
       <div className="w-16 h-16 relative flex items-center justify-center flex-shrink-0">
         {!imgError ? (
           <Image
-            src={logo(client.domain)}
+            src={src}
             alt={`Logo ${client.name}`}
             fill
             className="object-contain"
