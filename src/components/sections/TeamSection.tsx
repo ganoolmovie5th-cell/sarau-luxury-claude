@@ -10,7 +10,7 @@ const team = [
     name: 'Muhammad Dwi Muhaimin',
     role: 'Founder & CEO',
     initials: 'MDM',
-    photo: 'https://lh3.googleusercontent.com/d/1Q9tWCbjGDrU46TXBTcScwmtc1WI-Xyjr',
+    photo: '/founder.jpeg',
     instagram: 'https://www.instagram.com/wiimhmn7?igsh=dzBzZjBqdDZ5ZXk5&utm_source=qr',
     color: 'bg-forest',
   },
