@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer'
 import WhatsAppButton from '@/components/ui/WhatsAppButton'
 import PageTransition from '@/components/ui/PageTransition'
 import ScrollProgressBar from '@/components/ui/ScrollProgressBar'
+import GoogleAnalytics from '@/components/ui/GoogleAnalytics'
 
 export const metadata: Metadata = {
   title: {
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <GoogleAnalytics />
         <ScrollProgressBar />
         <Navbar />
         <PageTransition>
