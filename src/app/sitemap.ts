@@ -12,33 +12,27 @@ const blogSlugs = [
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    { url: '/',          priority: 1.0,  changeFrequency: 'weekly'  },
-    { url: '/about',     priority: 0.8,  changeFrequency: 'monthly' },
-    { url: '/services',  priority: 0.9,  changeFrequency: 'monthly' },
-    { url: '/packages',  priority: 0.9,  changeFrequency: 'weekly'  },
-    { url: '/clients',   priority: 0.7,  changeFrequency: 'monthly' },
-    { url: '/gallery',   priority: 0.7,  changeFrequency: 'weekly'  },
-    { url: '/blog',      priority: 0.8,  changeFrequency: 'daily'   },
-    { url: '/faq',       priority: 0.6,  changeFrequency: 'monthly' },
-    { url: '/contact',   priority: 0.8,  changeFrequency: 'monthly' },
-    { url: '/booking',   priority: 0.9,  changeFrequency: 'monthly' },
-  ] as const
+  const now = new Date()
 
-  const blogRoutes = blogSlugs.map((slug) => ({
+  const staticRoutes: MetadataRoute.Sitemap = [
+    { url: `${BASE_URL}/`,         lastModified: now, changeFrequency: 'weekly',  priority: 1.0 },
+    { url: `${BASE_URL}/services`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE_URL}/packages`, lastModified: now, changeFrequency: 'weekly',  priority: 0.9 },
+    { url: `${BASE_URL}/booking`,  lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE_URL}/contact`,  lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE_URL}/about`,    lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE_URL}/blog`,     lastModified: now, changeFrequency: 'daily',   priority: 0.8 },
+    { url: `${BASE_URL}/clients`,  lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}/gallery`,  lastModified: now, changeFrequency: 'weekly',  priority: 0.7 },
+    { url: `${BASE_URL}/faq`,      lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+  ]
+
+  const blogRoutes: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
     url: `${BASE_URL}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
+    lastModified: now,
+    changeFrequency: 'monthly',
     priority: 0.7,
   }))
 
-  return [
-    ...routes.map(({ url, priority, changeFrequency }) => ({
-      url: `${BASE_URL}${url}`,
-      lastModified: new Date(),
-      changeFrequency,
-      priority,
-    })),
-    ...blogRoutes,
-  ]
+  return [...staticRoutes, ...blogRoutes]
 }
