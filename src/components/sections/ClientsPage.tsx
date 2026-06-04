@@ -52,7 +52,20 @@ const clients = [
   { name: 'PT. Asfindo Berkah Mandiri',        domain: 'asfindo.com',           industry: 'Konstruksi', color: '#2d6a4f' },
   // ── Kesehatan & Pendidikan ──
   { name: 'RS. Siloam',                        domain: 'siloamhospitals.com',   industry: 'Kesehatan', color: '#005baa' },
+  { name: 'Klinik Lab. Cakra Medika',          domain: 'cakramedika.co.id',     industry: 'Kesehatan', color: '#e74c3c' },
   { name: 'SDN Daya Bersama',                  domain: 'sdndayabersama.sch.id', industry: 'Pendidikan', color: '#27ae60' },
+  // ── Perbankan Baru ──
+  { name: 'Bank Mandiri',                      domain: 'bankmandiri.co.id',     industry: 'Keuangan', color: '#003d79' },
+  { name: 'Bank BNI',                          domain: 'bni.co.id',             industry: 'Keuangan', color: '#f77f00' },
+  // ── Farmasi ──
+  { name: 'PT. Kalbe Farma',                   domain: 'kalbe.co.id',           industry: 'Farmasi',  color: '#007bff' },
+  // ── UMKM & Lokal ──
+  { name: 'Toko Mayham Perabot',               domain: 'mayham.co.id',          industry: 'Retail',   color: '#8b4513' },
+  { name: 'Auly Chelly Fashion',               domain: 'aulychelly.com',        industry: 'Fashion',  color: '#ff69b4' },
+  { name: 'PT. Tata Mulia',                    domain: 'tatamulia.co.id',       industry: 'Konstruksi', color: '#e67e22' },
+  { name: 'Mas Travel',                        domain: 'mastravel.co.id',       industry: 'Travel',   color: '#16a085' },
+  { name: 'PT. Asia Parts',                    domain: 'asiaparts.co.id',       industry: 'Otomotif', color: '#c0392b' },
+  { name: 'Notaris Lola Pandeglang',           domain: 'notarislola.co.id',     industry: 'Hukum',    color: '#2c3e50' },
 ]
 
 const industries = [
@@ -64,10 +77,14 @@ const industries = [
   { label: 'Keuangan',     icon: '🏦' },
   { label: 'Kecantikan',   icon: '✨' },
   { label: 'Retail',       icon: '🛍️' },
+  { label: 'Fashion',      icon: '👗' },
   { label: 'F&B',          icon: '🍜' },
   { label: 'Distribusi',   icon: '📦' },
   { label: 'Konstruksi',   icon: '🏗️' },
   { label: 'Kesehatan',    icon: '🏥' },
+  { label: 'Farmasi',      icon: '💊' },
+  { label: 'Travel',       icon: '✈️' },
+  { label: 'Hukum',        icon: '⚖️' },
   { label: 'Pendidikan',   icon: '🎓' },
 ]
 
@@ -198,8 +215,8 @@ export default function ClientsPage() {
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-5"
           >
             {[
-              { value: '31+', label: 'Klien Korporat', icon: '🏢' },
-              { value: '13+', label: 'Industri Berbeda', icon: '🌐' },
+              { value: '41+', label: 'Klien Korporat', icon: '🏢' },
+              { value: '17+', label: 'Industri Berbeda', icon: '🌐' },
               { value: '100+', label: 'Event Sukses', icon: '🎉' },
               { value: '5.0', label: 'Rating Google', icon: '⭐' },
             ].map(({ value, label, icon }) => (
