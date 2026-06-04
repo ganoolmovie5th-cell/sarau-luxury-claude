@@ -1,9 +1,18 @@
 import type { Metadata } from 'next'
 import ServicesPage from '@/components/sections/ServicesPage'
 
+const BASE_URL = 'https://sarau-luxury-claude.vercel.app'
+
 export const metadata: Metadata = {
-  title: 'Layanan',
-  description: 'Layanan lengkap Sarau Luxury: company gathering, outing perusahaan, outbound training, team building, family gathering, meeting package, dan dokumentasi event.',
+  title: 'Layanan – Company Gathering, Outbound & Team Building',
+  description: 'Sarau Luxury menyediakan layanan lengkap: Company Gathering 2D1N mulai Rp 525rb/pax, Outing Perusahaan, Outbound Training, Team Building, Family Gathering, Meeting Package & Dokumentasi.',
+  keywords: ['layanan outing perusahaan', 'outbound training bandung', 'team building bandung', 'company gathering', 'family gathering bandung', 'meeting package', 'EO Curug Banten'],
+  alternates: { canonical: `${BASE_URL}/services` },
+  openGraph: {
+    title: 'Layanan Sarau Luxury – Company Gathering, Outbound & Team Building',
+    description: 'Company Gathering mulai Rp 525rb/pax, Outbound Training, Team Building, Family Gathering dan Meeting Package. Hubungi kami untuk penawaran terbaik.',
+    url: `${BASE_URL}/services`,
+  },
 }
 
 export default function Services() {
