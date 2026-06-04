@@ -1,9 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async headers() {
+  async redirects() {
     return [
       {
         source: '/sitemap.xml',
+        destination: '/api/sitemap',
+        permanent: false,
+      },
+    ]
+  },
+  async headers() {
+    return [
+      {
+        source: '/api/sitemap',
         headers: [{ key: 'Content-Type', value: 'application/xml; charset=utf-8' }],
       },
     ]
