@@ -51,31 +51,16 @@ const clients = [
   { name: 'Notaris Lola Pandeglang',       domain: 'notarislola.co.id',     color: '#2c3e50' },
 ]
 
-function LogoCard({ name, domain, color }: { name: string; domain: string; color: string }) {
-  const [imgError, setImgError] = useState(false)
-  const initials = name.replace(/^PT\.\s*/i, '').trim().slice(0, 2).toUpperCase()
+function LogoCard({ name, color }: { name: string; domain: string; color: string }) {
+  const initials = name.replace(/^(PT\.|Bank|RS\.)\s*/i, '').trim().slice(0, 2).toUpperCase()
 
   return (
     <div className="flex-shrink-0 flex items-center gap-3 h-16 px-5 bg-white rounded-2xl shadow-sm border border-earth/10 hover:border-forest/30 hover:shadow-forest/10 hover:shadow-lg transition-all duration-300 group">
-      <div className="w-8 h-8 relative flex-shrink-0 flex items-center justify-center">
-        {!imgError ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={logo(domain)}
-            alt={name}
-            width={32}
-            height={32}
-            className="object-contain w-full h-full"
-            onError={() => setImgError(true)}
-          />
-        ) : (
-          <div
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-xs"
-            style={{ backgroundColor: color }}
-          >
-            {initials}
-          </div>
-        )}
+      <div
+        className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0"
+        style={{ backgroundColor: color }}
+      >
+        {initials}
       </div>
       <span className="font-semibold text-earth/60 group-hover:text-forest transition-colors text-sm whitespace-nowrap">
         {name}
