@@ -21,24 +21,22 @@ const urls = [
   { loc: `${BASE_URL}/blog/manfaat-outbound-untuk-produktivitas`, priority: '0.7', changefreq: 'monthly' },
 ]
 
-const lastmod = '2026-06-04'
-
 export async function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(({ loc, priority, changefreq }) => `  <url>
-    <loc>${loc}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
-  </url>`).join('\n')}
+${urls
+  .map(
+    ({ loc, priority, changefreq }) =>
+      `  <url>\n    <loc>${loc}</loc>\n    <lastmod>2026-06-04</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`
+  )
+  .join('\n')}
 </urlset>`
 
   return new NextResponse(xml, {
     status: 200,
     headers: {
       'Content-Type': 'application/xml; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+      'Cache-Control': 'public, max-age=3600',
     },
   })
 }
