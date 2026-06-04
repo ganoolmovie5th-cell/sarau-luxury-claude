@@ -10,14 +10,31 @@ const gd = (id: string) => `https://lh3.googleusercontent.com/d/${id}`
 
 // ─── Gallery data ─────────────────────────────────────────────────────────────
 const items = [
-  { id: 1,  src: gd('1HhH1QIB3rAGDFk6T1-fPh7EUwKujYTax'), title: 'Outbound Seru Bersama',       category: 'Outbound',      tall: true  },
-  { id: 2,  src: gd('1HSx1QewH2BMjSGxdam5z04W2UpXozPym'), title: 'Team Building Kompak',         category: 'Team Building', tall: false },
-  { id: 3,  src: gd('1JT3QZM0QZaXPTYLE7QUfQiwtEW7GVpCx'), title: 'Gathering Kebersamaan',        category: 'Gathering',     tall: false },
-  { id: 4,  src: gd('1uTefPFMuCEufqDWhoxk-T4CJdXZRPMyq'), title: 'Outing Petualangan',           category: 'Outing',        tall: true  },
-  { id: 5,  src: gd('1zzHVnSRhIcKY9og6COA743wgc8ej6yMP'), title: 'Fun Game Penuh Energi',        category: 'Outbound',      tall: false },
-  { id: 6,  src: gd('1DIOEfTC0AGwVhBWPx_e_sHp1S4whYsnj'), title: 'Momen Kebersamaan Tim',        category: 'Team Building', tall: false },
-  { id: 7,  src: gd('1pYXYZ3HWfZzjWLQLPWlRWZZ9hmy7DtML'), title: 'Family Gathering Bahagia',     category: 'Gathering',     tall: true  },
-  { id: 8,  src: gd('1mFaFZoSo2eJlsnpGyy-5HaSiGVk0eriq'), title: 'Seru Bersama di Alam Terbuka', category: 'Outing',        tall: false },
+  // ── Batch 1 (original) ──
+  { id: 1,  src: gd('1HhH1QIB3rAGDFk6T1-fPh7EUwKujYTax'), title: 'Outbound Seru Bersama',        category: 'Outbound',      tall: true  },
+  { id: 2,  src: gd('1HSx1QewH2BMjSGxdam5z04W2UpXozPym'), title: 'Team Building Kompak',          category: 'Team Building', tall: false },
+  { id: 3,  src: gd('1JT3QZM0QZaXPTYLE7QUfQiwtEW7GVpCx'), title: 'Gathering Kebersamaan',         category: 'Gathering',     tall: false },
+  { id: 4,  src: gd('1uTefPFMuCEufqDWhoxk-T4CJdXZRPMyq'), title: 'Outing Petualangan',            category: 'Outing',        tall: true  },
+  { id: 5,  src: gd('1zzHVnSRhIcKY9og6COA743wgc8ej6yMP'), title: 'Fun Game Penuh Energi',         category: 'Outbound',      tall: false },
+  { id: 6,  src: gd('1DIOEfTC0AGwVhBWPx_e_sHp1S4whYsnj'), title: 'Momen Kebersamaan Tim',         category: 'Team Building', tall: false },
+  { id: 7,  src: gd('1pYXYZ3HWfZzjWLQLPWlRWZZ9hmy7DtML'), title: 'Family Gathering Bahagia',      category: 'Gathering',     tall: true  },
+  { id: 8,  src: gd('1mFaFZoSo2eJlsnpGyy-5HaSiGVk0eriq'), title: 'Seru Bersama di Alam Terbuka',  category: 'Outing',        tall: false },
+  // ── Batch 2 (baru) ──
+  { id: 9,  src: gd('19Z0PLEUY2THTrafQ_NTJezJhfEZYF_V8'), title: 'Semangat Tim yang Membara',     category: 'Outbound',      tall: false },
+  { id: 10, src: gd('1_TzSpo235LmJJUQWIfaAv1LPc018OR2q'), title: 'Aksi Seru di Lapangan',         category: 'Team Building', tall: true  },
+  { id: 11, src: gd('1lrnK9HRhjD0W-8uPDPQLWkGHBnEWmnQN'), title: 'Kebersamaan yang Nyata',        category: 'Gathering',     tall: false },
+  { id: 12, src: gd('1a75eFFAczHTWq0q6xkDXKh5Am84eVRSp'), title: 'Tantangan Bersama',             category: 'Outbound',      tall: false },
+  { id: 13, src: gd('1e0Tuw7vsNhRpJv0dD09zkF-F6qjQgUXN'), title: 'Petualangan Tak Terlupakan',    category: 'Outing',        tall: true  },
+  { id: 14, src: gd('1cydhBNrsRQDtXFpMwNtMJc3-fTSkOVBJ'), title: 'Keceriaan Bersama Keluarga',    category: 'Gathering',     tall: false },
+  { id: 15, src: gd('1IVOSqzmigs7hd6bGF34SASET2Kcf8-lq'), title: 'Kolaborasi Tim Solid',          category: 'Team Building', tall: false },
+  { id: 16, src: gd('1F5cVgjHxEB2NeGsKpp3LiNohL5mq_mKc'), title: 'Energi Positif Outbound',       category: 'Outbound',      tall: true  },
+  { id: 17, src: gd('1_-iTffNdnkFAQSBa-hdf8kcZpXb1RqJH'), title: 'Momen Spesial Gathering',       category: 'Gathering',     tall: false },
+  { id: 18, src: gd('1jCUcfuWiZU4ggrUiCmG0AZOSCDFsbGnd'), title: 'Keakraban Tim di Alam',         category: 'Outing',        tall: false },
+  { id: 19, src: gd('1JBJPpk5dPPdUUln30xDVPtJmp6foxEMp'), title: 'Games Seru & Kompetitif',       category: 'Team Building', tall: true  },
+  { id: 20, src: gd('1-ILWgzSffMw8nBIlxt_Pss-0IYoAFULy'), title: 'Rafting Penuh Adrenalin',       category: 'Outing',        tall: false },
+  { id: 21, src: gd('1ob1dQbH-htgnIHRgBaFlK_7u0UNusuF8'), title: 'Senyum Keberhasilan Bersama',   category: 'Gathering',     tall: false },
+  { id: 22, src: gd('1hG6RUycUSThX3QhmHFn9cDgWpQzTq5wV'), title: 'Foto Bersama yang Berkesan',    category: 'Team Building', tall: false },
+  { id: 23, src: gd('12jjmiI8Yr9WJgXzR2rSqA139vTa5RlOx'), title: 'Serunya Outbound Alam Bebas',   category: 'Outbound',      tall: true  },
 ]
 
 const categories = ['Semua', 'Outbound', 'Team Building', 'Gathering', 'Outing']

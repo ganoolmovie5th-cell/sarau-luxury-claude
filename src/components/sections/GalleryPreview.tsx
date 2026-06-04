@@ -9,12 +9,12 @@ import { ArrowRight, ZoomIn } from 'lucide-react'
 const gd = (id: string) => `https://lh3.googleusercontent.com/d/${id}`
 
 const galleryItems = [
-  { id: 1, src: gd('1HhH1QIB3rAGDFk6T1-fPh7EUwKujYTax'), title: 'Outbound Seru',          category: 'Outbound',      span: 'row-span-2' },
-  { id: 2, src: gd('1HSx1QewH2BMjSGxdam5z04W2UpXozPym'), title: 'Team Building',            category: 'Team Building', span: '' },
-  { id: 3, src: gd('1JT3QZM0QZaXPTYLE7QUfQiwtEW7GVpCx'), title: 'Gathering Kebersamaan',   category: 'Gathering',     span: '' },
-  { id: 4, src: gd('1uTefPFMuCEufqDWhoxk-T4CJdXZRPMyq'), title: 'Outing Petualangan',      category: 'Outing',        span: 'col-span-2' },
-  { id: 5, src: gd('1zzHVnSRhIcKY9og6COA743wgc8ej6yMP'), title: 'Fun Game Seru',           category: 'Outbound',      span: '' },
-  { id: 6, src: gd('1DIOEfTC0AGwVhBWPx_e_sHp1S4whYsnj'), title: 'Momen Kebersamaan',       category: 'Team Building', span: 'row-span-2' },
+  { id: 1,  src: gd('19Z0PLEUY2THTrafQ_NTJezJhfEZYF_V8'), title: 'Semangat Tim yang Membara',    category: 'Outbound',      span: 'row-span-2' },
+  { id: 2,  src: gd('1lrnK9HRhjD0W-8uPDPQLWkGHBnEWmnQN'), title: 'Kebersamaan yang Nyata',       category: 'Gathering',     span: '' },
+  { id: 3,  src: gd('1IVOSqzmigs7hd6bGF34SASET2Kcf8-lq'), title: 'Kolaborasi Tim Solid',         category: 'Team Building', span: '' },
+  { id: 4,  src: gd('1e0Tuw7vsNhRpJv0dD09zkF-F6qjQgUXN'), title: 'Petualangan Tak Terlupakan',   category: 'Outing',        span: 'col-span-2' },
+  { id: 5,  src: gd('1F5cVgjHxEB2NeGsKpp3LiNohL5mq_mKc'), title: 'Energi Positif Outbound',      category: 'Outbound',      span: '' },
+  { id: 6,  src: gd('1JBJPpk5dPPdUUln30xDVPtJmp6foxEMp'), title: 'Games Seru & Kompetitif',      category: 'Team Building', span: 'row-span-2' },
 ]
 
 export default function GalleryPreview() {
