@@ -143,7 +143,7 @@ export default function Footer() {
           {[
             { icon: Phone,   text: '+62 857-1178-6561',                     href: 'tel:+6285711786561' },
             { icon: Mail,    text: 'bandungindonesiasinergi@gmail.com',      href: 'mailto:bandungindonesiasinergi@gmail.com' },
-            { icon: MapPin,  text: 'Binong Permai Blok R-10/14',             href: 'https://maps.google.com/?q=Binong+Permai+Blok+R-10/14' },
+            { icon: MapPin,  text: 'Binong Permai Blok R-10/14, Curug, Banten', href: 'https://maps.google.com/?q=Binong+Permai+Blok+R-10/14+Curug+Banten' },
           ].map(({ icon: Icon, text, href }) => (
             <a
               key={text}

@@ -8,7 +8,7 @@ import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
 const contactInfo = [
   { icon: Phone,  label: 'Telepon',   value: '+62 857-1178-6561',              href: 'tel:+6285711786561' },
   { icon: Mail,   label: 'Email',     value: 'bandungindonesiasinergi@gmail.com', href: 'mailto:bandungindonesiasinergi@gmail.com' },
-  { icon: MapPin, label: 'Kantor',    value: 'Binong Permai Blok R-10/14',      href: 'https://maps.google.com/?q=Binong+Permai+Blok+R-10/14' },
+  { icon: MapPin, label: 'Kantor',    value: 'Binong Permai Blok R-10/14, Curug, Banten', href: 'https://maps.google.com/?q=Binong+Permai+Blok+R-10/14+Curug+Banten' },
   { icon: Clock,  label: 'Jam Kerja', value: 'Senin – Sabtu, 08.00 – 20.00 WIB', href: null },
 ]
 
@@ -259,9 +259,9 @@ export default function ContactForm() {
           </div>
           <div className="flex items-center gap-2 mt-3 text-earth/60 text-sm">
             <MapPin size={14} className="text-forest" />
-            <span>Binong Permai Blok R-10/14, Bandung, Jawa Barat</span>
+            <span>Binong Permai Blok R-10/14, Curug, Banten</span>
             <a
-              href="https://maps.google.com/?q=Binong+Permai+Blok+R-10/14+Bandung"
+              href="https://maps.google.com/?q=Binong+Permai+Blok+R-10/14+Curug+Banten"
               target="_blank"
               rel="noopener noreferrer"
               className="ml-auto text-forest font-semibold hover:underline text-xs"
