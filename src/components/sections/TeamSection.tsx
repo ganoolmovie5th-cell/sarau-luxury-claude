@@ -55,16 +55,12 @@ export default function TeamSection() {
                       alt={name}
                       fill
                       className="object-cover object-top"
-                      onError={(e) => {
-                        // fallback to initials if image not found
-                        e.currentTarget.style.display = 'none'
-                      }}
                     />
-                  ) : null}
-                  {/* Initials fallback */}
-                  <div className="absolute inset-0 flex items-center justify-center text-cream font-display font-bold text-4xl">
-                    {initials}
-                  </div>
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-cream font-display font-bold text-4xl">
+                      {initials}
+                    </div>
+                  )}
                 </div>
                 {/* Badge */}
                 <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-sun text-bark text-xs font-bold px-3 py-1 rounded-full shadow whitespace-nowrap">
