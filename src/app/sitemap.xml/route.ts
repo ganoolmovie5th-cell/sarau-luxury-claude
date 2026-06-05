@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-const BASE_URL = 'https://sarau-luxury-claude.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app'
 
 const urls = [
   { loc: `${BASE_URL}/`,         priority: '1.0', changefreq: 'weekly'  },
@@ -38,7 +38,7 @@ export async function GET() {
 ${urls
   .map(
     ({ loc, priority, changefreq }) =>
-      `  <url>\n    <loc>${loc}</loc>\n    <lastmod>2026-06-04</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`
+      `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`
   )
   .join('\n')}
 </urlset>`

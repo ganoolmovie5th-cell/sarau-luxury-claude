@@ -113,7 +113,7 @@ export default function ContactForm() {
 
             {/* WA quick contact */}
             <a
-              href="https://wa.me/6285711786561?text=Halo%20Sarau%20Luxury%2C%20saya%20ingin%20konsultasi!"
+              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '6285711786561'}?text=Halo%20Sarau%20Luxury%2C%20saya%20ingin%20konsultasi!`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 p-6 bg-white rounded-2xl border border-earth/10 shadow-sm hover:shadow-forest/15 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
@@ -181,7 +181,8 @@ export default function ContactForm() {
                         <option value="outbound">Outbound Training</option>
                         <option value="teambuilding">Team Building</option>
                         <option value="family">Family Gathering</option>
-                        <option value="mice">MICE Event</option>
+                        <option value="gathering">Company Gathering</option>
+                        <option value="meeting">Meeting Package</option>
                         <option value="other">Lainnya</option>
                       </select>
                     </div>

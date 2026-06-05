@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import BookingForm from '@/components/sections/BookingForm'
 
-const BASE_URL = 'https://sarau-luxury-claude.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app'
 
 export const metadata: Metadata = {
   title: 'Booking & Inquiry – Ajukan Event Perusahaan',

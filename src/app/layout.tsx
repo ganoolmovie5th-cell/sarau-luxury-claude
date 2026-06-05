@@ -50,10 +50,10 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': 'https://sarau-luxury-claude.vercel.app',
+  '@id': process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app',
   name: 'Sarau Luxury',
   description: 'Event organizer profesional untuk company gathering, outing perusahaan, outbound training, team building, dan family gathering di Indonesia.',
-  url: 'https://sarau-luxury-claude.vercel.app',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app',
   telephone: '+6285711786561',
   email: 'bandungindonesiasinergi@gmail.com',
   foundingDate: '2018',
@@ -90,7 +90,7 @@ const jsonLd = {
     ratingValue: '5.0',
     bestRating: '5',
     worstRating: '1',
-    ratingCount: '31',
+    ratingCount: '53',
   },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',

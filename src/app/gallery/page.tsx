@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import GalleryPage from '@/components/sections/GalleryPage'
 
-const BASE_URL = 'https://sarau-luxury-claude.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app'
 
 export const metadata: Metadata = {
   title: 'Galeri – Dokumentasi Event Outing & Outbound',

@@ -1,10 +1,7 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-
-const logo = (domain: string) => `https://cdn.brandfetch.io/${domain}/w/128/h/128/logo?c=1idxFGPkb7rQ0O7bwbG`
 
 const clients = [
   { name: 'Bank BCA',                      domain: 'bca.co.id',             color: '#006cb7' },
@@ -61,6 +58,10 @@ const clients = [
   { name: 'Bank CIMB Niaga',               domain: 'cimbniaga.co.id',        color: '#d4001a' },
   { name: 'Mitra Adi Perkasa',             domain: 'map.co.id',              color: '#c0392b' },
   { name: 'PT. Serpong Mas Telematika',    domain: 'serpongmas.co.id',       color: '#148f77' },
+  // Klien tambahan yang belum ada di marquee
+  { name: 'Vinno Jaya',                    domain: 'vinnojaya.co.id',        color: '#7b2d8b' },
+  { name: 'Hugo Store',                    domain: 'hugoboss.com',           color: '#1a1a1a' },
+  { name: 'SDN Daya Bersama',              domain: 'sdndayabersama.sch.id',  color: '#27ae60' },
 ]
 
 function LogoCard({ name, color }: { name: string; domain: string; color: string }) {

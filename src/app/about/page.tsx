@@ -4,7 +4,7 @@ import MissionVision from '@/components/sections/MissionVision'
 import TeamSection from '@/components/sections/TeamSection'
 import CtaSection from '@/components/sections/CtaSection'
 
-const BASE_URL = 'https://sarau-luxury-claude.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app'
 
 export const metadata: Metadata = {
   title: 'Tentang Kami – Sarau Luxury Event Organizer',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE_URL}/about` },
   openGraph: {
     title: 'Tentang Sarau Luxury – EO Profesional Sejak 2018',
-    description: 'Berdiri sejak 2018, Sarau Luxury telah dipercaya 31+ perusahaan terkemuka untuk menggelar outing, outbound, gathering dan team building.',
+    description: 'Berdiri sejak 2018, Sarau Luxury telah dipercaya 53+ perusahaan terkemuka untuk menggelar outing, outbound, gathering dan team building.',
     url: `${BASE_URL}/about`,
   },
 }
