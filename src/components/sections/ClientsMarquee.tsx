@@ -16,6 +16,7 @@ const clients = [
   { name: 'Konnichiwa Group',              domain: 'konichiwagroup.com',    color: '#d62828' },
   { name: 'PT. Epson Indonesia',           domain: 'epson.co.id',           color: '#00539f' },
   { name: 'Grand Soll Marina Hotel',       domain: 'sollmarinahotel.com',   color: '#1b4332' },
+  { name: 'Park Hyatt Jakarta',            domain: 'hyatt.com',             color: '#8b6914' },
   { name: 'PT. Primasid Andalan Utama',    domain: 'primasid.com',          color: '#ff6b35' },
   { name: 'PT. Asfindo Berkah Mandiri',    domain: 'asfindo.com',           color: '#2d6a4f' },
   { name: 'Aloft Hotel',                   domain: 'alofthotels.com',       color: '#e31837' },

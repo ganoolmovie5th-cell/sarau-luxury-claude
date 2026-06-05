@@ -10,6 +10,7 @@ const clients = [
   // ── Hospitality ──
   { name: 'Hotel Mercure',                 domain: 'mercure.com',            industry: 'Hospitality', color: '#003580' },
   { name: 'Grand Soll Marina Hotel',       domain: 'sollmarinahotel.com',    industry: 'Hospitality', color: '#1b4332' },
+  { name: 'Park Hyatt Jakarta',            domain: 'hyatt.com',              industry: 'Hospitality', color: '#8b6914' },
   { name: 'Aloft Hotel',                   domain: 'alofthotels.com',        industry: 'Hospitality', color: '#e31837' },
   { name: 'Four Points Hotel',             domain: 'fourpoints.com',         industry: 'Hospitality', color: '#8b1a1a' },
   // ── Otomotif ──
@@ -193,7 +194,7 @@ export default function ClientsPage() {
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-5"
           >
             {[
-              { value: '41+', label: 'Klien Korporat', icon: '🏢' },
+              { value: '42+', label: 'Klien Korporat', icon: '🏢' },
               { value: '17+', label: 'Industri Berbeda', icon: '🌐' },
               { value: '100+', label: 'Event Sukses', icon: '🎉' },
               { value: '5.0', label: 'Rating Google', icon: '⭐' },

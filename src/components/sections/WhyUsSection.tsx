@@ -46,7 +46,7 @@ export default function WhyUsSection() {
 
             {/* Feature pills */}
             <div className="flex flex-wrap gap-3">
-              {['Berdiri Sejak 2018', 'Rating Google 5.0 ⭐', '41+ Klien Korporat', 'Minimal 20 Peserta'].map((badge) => (
+              {['Berdiri Sejak 2018', 'Rating Google 5.0 ⭐', '42+ Klien Korporat', 'Minimal 20 Peserta'].map((badge) => (
                 <span
                   key={badge}
                   className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-cream/80 text-sm font-medium"
