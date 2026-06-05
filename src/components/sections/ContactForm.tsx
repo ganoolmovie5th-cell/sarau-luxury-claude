@@ -6,7 +6,8 @@ import { useInView } from 'react-intersection-observer'
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
 
 const contactInfo = [
-  { icon: Phone,  label: 'Telepon',   value: '+62 857-1178-6561',              href: 'tel:+6285711786561' },
+  { icon: Phone,  label: 'Telepon 1',  value: '+62 857-1178-6561',              href: 'tel:+6285711786561' },
+  { icon: Phone,  label: 'Telepon 2',  value: '+62 858-1062-9838',              href: 'tel:+6285810629838' },
   { icon: Mail,   label: 'Email',     value: 'bandungindonesiasinergi@gmail.com', href: 'mailto:bandungindonesiasinergi@gmail.com' },
   { icon: MapPin, label: 'Kantor',    value: 'Binong Permai Blok R-10/14, Curug, Banten', href: 'https://maps.google.com/?q=Binong+Permai+Blok+R-10/14+Curug+Banten' },
   { icon: Clock,  label: 'Jam Kerja', value: 'Senin – Sabtu, 08.00 – 20.00 WIB', href: null },
