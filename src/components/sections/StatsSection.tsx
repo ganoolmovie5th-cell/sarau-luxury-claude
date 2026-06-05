@@ -7,7 +7,7 @@ import { Trophy, Users, MapPin, Star } from 'lucide-react'
 
 const stats = [
   { icon: Trophy, value: 100,  suffix: '+', label: 'Event Sukses',        desc: 'Outing, outbound & gathering terlaksana' },
-  { icon: Users,  value: 42,   suffix: '+', label: 'Perusahaan Klien',    desc: 'Dari berbagai industri' },
+  { icon: Users,  value: 53,   suffix: '+', label: 'Perusahaan Klien',    desc: 'Dari berbagai industri' },
   { icon: MapPin, value: 20,   suffix: '+', label: 'Destinasi Wisata',    desc: 'Di Jawa, Bali & sekitarnya' },
   { icon: Star,   value: 5.0,  suffix: '',  label: 'Rating Google',       desc: 'Rating kepuasan klien', decimal: 1 },
 ]

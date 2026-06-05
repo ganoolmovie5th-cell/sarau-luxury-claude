@@ -129,7 +129,7 @@ export default function OGImage() {
             {/* Stats */}
             <div style={{ display: 'flex', gap: '24px' }}>
               {[
-                { value: '41+', label: 'Klien' },
+                { value: '53+', label: 'Klien' },
                 { value: '8+',  label: 'Tahun' },
                 { value: '5.0', label: 'Rating ⭐' },
               ].map(({ value, label }) => (

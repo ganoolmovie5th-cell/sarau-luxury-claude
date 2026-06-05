@@ -39,17 +39,28 @@ const clients = [
   { name: 'Vinno Jaya',                    domain: 'vinnojaya.co.id',       color: '#7b2d8b' },
   { name: 'SDN Daya Bersama',              domain: 'sdndayabersama.sch.id', color: '#27ae60' },
   { name: 'PT. Fluid Science D',           domain: 'fluidscienced.com',     color: '#0077b6' },
-  // Klien baru
+  // Klien baru (batch 2 & 3)
   { name: 'Bank Mandiri',                  domain: 'bankmandiri.co.id',     color: '#003d79' },
   { name: 'Bank BNI',                      domain: 'bni.co.id',             color: '#f77f00' },
   { name: 'PT. Kalbe Farma',               domain: 'kalbe.co.id',           color: '#007bff' },
   { name: 'Toko Mayham Perabot',           domain: 'mayham.co.id',          color: '#8b4513' },
   { name: 'Auly Chelly Fashion',           domain: 'aulychelly.com',        color: '#ff69b4' },
   { name: 'Klinik Lab. Cakra Medika',      domain: 'cakramedika.co.id',     color: '#e74c3c' },
-  { name: 'PT. Tata Mulia',               domain: 'tatamulia.co.id',       color: '#e67e22' },
+  { name: 'PT. Tata Mulia',                domain: 'tatamulia.co.id',       color: '#e67e22' },
   { name: 'Mas Travel',                    domain: 'mastravel.co.id',       color: '#16a085' },
-  { name: 'PT. Asia Parts',               domain: 'asiaparts.co.id',       color: '#c0392b' },
+  { name: 'PT. Asia Parts',                domain: 'asiaparts.co.id',       color: '#c0392b' },
   { name: 'Notaris Lola Pandeglang',       domain: 'notarislola.co.id',     color: '#2c3e50' },
+  { name: 'Sekolah Tiara Kasih',           domain: 'tiarakasih.sch.id',     color: '#f39c12' },
+  { name: 'GKI Cinere',                    domain: 'gkicinere.org',          color: '#8e44ad' },
+  { name: 'PT. Visiotek Global',           domain: 'visiotek.co.id',         color: '#2471a3' },
+  { name: 'Tak Prime',                     domain: 'takprime.co.id',         color: '#1a252f' },
+  { name: 'Toyota Astra Finance',          domain: 'toyotafinance.co.id',    color: '#eb0a1e' },
+  { name: 'PT. Intertrans Global Logistics', domain: 'intertrans.co.id',     color: '#1f618d' },
+  { name: 'PT. Gurita Lintas Samudera',    domain: 'guritals.co.id',         color: '#117a65' },
+  { name: 'PT. Bogasari',                  domain: 'bogasari.com',           color: '#ca6f1e' },
+  { name: 'Bank CIMB Niaga',               domain: 'cimbniaga.co.id',        color: '#d4001a' },
+  { name: 'Mitra Adi Perkasa',             domain: 'map.co.id',              color: '#c0392b' },
+  { name: 'PT. Serpong Mas Telematika',    domain: 'serpongmas.co.id',       color: '#148f77' },
 ]
 
 function LogoCard({ name, color }: { name: string; domain: string; color: string }) {

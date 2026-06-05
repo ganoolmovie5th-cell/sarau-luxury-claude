@@ -62,6 +62,20 @@ const clients = [
   // ── Hukum & Pendidikan ──
   { name: 'Notaris Lola Pandeglang',       domain: 'notarislola.co.id',      industry: 'Hukum', color: '#2c3e50' },
   { name: 'SDN Daya Bersama',              domain: 'sdndayabersama.sch.id',  industry: 'Pendidikan', color: '#27ae60' },
+  { name: 'Sekolah Tiara Kasih',           domain: 'tiarakasih.sch.id',      industry: 'Pendidikan', color: '#f39c12' },
+  { name: 'GKI Cinere',                    domain: 'gkicinere.org',           industry: 'Komunitas', color: '#8e44ad' },
+  // ── Teknologi Baru ──
+  { name: 'PT. Visiotek Global',           domain: 'visiotek.co.id',          industry: 'Teknologi', color: '#2471a3' },
+  { name: 'Tak Prime',                     domain: 'takprime.co.id',          industry: 'Teknologi', color: '#1a252f' },
+  { name: 'PT. Serpong Mas Telematika',    domain: 'serpongmas.co.id',        industry: 'Teknologi', color: '#148f77' },
+  // ── Otomotif & Keuangan Baru ──
+  { name: 'Toyota Astra Finance',          domain: 'toyotafinance.co.id',     industry: 'Keuangan', color: '#eb0a1e' },
+  { name: 'Bank CIMB Niaga',               domain: 'cimbniaga.co.id',         industry: 'Keuangan', color: '#d4001a' },
+  { name: 'Mitra Adi Perkasa',             domain: 'map.co.id',               industry: 'Retail', color: '#c0392b' },
+  // ── Logistik & Industri ──
+  { name: 'PT. Intertrans Global Logistics', domain: 'intertrans.co.id',      industry: 'Logistik', color: '#1f618d' },
+  { name: 'PT. Gurita Lintas Samudera',    domain: 'guritals.co.id',          industry: 'Logistik', color: '#117a65' },
+  { name: 'PT. Bogasari',                  domain: 'bogasari.com',            industry: 'Manufaktur', color: '#ca6f1e' },
 ]
 
 const industries = [
@@ -76,12 +90,14 @@ const industries = [
   { label: 'Fashion',      icon: '👗' },
   { label: 'F&B',          icon: '🍜' },
   { label: 'Distribusi',   icon: '📦' },
+  { label: 'Logistik',     icon: '🚢' },
   { label: 'Konstruksi',   icon: '🏗️' },
   { label: 'Kesehatan',    icon: '🏥' },
   { label: 'Farmasi',      icon: '💊' },
   { label: 'Travel',       icon: '✈️' },
   { label: 'Hukum',        icon: '⚖️' },
   { label: 'Pendidikan',   icon: '🎓' },
+  { label: 'Komunitas',    icon: '🙏' },
 ]
 
 // ─── Logo card ────────────────────────────────────────────────────────────────
@@ -194,8 +210,8 @@ export default function ClientsPage() {
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-5"
           >
             {[
-              { value: '42+', label: 'Klien Korporat', icon: '🏢' },
-              { value: '17+', label: 'Industri Berbeda', icon: '🌐' },
+              { value: '53+', label: 'Klien Korporat', icon: '🏢' },
+              { value: '19+', label: 'Industri Berbeda', icon: '🌐' },
               { value: '100+', label: 'Event Sukses', icon: '🎉' },
               { value: '5.0', label: 'Rating Google', icon: '⭐' },
             ].map(({ value, label, icon }) => (
