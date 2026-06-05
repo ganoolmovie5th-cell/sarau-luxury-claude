@@ -6,6 +6,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Clock, ArrowRight, BookOpen } from 'lucide-react'
 
 const posts = [
+  // ── Artikel terbaru (update mingguan) ──
+  { slug: 'cara-membuat-konsep-gathering-unik', title: 'Cara Membuat Konsep Gathering Perusahaan yang Unik & Berkesan', excerpt: 'Bosan dengan konsep gathering yang itu-itu saja? Ini panduan lengkap membuat konsep yang segar dan tak terlupakan.', category: 'Panduan', readTime: '6 menit', emoji: '💡', date: '12 Jun 2026' },
+  { slug: 'tips-hemat-budget-outing-perusahaan', title: 'Tips Hemat Budget Outing Perusahaan Tanpa Mengurangi Keseruan', excerpt: 'Strategi cerdas mengoptimalkan anggaran outing agar tetap seru, berkesan, dan efisien.', category: 'Tips', readTime: '5 menit', emoji: '💰', date: '5 Jun 2026' },
+  { slug: 'aktivitas-outbound-terbaik-untuk-leadership', title: 'Aktivitas Outbound Terbaik untuk Melatih Jiwa Leadership Tim', excerpt: 'Simulasi dan game outbound yang terbukti ampuh memunculkan pemimpin alami dalam tim Anda.', category: 'Insight', readTime: '7 menit', emoji: '🦁', date: '29 Mei 2026' },
+  { slug: 'panduan-rafting-untuk-corporate', title: 'Panduan Lengkap Rafting untuk Acara Corporate — Aman & Seru', excerpt: 'Semua yang perlu Anda tahu sebelum memilih rafting sebagai aktivitas outbound perusahaan.', category: 'Panduan', readTime: '6 menit', emoji: '🚣', date: '22 Mei 2026' },
+  // ── Artikel lama ──
   { slug: '10-ide-team-building-kreatif', title: '10 Ide Team Building Kreatif yang Wajib Dicoba', excerpt: 'Temukan 10 ide segar yang terbukti meningkatkan semangat dan kekompakan tim perusahaan Anda.', category: 'Tips', readTime: '5 menit', emoji: '🎯', date: '15 Jun 2025' },
   { slug: 'destinasi-outing-terbaik-jawa-bali', title: 'Destinasi Outing Terbaik di Jawa & Bali', excerpt: 'Panduan lengkap memilih destinasi outing yang tepat sesuai budget dan karakter tim Anda.', category: 'Destinasi', readTime: '8 menit', emoji: '🗺️', date: '1 Jun 2025' },
   { slug: 'tips-sukses-family-gathering', title: 'Tips Sukses Family Gathering Ratusan Peserta', excerpt: 'Step-by-step panduan menggelar family gathering besar yang berkesan dan sesuai anggaran.', category: 'Panduan', readTime: '6 menit', emoji: '👨‍👩‍👧‍👦', date: '20 Mei 2025' },
