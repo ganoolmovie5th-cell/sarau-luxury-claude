@@ -5,6 +5,13 @@ export const size    = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
 const postMeta: Record<string, { emoji: string; title: string; category: string }> = {
+  'cara-mengatasi-konflik-tim-dengan-team-building': { emoji: '🤝', title: 'Cara Mengatasi Konflik Tim dengan Team Building',     category: 'Insight' },
+  'checklist-persiapan-outing-perusahaan':           { emoji: '✅', title: 'Checklist Lengkap Persiapan Outing Perusahaan',         category: 'Panduan' },
+  'perbedaan-family-gathering-company-gathering':    { emoji: '🏠', title: 'Family Gathering vs Company Gathering',                  category: 'Tips' },
+  'destinasi-wisata-outbound-sekitar-banten':        { emoji: '🏞️', title: '7 Destinasi Outbound Terbaik di Banten & Jabar',       category: 'Destinasi' },
+  'tips-agar-peserta-antusias-selama-outbound':      { emoji: '🔥', title: '8 Tips Agar Peserta Antusias Selama Outbound',          category: 'Tips' },
+  'manfaat-paintball-untuk-teamwork':                { emoji: '🎯', title: '6 Manfaat Paintball untuk Teamwork',                    category: 'Insight' },
+  'cara-memilih-eo-yang-tepat':                      { emoji: '🔍', title: 'Cara Memilih Event Organizer yang Tepat',                category: 'Panduan' },
   'cara-membuat-konsep-gathering-unik':          { emoji: '💡', title: 'Cara Membuat Konsep Gathering Perusahaan yang Unik',    category: 'Panduan' },
   'tips-hemat-budget-outing-perusahaan':         { emoji: '💰', title: 'Tips Hemat Budget Outing Perusahaan',                    category: 'Tips' },
   'aktivitas-outbound-terbaik-untuk-leadership': { emoji: '🦁', title: 'Aktivitas Outbound Terbaik untuk Melatih Leadership',    category: 'Insight' },
