@@ -6,6 +6,28 @@ import CtaSection from '@/components/sections/CtaSection'
 // ─── Share Buttons (client component) ────────────────────────────────────────
 import ShareButtons from './ShareButtons'
 
+// ─── Cover images per artikel (sama dengan BlogListPage) ─────────────────────
+const coverImages: Record<string, string> = {
+  'cara-membuat-konsep-gathering-unik':             'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1200&q=80',
+  'tips-hemat-budget-outing-perusahaan':            'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&q=80',
+  'aktivitas-outbound-terbaik-untuk-leadership':    'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=1200&q=80',
+  'panduan-rafting-untuk-corporate':                'https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=1200&q=80',
+  'cara-mengatasi-konflik-tim-dengan-team-building':'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1200&q=80',
+  'checklist-persiapan-outing-perusahaan':          'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=1200&q=80',
+  'perbedaan-family-gathering-company-gathering':   'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=1200&q=80',
+  'destinasi-wisata-outbound-sekitar-banten':       'https://images.unsplash.com/photo-1540202404-1b927e27fa8b?w=1200&q=80',
+  'tips-agar-peserta-antusias-selama-outbound':     'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1200&q=80',
+  'manfaat-paintball-untuk-teamwork':               'https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=1200&q=80',
+  'cara-memilih-eo-yang-tepat':                     'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80',
+  '10-ide-team-building-kreatif':                   'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=1200&q=80',
+  'destinasi-outing-terbaik-jawa-bali':             'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1200&q=80',
+  'tips-sukses-family-gathering':                   'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80',
+  'manfaat-outbound-untuk-produktivitas':           'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80',
+  'perbedaan-outing-outbound':                      'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?w=1200&q=80',
+  'venue-team-building-bandung':                    'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&q=80',
+}
+const DEFAULT_COVER = 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=1200&q=80'
+
 // ─── POST DATA ────────────────────────────────────────────────────────────────
 type Post = {
   title: string; category: string; readTime: string
@@ -537,8 +559,19 @@ export default function BlogPostPage({ params }: Props) {
             </span>
           </div>
 
-          {/* Emoji + Title */}
-          <div className="text-7xl mb-5 leading-none">{post.emoji}</div>
+          {/* Cover image */}
+          <div className="relative w-full h-64 md:h-80 rounded-3xl overflow-hidden mb-8">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={coverImages[params.slug] || DEFAULT_COVER}
+              alt={post.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-bark/50 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 text-4xl">{post.emoji}</div>
+          </div>
+
+          {/* Title */}
           <h1 className="font-display text-4xl md:text-5xl font-bold text-bark mb-6 leading-tight">
             {post.title}
           </h1>
@@ -595,20 +628,29 @@ export default function BlogPostPage({ params }: Props) {
           <div className="container-tight max-w-3xl">
             <h3 className="font-display text-2xl font-bold text-bark mb-6">Artikel Terkait</h3>
             <div className="grid sm:grid-cols-3 gap-5">
-              {related.map(({ slug, title, emoji, category, readTime }) => (
+              {related.map(({ slug, title, category, readTime }) => (
                 <Link
                   key={slug}
                   href={`/blog/${slug}`}
-                  className="bg-white rounded-2xl border border-earth/8 p-5 hover:shadow-md hover:-translate-y-0.5 transition-all group"
+                  className="bg-white rounded-2xl border border-earth/8 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all group"
                 >
-                  <div className="text-3xl mb-3">{emoji}</div>
-                  <span className="text-xs font-semibold text-forest bg-forest/10 px-2 py-0.5 rounded-full">{category}</span>
-                  <h4 className="font-semibold text-bark text-sm leading-snug mt-2 mb-2 group-hover:text-forest transition-colors line-clamp-2">
-                    {title}
-                  </h4>
-                  <span className="flex items-center gap-1 text-xs text-earth/50">
-                    <Clock size={10} /> {readTime}
-                  </span>
+                  <div className="h-28 overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={coverImages[slug] || DEFAULT_COVER}
+                      alt={title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <span className="text-xs font-semibold text-forest bg-forest/10 px-2 py-0.5 rounded-full">{category}</span>
+                    <h4 className="font-semibold text-bark text-sm leading-snug mt-2 mb-2 group-hover:text-forest transition-colors line-clamp-2">
+                      {title}
+                    </h4>
+                    <span className="flex items-center gap-1 text-xs text-earth/50">
+                      <Clock size={10} /> {readTime}
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
