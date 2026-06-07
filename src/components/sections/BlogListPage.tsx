@@ -5,87 +5,6 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Clock, BookOpen } from 'lucide-react'
 
-// ── Foto proper per artikel dari Unsplash ──────────────────────────────────
-const blogImages: Record<string, string> = {
-  // Foto dipilih spesifik sesuai isi artikel
-  'cara-membuat-konsep-gathering-unik':
-    'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&q=75',
-  // grup orang merayakan outdoor — cocok untuk "konsep gathering unik"
-
-  'tips-hemat-budget-outing-perusahaan':
-    'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=75',
-  // kalkulator & uang — cocok untuk "hemat budget"
-
-  'aktivitas-outbound-terbaik-untuk-leadership':
-    'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=600&q=75',
-  // tim di rope course / wall climbing — cocok untuk "outbound leadership"
-
-  'panduan-rafting-untuk-corporate':
-    'https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=600&q=75',
-  // arung jeram/rafting sungai — cocok untuk "panduan rafting"
-
-  'cara-mengatasi-konflik-tim-dengan-team-building':
-    'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&q=75',
-  // dua orang berdiskusi serius — cocok untuk "konflik tim"
-
-  'checklist-persiapan-outing-perusahaan':
-    'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=75',
-  // orang menulis checklist di clipboard — cocok untuk "persiapan outing"
-
-  'perbedaan-family-gathering-company-gathering':
-    'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=75',
-  // grup besar outdoor bersama — cocok untuk "family vs company gathering"
-
-  'destinasi-wisata-outbound-sekitar-banten':
-    'https://images.unsplash.com/photo-1540202404-1b927e27fa8b?w=600&q=75',
-  // pantai/alam Indonesia — cocok untuk "destinasi Banten & Jabar"
-
-  'tips-agar-peserta-antusias-selama-outbound':
-    'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&q=75',
-  // orang berteriak semangat / berpose penuh energi — cocok untuk "antusias outbound"
-
-  'manfaat-paintball-untuk-teamwork':
-    'https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=600&q=75',
-  // orang dengan peralatan paintball/action gear — cocok untuk "paintball"
-
-  'cara-memilih-eo-yang-tepat':
-    'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=75',
-  // orang meeting memilih vendor/presentasi — cocok untuk "memilih EO"
-
-  '10-ide-team-building-kreatif':
-    'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&q=75',
-  // tangan tim saling tumpuk — cocok untuk "team building kreatif"
-
-  'destinasi-outing-terbaik-jawa-bali':
-    'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=75',
-  // pantai Bali — cocok untuk "destinasi Jawa & Bali"
-
-  'tips-sukses-family-gathering':
-    'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=75',
-  // keluarga/grup besar tertawa bersama — cocok untuk "family gathering"
-
-  'manfaat-outbound-untuk-produktivitas':
-    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=75',
-  // tim berdiri bersama-sama kompak — cocok untuk "produktivitas outbound"
-
-  'perbedaan-outing-outbound':
-    'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?w=600&q=75',
-  // orang hiking/berjalan di alam — cocok untuk "outing vs outbound"
-
-  'venue-team-building-bandung':
-    'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=75',
-  // area outdoor Lembang/pegunungan — cocok untuk "venue Bandung"
-}
-
-const DEFAULT_IMG = 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&q=75'
-
-const categoryColors: Record<string, string> = {
-  Tips:      'bg-amber-100 text-amber-700',
-  Panduan:   'bg-blue-100 text-blue-700',
-  Insight:   'bg-purple-100 text-purple-700',
-  Destinasi: 'bg-emerald-100 text-emerald-700',
-}
-
 const posts = [
   // ── Artikel terbaru (update mingguan) ──
   { slug: 'cara-membuat-konsep-gathering-unik', title: 'Cara Membuat Konsep Gathering Perusahaan yang Unik & Berkesan', excerpt: 'Bosan dengan konsep gathering yang itu-itu saja? Ini panduan lengkap membuat konsep yang segar dan tak terlupakan.', category: 'Panduan', readTime: '6 menit', emoji: '💡', date: '12 Jun 2026' },
@@ -160,27 +79,20 @@ export default function BlogListPage() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"
           >
             {filteredPosts.length > 0 ? (
-              filteredPosts.map(({ slug, title, excerpt, category, readTime, date }, i) => (
+              filteredPosts.map(({ slug, title, excerpt, category, readTime, emoji, date }, i) => (
                 <motion.div
                   key={slug}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                 >
-                  <Link href={`/blog/${slug}`} className="card-base block group h-full overflow-hidden">
-                    {/* Cover image */}
-                    <div className="h-48 overflow-hidden rounded-t-3xl relative">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={blogImages[slug] || DEFAULT_IMG}
-                        alt={title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-bark/30 to-transparent" />
+                  <Link href={`/blog/${slug}`} className="card-base block group h-full">
+                    <div className="h-48 bg-gradient-to-br from-forest/10 to-leaf/20 flex items-center justify-center text-6xl rounded-t-3xl">
+                      {emoji}
                     </div>
                     <div className="p-6">
                       <div className="flex items-center gap-3 mb-3">
-                        <span className={`text-xs font-semibold px-3 py-1 rounded-full ${categoryColors[category] || 'bg-forest/10 text-forest'}`}>{category}</span>
+                        <span className="text-xs font-semibold px-3 py-1 rounded-full bg-forest/10 text-forest">{category}</span>
                         <span className="flex items-center gap-1 text-xs text-earth/60"><Clock size={11} /> {readTime}</span>
                         <span className="text-xs text-earth/40 ml-auto">{date}</span>
                       </div>

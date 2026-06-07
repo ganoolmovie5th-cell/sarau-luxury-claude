@@ -49,7 +49,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2 group">
           <div className="relative w-12 h-12 flex-shrink-0">
             <Image
-              src="/logo.svg"
+              src="/sarau-luxury-logo.jpeg"
               alt="Sarau Luxury Logo"
               fill
               className="object-contain"

@@ -5,18 +5,6 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ArrowRight, Tent, Mountain, Users, Heart, Presentation, Camera, PartyPopper, Check } from 'lucide-react'
 
-// ─── Photo helper (Unsplash direct URLs) ─────────────────────────────────────
-const servicePhotos: Record<string, string> = {
-  // Foto spesifik outing & outbound company Indonesia
-  gathering:     'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80', // group people celebrating outdoor
-  outing:        'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?w=800&q=80', // group hiking adventure
-  outbound:      'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=800&q=80', // team rope course outdoor
-  teambuilding:  'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80', // team hands together circle
-  family:        'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&q=80', // big group outdoor celebration
-  meeting:       'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80', // professional meeting room
-  documentation: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80', // photographer at event
-}
-
 const services = [
   {
     id: 'gathering',
@@ -172,18 +160,9 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className={`grid md:grid-cols-2 gap-10 items-center ${isReversed ? 'md:grid-flow-col-dense' : ''}`}
     >
-      {/* Visual */}
-      <div className={`rounded-3xl h-72 md:h-full min-h-[320px] relative overflow-hidden group ${isReversed ? 'md:col-start-2' : ''}`}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={servicePhotos[service.id]}
-          alt={service.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-bark/60 via-transparent to-transparent" />
-        <div className="absolute bottom-4 left-4">
-          <span className="text-4xl">{service.emoji}</span>
-        </div>
+      {/* Visual — emoji */}
+      <div className={`${service.light} rounded-3xl h-72 md:h-full min-h-[320px] flex items-center justify-center relative overflow-hidden group ${isReversed ? 'md:col-start-2' : ''}`}>
+        <div className="text-8xl select-none group-hover:scale-110 transition-transform duration-500">{service.emoji}</div>
         {service.badge && (
           <div className="absolute top-4 right-4">
             <span className="px-3 py-1.5 rounded-full bg-sun text-bark text-xs font-bold shadow-lg">⭐ {service.badge}</span>
