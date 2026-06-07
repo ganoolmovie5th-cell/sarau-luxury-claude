@@ -7,13 +7,14 @@ import { ArrowRight, Tent, Mountain, Users, Heart, Presentation, Camera, PartyPo
 
 // ─── Photo helper (Unsplash direct URLs) ─────────────────────────────────────
 const servicePhotos: Record<string, string> = {
-  gathering:     'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80', // corporate gathering
-  outing:        'https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=800&q=80', // outdoor outing
-  outbound:      'https://images.unsplash.com/photo-1527525443983-6e60c75fff46?w=800&q=80', // outbound training
-  teambuilding:  'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80', // team building
-  family:        'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80', // family gathering
-  meeting:       'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80', // meeting
-  documentation: 'https://images.unsplash.com/photo-1554941829-202a0b2403b8?w=800&q=80', // photography event
+  // Foto spesifik outing & outbound company Indonesia
+  gathering:     'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80', // group people celebrating outdoor
+  outing:        'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?w=800&q=80', // group hiking adventure
+  outbound:      'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=800&q=80', // team rope course outdoor
+  teambuilding:  'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80', // team hands together circle
+  family:        'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=800&q=80', // big group outdoor celebration
+  meeting:       'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80', // professional meeting room
+  documentation: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80', // photographer at event
 }
 
 const services = [

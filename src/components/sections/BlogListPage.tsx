@@ -7,26 +7,77 @@ import { Clock, BookOpen } from 'lucide-react'
 
 // ── Foto proper per artikel dari Unsplash ──────────────────────────────────
 const blogImages: Record<string, string> = {
-  'cara-membuat-konsep-gathering-unik':             'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=75',
-  'tips-hemat-budget-outing-perusahaan':            'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=75',
-  'aktivitas-outbound-terbaik-untuk-leadership':    'https://images.unsplash.com/photo-1527525443983-6e60c75fff46?w=600&q=75',
-  'panduan-rafting-untuk-corporate':                'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=75',
-  'cara-mengatasi-konflik-tim-dengan-team-building':'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=75',
-  'checklist-persiapan-outing-perusahaan':          'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=75',
-  'perbedaan-family-gathering-company-gathering':   'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=75',
-  'destinasi-wisata-outbound-sekitar-banten':       'https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=600&q=75',
-  'tips-agar-peserta-antusias-selama-outbound':     'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&q=75',
-  'manfaat-paintball-untuk-teamwork':               'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75',
-  'cara-memilih-eo-yang-tepat':                     'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=75',
-  '10-ide-team-building-kreatif':                   'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=75',
-  'destinasi-outing-terbaik-jawa-bali':             'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=75',
-  'tips-sukses-family-gathering':                   'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=75',
-  'manfaat-outbound-untuk-produktivitas':           'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=75',
-  'perbedaan-outing-outbound':                      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=75',
-  'venue-team-building-bandung':                    'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=75',
+  // Foto dipilih spesifik sesuai isi artikel
+  'cara-membuat-konsep-gathering-unik':
+    'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&q=75',
+  // grup orang merayakan outdoor — cocok untuk "konsep gathering unik"
+
+  'tips-hemat-budget-outing-perusahaan':
+    'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=75',
+  // kalkulator & uang — cocok untuk "hemat budget"
+
+  'aktivitas-outbound-terbaik-untuk-leadership':
+    'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=600&q=75',
+  // tim di rope course / wall climbing — cocok untuk "outbound leadership"
+
+  'panduan-rafting-untuk-corporate':
+    'https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=600&q=75',
+  // arung jeram/rafting sungai — cocok untuk "panduan rafting"
+
+  'cara-mengatasi-konflik-tim-dengan-team-building':
+    'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&q=75',
+  // dua orang berdiskusi serius — cocok untuk "konflik tim"
+
+  'checklist-persiapan-outing-perusahaan':
+    'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=75',
+  // orang menulis checklist di clipboard — cocok untuk "persiapan outing"
+
+  'perbedaan-family-gathering-company-gathering':
+    'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=75',
+  // grup besar outdoor bersama — cocok untuk "family vs company gathering"
+
+  'destinasi-wisata-outbound-sekitar-banten':
+    'https://images.unsplash.com/photo-1540202404-1b927e27fa8b?w=600&q=75',
+  // pantai/alam Indonesia — cocok untuk "destinasi Banten & Jabar"
+
+  'tips-agar-peserta-antusias-selama-outbound':
+    'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&q=75',
+  // orang berteriak semangat / berpose penuh energi — cocok untuk "antusias outbound"
+
+  'manfaat-paintball-untuk-teamwork':
+    'https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=600&q=75',
+  // orang dengan peralatan paintball/action gear — cocok untuk "paintball"
+
+  'cara-memilih-eo-yang-tepat':
+    'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=75',
+  // orang meeting memilih vendor/presentasi — cocok untuk "memilih EO"
+
+  '10-ide-team-building-kreatif':
+    'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&q=75',
+  // tangan tim saling tumpuk — cocok untuk "team building kreatif"
+
+  'destinasi-outing-terbaik-jawa-bali':
+    'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=75',
+  // pantai Bali — cocok untuk "destinasi Jawa & Bali"
+
+  'tips-sukses-family-gathering':
+    'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=75',
+  // keluarga/grup besar tertawa bersama — cocok untuk "family gathering"
+
+  'manfaat-outbound-untuk-produktivitas':
+    'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=75',
+  // tim berdiri bersama-sama kompak — cocok untuk "produktivitas outbound"
+
+  'perbedaan-outing-outbound':
+    'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?w=600&q=75',
+  // orang hiking/berjalan di alam — cocok untuk "outing vs outbound"
+
+  'venue-team-building-bandung':
+    'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=75',
+  // area outdoor Lembang/pegunungan — cocok untuk "venue Bandung"
 }
 
-const DEFAULT_IMG = 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=75'
+const DEFAULT_IMG = 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&q=75'
 
 const categoryColors: Record<string, string> = {
   Tips:      'bg-amber-100 text-amber-700',

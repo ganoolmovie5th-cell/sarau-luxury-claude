@@ -86,10 +86,10 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3 group mb-6">
               <div className="relative w-14 h-14 flex-shrink-0">
                 <Image
-                  src="/sarau-luxury-logo.jpeg"
+                  src="/logo.svg"
                   alt="Sarau Luxury Logo"
                   fill
-                  className="object-contain mix-blend-luminosity brightness-150"
+                  className="object-contain"
                 />
               </div>
               <div>

@@ -49,12 +49,10 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2 group">
           <div className="relative w-12 h-12 flex-shrink-0">
             <Image
-              src="/sarau-luxury-logo.jpeg"
+              src="/logo.svg"
               alt="Sarau Luxury Logo"
               fill
-              className={`object-contain transition-all duration-500 ${
-                scrolled || !isHome ? '' : 'mix-blend-luminosity brightness-150'
-              }`}
+              className="object-contain"
               priority
             />
           </div>
