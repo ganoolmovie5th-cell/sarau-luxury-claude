@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CheckCircle, ArrowRight, ArrowLeft, Calendar, Users, MapPin, FileText } from 'lucide-react'
+import { CheckCircle, ArrowRight, ArrowLeft, Calendar, Users, FileText } from 'lucide-react'
 
 const steps = [
   { id: 1, label: 'Perusahaan',  icon: FileText },

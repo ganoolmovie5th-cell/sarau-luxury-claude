@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, Suspense, lazy } from 'react'
+import { Suspense, lazy } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Play, ChevronDown } from 'lucide-react'

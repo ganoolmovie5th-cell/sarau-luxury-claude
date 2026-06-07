@@ -260,7 +260,7 @@ const posts: Record<string, Post> = {
       { type: 'h2', text: '8. 🌟 Review dan Reputasi Online' },
       { type: 'p', text: 'Cek Google Reviews, testimoni di website, dan media sosial mereka. Foto dan video dari event sebelumnya tidak bisa berbohong — itulah standar yang bisa Anda harapkan.' },
       { type: 'quote', text: 'EO terbaik bukan yang termurah, tapi yang memberikan value terbesar dan membuat Anda tenang dari persiapan hingga event selesai.' },
-      { type: 'tip', text: 'Sarau Luxury memenuhi semua 8 kriteria di atas — dengan 8+ tahun pengalaman, 41+ klien korporat, dan rating Google 5.0. Konsultasi gratis tanpa komitmen!' },
+      { type: 'tip', text: 'Sarau Luxury memenuhi semua 8 kriteria di atas — dengan 8+ tahun pengalaman, 53+ klien korporat, dan rating Google 5.0. Konsultasi gratis tanpa komitmen!' },
     ],
   },
   '10-ide-team-building-kreatif': {
