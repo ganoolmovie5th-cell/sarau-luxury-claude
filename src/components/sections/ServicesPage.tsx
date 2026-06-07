@@ -15,6 +15,8 @@ const servicePhotos: Record<string, string> = {
   meeting:       'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80', // meeting
   documentation: 'https://images.unsplash.com/photo-1554941829-202a0b2403b8?w=800&q=80', // photography event
 }
+
+const services = [
   {
     id: 'gathering',
     icon: PartyPopper,
