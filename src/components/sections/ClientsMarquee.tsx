@@ -6,9 +6,9 @@ import { useInView } from 'react-intersection-observer'
 const clients = [
   { name: 'Bank BCA',                      domain: 'bca.co.id',             color: '#006cb7' },
   { name: 'Hotel Mercure',                 domain: 'mercure.com',           color: '#003580' },
-  { name: 'PT. Hino Motors',               domain: 'hino-global.com',       color: '#CC0000' },
+  { name: 'PT. Hino Motors Indonesia',    domain: 'hino.co.id',            color: '#CC0000' },
   { name: 'PT. Nippon Steel',              domain: 'nipponsteel.com',       color: '#1a1a2e' },
-  { name: 'PT. Aulia Cosmetic',            domain: 'auliacosmetic.com',     color: '#e91e8c' },
+  { name: 'PT. Aulia Cosmetic Indonesia',  domain: 'auliacosmetic.com',     color: '#e91e8c' },
   { name: 'PT. Adaro Energy',              domain: 'adaro.com',             color: '#003366' },
   { name: 'Konnichiwa Group',              domain: 'konichiwagroup.com',    color: '#d62828' },
   { name: 'PT. Epson Indonesia',           domain: 'epson.co.id',           color: '#00539f' },

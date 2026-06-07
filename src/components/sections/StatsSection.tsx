@@ -5,11 +5,13 @@ import CountUp from 'react-countup'
 import { motion } from 'framer-motion'
 import { Trophy, Users, MapPin, Star } from 'lucide-react'
 
+import { STATS } from '@/lib/constants'
+
 const stats = [
-  { icon: Trophy, value: 100,  suffix: '+', label: 'Event Sukses',        desc: 'Outing, outbound & gathering terlaksana' },
-  { icon: Users,  value: 53,   suffix: '+', label: 'Perusahaan Klien',    desc: 'Dari berbagai industri' },
-  { icon: MapPin, value: 20,   suffix: '+', label: 'Destinasi Wisata',    desc: 'Di Jawa, Bali & sekitarnya' },
-  { icon: Star,   value: 5.0,  suffix: '',  label: 'Rating Google',       desc: 'Rating kepuasan klien', decimal: 1 },
+  { icon: Trophy, value: STATS.totalEvents,      suffix: '+', label: 'Event Sukses',        desc: 'Outing, outbound & gathering terlaksana' },
+  { icon: Users,  value: STATS.totalClients,     suffix: '+', label: 'Perusahaan Klien',    desc: 'Dari berbagai industri' },
+  { icon: MapPin, value: STATS.totalDestinations,suffix: '+', label: 'Destinasi Wisata',    desc: 'Di Jawa, Bali & sekitarnya' },
+  { icon: Star,   value: STATS.googleRating,     suffix: '',  label: 'Rating Google',       desc: 'Rating kepuasan klien', decimal: 1 },
 ]
 
 export default function StatsSection() {

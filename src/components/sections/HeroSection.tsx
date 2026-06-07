@@ -94,9 +94,9 @@ export default function HeroSection() {
             className="flex flex-wrap gap-8"
           >
             {[
-              { value: '100+', label: 'Event Sukses' },
-              { value: '53+',  label: 'Perusahaan Klien' },
-              { value: '8+',   label: 'Tahun Pengalaman' },
+              { value: STATS.totalEventsLabel,      label: 'Event Sukses' },
+              { value: STATS.totalClientsLabel,    label: 'Perusahaan Klien' },
+              { value: STATS.yearsExperienceLabel, label: 'Tahun Pengalaman' },
             ].map((stat) => (
               <div key={stat.label} className="flex items-center gap-3">
                 <div className="text-sun font-display font-bold text-3xl">{stat.value}</div>

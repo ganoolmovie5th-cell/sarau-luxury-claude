@@ -5,6 +5,8 @@ import { useInView } from 'react-intersection-observer'
 import TestimonialsSection from './TestimonialsSection'
 import CtaSection from './CtaSection'
 
+import { STATS } from '@/lib/constants'
+
 // ─── Client data ──────────────────────────────────────────────────────────────
 const clients = [
   // ── Hospitality ──
@@ -14,7 +16,7 @@ const clients = [
   { name: 'Aloft Hotel',                   domain: 'alofthotels.com',        industry: 'Hospitality', color: '#e31837' },
   { name: 'Four Points Hotel',             domain: 'fourpoints.com',         industry: 'Hospitality', color: '#8b1a1a' },
   // ── Otomotif ──
-  { name: 'PT. Hino Motors',               domain: 'hino.co.id',             industry: 'Otomotif', color: '#CC0000' },
+  { name: 'PT. Hino Motors Indonesia',    domain: 'hino.co.id',             industry: 'Otomotif', color: '#CC0000' },
   { name: 'PT. Toyota Indonesia',          domain: 'toyota.astra.co.id',     industry: 'Otomotif', color: '#eb0a1e' },
   { name: 'PT. Indomobil Bussan Trucking', domain: 'indomobil.co.id',        industry: 'Otomotif', color: '#003087' },
   { name: 'PT. Asia Parts',               domain: 'asiaparts.co.id',         industry: 'Otomotif', color: '#c0392b' },
@@ -210,10 +212,10 @@ export default function ClientsPage() {
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-5"
           >
             {[
-              { value: '53+', label: 'Klien Korporat', icon: '🏢' },
-              { value: '19+', label: 'Industri Berbeda', icon: '🌐' },
-              { value: '100+', label: 'Event Sukses', icon: '🎉' },
-              { value: '5.0', label: 'Rating Google', icon: '⭐' },
+              { value: STATS.totalClientsLabel,    label: 'Klien Korporat',    icon: '🏢' },
+              { value: STATS.totalIndustriesLabel, label: 'Industri Berbeda',  icon: '🌐' },
+              { value: STATS.totalEventsLabel,     label: 'Event Sukses',      icon: '🎉' },
+              { value: STATS.googleRatingStr,      label: 'Rating Google',     icon: '⭐' },
             ].map(({ value, label, icon }) => (
               <div key={label} className="bg-white rounded-2xl p-5 text-center border border-earth/10 shadow-sm">
                 <div className="text-3xl mb-2">{icon}</div>

@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Shield, Clock, Sparkles, Headphones, Map, Award } from 'lucide-react'
 
+import { STATS } from '@/lib/constants'
+
 const reasons = [
   { icon: Shield,      title: 'Terpercaya & Berpengalaman', desc: '8+ tahun sejak 2018 menggelar ratusan event sukses di seluruh Indonesia.' },
   { icon: Sparkles,    title: 'Konsep Kreatif & Custom',    desc: 'Setiap event kami rancang unik sesuai karakter dan kebutuhan perusahaan Anda.' },
@@ -46,7 +48,7 @@ export default function WhyUsSection() {
 
             {/* Feature pills */}
             <div className="flex flex-wrap gap-3">
-              {['Berdiri Sejak 2018', 'Rating Google 5.0 ⭐', '53+ Klien Korporat', 'Minimal 20 Peserta'].map((badge) => (
+              {[`Berdiri Sejak ${STATS.foundedYear}`, `Rating Google ${STATS.googleRatingStr} ⭐`, `${STATS.totalClientsLabel} Klien Korporat`, 'Minimal 20 Peserta'].map((badge) => (
                 <span
                   key={badge}
                   className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-cream/80 text-sm font-medium"
