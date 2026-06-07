@@ -5,7 +5,16 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ArrowRight, Tent, Mountain, Users, Heart, Presentation, Camera, PartyPopper, Check } from 'lucide-react'
 
-const services = [
+// ─── Photo helper (Unsplash direct URLs) ─────────────────────────────────────
+const servicePhotos: Record<string, string> = {
+  gathering:     'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80', // corporate gathering
+  outing:        'https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=800&q=80', // outdoor outing
+  outbound:      'https://images.unsplash.com/photo-1527525443983-6e60c75fff46?w=800&q=80', // outbound training
+  teambuilding:  'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80', // team building
+  family:        'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80', // family gathering
+  meeting:       'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80', // meeting
+  documentation: 'https://images.unsplash.com/photo-1554941829-202a0b2403b8?w=800&q=80', // photography event
+}
   {
     id: 'gathering',
     icon: PartyPopper,
@@ -161,9 +170,22 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       className={`grid md:grid-cols-2 gap-10 items-center ${isReversed ? 'md:grid-flow-col-dense' : ''}`}
     >
       {/* Visual */}
-      <div className={`${service.light} rounded-3xl h-72 md:h-full min-h-[320px] flex items-center justify-center relative overflow-hidden group ${isReversed ? 'md:col-start-2' : ''}`}>
-        <div className="text-8xl select-none group-hover:scale-110 transition-transform duration-500">{service.emoji}</div>
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-transparent to-bark/10" />
+      <div className={`rounded-3xl h-72 md:h-full min-h-[320px] relative overflow-hidden group ${isReversed ? 'md:col-start-2' : ''}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={servicePhotos[service.id]}
+          alt={service.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-bark/60 via-transparent to-transparent" />
+        <div className="absolute bottom-4 left-4">
+          <span className="text-4xl">{service.emoji}</span>
+        </div>
+        {service.badge && (
+          <div className="absolute top-4 right-4">
+            <span className="px-3 py-1.5 rounded-full bg-sun text-bark text-xs font-bold shadow-lg">⭐ {service.badge}</span>
+          </div>
+        )}
       </div>
 
       {/* Text */}
@@ -178,7 +200,6 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
             </span>
           )}
         </div>
-        <p className="text-earth/60 font-accent text-xl mb-2">{service.subtitle}</p>
         <h2 className="font-display text-3xl md:text-4xl font-bold text-bark mb-4">{service.title}</h2>
         <p className="text-earth/80 leading-relaxed mb-6">{service.desc}</p>
         <ul className="space-y-2 mb-8">

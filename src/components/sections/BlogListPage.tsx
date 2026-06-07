@@ -3,7 +3,37 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Clock, ArrowRight, BookOpen } from 'lucide-react'
+import { Clock, BookOpen } from 'lucide-react'
+
+// ── Foto proper per artikel dari Unsplash ──────────────────────────────────
+const blogImages: Record<string, string> = {
+  'cara-membuat-konsep-gathering-unik':             'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=75',
+  'tips-hemat-budget-outing-perusahaan':            'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=75',
+  'aktivitas-outbound-terbaik-untuk-leadership':    'https://images.unsplash.com/photo-1527525443983-6e60c75fff46?w=600&q=75',
+  'panduan-rafting-untuk-corporate':                'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=75',
+  'cara-mengatasi-konflik-tim-dengan-team-building':'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=75',
+  'checklist-persiapan-outing-perusahaan':          'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=75',
+  'perbedaan-family-gathering-company-gathering':   'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=75',
+  'destinasi-wisata-outbound-sekitar-banten':       'https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=600&q=75',
+  'tips-agar-peserta-antusias-selama-outbound':     'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&q=75',
+  'manfaat-paintball-untuk-teamwork':               'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75',
+  'cara-memilih-eo-yang-tepat':                     'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=75',
+  '10-ide-team-building-kreatif':                   'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=75',
+  'destinasi-outing-terbaik-jawa-bali':             'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=75',
+  'tips-sukses-family-gathering':                   'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=75',
+  'manfaat-outbound-untuk-produktivitas':           'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=75',
+  'perbedaan-outing-outbound':                      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=75',
+  'venue-team-building-bandung':                    'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=75',
+}
+
+const DEFAULT_IMG = 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=75'
+
+const categoryColors: Record<string, string> = {
+  Tips:      'bg-amber-100 text-amber-700',
+  Panduan:   'bg-blue-100 text-blue-700',
+  Insight:   'bg-purple-100 text-purple-700',
+  Destinasi: 'bg-emerald-100 text-emerald-700',
+}
 
 const posts = [
   // ── Artikel terbaru (update mingguan) ──
@@ -79,27 +109,34 @@ export default function BlogListPage() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"
           >
             {filteredPosts.length > 0 ? (
-              filteredPosts.map(({ slug, title, excerpt, category, readTime, emoji, date }, i) => (
+              filteredPosts.map(({ slug, title, excerpt, category, readTime, date }, i) => (
                 <motion.div
                   key={slug}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                 >
-                  <Link href={`/blog/${slug}`} className="card-base block group h-full">
-                    <div className="h-48 bg-gradient-to-br from-forest/10 to-leaf/20 flex items-center justify-center text-6xl rounded-t-3xl">
-                      {emoji}
+                  <Link href={`/blog/${slug}`} className="card-base block group h-full overflow-hidden">
+                    {/* Cover image */}
+                    <div className="h-48 overflow-hidden rounded-t-3xl relative">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={blogImages[slug] || DEFAULT_IMG}
+                        alt={title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-bark/30 to-transparent" />
                     </div>
                     <div className="p-6">
                       <div className="flex items-center gap-3 mb-3">
-                        <span className="text-xs font-semibold px-3 py-1 rounded-full bg-forest/10 text-forest">{category}</span>
+                        <span className={`text-xs font-semibold px-3 py-1 rounded-full ${categoryColors[category] || 'bg-forest/10 text-forest'}`}>{category}</span>
                         <span className="flex items-center gap-1 text-xs text-earth/60"><Clock size={11} /> {readTime}</span>
                         <span className="text-xs text-earth/40 ml-auto">{date}</span>
                       </div>
-                      <h2 className="font-display font-semibold text-lg text-bark leading-snug mb-3 group-hover:text-forest transition-colors">
+                      <h2 className="font-display font-semibold text-lg text-bark leading-snug mb-3 group-hover:text-forest transition-colors line-clamp-2">
                         {title}
                       </h2>
-                      <p className="text-earth/70 text-sm leading-relaxed mb-4 line-clamp-3">{excerpt}</p>
+                      <p className="text-earth/70 text-sm leading-relaxed mb-4 line-clamp-2">{excerpt}</p>
                       <span className="flex items-center gap-2 text-forest text-sm font-semibold">
                         <BookOpen size={14} /> Baca Selengkapnya
                       </span>

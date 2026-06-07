@@ -52,7 +52,9 @@ export default function Navbar() {
               src="/sarau-luxury-logo.jpeg"
               alt="Sarau Luxury Logo"
               fill
-              className="object-contain"
+              className={`object-contain transition-all duration-500 ${
+                scrolled || !isHome ? '' : 'mix-blend-luminosity brightness-150'
+              }`}
               priority
             />
           </div>

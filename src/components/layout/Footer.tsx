@@ -89,7 +89,7 @@ export default function Footer() {
                   src="/sarau-luxury-logo.jpeg"
                   alt="Sarau Luxury Logo"
                   fill
-                  className="object-contain"
+                  className="object-contain mix-blend-luminosity brightness-150"
                 />
               </div>
               <div>
@@ -141,8 +141,8 @@ export default function Footer() {
         {/* Contact strip */}
         <div className="py-8 border-y border-cream/10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon: Phone,   text: '+62 857-1178-6561',                         href: 'tel:+6285711786561' },
-            { icon: Phone,   text: '+62 858-1062-9838',                         href: 'tel:+6285810629838' },
+            { icon: Phone,   text: '+62 857-1178-6561',                         href: 'https://wa.me/6285711786561' },
+            { icon: Phone,   text: '+62 858-1062-9838',                         href: 'https://wa.me/6285810629838' },
             { icon: Mail,    text: 'bandungindonesiasinergi@gmail.com',          href: 'mailto:bandungindonesiasinergi@gmail.com' },
             { icon: MapPin,  text: 'Binong Permai Blok R-10/14, Curug, Banten', href: 'https://maps.google.com/?q=Binong+Permai+Blok+R-10/14+Curug+Banten' },
           ].map(({ icon: Icon, text, href }) => (
