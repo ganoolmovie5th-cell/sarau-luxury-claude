@@ -14,6 +14,13 @@ export const metadata: Metadata = {
     default: 'Sarau Luxury | Where Teams Grow Together',
     template: '%s | Sarau Luxury',
   },
+  icons: {
+    icon: [
+      { url: '/sarau-luxury-logo.jpeg', type: 'image/jpeg' },
+    ],
+    apple: '/sarau-luxury-logo.jpeg',
+    shortcut: '/sarau-luxury-logo.jpeg',
+  },
   description:
     'Sarau Luxury adalah event organizer profesional untuk outing dan outbound perusahaan. Kami menciptakan pengalaman team building yang tak terlupakan di lokasi-lokasi terbaik Indonesia.',
   keywords: [
