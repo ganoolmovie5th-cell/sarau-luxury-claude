@@ -4,6 +4,7 @@ import { Suspense, lazy } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Play, ChevronDown } from 'lucide-react'
+import { STATS } from '@/lib/constants'
 
 const HeroScene = lazy(() => import('@/components/3d/HeroScene'))
 
