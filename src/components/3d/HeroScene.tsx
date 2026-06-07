@@ -2,7 +2,7 @@
 
 import { useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Float, Stars, Environment, Fog, MeshDistortMaterial } from '@react-three/drei'
+import { Float, Stars, Environment, MeshDistortMaterial } from '@react-three/drei'
 import * as THREE from 'three'
 
 // ── Single tree ──────────────────────────────────────────────────────────────
@@ -182,8 +182,8 @@ export default function HeroScene() {
       {/* Stars through tree canopy */}
       <Stars radius={60} depth={40} count={800} factor={2.5} saturation={0} fade speed={0.3} />
 
-      {/* Atmospheric fog */}
-      <Fog attach="fog" args={['#0D2818', 12, 35]} />
+      {/* Atmospheric fog via scene.fog */}
+      <fog attach="fog" args={['#0D2818', 12, 35]} />
 
       <Environment preset="forest" />
     </Canvas>
