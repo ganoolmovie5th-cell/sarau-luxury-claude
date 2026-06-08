@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import ContactForm from '@/components/sections/ContactForm'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const metadata: Metadata = {
   title: 'Kontak – Konsultasi Gratis Event Perusahaan',

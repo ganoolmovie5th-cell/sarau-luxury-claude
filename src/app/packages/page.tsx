@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import PackagesPreview from '@/components/sections/PackagesPreview'
 import CtaSection from '@/components/sections/CtaSection'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const metadata: Metadata = {
   title: 'Paket & Harga – Gathering Silver, Gold, Platinum',

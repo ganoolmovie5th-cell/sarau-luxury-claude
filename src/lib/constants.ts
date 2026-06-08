@@ -1,7 +1,7 @@
 // ─── Single Source of Truth untuk data statistik Sarau Luxury ─────────────────
 // Update file ini saja → semua halaman otomatis sync!
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app'
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const STATS = {
   totalClients:          53,

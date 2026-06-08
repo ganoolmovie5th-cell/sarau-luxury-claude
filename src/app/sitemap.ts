@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://sarau-luxury-claude.vercel.app'
+const BASE_URL = 'https://sarau-luxury.com'
 
 const blogSlugs = [
   'cara-mengatasi-konflik-tim-dengan-team-building',

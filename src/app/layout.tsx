@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'id_ID',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com',
     title: 'Sarau Luxury | Where Teams Grow Together',
     description: 'Event organizer profesional untuk outing dan outbound perusahaan.',
     siteName: 'Sarau Luxury',
@@ -57,10 +57,10 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app',
+  '@id': process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com',
   name: 'Sarau Luxury',
   description: 'Event organizer profesional untuk company gathering, outing perusahaan, outbound training, team building, dan family gathering di Indonesia.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com',
   telephone: '+6285711786561',
   email: 'bandungindonesiasinergi@gmail.com',
   foundingDate: '2018',

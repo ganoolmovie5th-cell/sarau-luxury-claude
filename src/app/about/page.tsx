@@ -4,7 +4,7 @@ import MissionVision from '@/components/sections/MissionVision'
 import TeamSection from '@/components/sections/TeamSection'
 import CtaSection from '@/components/sections/CtaSection'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const metadata: Metadata = {
   title: 'Tentang Kami – Sarau Luxury Event Organizer',

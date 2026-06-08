@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import ClientsPage from '@/components/sections/ClientsPage'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury-claude.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const metadata: Metadata = {
   title: 'Klien – 53+ Perusahaan Terkemuka Indonesia',
