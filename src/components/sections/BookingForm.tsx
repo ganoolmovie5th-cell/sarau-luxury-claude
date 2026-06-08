@@ -176,11 +176,13 @@ export default function BookingForm() {
                   <label className="block text-sm font-medium text-bark mb-2">Jenis Layanan *</label>
                   <select value={form.service} onChange={update('service')} className="input-base">
                     <option value="">Pilih layanan</option>
+                    <option value="gathering">Company Gathering</option>
                     <option value="outing">Outing Perusahaan</option>
                     <option value="outbound">Outbound Training</option>
                     <option value="teambuilding">Team Building</option>
                     <option value="family">Family Gathering</option>
-                    <option value="mice">MICE Event</option>
+                    <option value="meeting">Meeting Package</option>
+                    <option value="other">Lainnya</option>
                   </select>
                 </div>
                 <div>

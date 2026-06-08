@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react'
+import { CONTACT, SOCIAL } from '@/lib/constants'
 
 const footerLinks = {
   layanan: [
@@ -64,11 +65,11 @@ function InstagramIcon({ size = 18 }: { size?: number }) {
 }
 
 const socials = [
-  { Icon: InstagramIcon, href: 'https://instagram.com/sarauluxury',                                                         label: 'Instagram' },
-  { Icon: TikTokIcon,    href: 'https://www.tiktok.com/@sarauluxury',                                                       label: 'TikTok' },
-  { Icon: FacebookIcon,  href: 'https://www.facebook.com/share/1H86Hap6Y7/',                                               label: 'Facebook' },
-  { Icon: YoutubeIcon,   href: 'https://www.youtube.com/@Sarauluxury',                                                     label: 'YouTube' },
-  { Icon: ThreadsIcon,   href: 'https://www.threads.com/@sarauluxury',                                                     label: 'Threads' },
+  { Icon: InstagramIcon, href: SOCIAL.instagram, label: 'Instagram' },
+  { Icon: TikTokIcon,    href: SOCIAL.tiktok,    label: 'TikTok' },
+  { Icon: FacebookIcon,  href: SOCIAL.facebook,  label: 'Facebook' },
+  { Icon: YoutubeIcon,   href: SOCIAL.youtube,   label: 'YouTube' },
+  { Icon: ThreadsIcon,   href: SOCIAL.threads,   label: 'Threads' },
 ]
 
 export default function Footer() {
@@ -141,10 +142,10 @@ export default function Footer() {
         {/* Contact strip */}
         <div className="py-8 border-y border-cream/10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon: Phone,   text: '+62 857-1178-6561',                         href: 'https://wa.me/6285711786561' },
-            { icon: Phone,   text: '+62 858-1062-9838',                         href: 'https://wa.me/6285810629838' },
-            { icon: Mail,    text: 'bandungindonesiasinergi@gmail.com',          href: 'mailto:bandungindonesiasinergi@gmail.com' },
-            { icon: MapPin,  text: 'Binong Permai Blok R-10/14, Curug, Banten', href: 'https://maps.google.com/?q=Binong+Permai+Blok+R-10/14+Curug+Banten' },
+            { icon: Phone,   text: CONTACT.phone1,   href: `https://wa.me/${CONTACT.phone1Wa}` },
+            { icon: Phone,   text: CONTACT.phone2,   href: `https://wa.me/${CONTACT.phone2Wa}` },
+            { icon: Mail,    text: CONTACT.email,    href: `mailto:${CONTACT.email}` },
+            { icon: MapPin,  text: CONTACT.address,  href: CONTACT.addressMaps },
           ].map(({ icon: Icon, text, href }) => (
             <a
               key={text}

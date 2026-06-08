@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og'
+import { STATS } from '@/lib/constants'
 
 export const runtime = 'edge'
 export const alt     = 'Sarau Luxury — Where Teams Grow Together'
@@ -6,6 +7,12 @@ export const size    = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
 export default function OGImage() {
+  const stats = [
+    { value: STATS.totalClientsLabel,    label: 'Klien' },
+    { value: STATS.yearsExperienceLabel, label: 'Tahun' },
+    { value: STATS.googleRatingStr,      label: 'Rating ⭐' },
+  ]
+
   return new ImageResponse(
     (
       <div
@@ -128,11 +135,7 @@ export default function OGImage() {
 
             {/* Stats */}
             <div style={{ display: 'flex', gap: '24px' }}>
-              {[
-                { value: '53+', label: 'Klien' },
-                { value: '8+',  label: 'Tahun' },
-                { value: '5.0', label: 'Rating ⭐' },
-              ].map(({ value, label }) => (
+              {stats.map(({ value, label }) => (
                 <div key={label} style={{
                   display: 'flex', flexDirection: 'column', alignItems: 'center',
                 }}>

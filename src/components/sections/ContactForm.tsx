@@ -4,13 +4,14 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
+import { CONTACT } from '@/lib/constants'
 
 const contactInfo = [
-  { icon: Phone,  label: 'Telepon 1',  value: '+62 857-1178-6561',              href: 'https://wa.me/6285711786561' },
-  { icon: Phone,  label: 'Telepon 2',  value: '+62 858-1062-9838',              href: 'https://wa.me/6285810629838' },
-  { icon: Mail,   label: 'Email',     value: 'bandungindonesiasinergi@gmail.com', href: 'mailto:bandungindonesiasinergi@gmail.com' },
-  { icon: MapPin, label: 'Kantor',    value: 'Binong Permai Blok R-10/14, Curug, Banten', href: 'https://maps.google.com/?q=Binong+Permai+Blok+R-10/14+Curug+Banten' },
-  { icon: Clock,  label: 'Jam Kerja', value: 'Senin – Sabtu, 08.00 – 20.00 WIB', href: null },
+  { icon: Phone,  label: 'Telepon 1',  value: CONTACT.phone1,   href: `https://wa.me/${CONTACT.phone1Wa}` },
+  { icon: Phone,  label: 'Telepon 2',  value: CONTACT.phone2,   href: `https://wa.me/${CONTACT.phone2Wa}` },
+  { icon: Mail,   label: 'Email',      value: CONTACT.email,    href: `mailto:${CONTACT.email}` },
+  { icon: MapPin, label: 'Kantor',     value: CONTACT.address,  href: CONTACT.addressMaps },
+  { icon: Clock,  label: 'Jam Kerja',  value: CONTACT.hours,    href: null },
 ]
 
 export default function ContactForm() {
@@ -113,7 +114,7 @@ export default function ContactForm() {
 
             {/* WA quick contact */}
             <a
-              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '6285711786561'}?text=Halo%20Sarau%20Luxury%2C%20saya%20ingin%20konsultasi!`}
+              href={`https://wa.me/${CONTACT.phone1Wa}?text=Halo%20Sarau%20Luxury%2C%20saya%20ingin%20konsultasi!`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 p-6 bg-white rounded-2xl border border-earth/10 shadow-sm hover:shadow-forest/15 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
@@ -263,7 +264,7 @@ export default function ContactForm() {
             <MapPin size={14} className="text-forest" />
             <span>Binong Permai Blok R-10/14, Curug, Banten</span>
             <a
-              href="https://maps.google.com/?q=Binong+Permai+Blok+R-10/14+Curug+Banten"
+              href={CONTACT.addressMaps}
               target="_blank"
               rel="noopener noreferrer"
               className="ml-auto text-forest font-semibold hover:underline text-xs"
