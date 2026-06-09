@@ -123,7 +123,7 @@ export default function BlogOGImage({ params }: Props) {
               </div>
             </div>
             <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px' }}>
-              sarau-luxury.com
+              {process.env.NEXT_PUBLIC_SITE_URL?.replace('https://', '') ?? 'sarau-luxury.com'}
             </span>
           </div>
         </div>

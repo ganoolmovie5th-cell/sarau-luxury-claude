@@ -8,6 +8,7 @@ import ScrollProgressBar from '@/components/ui/ScrollProgressBar'
 import GoogleAnalytics from '@/components/ui/GoogleAnalytics'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { CONTACT, SOCIAL, STATS, SITE_URL, BRAND } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: {
@@ -57,13 +58,13 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com',
-  name: 'Sarau Luxury',
+  '@id': SITE_URL,
+  name: BRAND.name,
   description: 'Event organizer profesional untuk company gathering, outing perusahaan, outbound training, team building, dan family gathering di Indonesia.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com',
-  telephone: '+6285711786561',
-  email: 'bandungindonesiasinergi@gmail.com',
-  foundingDate: '2018',
+  url: SITE_URL,
+  telephone: `+${CONTACT.phone1Wa}`,
+  email: CONTACT.email,
+  foundingDate: String(STATS.foundedYear),
   priceRange: 'Rp 125.000 – Rp 925.000/pax',
   address: {
     '@type': 'PostalAddress',
@@ -85,19 +86,13 @@ const jsonLd = {
       closes: '20:00',
     },
   ],
-  sameAs: [
-    'https://instagram.com/sarauluxury',
-    'https://www.tiktok.com/@sarauluxury',
-    'https://www.facebook.com/share/1H86Hap6Y7/',
-    'https://www.youtube.com/@Sarauluxury',
-    'https://www.threads.com/@sarauluxury',
-  ],
+  sameAs: [SOCIAL.instagram, SOCIAL.tiktok, SOCIAL.facebook, SOCIAL.youtube, SOCIAL.threads],
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: '5.0',
+    ratingValue: String(STATS.googleRating),
     bestRating: '5',
     worstRating: '1',
-    ratingCount: '53',
+    ratingCount: String(STATS.totalClients),
   },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
