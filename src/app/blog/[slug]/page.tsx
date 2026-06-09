@@ -320,59 +320,6 @@ const posts: Record<string, Post> = {
 
 
 // ─── RELATED POSTS ────────────────────────────────────────────────────────────
-    content: [
-      { type: 'intro', text: 'Team building yang efektif bukan sekadar kumpul-kumpul. Program yang dirancang dengan baik dapat meningkatkan produktivitas tim hingga 25% dan mengurangi turnover karyawan secara signifikan. Berikut 10 ide yang bisa langsung Anda eksekusi!' },
-      { type: 'h2', text: '1. 🚀 Amazing Race Kota' },
-      { type: 'p', text: 'Jadikan kota Anda sebagai arena permainan! Tim berlomba menyelesaikan misi di berbagai titik dengan clue yang mengasyikkan. Melatih navigasi, komunikasi, dan semangat kompetisi sehat.' },
-      { type: 'h2', text: '2. 🍳 Cooking Battle' },
-      { type: 'p', text: 'Tidak ada yang lebih menyenangkan dari memasak bersama! Program ini melatih delegasi tugas, time management, dan tentu saja — makan enak bareng tim.' },
-      { type: 'h2', text: '3. 🎨 Mural Bersama' },
-      { type: 'p', text: 'Ciptakan karya seni kolektif yang bisa dipajang di kantor. Setiap anggota tim berkontribusi pada kanvas besar yang menjadi simbol kebersamaan dan kreativitas tim.' },
-      { type: 'h2', text: '4. 🌱 Pertanian & Kebun Urban' },
-      { type: 'p', text: 'Program farm-to-table yang unik: tim berkebun bersama, memanen hasil kebun, lalu memasak dan menikmatinya bersama. Menyenangkan, edukatif, dan penuh makna.' },
-      { type: 'h2', text: '5. 🎤 Stand-Up Comedy Workshop' },
-      { type: 'p', text: 'Workshop stand-up comedy melatih public speaking, kepercayaan diri, dan yang paling penting — keberanian untuk tertawa bersama rekan kerja!' },
-      { type: 'h2', text: '6. 🏆 Game Show Internal' },
-      { type: 'p', text: 'Rancang versi perusahaan Anda dari game show favorit — kuis pengetahuan produk, tebak gambar, atau mimik wajah. Kompetisi ringan yang mengundang tawa!' },
-      { type: 'h2', text: '7. 🎯 Paintball & Airsoft' },
-      { type: 'p', text: 'Aktivitas penuh adrenalin yang melatih strategi tim, komunikasi lapangan, dan tentu saja — melepas stres dengan cara yang sangat menyenangkan.' },
-      { type: 'h2', text: '8. 🛶 Arung Jeram (Rafting)' },
-      { type: 'p', text: 'Hadapi tantangan arus sungai bersama! Rafting melatih sinkronisasi tim, kepercayaan satu sama lain, dan keberanian menghadapi tantangan bersama.' },
-      { type: 'h2', text: '9. 🌄 Trekking & Hiking' },
-      { type: 'p', text: 'Perjalanan mendaki bersama membangun mentalitas "tidak ada yang ditinggal". Setiap langkah adalah metafora untuk perjalanan tim dalam menghadapi tantangan bisnis.' },
-      { type: 'h2', text: '10. ❤️ Charity Challenge' },
-      { type: 'p', text: 'Gabungkan team building dengan aksi sosial. Tim bersaing untuk mengumpulkan donasi atau membuat kerajinan untuk disumbangkan. Membangun empati dan kebanggaan bersama.' },
-      { type: 'tip', text: 'Butuh bantuan mengeksekusi salah satu ide di atas? Tim Sarau Luxury siap membantu Anda merancang program team building yang sempurna — mulai dari konsep hingga eksekusi!' },
-    ],
-  },
-
-  'destinasi-outing-terbaik-jawa-bali': {
-    title: 'Destinasi Outing Terbaik di Jawa & Bali untuk Perusahaan Anda',
-    category: 'Destinasi', readTime: '8 menit', date: '1 Jun 2025',
-    author: 'Muhammad Dwi Muhaimin', emoji: '🗺️',
-    excerpt: 'Panduan lengkap memilih destinasi outing yang tepat sesuai budget dan karakter tim Anda.',
-    content: [
-      { type: 'intro', text: 'Memilih destinasi outing yang tepat adalah kunci suksesnya sebuah event. Terlalu jauh bisa menguras anggaran, terlalu dekat bisa terasa kurang berkesan. Berikut rekomendasi terbaik kami berdasarkan pengalaman ratusan event.' },
-      { type: 'h2', text: '🏔️ Lembang & Bandung Utara' },
-      { type: 'p', text: 'Udara sejuk, pemandangan indah, dan jarak yang terjangkau dari Jakarta (3-4 jam) menjadikan Lembang sebagai destinasi favorit perusahaan. Cocok untuk gathering 1-3 hari dengan anggaran menengah.' },
-      { type: 'ul', items: ['Tersedia banyak villa dan resort dengan kapasitas besar', 'Aktivitas: outbound, paintball, offroad, berkuda', 'Harga terjangkau dibanding Bali', 'Cocok untuk semua musim'] },
-      { type: 'h2', text: '🌊 Anyer & Carita, Banten' },
-      { type: 'p', text: 'Pantai terdekat dari Jakarta dengan view Selat Sunda yang memukau. Ideal untuk team building outdoor, water sport, dan menikmati sunset bersama tim.' },
-      { type: 'h2', text: '🏝️ Bali' },
-      { type: 'p', text: 'Destinasi premium yang selalu memukau. Ubud untuk suasana budaya dan alam, Nusa Dua untuk resort mewah, Seminyak untuk gaya hidup. Cocok untuk event tahunan bergengsi.' },
-      { type: 'ul', items: ['Banyak pilihan venue dan hotel bintang 5', 'Aktivitas water sport lengkap di Tanjung Benoa', 'Kunjungan budaya dan spiritual di Ubud', 'Cocok untuk reward trip dan MICE event'] },
-      { type: 'h2', text: '🌋 Bromo & Malang, Jawa Timur' },
-      { type: 'p', text: 'Pengalaman menyaksikan sunrise di Gunung Bromo adalah momen yang tak terlupakan. Dipadukan dengan Kota Malang yang sejuk dan kuliner khasnya, destinasi ini cocok untuk tim yang suka petualangan.' },
-      { type: 'h2', text: '🌿 Yogyakarta' },
-      { type: 'p', text: 'Kota budaya yang kaya sejarah. Kombinasi Candi Borobudur, Prambanan, Kaliurang, dan kuliner legendaris menjadikan Jogja pilihan tepat untuk gathering bermakna sekaligus edukatif.' },
-      { type: 'quote', text: 'Destinasi terbaik adalah yang sesuai dengan karakter dan tujuan tim Anda, bukan yang paling viral di media sosial.' },
-      { type: 'tip', text: 'Konsultasikan kebutuhan destinasi Anda dengan tim Sarau Luxury. Kami akan merekomendasikan destinasi terbaik sesuai budget, jumlah peserta, dan tujuan event Anda.' },
-    ],
-  },
-}
-
-
-// ─── RELATED POSTS ────────────────────────────────────────────────────────────
 function getRelated(currentSlug: string) {
   return Object.entries(posts)
     .filter(([slug]) => slug !== currentSlug)
