@@ -369,7 +369,10 @@ const posts: Record<string, Post> = {
       { type: 'tip', text: 'Sarau Luxury menyediakan program outbound berbasis kompetensi yang dapat dikustomisasi sesuai kebutuhan tim. Konsultasi gratis!' },
     ],
   },
-    excerpt: 'Temukan 10 ide segar yang terbukti meningkatkan semangat dan kekompakan tim perusahaan Anda.',
+}
+
+
+// ─── RELATED POSTS ────────────────────────────────────────────────────────────
     content: [
       { type: 'intro', text: 'Team building yang efektif bukan sekadar kumpul-kumpul. Program yang dirancang dengan baik dapat meningkatkan produktivitas tim hingga 25% dan mengurangi turnover karyawan secara signifikan. Berikut 10 ide yang bisa langsung Anda eksekusi!' },
       { type: 'h2', text: '1. 🚀 Amazing Race Kota' },
@@ -461,27 +464,6 @@ const posts: Record<string, Post> = {
       { type: 'p', text: 'Untuk hasil optimal, lakukan program team building minimal 2 kali setahun. Satu program besar (full day/overnight) dan satu program ringan (half day). Konsistensi jauh lebih penting daripada sesekali tapi mewah.' },
       { type: 'quote', text: 'Investasi terbaik yang bisa dilakukan perusahaan adalah investasi pada manusianya. Outbound bukan biaya, tapi investasi yang menghasilkan.' },
       { type: 'tip', text: 'Sarau Luxury menyediakan program outbound training berbasis kompetensi yang dapat dikustomisasi sesuai kebutuhan spesifik tim Anda. Konsultasi gratis!' },
-    ],
-  },
-
-  'perbedaan-outing-outbound': {
-    title: 'Outing vs Outbound: Apa Bedanya dan Mana yang Cocok untuk Tim Anda?',
-    category: 'Tips', readTime: '4 menit', date: '5 Mei 2025',
-    author: 'Muhammad Dwi Muhaimin', emoji: '🤔',
-    excerpt: 'Panduan memilih antara outing santai dan outbound training sesuai kebutuhan tim Anda.',
-    content: [
-      { type: 'intro', text: 'Sering bingung bedanya outing dan outbound? Kamu tidak sendirian. Banyak HR dan manajemen yang masih keliru menggunakan kedua istilah ini. Padahal, keduanya punya tujuan, metode, dan hasil yang berbeda.' },
-      { type: 'h2', text: '🏖️ Apa itu Outing?' },
-      { type: 'p', text: 'Outing adalah perjalanan bersama tim ke suatu destinasi dengan tujuan utama relaksasi, bonding, dan refreshing. Fokusnya adalah kesenangan dan kebersamaan, bukan pembelajaran terstruktur.' },
-      { type: 'ul', items: ['Tujuan: Refreshing, reward, meningkatkan keakraban', 'Aktivitas: Wisata, makan bersama, games ringan', 'Suasana: Santai dan menyenangkan', 'Cocok untuk: Akhir tahun, reward karyawan, merayakan pencapaian'] },
-      { type: 'h2', text: '🏋️ Apa itu Outbound?' },
-      { type: 'p', text: 'Outbound (atau outbound training) adalah program terstruktur dengan tujuan mengembangkan kompetensi spesifik melalui aktivitas outdoor yang dirancang khusus. Ada fasilitator, ada debriefing, ada learning outcome yang jelas.' },
-      { type: 'ul', items: ['Tujuan: Pengembangan kompetensi tim yang terukur', 'Aktivitas: Simulasi, permainan edukatif, tantangan fisik terstruktur', 'Suasana: Dinamis, kompetitif, penuh pembelajaran', 'Cocok untuk: Onboarding, problem tim, meningkatkan performa'] },
-      { type: 'h2', text: '🤷 Mana yang Harus Dipilih?' },
-      { type: 'p', text: 'Jawabannya tergantung tujuan Anda saat ini:' },
-      { type: 'ol', items: ['Pilih Outing jika: Tim sudah solid, butuh refreshing setelah kerja keras, ingin merayakan pencapaian', 'Pilih Outbound jika: Ada masalah komunikasi, konflik antar divisi, atau target meningkatkan performa spesifik', 'Pilih Gabungan (paling efektif): Outbound di pagi hari + outing/wisata di sore hari'] },
-      { type: 'quote', text: 'Pilihan terbaik adalah yang sesuai dengan kondisi dan kebutuhan nyata tim Anda saat ini, bukan yang paling populer atau paling murah.' },
-      { type: 'tip', text: 'Konsultasikan dengan Sarau Luxury — kami akan membantu menganalisis kebutuhan tim Anda dan merekomendasikan program yang paling tepat dan efektif.' },
     ],
   },
   'venue-team-building-bandung': {
