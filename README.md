@@ -1,346 +1,239 @@
-# 🌿 Sarau Luxury — Company Profile Website
+# 🌿 Sarau Luxury — Official Website
 
-> **Where Teams Grow Together**  
-> Website company profile modern untuk event organizer outing & outbound perusahaan.
-
----
-
-## 🚀 Tech Stack
-
-| Layer | Teknologi |
-|-------|-----------|
-| Framework | Next.js 14 (App Router) |
-| Styling | Tailwind CSS |
-| Animation | Framer Motion |
-| 3D Graphics | Three.js + React Three Fiber + Drei |
-| CMS Konten | Sanity (gallery, blog, testimonials, clients) |
-| CMS Backend | Strapi (packages, bookings, contact forms) |
-| Email | Resend |
-| Deploy | Vercel |
-| Repo | GitHub |
+> **Where Teams Grow Together**
+>
+> Website resmi Sarau Luxury, event organizer profesional untuk outing, outbound, team building, dan company gathering di Indonesia.
 
 ---
 
-## 📁 Struktur Folder
+## 📋 Daftar Isi
 
-```
-sarau-luxury/
-├── src/
-│   ├── app/                    # Next.js App Router pages
-│   │   ├── page.tsx            # Beranda
-│   │   ├── about/              # Tentang Kami
-│   │   ├── services/           # Layanan
-│   │   ├── packages/           # Paket
-│   │   ├── clients/            # Klien
-│   │   ├── gallery/            # Galeri
-│   │   ├── blog/               # Blog & Tips
-│   │   ├── faq/                # FAQ
-│   │   ├── contact/            # Kontak
-│   │   ├── booking/            # Booking & Inquiry
-│   │   └── api/
-│   │       └── contact/        # API route: form kontak + email
-│   ├── components/
-│   │   ├── layout/             # Navbar, Footer
-│   │   ├── sections/           # Semua section per halaman
-│   │   ├── 3d/                 # Three.js / R3F scenes
-│   │   └── ui/                 # Reusable UI (WhatsAppButton, PageTransition, dll)
-│   ├── lib/
-│   │   ├── sanity.ts           # Sanity client + GROQ queries
-│   │   └── strapi.ts           # Strapi API helpers
-│   └── styles/
-│       └── globals.css         # Global styles + Tailwind layers
-├── public/
-│   └── images/                 # Static assets
-├── .env.example                # Template environment variables
-├── next.config.js
-├── tailwind.config.js
-└── tsconfig.json
-```
+- [Tentang Proyek](#tentang-proyek)
+- [Tech Stack](#tech-stack)
+- [Fitur Utama](#fitur-utama)
+- [Struktur Halaman](#struktur-halaman)
+- [Prasyarat](#prasyarat)
+- [Instalasi & Menjalankan Lokal](#instalasi--menjalankan-lokal)
+- [Environment Variables](#environment-variables)
+- [Struktur Folder](#struktur-folder)
+- [CMS & Integrasi](#cms--integrasi)
+- [Deployment](#deployment)
 
 ---
 
-## ⚙️ Setup Lokal
+## Tentang Proyek
 
-### 1. Clone & Install
+Sarau Luxury didirikan tahun 2018 dan telah menangani **100+ event** untuk **53+ perusahaan** di **19+ industri** dengan destinasi mencakup **20+ lokasi** di seluruh Indonesia.
+
+Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk menghadirkan pengalaman yang mewah, cepat, dan SEO-friendly bagi calon klien perusahaan.
+
+---
+
+## Tech Stack
+
+| Kategori             | Teknologi                                              |
+| -------------------- | ------------------------------------------------------ |
+| Framework            | [Next.js 14](https://nextjs.org) (App Router)          |
+| Bahasa               | TypeScript 5                                           |
+| Styling              | Tailwind CSS 3                                         |
+| Animasi              | Framer Motion 11                                       |
+| 3D / WebGL           | Three.js + React Three Fiber + Drei                    |
+| Ikon                 | Lucide React                                           |
+| Email                | [Resend](https://resend.com)                           |
+| WhatsApp Notif       | [Fonnte API](https://fonnte.com)                       |
+| CMS (Paket/Layanan)  | Strapi (opsional)                                      |
+| CMS (Blog/Galeri)    | Sanity (placeholder, belum aktif)                      |
+| Analytics            | Google Analytics 4 + Vercel Analytics                  |
+| Performance          | Vercel Speed Insights                                  |
+| Deployment           | [Vercel](https://vercel.com)                           |
+
+---
+
+## Fitur Utama
+
+- 🎨 **Hero 3D Interaktif** — latar belakang Three.js yang berjalan di browser
+- ✨ **Animasi Framer Motion** — transisi halaman dan animasi scroll yang halus
+- 📦 **Price List Lengkap** — paket Gathering Silver/Gold/Platinum, add-on aktivitas, dan meeting package dengan tab interaktif
+- 📬 **Form Kontak & Booking** — mengirim notifikasi via Email (Resend) dan WhatsApp (Fonnte) secara bersamaan
+- 🔍 **SEO Lengkap** — metadata, Open Graph, Twitter Card, sitemap otomatis, robots.txt, dan JSON-LD Schema.org (LocalBusiness)
+- 📱 **Floating WhatsApp Button** — tombol kontak cepat di semua halaman
+- 📊 **Scroll Progress Bar** — indikator progres scroll di bagian atas
+- 🌐 **Marquee Klien** — animasi logo klien yang berjalan terus
+- 📰 **Blog** — halaman daftar & detail artikel dengan Open Graph image dinamis
+- 🖼️ **Galeri** — galeri foto event perusahaan
+- 📍 **Schema.org Terstruktur** — rating agregat, jam buka, lokasi, dan penawaran harga untuk rich snippet Google
+
+---
+
+## Struktur Halaman
+
+| Route           | Deskripsi                                           |
+| --------------- | --------------------------------------------------- |
+| `/`             | Homepage — hero, statistik, layanan, paket, klien, testimoni, galeri, blog |
+| `/about`        | Profil perusahaan, misi & visi, founder, tim        |
+| `/services`     | Halaman lengkap semua layanan                       |
+| `/packages`     | Price list dan paket lengkap                        |
+| `/gallery`      | Galeri foto event                                   |
+| `/clients`      | Daftar klien perusahaan                             |
+| `/blog`         | Daftar artikel blog                                 |
+| `/blog/[slug]`  | Detail artikel blog                                 |
+| `/faq`          | Pertanyaan yang sering diajukan                     |
+| `/contact`      | Form kontak                                         |
+| `/booking`      | Form booking / inquiry event                        |
+
+---
+
+## Prasyarat
+
+- **Node.js** >= 18.x
+- **npm** >= 9.x (atau yarn / pnpm)
+
+---
+
+## Instalasi & Menjalankan Lokal
 
 ```bash
-git clone https://github.com/USERNAME/sarau-luxury.git
-cd sarau-luxury
+# 1. Clone repository
+git clone https://github.com/ganoolmovie5th-cell/sarau-luxury-claude.git
+cd sarau-luxury-claude
+
+# 2. Install dependencies
 npm install
-```
 
-### 2. Buat file `.env.local` dari template
-
-```bash
+# 3. Salin file environment dan isi nilai yang diperlukan
 cp .env.example .env.local
-```
 
-Lalu isi semua nilai di `.env.local` (lihat bagian Environment Variables di bawah).
-
-### 3. Jalankan development server
-
-```bash
+# 4. Jalankan development server
 npm run dev
 ```
 
-Buka [http://localhost:3000](http://localhost:3000)
+Buka [http://localhost:3000](http://localhost:3000) di browser.
+
+### Script Tersedia
+
+| Script        | Fungsi                              |
+| ------------- | ----------------------------------- |
+| `npm run dev`   | Jalankan dev server (hot reload)    |
+| `npm run build` | Build untuk production              |
+| `npm run start` | Jalankan production server lokal    |
+| `npm run lint`  | Cek linting ESLint                  |
 
 ---
 
-## 🔑 Environment Variables
+## Environment Variables
+
+Salin `.env.example` menjadi `.env.local` dan isi variabel berikut:
 
 ```env
-# ── Sanity CMS ─────────────────────────────────────────
-NEXT_PUBLIC_SANITY_PROJECT_ID=       # dari sanity.io/manage
-NEXT_PUBLIC_SANITY_DATASET=production
-NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
-SANITY_API_TOKEN=                    # Read token dari Sanity
-
-# ── Strapi CMS ─────────────────────────────────────────
+# ── Strapi CMS (opsional) ─────────────────────────────────────────────────────
 NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
-STRAPI_API_TOKEN=                    # API token dari Strapi admin
+STRAPI_API_TOKEN=your_strapi_api_token
 
-# ── Email (Resend) ──────────────────────────────────────
-RESEND_API_KEY=                      # dari resend.com
-CONTACT_EMAIL=info@sarau-luxury.com
+# ── Email via Resend ──────────────────────────────────────────────────────────
+RESEND_API_KEY=your_resend_api_key
+CONTACT_EMAIL=email@example.com
 
-# ── WhatsApp ────────────────────────────────────────────
+# ── WhatsApp via Fonnte ───────────────────────────────────────────────────────
 NEXT_PUBLIC_WHATSAPP_NUMBER=628xxxxxxxxxx
+FONNTE_TOKEN=your_fonnte_token
 
-# ── Site ────────────────────────────────────────────────
+# ── Google Maps ───────────────────────────────────────────────────────────────
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_key
+
+# ── Site URL ──────────────────────────────────────────────────────────────────
 NEXT_PUBLIC_SITE_URL=https://sarau-luxury.com
+
+# ── Google Analytics ──────────────────────────────────────────────────────────
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+```
+
+> **Catatan:** Variabel `RESEND_API_KEY` dan `FONNTE_TOKEN` **opsional** — jika tidak diset, fitur notifikasi email/WhatsApp akan dilewati tanpa error.
+> Strapi juga **opsional** — jika tidak dikonfigurasi, data paket dan layanan menggunakan data statis di komponen.
+
+---
+
+## Struktur Folder
+
+```
+sarau-luxury-claude/
+├── public/                    # Aset statis (logo, foto founder)
+├── src/
+│   ├── app/                   # Next.js App Router
+│   │   ├── api/contact/       # API route: form kontak & booking
+│   │   ├── about/             # Halaman About
+│   │   ├── blog/              # Halaman Blog + [slug]
+│   │   ├── booking/           # Halaman Booking
+│   │   ├── clients/           # Halaman Klien
+│   │   ├── contact/           # Halaman Kontak
+│   │   ├── faq/               # Halaman FAQ
+│   │   ├── gallery/           # Halaman Galeri
+│   │   ├── packages/          # Halaman Paket & Harga
+│   │   ├── services/          # Halaman Layanan
+│   │   ├── layout.tsx         # Root layout (Navbar, Footer, metadata)
+│   │   ├── page.tsx           # Homepage
+│   │   ├── sitemap.ts         # Sitemap otomatis
+│   │   └── robots.ts          # robots.txt
+│   ├── components/
+│   │   ├── 3d/                # Komponen Three.js (HeroScene)
+│   │   ├── layout/            # Navbar & Footer
+│   │   ├── sections/          # Section komponen per halaman
+│   │   └── ui/                # Komponen UI kecil (WhatsApp, Progress Bar, dll)
+│   ├── hooks/                 # Custom React hooks
+│   ├── lib/
+│   │   ├── constants.ts       # Sumber data terpusat (stats, kontak, sosial)
+│   │   ├── strapi.ts          # Klien Strapi CMS
+│   │   └── sanity.ts          # Placeholder Sanity (belum aktif)
+│   ├── styles/
+│   │   └── globals.css        # Global CSS & Tailwind directives
+│   └── types/
+│       └── index.ts           # TypeScript type definitions
+├── .env.example               # Contoh environment variables
+├── next.config.js             # Konfigurasi Next.js
+├── tailwind.config.js         # Konfigurasi Tailwind CSS
+└── tsconfig.json              # Konfigurasi TypeScript
 ```
 
 ---
 
-## 📦 Setup Sanity CMS
+## CMS & Integrasi
 
-### 1. Install Sanity CLI & buat project
+### Strapi (Opsional)
+Digunakan untuk data **paket** dan **layanan** yang dapat dikelola dari dashboard. Jika tidak dikonfigurasi, website tetap berjalan menggunakan data statis di komponen.
+
+### Sanity (Placeholder)
+Direncanakan untuk mengelola **blog**, **galeri**, **testimoni**, dan **klien**. Saat ini file `src/lib/sanity.ts` merupakan placeholder — data menggunakan static data.
+
+### Resend (Email)
+Notifikasi email saat ada submission form kontak/booking. Membutuhkan `RESEND_API_KEY`.
+
+### Fonnte (WhatsApp)
+Notifikasi WhatsApp ke nomor admin saat ada submission form. Membutuhkan `FONNTE_TOKEN`.
+
+---
+
+## Deployment
+
+Website di-deploy ke **Vercel**. Setiap push ke branch `main` akan otomatis trigger deployment.
 
 ```bash
-npm install -g @sanity/cli
-sanity init --project sarau-luxury-cms
+# Build manual untuk cek error sebelum deploy
+npm run build
 ```
 
-### 2. Schema types yang dibutuhkan
-
-Buat schema di Sanity Studio untuk:
-
-**`gallery.ts`**
-```ts
-export default {
-  name: 'gallery',
-  title: 'Galeri',
-  type: 'document',
-  fields: [
-    { name: 'title',       type: 'string',   title: 'Judul' },
-    { name: 'image',       type: 'image',    title: 'Foto', options: { hotspot: true } },
-    { name: 'category',    type: 'string',   title: 'Kategori',
-      options: { list: ['Outbound','Outing','Team Building','Gathering','MICE'] } },
-    { name: 'publishedAt', type: 'datetime', title: 'Tanggal' },
-  ],
-}
-```
-
-**`post.ts`** (Blog)
-```ts
-export default {
-  name: 'post',
-  title: 'Blog Post',
-  type: 'document',
-  fields: [
-    { name: 'title',       type: 'string',   title: 'Judul' },
-    { name: 'slug',        type: 'slug',     title: 'Slug', options: { source: 'title' } },
-    { name: 'excerpt',     type: 'text',     title: 'Ringkasan' },
-    { name: 'body',        type: 'array',    title: 'Konten',
-      of: [{ type: 'block' }, { type: 'image' }] },
-    { name: 'cover',       type: 'image',    title: 'Cover' },
-    { name: 'category',    type: 'reference', to: [{ type: 'category' }] },
-    { name: 'author',      type: 'reference', to: [{ type: 'author' }] },
-    { name: 'readTime',    type: 'number',   title: 'Waktu Baca (menit)' },
-    { name: 'publishedAt', type: 'datetime', title: 'Tanggal Publish' },
-  ],
-}
-```
-
-**`testimonial.ts`**
-```ts
-export default {
-  name: 'testimonial',
-  title: 'Testimoni',
-  type: 'document',
-  fields: [
-    { name: 'name',    type: 'string', title: 'Nama' },
-    { name: 'role',    type: 'string', title: 'Jabatan' },
-    { name: 'company', type: 'string', title: 'Perusahaan' },
-    { name: 'rating',  type: 'number', title: 'Rating (1-5)' },
-    { name: 'text',    type: 'text',   title: 'Testimoni' },
-    { name: 'avatar',  type: 'image',  title: 'Foto' },
-  ],
-}
-```
-
-**`client.ts`**
-```ts
-export default {
-  name: 'client',
-  title: 'Klien',
-  type: 'document',
-  fields: [
-    { name: 'name',    type: 'string', title: 'Nama Perusahaan' },
-    { name: 'logo',    type: 'image',  title: 'Logo' },
-    { name: 'website', type: 'url',    title: 'Website' },
-    { name: 'order',   type: 'number', title: 'Urutan Tampil' },
-  ],
-}
-```
-
-### 3. Deploy Sanity Studio
-
-```bash
-cd sanity-studio
-sanity deploy
-```
+Pastikan semua environment variables sudah dikonfigurasi di dashboard Vercel sebelum deploy ke production.
 
 ---
 
-## 🛠️ Setup Strapi CMS
+## Kontak
 
-### 1. Buat project Strapi baru
-
-```bash
-npx create-strapi-app@latest sarau-strapi --quickstart
-```
-
-### 2. Content Types yang dibutuhkan
-
-Buat via Strapi Admin (Content-Type Builder):
-
-**`packages`** — Paket event
-- `name` (Text), `tagline` (Text), `price` (Number), `unit` (Text)
-- `minPax` (Text), `features` (JSON), `popular` (Boolean), `order` (Integer)
-
-**`services`** — Layanan
-- `title` (Text), `slug` (UID), `description` (Rich Text)
-- `features` (JSON), `order` (Integer), `icon` (Text)
-
-**`bookings`** — Form booking/inquiry
-- `companyName` (Text), `picName` (Text), `email` (Email), `phone` (Text)
-- `service` (Text), `eventDate` (Date), `duration` (Text)
-- `destination` (Text), `budget` (Text), `participants` (Text)
-- `notes` (Long Text), `status` (Enumeration: pending/reviewed/quoted/confirmed)
-
-**`contacts`** — Form kontak
-- `name` (Text), `company` (Text), `email` (Email), `phone` (Text)
-- `service` (Text), `participants` (Text), `message` (Long Text)
-
-### 3. Generate API Token
-
-Buka Strapi Admin → Settings → API Tokens → Buat token baru (Full access).
-Masukkan ke `.env.local` sebagai `STRAPI_API_TOKEN`.
+| Channel   | Info                                                                 |
+| --------- | -------------------------------------------------------------------- |
+| Website   | [sarau-luxury.com](https://sarau-luxury.com)                         |
+| Instagram | [@sarauluxury](https://instagram.com/sarauluxury)                    |
+| WhatsApp  | [+62 857-1178-6561](https://wa.me/6285711786561)                     |
+| Email     | bandungindonesiasinergi@gmail.com                                    |
+| Alamat    | Binong Permai Blok R-10/14, Curug, Banten                            |
 
 ---
 
-## 📧 Setup Resend (Email)
-
-1. Daftar di [resend.com](https://resend.com)
-2. Tambahkan dan verifikasi domain (`sarau-luxury.com`)
-3. Buat API Key → masukkan ke `RESEND_API_KEY`
-4. Email notifikasi dari form kontak akan masuk ke `CONTACT_EMAIL`
-
----
-
-## 🌐 Deploy ke Vercel
-
-### Via GitHub (Recommended)
-
-```bash
-# 1. Push ke GitHub
-git init
-git add .
-git commit -m "feat: initial Sarau Luxury website"
-git remote add origin https://github.com/USERNAME/sarau-luxury.git
-git push -u origin main
-
-# 2. Buka vercel.com → New Project → Import dari GitHub
-# 3. Isi semua Environment Variables dari .env.local
-# 4. Deploy!
-```
-
-### Via Vercel CLI
-
-```bash
-npm install -g vercel
-vercel login
-vercel --prod
-```
-
----
-
-## 🎨 Customization Guide
-
-### Warna Brand
-Edit `tailwind.config.js` → `theme.extend.colors`:
-```js
-forest: { DEFAULT: '#2D6A4F', ... },  // Hijau utama
-earth:  { DEFAULT: '#8B5E3C', ... },  // Coklat earthy
-sun:    { DEFAULT: '#F4A261', ... },  // Aksen oranye/kuning
-```
-
-### Konten Statis
-- **Navbar links** → `src/components/layout/Navbar.tsx`
-- **Services** → `src/components/sections/ServicesPage.tsx`
-- **Packages** → `src/components/sections/PackagesPreview.tsx`
-- **Testimonials** → `src/components/sections/TestimonialsSection.tsx`
-- **Team** → `src/components/sections/TeamSection.tsx`
-- **Clients** → `src/components/sections/ClientsPage.tsx`
-- **FAQ** → `src/app/faq/page.tsx`
-
-### Nomor WhatsApp
-Ubah di `.env.local`:
-```
-NEXT_PUBLIC_WHATSAPP_NUMBER=628xxxxxxxxxx
-```
-
----
-
-## 📱 Halaman Website
-
-| Route | Halaman |
-|-------|---------|
-| `/` | Beranda (Hero 3D, Stats, Services, Packages, Clients, Testimonials, Gallery, Blog, CTA) |
-| `/about` | Tentang Kami (Hero, Misi & Visi, Nilai, Tim) |
-| `/services` | Layanan Lengkap |
-| `/packages` | Paket & Harga |
-| `/clients` | Klien & Testimonial |
-| `/gallery` | Galeri Foto |
-| `/blog` | Blog & Tips |
-| `/faq` | FAQ |
-| `/contact` | Kontak |
-| `/booking` | Booking & Inquiry (multi-step form) |
-| `/api/contact` | API: form submission + email |
-
----
-
-## ✅ Checklist Sebelum Go Live
-
-- [ ] Ganti semua placeholder konten (nama tim, foto, deskripsi)
-- [ ] Upload foto/logo klien ke Sanity
-- [ ] Konfigurasi Strapi content types & API token
-- [ ] Verifikasi domain di Resend
-- [ ] Set nomor WhatsApp yang benar di `.env`
-- [ ] Upload OG image (`/public/images/og-image.jpg`)
-- [ ] Tes semua form (kontak & booking)
-- [ ] Set up Google Analytics / Vercel Analytics
-- [ ] Cek SEO metadata tiap halaman
-- [ ] Tes responsive di mobile & tablet
-
----
-
-## 🤝 Support
-
-Butuh bantuan setup atau customization? Hubungi tim developer kami.
-
----
-
-**Sarau Luxury** · *Where Teams Grow Together* 🌿
+<p align="center">Made with ❤️ for <strong>Sarau Luxury</strong> — <em>Where Teams Grow Together</em></p>
