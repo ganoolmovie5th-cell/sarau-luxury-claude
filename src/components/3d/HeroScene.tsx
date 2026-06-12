@@ -2,7 +2,7 @@
 
 import { useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Float, Stars, Environment, MeshDistortMaterial } from '@react-three/drei'
+import { Float, Stars, MeshDistortMaterial } from '@react-three/drei'
 import * as THREE from 'three'
 
 // ── Single tree ──────────────────────────────────────────────────────────────
@@ -184,8 +184,6 @@ export default function HeroScene() {
 
       {/* Atmospheric fog via scene.fog */}
       <fog attach="fog" args={['#0D2818', 12, 35]} />
-
-      <Environment preset="forest" />
     </Canvas>
   )
 }
