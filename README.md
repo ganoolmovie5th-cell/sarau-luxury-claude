@@ -62,6 +62,9 @@ Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk mengha
 - 📰 **Blog** — halaman daftar & detail artikel dengan Open Graph image dinamis
 - 🖼️ **Galeri** — galeri foto event perusahaan
 - 📍 **Schema.org Terstruktur** — rating agregat, jam buka, lokasi, dan penawaran harga untuk rich snippet Google
+- 🔒 **HTTP Security Headers** — CSP, HSTS, X-Frame-Options, Permissions-Policy via `next.config.js`
+- 🛡️ **Rate Limiting & Input Sanitization** — API route dilindungi dari spam dan XSS
+- 🤖 **GitHub Actions CI** — secret scanning (TruffleHog), dependency audit, build check otomatis
 
 ---
 
@@ -131,11 +134,16 @@ STRAPI_API_TOKEN=your_strapi_api_token
 
 # ── Email via Resend ──────────────────────────────────────────────────────────
 RESEND_API_KEY=your_resend_api_key
-CONTACT_EMAIL=email@example.com
+RESEND_FROM_EMAIL=noreply@sarau-luxury.com   # domain terverifikasi di Resend (opsional)
+CONTACT_EMAIL=bandungindonesiasinergi@gmail.com
 
 # ── WhatsApp via Fonnte ───────────────────────────────────────────────────────
-NEXT_PUBLIC_WHATSAPP_NUMBER=628xxxxxxxxxx
+# Server-only (tidak ter-expose ke browser)
+WHATSAPP_ADMIN_NUMBER=6285711786561
 FONNTE_TOKEN=your_fonnte_token
+
+# Nomor WA publik untuk tombol floating (boleh public)
+NEXT_PUBLIC_WHATSAPP_NUMBER=6285711786561
 
 # ── Google Maps ───────────────────────────────────────────────────────────────
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_key
@@ -144,7 +152,7 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_key
 NEXT_PUBLIC_SITE_URL=https://sarau-luxury.com
 
 # ── Google Analytics ──────────────────────────────────────────────────────────
-NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_GA_ID=G-DFKHWJ3TJZ
 ```
 
 > **Catatan:** Variabel `RESEND_API_KEY` dan `FONNTE_TOKEN` **opsional** — jika tidak diset, fitur notifikasi email/WhatsApp akan dilewati tanpa error.
@@ -156,6 +164,9 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 
 ```
 sarau-luxury-claude/
+├── .github/
+│   └── workflows/
+│       └── security.yml       # CI: secret scan, dependency audit, build check
 ├── public/                    # Aset statis (logo, foto founder)
 ├── src/
 │   ├── app/                   # Next.js App Router
@@ -169,7 +180,7 @@ sarau-luxury-claude/
 │   │   ├── gallery/           # Halaman Galeri
 │   │   ├── packages/          # Halaman Paket & Harga
 │   │   ├── services/          # Halaman Layanan
-│   │   ├── layout.tsx         # Root layout (Navbar, Footer, metadata)
+│   │   ├── layout.tsx         # Root layout (Navbar, Footer, metadata, GA tag)
 │   │   ├── page.tsx           # Homepage
 │   │   ├── sitemap.ts         # Sitemap otomatis
 │   │   └── robots.ts          # robots.txt
@@ -181,6 +192,7 @@ sarau-luxury-claude/
 │   ├── hooks/                 # Custom React hooks
 │   ├── lib/
 │   │   ├── constants.ts       # Sumber data terpusat (stats, kontak, sosial)
+│   │   ├── security.ts        # Rate limiter, sanitizer, validator input
 │   │   ├── strapi.ts          # Klien Strapi CMS
 │   │   └── sanity.ts          # Placeholder Sanity (belum aktif)
 │   ├── styles/
@@ -188,10 +200,25 @@ sarau-luxury-claude/
 │   └── types/
 │       └── index.ts           # TypeScript type definitions
 ├── .env.example               # Contoh environment variables
-├── next.config.js             # Konfigurasi Next.js
+├── next.config.js             # Konfigurasi Next.js + HTTP Security Headers
 ├── tailwind.config.js         # Konfigurasi Tailwind CSS
 └── tsconfig.json              # Konfigurasi TypeScript
 ```
+
+---
+
+## 🔒 Security
+
+| Lapisan | Implementasi |
+|---------|-------------|
+| **Rate Limiting** | Maks 5 request/menit per IP di `/api/contact` |
+| **Input Sanitization** | Escape HTML (`&`, `<`, `>`, `"`, `'`) — cegah XSS di email |
+| **Input Validation** | Validasi format email, nomor HP, panjang field |
+| **HTTP Headers** | CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Permissions-Policy |
+| **Secret Exposure** | `WHATSAPP_ADMIN_NUMBER` & `FONNTE_TOKEN` server-only (tanpa `NEXT_PUBLIC_`) |
+| **Image Proxy** | `remotePatterns` ketat — hanya path `/d/**` dari `lh3.googleusercontent.com` |
+| **CI Secret Scan** | TruffleHog scan setiap push + jadwal mingguan via GitHub Actions |
+| **Dependency Audit** | `npm audit --audit-level=high` otomatis di setiap PR |
 
 ---
 
