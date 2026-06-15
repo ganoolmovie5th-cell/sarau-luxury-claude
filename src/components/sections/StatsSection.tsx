@@ -24,6 +24,8 @@ export default function StatsSection() {
       <div className="absolute bottom-0 left-0 w-56 h-56 bg-sun/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container-wide">
+        {/* Visually hidden heading untuk screen readers & heading order */}
+        <h2 className="sr-only">Pencapaian Sarau Luxury</h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map(({ icon: Icon, value, suffix, label, desc, decimal }, i) => (
             <motion.div

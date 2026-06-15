@@ -71,7 +71,7 @@ export default function BlogPreview() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
             >
-              <Link href={`/blog/${slug}`} className="card-base block group h-full">
+              <Link href={`/blog/${slug}`} className="card-base block group h-full" aria-label={`Baca artikel: ${title}`}>
                 {/* Color header */}
                 <div className={`${color} h-48 flex items-center justify-center text-5xl rounded-t-3xl`}>
                   {icon}

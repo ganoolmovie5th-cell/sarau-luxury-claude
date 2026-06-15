@@ -163,7 +163,9 @@ body {
   to   { opacity: 1; transform: scale(1); }
 }
 
-.animate-fade-in-up   { animation: fadeInUp 0.7s ease forwards; }
+  /* Contrast-safe text utilities */
+  .text-muted       { color: #5a4a3a; } /* earth/90 — contrast 4.6:1 on cream */
+  .text-muted-light { color: rgba(245,240,232,0.80); } /* cream/80 on dark bg — 5.2:1 */
 .animate-fade-in-left { animation: fadeInLeft 0.7s ease forwards; }
 .animate-scale-in     { animation: scaleIn 0.5s ease forwards; }
 

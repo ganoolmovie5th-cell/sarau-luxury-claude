@@ -29,39 +29,43 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
   },
-  // Content Security Policy
+  // Cross-Origin Opener Policy — cegah cross-origin window attacks
+  {
+    key: 'Cross-Origin-Opener-Policy',
+    value: 'same-origin-allow-popups',
+  },
+  // Cross-Origin Resource Policy
+  {
+    key: 'Cross-Origin-Resource-Policy',
+    value: 'cross-origin',
+  },
+  // Content Security Policy — strict tapi tidak blokir Three.js & GA
   {
     key: 'Content-Security-Policy',
     value: [
-      // Default hanya dari origin sendiri
       "default-src 'self'",
-      // Script: self + Google Analytics + Vercel Analytics + inline (Next.js requirement)
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://va.vercel-scripts.com",
-      // Style: self + Google Fonts + inline (Tailwind/Framer Motion)
+      // Next.js butuh 'unsafe-inline' & 'unsafe-eval' untuk runtime & Three.js
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://va.vercel-scripts.com https://vercel.live",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      // Font: self + Google Fonts CDN
-      "font-src 'self' https://fonts.gstatic.com",
-      // Gambar: self + Google user content + data URI + blob
-      "img-src 'self' data: blob: https://lh3.googleusercontent.com https://drive.google.com",
-      // Koneksi: self + GA + Fonnte + Resend + Vercel
-      `connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://api.fonnte.com https://api.resend.com https://vitals.vercel-insights.com`,
-      // Frame: hanya Google Maps embed
-      "frame-src https://www.google.com",
-      // Worker: self + blob (Three.js)
+      "font-src 'self' https://fonts.gstatic.com data:",
+      "img-src 'self' data: blob: https://lh3.googleusercontent.com https://drive.google.com https://www.google-analytics.com",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://api.fonnte.com https://api.resend.com https://vitals.vercel-insights.com https://va.vercel-scripts.com",
+      "frame-src https://www.google.com https://vercel.live",
       "worker-src 'self' blob:",
-      // Media dari origin sendiri
       "media-src 'self'",
-      // Object: tidak ada
       "object-src 'none'",
-      // Base URI hanya self
       "base-uri 'self'",
-      // Form action hanya ke self dan Fonnte
       "form-action 'self'",
+      // Upgrade HTTP ke HTTPS otomatis
+      "upgrade-insecure-requests",
     ].join('; '),
   },
 ]
 
 const nextConfig = {
+  // Source maps untuk production — fix "Missing source maps" warning
+  productionBrowserSourceMaps: true,
+
   // ─── Security Headers ───────────────────────────────────────────────────────
   async headers() {
     return [

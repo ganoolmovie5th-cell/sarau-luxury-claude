@@ -73,7 +73,7 @@ export default function WhyUsSection() {
                   <Icon size={20} className="text-sun" />
                 </div>
                 <h3 className="font-semibold text-cream text-sm mb-2">{title}</h3>
-                <p className="text-cream/55 text-xs leading-relaxed">{desc}</p>
+                <p className="text-cream/75 text-xs leading-relaxed">{desc}</p>
               </motion.div>
             ))}
           </div>
