@@ -25,7 +25,7 @@ const clients = [
   { name: 'PT. Nippon Steel Chemical',     domain: 'nssmc.com',              industry: 'Manufaktur', color: '#2c3e7a' },
   { name: 'PT. Clariant Indonesia',        domain: 'clariant.com',           industry: 'Manufaktur', color: '#e2001a' },
   { name: 'PT. Modena Indonesia',          domain: 'modena.id',              industry: 'Manufaktur', color: '#c0392b' },
-  { name: 'PT. Escalier Indonesia',        domain: 'escalier.co.id',         industry: 'Manufaktur', color: '#2980b9' },
+  { name: 'PT. Escalier Indonesia',        domain: 'escalier.co.id',         industry: 'Manufaktur', color: '#1a5fa0' },
   { name: 'PT. Trisakti Mekar Mandiri',    domain: 'trisakti.co.id',         industry: 'Manufaktur', color: '#1a5276' },
   { name: 'PT. Mahawira Putra Teknik',     domain: 'mahawira.co.id',         industry: 'Manufaktur', color: '#117a65' },
   { name: 'PT. Tata Mulia',               domain: 'tatamulia.co.id',         industry: 'Konstruksi', color: '#e67e22' },
@@ -42,7 +42,7 @@ const clients = [
   { name: 'Bank BNI',                      domain: 'bni.co.id',              industry: 'Keuangan', color: '#f77f00' },
   { name: 'MNC Bank',                      domain: 'mncbank.co.id',          industry: 'Keuangan', color: '#e31837' },
   { name: 'PT. Lippo General Insurance',   domain: 'lippoinsurance.com',     industry: 'Keuangan', color: '#d4380d' },
-  { name: 'Pegadaian',                     domain: 'pegadaian.co.id',        industry: 'Keuangan', color: '#009444' },
+  { name: 'Pegadaian',                     domain: 'pegadaian.co.id',        industry: 'Keuangan', color: '#00703a' },
   // ── Kecantikan & Retail ──
   { name: 'PT. Aulia Cosmetic Indonesia',  domain: 'auliacosmetic.com',      industry: 'Kecantikan', color: '#e91e8c' },
   { name: 'Hugo Store',                    domain: 'hugoboss.com',           industry: 'Retail', color: '#1a1a1a' },
@@ -77,7 +77,7 @@ const clients = [
   // ── Logistik & Industri ──
   { name: 'PT. Intertrans Global Logistics', domain: 'intertrans.co.id',      industry: 'Logistik', color: '#1f618d' },
   { name: 'PT. Gurita Lintas Samudera',    domain: 'guritals.co.id',          industry: 'Logistik', color: '#117a65' },
-  { name: 'PT. Bogasari',                  domain: 'bogasari.com',            industry: 'Manufaktur', color: '#ca6f1e' },
+  { name: 'PT. Bogasari',                  domain: 'bogasari.com',            industry: 'Manufaktur', color: '#a85a10' },
 ]
 
 const industries = [
