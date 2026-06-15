@@ -12,7 +12,7 @@ const clients = [
   { name: 'PT. Adaro Energy',              domain: 'adaro.com',             color: '#003366' },
   { name: 'Konnichiwa Group',              domain: 'konichiwagroup.com',    color: '#d62828' },
   { name: 'PT. Epson Indonesia',           domain: 'epson.co.id',           color: '#00539f' },
-  { name: 'Grand Soll Marina Hotel',       domain: 'sollmarinahotel.com',   color: '#1b4332' },
+  { name: 'Grand Soll Marina Hotel',       domain: 'sollmarinahotel.com',   color: '#0d2b20' },
   { name: 'Park Hyatt Jakarta',            domain: 'hyatt.com',             color: '#8b6914' },
   { name: 'PT. Primasid Andalan Utama',    domain: 'primasid.com',          color: '#ff6b35' },
   { name: 'PT. Asfindo Berkah Mandiri',    domain: 'asfindo.com',           color: '#2d6a4f' },
@@ -57,7 +57,7 @@ const clients = [
   { name: 'PT. Bogasari',                  domain: 'bogasari.com',           color: '#ca6f1e' },
   { name: 'Bank CIMB Niaga',               domain: 'cimbniaga.co.id',        color: '#d4001a' },
   { name: 'Mitra Adi Perkasa',             domain: 'map.co.id',              color: '#c0392b' },
-  { name: 'PT. Serpong Mas Telematika',    domain: 'serpongmas.co.id',       color: '#148f77' },
+  { name: 'PT. Serpong Mas Telematika',    domain: 'serpongmas.co.id',       color: '#0a6b5a' },
 ]
 
 function LogoCard({ name, color }: { name: string; domain: string; color: string }) {
@@ -71,7 +71,7 @@ function LogoCard({ name, color }: { name: string; domain: string; color: string
       >
         {initials}
       </div>
-      <span className="font-semibold text-earth/80 group-hover:text-forest transition-colors text-sm whitespace-nowrap">
+      <span className="font-semibold text-bark group-hover:text-forest transition-colors text-sm whitespace-nowrap">
         {name}
       </span>
     </div>
