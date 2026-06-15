@@ -219,6 +219,7 @@ sarau-luxury-claude/
 | **CI Secret Scan** | TruffleHog setiap push & PR + jadwal Senin pagi |
 | **Dependency Audit** | `npm audit --audit-level=high` di setiap PR |
 | **Error Boundary** | `error.tsx` + `global-error.tsx` — mencegah blank screen |
+| **CSP img-src** | Whitelist `www.googletagmanager.com` untuk GA tracking pixel |
 
 > ⚠️ **Catatan:** Rate limiter in-memory tidak efektif di Vercel serverless (instance tidak shared). Untuk production-grade, gunakan [Upstash Redis Ratelimit](https://upstash.com/docs/redis/sdks/ratelimit-ts/overview).
 
