@@ -23,22 +23,22 @@ function Tree({ position, scale = 1, color = '#2D6A4F' }: {
     <group ref={groupRef} position={position} scale={scale}>
       {/* Trunk */}
       <mesh position={[0, -0.6, 0]}>
-        <cylinderGeometry args={[0.08, 0.12, 1.2, 8]} />
+        <cylinderGeometry args={[0.08, 0.12, 1.2, 6]} />
         <meshStandardMaterial color="#5D3A1A" roughness={0.9} />
       </mesh>
       {/* Bottom foliage */}
       <mesh position={[0, 0.2, 0]}>
-        <coneGeometry args={[0.7, 1.4, 7]} />
+        <coneGeometry args={[0.7, 1.4, 6]} />
         <meshStandardMaterial color={color} roughness={0.7} />
       </mesh>
       {/* Mid foliage */}
       <mesh position={[0, 0.9, 0]}>
-        <coneGeometry args={[0.5, 1.2, 7]} />
+        <coneGeometry args={[0.5, 1.2, 6]} />
         <meshStandardMaterial color={new THREE.Color(color).addScalar(0.05).getStyle()} roughness={0.7} />
       </mesh>
       {/* Top foliage */}
       <mesh position={[0, 1.5, 0]}>
-        <coneGeometry args={[0.3, 0.9, 7]} />
+        <coneGeometry args={[0.3, 0.9, 6]} />
         <meshStandardMaterial color={new THREE.Color(color).addScalar(0.1).getStyle()} roughness={0.7} />
       </mesh>
     </group>
@@ -57,7 +57,7 @@ function Ground() {
 
 // ── Fireflies ─────────────────────────────────────────────────────────────────
 function Fireflies() {
-  const count = 60
+  const count = 40
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3)
     for (let i = 0; i < count; i++) {
@@ -157,16 +157,15 @@ export default function HeroScene() {
   return (
     <Canvas
       camera={{ position: [0, 1.5, 7], fov: 55 }}
-      gl={{ antialias: true, alpha: true }}
+      gl={{ antialias: false, alpha: true, powerPreference: 'low-power' }}
       style={{ background: 'transparent' }}
-      shadows
+      dpr={[1, 1.5]}
     >
       {/* Lighting */}
       <ambientLight intensity={0.3} color="#B7E4C7" />
       <pointLight position={[4, 3, 3]}   intensity={1.2} color="#D4F7A0" />
       <pointLight position={[-6, 4, -2]} intensity={0.8} color="#95D5B2" />
-      <pointLight position={[0, -1, 2]}  intensity={0.4} color="#52B788" />
-      <directionalLight position={[3, 8, 2]} intensity={0.6} color="#B7E4C7" castShadow />
+      <directionalLight position={[3, 8, 2]} intensity={0.6} color="#B7E4C7" />
 
       {/* Scene */}
       <Ground />
@@ -177,12 +176,11 @@ export default function HeroScene() {
       {/* Mist */}
       <MistOrb position={[-3, -1, 0]} />
       <MistOrb position={[3, -1.5, 1]} />
-      <MistOrb position={[0, -0.5, -2]} />
 
       {/* Stars through tree canopy */}
-      <Stars radius={60} depth={40} count={800} factor={2.5} saturation={0} fade speed={0.3} />
+      <Stars radius={60} depth={40} count={500} factor={2.5} saturation={0} fade speed={0.3} />
 
-      {/* Atmospheric fog via scene.fog */}
+      {/* Atmospheric fog */}
       <fog attach="fog" args={['#0D2818', 12, 35]} />
     </Canvas>
   )

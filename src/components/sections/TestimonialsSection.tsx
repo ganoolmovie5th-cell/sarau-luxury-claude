@@ -143,11 +143,14 @@ export default function TestimonialsSection() {
           {/* Controls */}
           <div className="flex items-center justify-between mt-8">
             {/* Dots */}
-            <div className="flex gap-2">
+            <div className="flex gap-2" role="tablist" aria-label="Pilih testimoni">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
+                  role="tab"
+                  aria-selected={i === current}
+                  aria-label={`Testimoni ${i + 1} dari ${testimonials.length}`}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     i === current ? 'w-8 bg-forest' : 'w-2 bg-earth/30'
                   }`}
@@ -158,15 +161,17 @@ export default function TestimonialsSection() {
             <div className="flex gap-3">
               <button
                 onClick={prev}
+                aria-label="Testimoni sebelumnya"
                 className="w-12 h-12 rounded-full border-2 border-forest/30 hover:border-forest hover:bg-forest hover:text-cream text-forest flex items-center justify-center transition-all duration-200"
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={20} aria-hidden="true" />
               </button>
               <button
                 onClick={next}
+                aria-label="Testimoni berikutnya"
                 className="w-12 h-12 rounded-full bg-forest text-cream flex items-center justify-center hover:bg-forest-light transition-colors"
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={20} aria-hidden="true" />
               </button>
             </div>
           </div>

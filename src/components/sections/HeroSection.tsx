@@ -1,12 +1,17 @@
 'use client'
 
-import { Suspense, lazy } from 'react'
+import { Suspense } from 'react'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Play, ChevronDown } from 'lucide-react'
 import { STATS } from '@/lib/constants'
 
-const HeroScene = lazy(() => import('@/components/3d/HeroScene'))
+// ssr:false — Three.js tidak jalan di server, tidak block FCP/LCP
+const HeroScene = dynamic(() => import('@/components/3d/HeroScene'), {
+  ssr: false,
+  loading: () => null,
+})
 
 const containerVariants = {
   hidden: {},
@@ -74,15 +79,16 @@ export default function HeroSection() {
 
           {/* CTAs */}
           <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-16">
-            <Link href="/booking" className="btn-sun text-base px-8 py-4">
+            <Link href="/booking" className="btn-sun text-base px-8 py-4" aria-label="Konsultasi gratis event perusahaan">
               Konsultasi Gratis
-              <ArrowRight size={18} />
+              <ArrowRight size={18} aria-hidden="true" />
             </Link>
             <Link
               href="/gallery"
+              aria-label="Lihat galeri dokumentasi event kami"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-cream border border-cream/30 hover:bg-cream/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5"
             >
-              <span className="w-10 h-10 rounded-full bg-cream/20 flex items-center justify-center">
+              <span className="w-10 h-10 rounded-full bg-cream/20 flex items-center justify-center" aria-hidden="true">
                 <Play size={14} fill="currentColor" />
               </span>
               Lihat Galeri
