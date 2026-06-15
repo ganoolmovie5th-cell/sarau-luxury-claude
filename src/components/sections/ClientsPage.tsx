@@ -35,7 +35,7 @@ const clients = [
   // ── Teknologi ──
   { name: 'PT. Epson Indonesia',           domain: 'epson.co.id',            industry: 'Teknologi', color: '#00539f' },
   { name: 'PT. Fluid Science D',           domain: 'fluidscienced.com',      industry: 'Teknologi', color: '#0077b6' },
-  { name: 'PT. Sahabat Jaya Solusindo',    domain: 'sahabatjaya.co.id',      industry: 'Teknologi', color: '#1abc9c' },
+  { name: 'PT. Sahabat Jaya Solusindo',    domain: 'sahabatjaya.co.id',      industry: 'Teknologi', color: '#0e8a6e' },
   // ── Keuangan ──
   { name: 'Bank BCA',                      domain: 'bca.co.id',              industry: 'Keuangan', color: '#006cb7' },
   { name: 'Bank Mandiri',                  domain: 'bankmandiri.co.id',      industry: 'Keuangan', color: '#003d79' },
@@ -64,7 +64,7 @@ const clients = [
   // ── Hukum & Pendidikan ──
   { name: 'Notaris Lola Pandeglang',       domain: 'notarislola.co.id',      industry: 'Hukum', color: '#2c3e50' },
   { name: 'SDN Daya Bersama',              domain: 'sdndayabersama.sch.id',  industry: 'Pendidikan', color: '#27ae60' },
-  { name: 'Sekolah Tiara Kasih',           domain: 'tiarakasih.sch.id',      industry: 'Pendidikan', color: '#f39c12' },
+  { name: 'Sekolah Tiara Kasih',           domain: 'tiarakasih.sch.id',      industry: 'Pendidikan', color: '#b5720a' },
   { name: 'GKI Cinere',                    domain: 'gkicinere.org',           industry: 'Komunitas', color: '#8e44ad' },
   // ── Teknologi Baru ──
   { name: 'PT. Visiotek Global',           domain: 'visiotek.co.id',          industry: 'Teknologi', color: '#2471a3' },
