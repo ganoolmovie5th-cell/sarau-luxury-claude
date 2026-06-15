@@ -16,7 +16,10 @@
 - [Instalasi & Menjalankan Lokal](#instalasi--menjalankan-lokal)
 - [Environment Variables](#environment-variables)
 - [Struktur Folder](#struktur-folder)
+- [Security](#-security)
+- [Performance & SEO](#-performance--seo)
 - [CMS & Integrasi](#cms--integrasi)
+- [CI/CD](#-cicd)
 - [Deployment](#deployment)
 
 ---
@@ -51,38 +54,39 @@ Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk mengha
 
 ## Fitur Utama
 
-- 🎨 **Hero 3D Interaktif** — latar belakang Three.js yang berjalan di browser
+- 🎨 **Hero 3D Interaktif** — Three.js di-load hanya setelah `requestIdleCallback` untuk tidak block FCP/LCP
 - ✨ **Animasi Framer Motion** — transisi halaman dan animasi scroll yang halus
-- 📦 **Price List Lengkap** — paket Gathering Silver/Gold/Platinum, add-on aktivitas, dan meeting package dengan tab interaktif
-- 📬 **Form Kontak & Booking** — mengirim notifikasi via Email (Resend) dan WhatsApp (Fonnte) secara bersamaan
-- 🔍 **SEO Lengkap** — metadata, Open Graph, Twitter Card, sitemap otomatis, robots.txt, dan JSON-LD Schema.org (LocalBusiness)
+- 📦 **Price List Lengkap** — paket Gathering Silver/Gold/Platinum, add-on aktivitas, meeting package dengan tab interaktif
+- 📬 **Form Kontak & Booking** — notifikasi via Email (Resend) dan WhatsApp (Fonnte) secara bersamaan
+- 🔍 **SEO Lengkap** — metadata, Open Graph, Twitter Card, sitemap otomatis, robots.txt, JSON-LD Schema.org (LocalBusiness + FAQPage + BreadcrumbList)
 - 📱 **Floating WhatsApp Button** — tombol kontak cepat di semua halaman
 - 📊 **Scroll Progress Bar** — indikator progres scroll di bagian atas
-- 🌐 **Marquee Klien** — animasi logo klien yang berjalan terus
+- 🌐 **Marquee Klien** — animasi logo 53+ klien perusahaan
 - 📰 **Blog** — halaman daftar & detail artikel dengan Open Graph image dinamis
-- 🖼️ **Galeri** — galeri foto event perusahaan
-- 📍 **Schema.org Terstruktur** — rating agregat, jam buka, lokasi, dan penawaran harga untuk rich snippet Google
-- 🔒 **HTTP Security Headers** — CSP, HSTS, X-Frame-Options, Permissions-Policy via `next.config.js`
-- 🛡️ **Rate Limiting & Input Sanitization** — API route dilindungi dari spam dan XSS
-- 🤖 **GitHub Actions CI** — secret scanning (TruffleHog), dependency audit, build check otomatis
+- 🖼️ **Galeri** — galeri foto dokumentasi event
+- 📍 **Schema.org Terstruktur** — LocalBusiness, AggregateRating, FAQPage, BreadcrumbList, Offers
+- 🔒 **HTTP Security Headers** — CSP, HSTS, COOP, X-Frame-Options, Permissions-Policy
+- 🛡️ **Rate Limiting & Input Sanitization** — API dilindungi dari spam dan XSS
+- 🚨 **Error Boundary** — halaman fallback saat terjadi error runtime
+- 🤖 **GitHub Actions CI** — TruffleHog secret scan, dependency audit, TypeScript check, ESLint
 
 ---
 
 ## Struktur Halaman
 
-| Route           | Deskripsi                                           |
-| --------------- | --------------------------------------------------- |
+| Route           | Deskripsi                                                            |
+| --------------- | -------------------------------------------------------------------- |
 | `/`             | Homepage — hero, statistik, layanan, paket, klien, testimoni, galeri, blog |
-| `/about`        | Profil perusahaan, misi & visi, founder, tim        |
-| `/services`     | Halaman lengkap semua layanan                       |
-| `/packages`     | Price list dan paket lengkap                        |
-| `/gallery`      | Galeri foto event                                   |
-| `/clients`      | Daftar klien perusahaan                             |
-| `/blog`         | Daftar artikel blog                                 |
-| `/blog/[slug]`  | Detail artikel blog                                 |
-| `/faq`          | Pertanyaan yang sering diajukan                     |
-| `/contact`      | Form kontak                                         |
-| `/booking`      | Form booking / inquiry event                        |
+| `/about`        | Profil perusahaan, misi & visi, founder, tim                         |
+| `/services`     | Halaman lengkap semua layanan                                        |
+| `/packages`     | Price list dan paket lengkap                                         |
+| `/gallery`      | Galeri foto event                                                    |
+| `/clients`      | Daftar 53+ klien perusahaan                                          |
+| `/blog`         | Daftar artikel blog                                                  |
+| `/blog/[slug]`  | Detail artikel blog                                                  |
+| `/faq`          | Pertanyaan yang sering diajukan (FAQPage Schema)                     |
+| `/contact`      | Form kontak *(tidak diindex Google)*                                 |
+| `/booking`      | Form booking / inquiry event *(tidak diindex Google)*                |
 
 ---
 
@@ -114,8 +118,8 @@ Buka [http://localhost:3000](http://localhost:3000) di browser.
 
 ### Script Tersedia
 
-| Script        | Fungsi                              |
-| ------------- | ----------------------------------- |
+| Script          | Fungsi                              |
+| --------------- | ----------------------------------- |
 | `npm run dev`   | Jalankan dev server (hot reload)    |
 | `npm run build` | Build untuk production              |
 | `npm run start` | Jalankan production server lokal    |
@@ -138,15 +142,9 @@ RESEND_FROM_EMAIL=noreply@sarau-luxury.com   # domain terverifikasi di Resend (o
 CONTACT_EMAIL=bandungindonesiasinergi@gmail.com
 
 # ── WhatsApp via Fonnte ───────────────────────────────────────────────────────
-# Server-only (tidak ter-expose ke browser)
-WHATSAPP_ADMIN_NUMBER=6285711786561
+WHATSAPP_ADMIN_NUMBER=6285711786561          # server-only, tidak ter-expose ke browser
 FONNTE_TOKEN=your_fonnte_token
-
-# Nomor WA publik untuk tombol floating (boleh public)
-NEXT_PUBLIC_WHATSAPP_NUMBER=6285711786561
-
-# ── Google Maps ───────────────────────────────────────────────────────────────
-NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_key
+NEXT_PUBLIC_WHATSAPP_NUMBER=6285711786561    # untuk tombol floating (boleh public)
 
 # ── Site URL ──────────────────────────────────────────────────────────────────
 NEXT_PUBLIC_SITE_URL=https://sarau-luxury.com
@@ -155,8 +153,7 @@ NEXT_PUBLIC_SITE_URL=https://sarau-luxury.com
 NEXT_PUBLIC_GA_ID=G-DFKHWJ3TJZ
 ```
 
-> **Catatan:** Variabel `RESEND_API_KEY` dan `FONNTE_TOKEN` **opsional** — jika tidak diset, fitur notifikasi email/WhatsApp akan dilewati tanpa error.
-> Strapi juga **opsional** — jika tidak dikonfigurasi, data paket dan layanan menggunakan data statis di komponen.
+> **Catatan:** `RESEND_API_KEY`, `FONNTE_TOKEN`, dan `STRAPI_API_TOKEN` **opsional** — jika tidak diset, fitur terkait dilewati tanpa error.
 
 ---
 
@@ -166,43 +163,45 @@ NEXT_PUBLIC_GA_ID=G-DFKHWJ3TJZ
 sarau-luxury-claude/
 ├── .github/
 │   └── workflows/
-│       └── security.yml       # CI: secret scan, dependency audit, build check
+│       └── security.yml       # CI: TruffleHog, npm audit, tsc, eslint
 ├── public/                    # Aset statis (logo, foto founder)
 ├── src/
 │   ├── app/                   # Next.js App Router
 │   │   ├── api/contact/       # API route: form kontak & booking
 │   │   ├── about/             # Halaman About
-│   │   ├── blog/              # Halaman Blog + [slug]
-│   │   ├── booking/           # Halaman Booking
+│   │   ├── blog/[slug]/       # Halaman Blog + detail
+│   │   ├── booking/           # Halaman Booking (disallow robots)
 │   │   ├── clients/           # Halaman Klien
-│   │   ├── contact/           # Halaman Kontak
-│   │   ├── faq/               # Halaman FAQ
+│   │   ├── contact/           # Halaman Kontak (disallow robots)
+│   │   ├── faq/               # Halaman FAQ (FAQPage schema)
 │   │   ├── gallery/           # Halaman Galeri
 │   │   ├── packages/          # Halaman Paket & Harga
 │   │   ├── services/          # Halaman Layanan
-│   │   ├── layout.tsx         # Root layout (Navbar, Footer, metadata, GA tag)
+│   │   ├── error.tsx          # Error boundary halaman
+│   │   ├── global-error.tsx   # Error boundary global
+│   │   ├── layout.tsx         # Root layout + metadata global + GA
 │   │   ├── page.tsx           # Homepage
-│   │   ├── sitemap.ts         # Sitemap otomatis
+│   │   ├── sitemap.ts         # Sitemap otomatis (27 URL)
 │   │   └── robots.ts          # robots.txt
 │   ├── components/
-│   │   ├── 3d/                # Komponen Three.js (HeroScene)
-│   │   ├── layout/            # Navbar & Footer
-│   │   ├── sections/          # Section komponen per halaman
-│   │   └── ui/                # Komponen UI kecil (WhatsApp, Progress Bar, dll)
-│   ├── hooks/                 # Custom React hooks
+│   │   ├── 3d/                # HeroScene — Three.js, idle-loaded
+│   │   ├── layout/            # Navbar, Footer
+│   │   ├── sections/          # 19 section components
+│   │   └── ui/                # WhatsApp button, Progress bar, dll
+│   ├── hooks/                 # useScrollProgress, useMediaQuery
 │   ├── lib/
-│   │   ├── constants.ts       # Sumber data terpusat (stats, kontak, sosial)
-│   │   ├── security.ts        # Rate limiter, sanitizer, validator input
-│   │   ├── strapi.ts          # Klien Strapi CMS
+│   │   ├── constants.ts       # Single source of truth (stats, kontak, sosial)
+│   │   ├── security.ts        # Rate limiter, sanitizer HTML/plain, validators
+│   │   ├── strapi.ts          # Klien Strapi CMS (opsional)
 │   │   └── sanity.ts          # Placeholder Sanity (belum aktif)
 │   ├── styles/
-│   │   └── globals.css        # Global CSS & Tailwind directives
+│   │   └── globals.css        # Design system + Tailwind custom utilities
 │   └── types/
 │       └── index.ts           # TypeScript type definitions
 ├── .env.example               # Contoh environment variables
-├── next.config.js             # Konfigurasi Next.js + HTTP Security Headers
-├── tailwind.config.js         # Konfigurasi Tailwind CSS
-└── tsconfig.json              # Konfigurasi TypeScript
+├── next.config.js             # Next.js config + HTTP security headers
+├── tailwind.config.js         # Tailwind config
+└── tsconfig.json              # TypeScript config
 ```
 
 ---
@@ -211,55 +210,91 @@ sarau-luxury-claude/
 
 | Lapisan | Implementasi |
 |---------|-------------|
-| **Rate Limiting** | Maks 5 request/menit per IP di `/api/contact` |
-| **Input Sanitization** | Escape HTML (`&`, `<`, `>`, `"`, `'`) — cegah XSS di email |
-| **Input Validation** | Validasi format email, nomor HP, panjang field |
-| **HTTP Headers** | CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Permissions-Policy |
-| **Secret Exposure** | `WHATSAPP_ADMIN_NUMBER` & `FONNTE_TOKEN` server-only (tanpa `NEXT_PUBLIC_`) |
-| **Image Proxy** | `remotePatterns` ketat — hanya path `/d/**` dari `lh3.googleusercontent.com` |
-| **CI Secret Scan** | TruffleHog scan setiap push + jadwal mingguan via GitHub Actions |
-| **Dependency Audit** | `npm audit --audit-level=high` otomatis di setiap PR |
+| **Rate Limiting** | Maks 5 req/menit per IP di `/api/contact` (in-memory) |
+| **Input Sanitization** | Escape `& < > " '` — cegah XSS di email HTML |
+| **Input Validation** | Format email, nomor HP, panjang min/max setiap field |
+| **HTTP Headers** | CSP, HSTS, COOP, X-Frame-Options, X-Content-Type-Options, Permissions-Policy |
+| **Secret Protection** | `WHATSAPP_ADMIN_NUMBER` & `FONNTE_TOKEN` server-only |
+| **Image Proxy** | `remotePatterns` ketat — hanya `/d/**` dari `lh3.googleusercontent.com` |
+| **CI Secret Scan** | TruffleHog setiap push & PR + jadwal Senin pagi |
+| **Dependency Audit** | `npm audit --audit-level=high` di setiap PR |
+| **Error Boundary** | `error.tsx` + `global-error.tsx` — mencegah blank screen |
+
+> ⚠️ **Catatan:** Rate limiter in-memory tidak efektif di Vercel serverless (instance tidak shared). Untuk production-grade, gunakan [Upstash Redis Ratelimit](https://upstash.com/docs/redis/sdks/ratelimit-ts/overview).
+
+---
+
+## 🚀 Performance & SEO
+
+### PageSpeed Scores (Juni 2025)
+| Metrik | Score |
+|--------|-------|
+| Performance | 57 |
+| Accessibility | 97+ |
+| Best Practices | 92 |
+| SEO | ~90 |
+
+### Optimasi yang Sudah Diterapkan
+- Three.js load hanya setelah `requestIdleCallback` (tidak block FCP/LCP)
+- Font Google load non-blocking via JS injection
+- GA via `next/script strategy="afterInteractive"`
+- Image format AVIF + WebP, cache 30 hari
+- `optimizePackageImports` untuk Framer Motion, Three.js, Lucide
+- `robots.ts` disallow `/booking` & `/contact`
+- Sitemap 27 URL dengan `priority` & `changeFrequency`
+- Schema.org: LocalBusiness, AggregateRating, FAQPage, BreadcrumbList, Offers
 
 ---
 
 ## CMS & Integrasi
 
-### Strapi (Opsional)
-Digunakan untuk data **paket** dan **layanan** yang dapat dikelola dari dashboard. Jika tidak dikonfigurasi, website tetap berjalan menggunakan data statis di komponen.
+| Layanan | Status | Fungsi |
+|---------|--------|--------|
+| **Strapi** | Opsional | Data paket & layanan dari dashboard |
+| **Sanity** | Placeholder | Blog, galeri, testimoni (belum aktif) |
+| **Resend** | Opsional | Email notifikasi form kontak/booking |
+| **Fonnte** | Opsional | WhatsApp notifikasi ke admin |
+| **Vercel Analytics** | Aktif | Web analytics |
+| **Google Analytics 4** | Aktif | `G-DFKHWJ3TJZ` |
 
-### Sanity (Placeholder)
-Direncanakan untuk mengelola **blog**, **galeri**, **testimoni**, dan **klien**. Saat ini file `src/lib/sanity.ts` merupakan placeholder — data menggunakan static data.
+---
 
-### Resend (Email)
-Notifikasi email saat ada submission form kontak/booking. Membutuhkan `RESEND_API_KEY`.
+## 🤖 CI/CD
 
-### Fonnte (WhatsApp)
-Notifikasi WhatsApp ke nomor admin saat ada submission form. Membutuhkan `FONNTE_TOKEN`.
+**File:** `.github/workflows/security.yml`
+
+| Job | Tool | Trigger |
+|-----|------|---------|
+| Secret Scanning | TruffleHog | Push, PR, Senin 08.00 WIB |
+| Dependency Audit | `npm audit --audit-level=high` | Push, PR |
+| Build Check | TypeScript + ESLint | Push, PR |
+
+> ⚠️ CI workflow file tidak bisa di-push langsung ke `main` — harus via Pull Request untuk review keamanan.
 
 ---
 
 ## Deployment
 
-Website di-deploy ke **Vercel**. Setiap push ke branch `main` akan otomatis trigger deployment.
+Website di-deploy ke **Vercel**. Push ke `main` otomatis trigger production deployment.
 
 ```bash
-# Build manual untuk cek error sebelum deploy
+# Build lokal sebelum push
 npm run build
 ```
 
-Pastikan semua environment variables sudah dikonfigurasi di dashboard Vercel sebelum deploy ke production.
+Pastikan semua environment variables sudah dikonfigurasi di **Vercel Dashboard → Settings → Environment Variables**.
 
 ---
 
 ## Kontak
 
-| Channel   | Info                                                                 |
-| --------- | -------------------------------------------------------------------- |
-| Website   | [sarau-luxury.com](https://sarau-luxury.com)                         |
-| Instagram | [@sarauluxury](https://instagram.com/sarauluxury)                    |
-| WhatsApp  | [+62 857-1178-6561](https://wa.me/6285711786561)                     |
-| Email     | bandungindonesiasinergi@gmail.com                                    |
-| Alamat    | Binong Permai Blok R-10/14, Curug, Banten                            |
+| Channel   | Info                                                              |
+| --------- | ----------------------------------------------------------------- |
+| Website   | [sarau-luxury.com](https://sarau-luxury.com)                      |
+| Instagram | [@sarauluxury](https://instagram.com/sarauluxury)                 |
+| WhatsApp  | [+62 857-1178-6561](https://wa.me/6285711786561)                  |
+| Email     | bandungindonesiasinergi@gmail.com                                 |
+| Alamat    | Binong Permai Blok R-10/14, Curug, Banten                         |
 
 ---
 
