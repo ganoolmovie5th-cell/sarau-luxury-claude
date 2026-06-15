@@ -3,6 +3,7 @@ import { SITE_URL } from '@/lib/constants'
 import PackagesPreview from '@/components/sections/PackagesPreview'
 import CtaSection from '@/components/sections/CtaSection'
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const metadata: Metadata = {
   title: 'Paket & Harga – Gathering Silver, Gold, Platinum',
@@ -16,9 +17,22 @@ export const metadata: Metadata = {
   },
 }
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Beranda', item: BASE_URL },
+    { '@type': 'ListItem', position: 2, name: 'Paket & Harga', item: `${BASE_URL}/packages` },
+  ],
+}
+
 export default function PackagesPage() {
   return (
     <div className="pt-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <PackagesPreview />
       <CtaSection />
     </div>

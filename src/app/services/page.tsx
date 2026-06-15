@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { SITE_URL } from '@/lib/constants'
 import ServicesPage from '@/components/sections/ServicesPage'
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const metadata: Metadata = {
   title: 'Layanan – Company Gathering, Outbound & Team Building',
@@ -15,6 +16,23 @@ export const metadata: Metadata = {
   },
 }
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Beranda', item: BASE_URL },
+    { '@type': 'ListItem', position: 2, name: 'Layanan', item: `${BASE_URL}/services` },
+  ],
+}
+
 export default function Services() {
-  return <ServicesPage />
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <ServicesPage />
+    </>
+  )
 }

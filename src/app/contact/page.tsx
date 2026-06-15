@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { SITE_URL } from '@/lib/constants'
 import ContactForm from '@/components/sections/ContactForm'
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const metadata: Metadata = {
   title: 'Kontak – Konsultasi Gratis Event Perusahaan',
@@ -15,6 +16,23 @@ export const metadata: Metadata = {
   },
 }
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Beranda', item: BASE_URL },
+    { '@type': 'ListItem', position: 2, name: 'Kontak', item: `${BASE_URL}/contact` },
+  ],
+}
+
 export default function ContactPage() {
-  return <ContactForm />
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <ContactForm />
+    </>
+  )
 }
