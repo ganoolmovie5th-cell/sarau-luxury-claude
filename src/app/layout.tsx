@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import '../styles/globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -138,18 +139,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="id">
       <head>
-        {/* Google Analytics — defer agar tidak block FCP */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){window.dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-DFKHWJ3TJZ');
-            `,
-          }}
-        />
-        <script defer src="https://www.googletagmanager.com/gtag/js?id=G-DFKHWJ3TJZ" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -173,6 +162,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </PageTransition>
         <Footer />
         <WhatsAppButton />
+        {/* Google Analytics — afterInteractive agar tidak block FCP/LCP */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-DFKHWJ3TJZ"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DFKHWJ3TJZ');`}
+        </Script>
         <Analytics />
         <SpeedInsights />
       </body>

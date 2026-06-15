@@ -1,13 +1,13 @@
 'use client'
 
-import { Suspense } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Play, ChevronDown } from 'lucide-react'
 import { STATS } from '@/lib/constants'
 
-// ssr:false — Three.js tidak jalan di server, tidak block FCP/LCP
+// Lazy load Three.js hanya setelah browser idle — tidak block FCP/LCP
 const HeroScene = dynamic(() => import('@/components/3d/HeroScene'), {
   ssr: false,
   loading: () => null,

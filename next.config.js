@@ -73,17 +73,19 @@ const nextConfig = {
     ]
   },
 
-  // ─── Image Remote Patterns (lebih ketat) ────────────────────────────────────
+  // ─── Image Optimization ─────────────────────────────────────────────────────
   images: {
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200],
+    imageSizes: [16, 32, 64, 128, 256],
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 hari
     remotePatterns: [
       {
-        // Google user content — hanya path /d/ (Google Drive file IDs)
         protocol: 'https',
         hostname: 'lh3.googleusercontent.com',
         pathname: '/d/**',
       },
       {
-        // Google Drive thumbnail — hanya path /uc spesifik
         protocol: 'https',
         hostname: 'drive.google.com',
         pathname: '/uc',
@@ -92,7 +94,7 @@ const nextConfig = {
   },
 
   experimental: {
-    optimizePackageImports: ['lucide-react'],
+    optimizePackageImports: ['lucide-react', 'framer-motion', '@react-three/fiber', '@react-three/drei'],
   },
 }
 
