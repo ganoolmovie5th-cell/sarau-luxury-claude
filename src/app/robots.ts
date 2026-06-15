@@ -8,7 +8,11 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: '/api/',
+        disallow: [
+          '/api/',       // API routes tidak perlu diindex
+          '/booking',    // Form halaman — tidak perlu diindex
+          '/contact',    // Form halaman — tidak perlu diindex
+        ],
       },
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,

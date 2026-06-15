@@ -12,7 +12,6 @@ const HeroScene = dynamic(() => import('@/components/3d/HeroScene'), {
   ssr: false,
   loading: () => null,
 })
-
 const containerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.15 } },
@@ -24,13 +23,29 @@ const itemVariants = {
 }
 
 export default function HeroSection() {
+  const [sceneReady, setSceneReady] = useState(false)
+
+  useEffect(() => {
+    // Load Three.js hanya setelah browser idle — tidak ganggu FCP/LCP/TBT
+    if ('requestIdleCallback' in window) {
+      const id = requestIdleCallback(() => setSceneReady(true), { timeout: 3000 })
+      return () => cancelIdleCallback(id)
+    } else {
+      // Fallback untuk Safari
+      const t = setTimeout(() => setSceneReady(true), 2000)
+      return () => clearTimeout(t)
+    }
+  }, [])
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-bark">
-      {/* 3D Canvas background */}
+      {/* 3D Canvas background — hanya render setelah idle */}
       <div className="absolute inset-0 z-0">
-        <Suspense fallback={null}>
-          <HeroScene />
-        </Suspense>
+        {sceneReady && (
+          <Suspense fallback={null}>
+            <HeroScene />
+          </Suspense>
+        )}
       </div>
 
       {/* Gradient overlays */}

@@ -1,5 +1,11 @@
 // ─── Rate Limiter (in-memory, per IP) ────────────────────────────────────────
 // Batas: MAX_REQUESTS request per WINDOW_MS milidetik per IP
+//
+// ⚠️  CATATAN SERVERLESS: Di Vercel, setiap request bisa jalan di instance
+// berbeda sehingga Map ini tidak shared antar instances.
+// Untuk production-grade rate limiting, gunakan Upstash Redis:
+// https://upstash.com/docs/redis/sdks/ratelimit-ts/overview
+// Implementasi saat ini tetap efektif untuk single-instance dev & low traffic.
 
 const WINDOW_MS    = 60 * 1000  // 1 menit
 const MAX_REQUESTS = 5           // maks 5 request/menit/IP
