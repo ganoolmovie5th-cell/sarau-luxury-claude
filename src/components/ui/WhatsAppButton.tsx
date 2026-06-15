@@ -49,7 +49,7 @@ export default function WhatsAppButton() {
         whileTap={{ scale: 0.95 }}
         className="relative w-14 h-14 rounded-full shadow-lg shadow-green-500/30 flex items-center justify-center"
         style={{ background: '#25D366' }}
-        aria-label="Chat WhatsApp"
+        aria-label="Chat WhatsApp dengan Sarau Luxury — konsultasi gratis"
       >
         {/* Pulse ring */}
         <span className="absolute inset-0 rounded-full animate-ping bg-green-400 opacity-25" />

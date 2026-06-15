@@ -98,7 +98,7 @@ export default function Footer() {
                 <div className="font-accent text-sm text-leaf">Where Teams Grow Together</div>
               </div>
             </Link>
-            <p className="text-cream/60 text-sm leading-relaxed mb-6 max-w-xs">
+            <p className="text-cream/80 text-sm leading-relaxed mb-6 max-w-xs">
               Kami menciptakan pengalaman outing dan outbound yang tak terlupakan untuk perusahaan Anda.
               Bersama kami, tim Anda tumbuh, terhubung, dan bersinar.
             </p>
@@ -121,13 +121,13 @@ export default function Footer() {
           {/* Links */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="font-display font-semibold text-cream mb-5 capitalize">{title}</h4>
+              <h3 className="font-display font-semibold text-cream mb-5 capitalize">{title}</h3>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-cream/60 hover:text-sun transition-colors duration-200 flex items-center gap-1 group"
+                      className="text-sm text-cream/80 hover:text-sun transition-colors duration-200 flex items-center gap-1 group"
                     >
                       {link.label}
                       <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -150,7 +150,7 @@ export default function Footer() {
             <a
               key={text}
               href={href}
-              className="flex items-center gap-3 text-sm text-cream/60 hover:text-sun transition-colors group"
+              className="flex items-center gap-3 text-sm text-cream/80 hover:text-sun transition-colors group"
             >
               <div className="w-8 h-8 rounded-full bg-forest/20 group-hover:bg-forest flex items-center justify-center flex-shrink-0 transition-colors">
                 <Icon size={15} />
@@ -161,7 +161,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-cream/40">
+        <div className="py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-cream/70">
           <p>© {new Date().getFullYear()} Sarau Luxury. All rights reserved.</p>
           <p>Designed & built with ❤️ for great teams</p>
         </div>

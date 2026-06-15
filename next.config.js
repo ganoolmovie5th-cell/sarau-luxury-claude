@@ -45,11 +45,11 @@ const securityHeaders = [
     value: [
       "default-src 'self'",
       // Next.js butuh 'unsafe-inline' & 'unsafe-eval' untuk runtime & Three.js
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://va.vercel-scripts.com https://vercel.live",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://va.vercel-scripts.com https://vercel.live https://static.cloudflareinsights.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com data:",
       "img-src 'self' data: blob: https://lh3.googleusercontent.com https://drive.google.com https://www.google-analytics.com",
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://api.fonnte.com https://api.resend.com https://vitals.vercel-insights.com https://va.vercel-scripts.com",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://api.fonnte.com https://api.resend.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://cloudflareinsights.com",
       "frame-src https://www.google.com https://vercel.live",
       "worker-src 'self' blob:",
       "media-src 'self'",
@@ -63,8 +63,8 @@ const securityHeaders = [
 ]
 
 const nextConfig = {
-  // Source maps untuk production — fix "Missing source maps" warning
-  productionBrowserSourceMaps: true,
+  // Source maps production dimatikan — file .map terlalu besar & timeout di Lighthouse
+  productionBrowserSourceMaps: false,
 
   // ─── Security Headers ───────────────────────────────────────────────────────
   async headers() {

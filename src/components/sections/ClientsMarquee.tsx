@@ -71,7 +71,7 @@ function LogoCard({ name, color }: { name: string; domain: string; color: string
       >
         {initials}
       </div>
-      <span className="font-semibold text-earth/60 group-hover:text-forest transition-colors text-sm whitespace-nowrap">
+      <span className="font-semibold text-earth/80 group-hover:text-forest transition-colors text-sm whitespace-nowrap">
         {name}
       </span>
     </div>
