@@ -22,14 +22,23 @@ export const metadata: Metadata = {
     shortcut: '/sarau-luxury-logo.jpeg',
   },
   description:
-    'Sarau Luxury adalah event organizer profesional untuk outing dan outbound perusahaan. Kami menciptakan pengalaman team building yang tak terlupakan di lokasi-lokasi terbaik Indonesia.',
+    'Sarau Luxury – event organizer profesional untuk outing perusahaan, outbound training, company gathering, team building, dan family gathering di Bandung & seluruh Indonesia. Berpengalaman sejak 2018, dipercaya 53+ perusahaan terkemuka. Paket mulai Rp 525.000/pax.',
   keywords: [
-    'event organizer', 'outing perusahaan', 'outbound company',
-    'team building', 'gathering perusahaan', 'company gathering',
-    'family gathering', 'EO Bandung', 'EO Jakarta',
-    'sarau luxury', 'outing corporate', 'outbound bandung',
-    'outbound lembang', 'gathering bandung', 'rafting bandung',
-    'paintball bandung', 'team building bandung',
+    // Brand
+    'sarau luxury', 'sarau luxury event organizer',
+    // Core services
+    'event organizer outing perusahaan', 'outbound training perusahaan',
+    'company gathering bandung', 'team building bandung lembang',
+    'family gathering bandung', 'outing corporate bandung',
+    // Location-based
+    'EO bandung profesional', 'EO lembang', 'EO banten', 'EO curug banten',
+    'outbound lembang bandung', 'gathering bandung 2025',
+    // Activity-based
+    'rafting bandung perusahaan', 'paintball bandung corporate',
+    'outbound training jakarta', 'team building jakarta bandung',
+    // Intent-based
+    'jasa event organizer perusahaan', 'paket gathering murah bandung',
+    'harga outbound perusahaan', 'vendor gathering perusahaan indonesia',
   ],
   authors: [{ name: 'Sarau Luxury' }],
   creator: 'Sarau Luxury',
@@ -37,15 +46,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'id_ID',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com',
-    title: 'Sarau Luxury | Where Teams Grow Together',
-    description: 'Event organizer profesional untuk outing dan outbound perusahaan.',
+    title: 'Sarau Luxury | Event Organizer Outing & Gathering Perusahaan',
+    description: 'Event organizer profesional untuk outing perusahaan, outbound training, company gathering & team building. Dipercaya 53+ perusahaan sejak 2018. Paket mulai Rp 525.000/pax.',
     siteName: 'Sarau Luxury',
     images: [{ url: '/opengraph-image', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sarau Luxury | Where Teams Grow Together',
-    description: 'Event organizer profesional untuk outing dan outbound perusahaan.',
+    title: 'Sarau Luxury | Event Organizer Outing & Gathering Perusahaan',
+    description: 'Event organizer profesional untuk outing perusahaan, outbound training & team building. Dipercaya 53+ perusahaan sejak 2018.',
     images: ['/opengraph-image'],
   },
   robots: { index: true, follow: true },
