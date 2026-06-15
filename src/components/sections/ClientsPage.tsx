@@ -44,7 +44,7 @@ const clients = [
   { name: 'PT. Lippo General Insurance',   domain: 'lippoinsurance.com',     industry: 'Keuangan', color: '#d4380d' },
   { name: 'Pegadaian',                     domain: 'pegadaian.co.id',        industry: 'Keuangan', color: '#00703a' },
   // ── Kecantikan & Retail ──
-  { name: 'PT. Aulia Cosmetic Indonesia',  domain: 'auliacosmetic.com',      industry: 'Kecantikan', color: '#e91e8c' },
+  { name: 'PT. Aulia Cosmetic Indonesia',  domain: 'auliacosmetic.com',      industry: 'Kecantikan', color: '#b5006e' },
   { name: 'Hugo Store',                    domain: 'hugoboss.com',           industry: 'Retail', color: '#1a1a1a' },
   { name: 'Vinno Jaya',                    domain: 'vinnojaya.co.id',        industry: 'Retail', color: '#7b2d8b' },
   { name: 'Toko Mayham Perabot',           domain: 'mayham.co.id',           industry: 'Retail', color: '#8b4513' },
@@ -52,7 +52,7 @@ const clients = [
   // ── F&B ──
   { name: 'Konnichiwa Group',              domain: 'konichiwagroup.com',     industry: 'F&B', color: '#d62828' },
   // ── Distribusi & Konstruksi ──
-  { name: 'PT. Primasid Andalan Utama',    domain: 'primasid.com',           industry: 'Distribusi', color: '#ff6b35' },
+  { name: 'PT. Primasid Andalan Utama',    domain: 'primasid.com',           industry: 'Distribusi', color: '#c44a15' },
   { name: 'PT. Asfindo Berkah Mandiri',    domain: 'asfindo.com',            industry: 'Konstruksi', color: '#2d6a4f' },
   // ── Farmasi ──
   { name: 'PT. Kalbe Farma',               domain: 'kalbe.co.id',            industry: 'Farmasi', color: '#007bff' },
