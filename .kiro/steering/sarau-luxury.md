@@ -16,9 +16,9 @@
 
 ## Konfigurasi Email (Resend)
 - **RESEND_API_KEY:** `re_Rp8yVY7x_MDE4zZWfy4xFmhg2RwZWmSca`
-- **RESEND_FROM_EMAIL:** `sarauluxury@gmail.com`
+- **RESEND_FROM_EMAIL:** `no-reply@sarau-luxury.com`
 - **CONTACT_EMAIL (penerima notifikasi):** `sarauluxury@gmail.com`
-- **Fallback from/to:** `sarauluxury@gmail.com` (bukan onboarding@resend.dev)
+- **Fallback from/to:** `no-reply@sarau-luxury.com` (domain sudah terverifikasi di Resend)
 - Email admin (penerima form kontak & booking): `sarauluxury@gmail.com`
 - Email pengirim (sender): `sarauluxury@gmail.com`
 

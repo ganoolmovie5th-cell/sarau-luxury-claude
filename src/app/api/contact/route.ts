@@ -190,8 +190,8 @@ export async function POST(req: NextRequest) {
           timeZone: 'Asia/Jakarta',
         })
 
-        // Gunakan domain terverifikasi jika tersedia, fallback ke sarauluxury@gmail.com
-        const fromAddress = process.env.RESEND_FROM_EMAIL || 'sarauluxury@gmail.com'
+        // Gunakan domain terverifikasi jika tersedia, fallback ke no-reply@sarau-luxury.com
+        const fromAddress = process.env.RESEND_FROM_EMAIL || 'no-reply@sarau-luxury.com'
 
         await resend.emails.send({
           from:    `Sarau Luxury <${fromAddress}>`,
