@@ -137,9 +137,9 @@ NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 STRAPI_API_TOKEN=your_strapi_api_token
 
 # ── Email via Resend ──────────────────────────────────────────────────────────
-RESEND_API_KEY=your_resend_api_key
-RESEND_FROM_EMAIL=noreply@sarau-luxury.com   # domain terverifikasi di Resend (opsional)
-CONTACT_EMAIL=bandungindonesiasinergi@gmail.com
+RESEND_API_KEY=re_Rp8yVY7x_MDE4zZWfy4xFmhg2RwZWmSca
+RESEND_FROM_EMAIL=sarauluxury@gmail.com
+CONTACT_EMAIL=sarauluxury@gmail.com
 
 # ── WhatsApp via Fonnte ───────────────────────────────────────────────────────
 WHATSAPP_ADMIN_NUMBER=6285711786561          # server-only, tidak ter-expose ke browser
@@ -300,7 +300,7 @@ Pastikan semua environment variables sudah dikonfigurasi di **Vercel Dashboard �
 | Website   | [sarau-luxury.com](https://sarau-luxury.com)                      |
 | Instagram | [@sarauluxury](https://instagram.com/sarauluxury)                 |
 | WhatsApp  | [+62 857-1178-6561](https://wa.me/6285711786561)                  |
-| Email     | bandungindonesiasinergi@gmail.com                                 |
+| Email     | sarauluxury@gmail.com                                             |
 | Alamat    | Binong Permai Blok R-10/14, Curug, Banten                         |
 
 ---

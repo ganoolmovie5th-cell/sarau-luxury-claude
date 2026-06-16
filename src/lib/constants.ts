@@ -24,7 +24,7 @@ export const CONTACT = {
   phone1Wa:    '6285711786561',
   phone2:      '+62 858-1062-9838',
   phone2Wa:    '6285810629838',
-  email:       'bandungindonesiasinergi@gmail.com',
+  email:       'sarauluxury@gmail.com',
   address:     'Binong Permai Blok R-10/14, Curug, Banten',
   addressMaps: 'https://maps.google.com/?q=Binong+Permai+Blok+R-10/14+Curug+Banten',
   hours:       'Senin – Sabtu, 08.00 – 20.00 WIB',
