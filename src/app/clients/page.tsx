@@ -3,13 +3,13 @@ import ClientsPage from '@/components/sections/ClientsPage'
 import { STATS, SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: `Klien – ${STATS.totalClientsLabel} Perusahaan Terkemuka Indonesia`,
-  description: `${STATS.totalClientsLabel} perusahaan terkemuka Indonesia telah mempercayakan event mereka kepada Sarau Luxury — dari Bank BCA, Bank Mandiri, PT Kalbe Farma, PT Epson, PT Hino Motors Indonesia, RS Siloam, hingga Park Hyatt Jakarta.`,
+  title: 'Klien Korporat Sarau Luxury – BCA, Toyota, Kalbe & 50+ Lainnya',
+  description: 'Dipercaya 53+ perusahaan terkemuka Indonesia: BCA, Toyota, Kalbe Farma, Park Hyatt, Pegadaian, Bank Mandiri & banyak lagi. Lihat portofolio lengkap kami.',
   keywords: ['klien sarau luxury', 'perusahaan klien EO', 'referensi event organizer', 'portfolio outing perusahaan', 'testimoni sarau luxury'],
   alternates: { canonical: `${SITE_URL}/clients` },
   openGraph: {
-    title: `${STATS.totalClientsLabel} Perusahaan Terkemuka Percayakan Event ke Sarau Luxury`,
-    description: `Bank BCA, Bank Mandiri, Park Hyatt Jakarta, PT Epson, PT Hino Motors Indonesia, RS Siloam, PT Toyota, dan ${STATS.totalClients - 7}+ perusahaan lainnya telah mempercayakan event mereka kepada Sarau Luxury.`,
+    title: 'Klien Korporat Sarau Luxury – BCA, Toyota, Kalbe & 50+ Lainnya',
+    description: 'Dipercaya 53+ perusahaan terkemuka Indonesia: BCA, Toyota, Kalbe Farma, Park Hyatt, Pegadaian, Bank Mandiri & banyak lagi. Lihat portofolio lengkap kami.',
     url: `${SITE_URL}/clients`,
   },
 }

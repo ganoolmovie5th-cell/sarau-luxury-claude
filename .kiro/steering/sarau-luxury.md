@@ -53,6 +53,13 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - **Threads:** https://www.threads.com/@sarauluxury
 - **Alamat:** Binong Permai Blok R-10/14, Curug, Banten
 
+## SEO Metadata
+- Title max 60 karakter, meta description max 155 karakter
+- Semua halaman sudah diupdate Juni 2026 sesuai dokumen SEO B2B korporat
+- Setiap halaman pakai `export const metadata` dengan `title`, `description`, dan `openGraph`
+- Keywords & alternates dipertahankan dari versi sebelumnya
+- **Jangan ubah title/desc tanpa referensi dokumen SEO** — sudah dikurasi untuk intent B2B
+
 ## Single Source of Truth
 - Semua data kontak, statistik, sosial media → `src/lib/constants.ts`
 - Jangan hardcode email/telepon di komponen — selalu import dari `CONTACT` constant

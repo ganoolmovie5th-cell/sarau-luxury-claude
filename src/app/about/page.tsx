@@ -8,13 +8,13 @@ import CtaSection from '@/components/sections/CtaSection'
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const metadata: Metadata = {
-  title: 'Tentang Kami – Sarau Luxury Event Organizer',
-  description: 'Sarau Luxury berdiri sejak 2018 sebagai event organizer profesional untuk outing, outbound, gathering & team building perusahaan. Kenali visi, misi, nilai, dan tim kami.',
+  title: 'Tentang Sarau Luxury – 8 Tahun Melayani Event Perusahaan',
+  description: 'Berdiri sejak 2018, Sarau Luxury telah menggelar 100+ event sukses untuk 53+ perusahaan di Indonesia. Kenali tim dan filosofi kami di sini.',
   keywords: ['tentang sarau luxury', 'profil event organizer', 'EO profesional Banten', 'sejarah sarau luxury', 'tim sarau luxury'],
   alternates: { canonical: `${SITE_URL}/about` },
   openGraph: {
-    title: 'Tentang Sarau Luxury – EO Profesional Sejak 2018',
-    description: 'Berdiri sejak 2018, Sarau Luxury telah dipercaya 53+ perusahaan terkemuka untuk menggelar outing, outbound, gathering dan team building.',
+    title: 'Tentang Sarau Luxury – 8 Tahun Melayani Event Perusahaan',
+    description: 'Berdiri sejak 2018, Sarau Luxury telah menggelar 100+ event sukses untuk 53+ perusahaan di Indonesia. Kenali tim dan filosofi kami di sini.',
     url: `${SITE_URL}/about`,
   },
 }

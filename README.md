@@ -247,6 +247,21 @@ sarau-luxury-claude/
 - Sitemap 27 URL dengan `priority` & `changeFrequency`
 - Schema.org: LocalBusiness, AggregateRating, FAQPage, BreadcrumbList, Offers
 
+### SEO Metadata per Halaman (diupdate Juni 2026)
+
+| Halaman | Title | Meta Description |
+|---------|-------|-----------------|
+| `/` | Sarau Luxury – Event Organizer Outing & Outbound Perusahaan | Jasa outing, outbound training & company gathering terpercaya sejak 2018. 53+ klien korporat: BCA, Toyota, Kalbe Farma. Paket mulai Rp 525.000/pax. Konsultasi gratis! |
+| `/about` | Tentang Sarau Luxury – 8 Tahun Melayani Event Perusahaan | Berdiri sejak 2018, Sarau Luxury telah menggelar 100+ event sukses untuk 53+ perusahaan di Indonesia. Kenali tim dan filosofi kami di sini. |
+| `/services` | Layanan Outing & Outbound Perusahaan – Sarau Luxury | Company gathering, outbound training, team building, family gathering, hingga meeting package. Solusi lengkap event perusahaan dari Rp 125.000/pax. |
+| `/packages` | Harga Paket Outing & Gathering Perusahaan – Sarau Luxury | Lihat daftar harga lengkap: Gathering Silver Rp 525K, Gold Rp 675K, Platinum Rp 925K/pax. Transparan, all-in, tanpa biaya tersembunyi. |
+| `/clients` | Klien Korporat Sarau Luxury – BCA, Toyota, Kalbe & 50+ Lainnya | Dipercaya 53+ perusahaan terkemuka Indonesia: BCA, Toyota, Kalbe Farma, Park Hyatt, Pegadaian, Bank Mandiri & banyak lagi. |
+| `/gallery` | Galeri Event Outing & Outbound Perusahaan – Sarau Luxury | Lihat dokumentasi nyata event outing, outbound training & company gathering yang telah kami gelar. 100+ event sukses dari berbagai industri. |
+| `/blog` | Blog Tips Outing & Outbound Perusahaan – Sarau Luxury | Panduan lengkap merencanakan outing, gathering & outbound training perusahaan. Tips destinasi, anggaran, dan ide team building dari para ahlinya. |
+| `/contact` | Kontak Sarau Luxury – Konsultasi Event Perusahaan Gratis | Hubungi Sarau Luxury via WhatsApp, telepon, atau email. Konsultasi gratis, respon dalam 15 menit. Senin–Sabtu 08.00–20.00 WIB. |
+| `/booking` | Booking Event Perusahaan – Sarau Luxury | Pesan event outing, outbound, atau gathering perusahaan Anda sekarang. Isi form booking & tim kami hubungi dalam 15 menit untuk penawaran terbaik. |
+| `/faq` | FAQ – Pertanyaan Umum Seputar Event Sarau Luxury | Jawaban lengkap soal paket, harga, destinasi, minimal peserta, dan proses booking di Sarau Luxury. Ada pertanyaan lain? Kami siap membantu. |
+
 ---
 
 ## CMS & Integrasi

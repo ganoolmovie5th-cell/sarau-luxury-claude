@@ -4,13 +4,13 @@ import FAQClient from './FAQClient'
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const metadata: Metadata = {
-  title: 'FAQ – Pertanyaan Umum Seputar Outing & Gathering Perusahaan',
-  description: 'Jawaban lengkap seputar paket outing perusahaan, minimal peserta, sistem DP, booking event, asuransi peserta, dan layanan Sarau Luxury. Konsultasi gratis via WhatsApp.',
+  title: 'FAQ – Pertanyaan Umum Seputar Event Sarau Luxury',
+  description: 'Jawaban lengkap soal paket, harga, destinasi, minimal peserta, dan proses booking di Sarau Luxury. Ada pertanyaan lain? Kami siap membantu.',
   keywords: ['FAQ event organizer', 'pertanyaan outing perusahaan', 'minimal peserta outbound', 'cara booking gathering', 'harga paket outing'],
   alternates: { canonical: `${BASE_URL}/faq` },
   openGraph: {
-    title: 'FAQ Sarau Luxury – Pertanyaan Umum Outing & Gathering',
-    description: 'Jawaban lengkap seputar paket, booking, minimal peserta, sistem DP, asuransi, dan layanan event Sarau Luxury.',
+    title: 'FAQ – Pertanyaan Umum Seputar Event Sarau Luxury',
+    description: 'Jawaban lengkap soal paket, harga, destinasi, minimal peserta, dan proses booking di Sarau Luxury. Ada pertanyaan lain? Kami siap membantu.',
     url: `${BASE_URL}/faq`,
   },
 }

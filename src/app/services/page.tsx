@@ -5,13 +5,13 @@ import ServicesPage from '@/components/sections/ServicesPage'
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const metadata: Metadata = {
-  title: 'Layanan – Company Gathering, Outbound & Team Building',
-  description: 'Sarau Luxury menyediakan layanan lengkap: Company Gathering 2D1N mulai Rp 525rb/pax, Outing Perusahaan, Outbound Training, Team Building, Family Gathering, Meeting Package & Dokumentasi.',
+  title: 'Layanan Outing & Outbound Perusahaan – Sarau Luxury',
+  description: 'Company gathering, outbound training, team building, family gathering, hingga meeting package. Solusi lengkap event perusahaan dari Rp 125.000/pax.',
   keywords: ['layanan outing perusahaan', 'outbound training bandung', 'team building bandung', 'company gathering', 'family gathering bandung', 'meeting package', 'EO Curug Banten'],
   alternates: { canonical: `${SITE_URL}/services` },
   openGraph: {
-    title: 'Layanan Sarau Luxury – Company Gathering, Outbound & Team Building',
-    description: 'Company Gathering mulai Rp 525rb/pax, Outbound Training, Team Building, Family Gathering dan Meeting Package. Hubungi kami untuk penawaran terbaik.',
+    title: 'Layanan Outing & Outbound Perusahaan – Sarau Luxury',
+    description: 'Company gathering, outbound training, team building, family gathering, hingga meeting package. Solusi lengkap event perusahaan dari Rp 125.000/pax.',
     url: `${SITE_URL}/services`,
   },
 }

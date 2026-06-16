@@ -5,13 +5,13 @@ import ContactForm from '@/components/sections/ContactForm'
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const metadata: Metadata = {
-  title: 'Kontak – Konsultasi Gratis Event Perusahaan',
-  description: 'Hubungi Sarau Luxury untuk konsultasi GRATIS event outing, outbound, gathering & team building perusahaan Anda. WhatsApp: +62 857-1178-6561. Senin–Sabtu 08.00–20.00 WIB.',
+  title: 'Kontak Sarau Luxury – Konsultasi Event Perusahaan Gratis',
+  description: 'Hubungi Sarau Luxury via WhatsApp, telepon, atau email. Konsultasi gratis, respon dalam 15 menit. Senin–Sabtu 08.00–20.00 WIB.',
   keywords: ['kontak sarau luxury', 'konsultasi outing perusahaan', 'hubungi EO bandung', 'booking outbound', 'tanya harga gathering'],
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
-    title: 'Kontak Sarau Luxury – Konsultasi Gratis',
-    description: 'Konsultasi gratis untuk event outing, outbound & gathering perusahaan Anda. Hubungi kami sekarang di +62 857-1178-6561.',
+    title: 'Kontak Sarau Luxury – Konsultasi Event Perusahaan Gratis',
+    description: 'Hubungi Sarau Luxury via WhatsApp, telepon, atau email. Konsultasi gratis, respon dalam 15 menit. Senin–Sabtu 08.00–20.00 WIB.',
     url: `${SITE_URL}/contact`,
   },
 }

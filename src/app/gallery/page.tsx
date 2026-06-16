@@ -5,13 +5,13 @@ import { SITE_URL } from '@/lib/constants'
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const metadata: Metadata = {
-  title: 'Galeri – Dokumentasi Event Outing & Outbound',
-  description: 'Lihat 20+ foto dokumentasi event outing, outbound training, gathering dan team building perusahaan bersama Sarau Luxury. Bukti nyata keseruan dan profesionalisme kami.',
+  title: 'Galeri Event Outing & Outbound Perusahaan – Sarau Luxury',
+  description: 'Lihat dokumentasi nyata event outing, outbound training & company gathering yang telah kami gelar. 100+ event sukses dari berbagai industri.',
   keywords: ['galeri event outing', 'foto outbound perusahaan', 'dokumentasi gathering', 'foto team building', 'event organizer dokumentasi'],
   alternates: { canonical: `${SITE_URL}/gallery` },
   openGraph: {
-    title: 'Galeri Sarau Luxury – Dokumentasi Event',
-    description: '20+ foto dari berbagai event outing, outbound, gathering dan team building perusahaan bersama Sarau Luxury.',
+    title: 'Galeri Event Outing & Outbound Perusahaan – Sarau Luxury',
+    description: 'Lihat dokumentasi nyata event outing, outbound training & company gathering yang telah kami gelar. 100+ event sukses dari berbagai industri.',
     url: `${SITE_URL}/gallery`,
   },
 }

@@ -12,8 +12,8 @@ import BlogPreview from '@/components/sections/BlogPreview'
 import CtaSection from '@/components/sections/CtaSection'
 
 export const metadata: Metadata = {
-  title: 'Sarau Luxury | Event Organizer Outing & Gathering Perusahaan Terpercaya',
-  description: 'Sarau Luxury – event organizer profesional #1 untuk outing perusahaan, outbound training, company gathering & team building di Bandung & seluruh Indonesia. Dipercaya 53+ perusahaan sejak 2018. Paket mulai Rp 525.000/pax.',
+  title: 'Sarau Luxury – Event Organizer Outing & Outbound Perusahaan',
+  description: 'Jasa outing, outbound training & company gathering terpercaya sejak 2018. 53+ klien korporat: BCA, Toyota, Kalbe Farma. Paket mulai Rp 525.000/pax. Konsultasi gratis!',
   keywords: [
     'event organizer outing perusahaan terpercaya',
     'company gathering bandung 2025',
