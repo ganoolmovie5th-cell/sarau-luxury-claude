@@ -55,20 +55,30 @@ async function sendWhatsAppNotif(body: {
     .filter((l) => l !== null)
     .join('\n')
 
+  const payload = new URLSearchParams({
+    target:      waTarget,
+    message:     lines,
+    countryCode: '62',
+  })
+
+  console.log('[WA] Mengirim ke Fonnte → target:', waTarget)
+
   const res = await fetch('https://api.fonnte.com/send', {
     method: 'POST',
     headers: {
       Authorization: token,
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: JSON.stringify({ target: waTarget, message: lines }),
+    body: payload.toString(),
   })
 
   const result = await res.json()
+  console.log('[WA] Fonnte response:', JSON.stringify(result))
+
   if (!result.status) {
-    console.warn('[WA] Fonnte error:', result)
+    console.warn('[WA] Fonnte error — status:', result.status, '| reason:', result.reason || result.message || JSON.stringify(result))
   } else {
-    console.log('[WA] Notifikasi WhatsApp terkirim ke', waTarget)
+    console.log('[WA] Notifikasi WhatsApp berhasil terkirim ke', waTarget)
   }
 }
 
