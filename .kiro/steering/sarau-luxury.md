@@ -23,9 +23,11 @@
 - Email pengirim (sender): `sarauluxury@gmail.com`
 
 ## Konfigurasi WhatsApp (Fonnte)
-- **WHATSAPP_ADMIN_NUMBER:** `6285711786561` (server-only)
-- **NEXT_PUBLIC_WHATSAPP_NUMBER:** `6285711786561`
+- **WHATSAPP_ADMIN_NUMBER:** `6285711786561` (server-only, penerima notifikasi dari form)
+- **NEXT_PUBLIC_WHATSAPP_NUMBER:** `6285711786561` (publik, untuk tombol floating chat di website)
 - **FONNTE_TOKEN:** set via env
+- **Format API:** `application/x-www-form-urlencoded` + `countryCode: '62'` (bukan JSON)
+- **Catatan:** Device di Fonnte harus statusnya **Connected** (QR scan aktif). Jika "disconnected device" → masuk app.fonnte.com → reconnect device.
 
 ## Third-Party Services
 | Service | Status | Fungsi |
@@ -54,6 +56,11 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 ## Single Source of Truth
 - Semua data kontak, statistik, sosial media → `src/lib/constants.ts`
 - Jangan hardcode email/telepon di komponen — selalu import dari `CONTACT` constant
+
+## Troubleshooting Fonnte
+- Error `request invalid on disconnected device` → device di Fonnte tidak terkoneksi, scan ulang QR
+- API Fonnte harus dikirim sebagai `application/x-www-form-urlencoded`, bukan `application/json`
+- Cek Vercel Function Logs → filter `/api/contact` → cari baris `[WA] Fonnte response:` untuk debug
 
 ## Security Notes
 - Rate limit: 5 req/menit per IP (in-memory, tidak scalable di Vercel serverless)

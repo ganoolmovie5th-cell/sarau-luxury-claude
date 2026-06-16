@@ -214,7 +214,9 @@ sarau-luxury-claude/
 | **Input Sanitization** | Escape `& < > " '` — cegah XSS di email HTML |
 | **Input Validation** | Format email, nomor HP, panjang min/max setiap field |
 | **HTTP Headers** | CSP, HSTS, COOP, X-Frame-Options, X-Content-Type-Options, Permissions-Policy |
-| **Secret Protection** | `WHATSAPP_ADMIN_NUMBER` & `FONNTE_TOKEN` server-only |
+| **Fonnte API Format** | `application/x-www-form-urlencoded` + `countryCode: '62'` (bukan JSON) |
+| **Secret Protection** | `WHATSAPP_ADMIN_NUMBER` & `FONNTE_TOKEN` server-only, tidak ter-expose ke browser |
+| **Fonnte Troubleshoot** | Error `disconnected device` → reconnect device di [app.fonnte.com](https://app.fonnte.com) |
 | **Image Proxy** | `remotePatterns` ketat — hanya `/d/**` dari `lh3.googleusercontent.com` |
 | **CI Secret Scan** | TruffleHog setiap push & PR + jadwal Senin pagi |
 | **Dependency Audit** | `npm audit --audit-level=high` di setiap PR |
