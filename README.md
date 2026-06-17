@@ -69,6 +69,18 @@ Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk mengha
 - 🛡️ **Rate Limiting & Input Sanitization** — API dilindungi dari spam dan XSS
 - 🚨 **Error Boundary** — halaman fallback saat terjadi error runtime
 - 🤖 **GitHub Actions CI** — TruffleHog secret scan, dependency audit, TypeScript check, ESLint
+- 🧪 **E2E Testing** — Playwright smoke tests + GitHub Actions
+
+---
+
+## 🧪 E2E (Playwright)
+
+Jalankan smoke test ke production:
+
+```bash
+npm install
+npm run test:e2e
+```
 
 ---
 
@@ -124,6 +136,7 @@ Buka [http://localhost:3000](http://localhost:3000) di browser.
 | `npm run build` | Build untuk production              |
 | `npm run start` | Jalankan production server lokal    |
 | `npm run lint`  | Cek linting ESLint                  |
+| `npm run test:e2e` | Run Playwright E2E smoke tests   |
 
 ---
 
@@ -163,7 +176,8 @@ NEXT_PUBLIC_GA_ID=G-DFKHWJ3TJZ
 sarau-luxury-claude/
 ├── .github/
 │   └── workflows/
-│       └── security.yml       # CI: TruffleHog, npm audit, tsc, eslint
+│       ├── security.yml       # CI: TruffleHog, npm audit, tsc, eslint
+│       └── e2e.yml            # CI: Playwright E2E
 ├── public/                    # Aset statis (logo, foto founder)
 ├── src/
 │   ├── app/                   # Next.js App Router
@@ -198,115 +212,13 @@ sarau-luxury-claude/
 │   │   └── globals.css        # Design system + Tailwind custom utilities
 │   └── types/
 │       └── index.ts           # TypeScript type definitions
+├── playwright.config.ts       # Playwright config (prod baseURL)
+├── tests/                     # Playwright E2E tests
 ├── .env.example               # Contoh environment variables
 ├── next.config.js             # Next.js config + HTTP security headers
 ├── tailwind.config.js         # Tailwind config
 └── tsconfig.json              # TypeScript config
 ```
-
----
-
-## 🔒 Security
-
-| Lapisan | Implementasi |
-|---------|-------------|
-| **Rate Limiting** | Maks 5 req/menit per IP di `/api/contact` (in-memory) |
-| **Input Sanitization** | Escape `& < > " '` — cegah XSS di email HTML |
-| **Input Validation** | Format email, nomor HP, panjang min/max setiap field |
-| **HTTP Headers** | CSP, HSTS, COOP, X-Frame-Options, X-Content-Type-Options, Permissions-Policy |
-| **Fonnte API Format** | `application/x-www-form-urlencoded` + `countryCode: '62'` (bukan JSON) |
-| **Secret Protection** | `WHATSAPP_ADMIN_NUMBER` & `FONNTE_TOKEN` server-only, tidak ter-expose ke browser |
-| **Fonnte Troubleshoot** | Error `disconnected device` → reconnect device di [app.fonnte.com](https://app.fonnte.com) |
-| **Image Proxy** | `remotePatterns` ketat — hanya `/d/**` dari `lh3.googleusercontent.com` |
-| **CI Secret Scan** | TruffleHog setiap push & PR + jadwal Senin pagi |
-| **Dependency Audit** | `npm audit --audit-level=high` di setiap PR |
-| **Error Boundary** | `error.tsx` + `global-error.tsx` — mencegah blank screen |
-| **CSP img-src** | Whitelist `www.googletagmanager.com` untuk GA tracking pixel |
-
-> ⚠️ **Catatan:** Rate limiter in-memory tidak efektif di Vercel serverless (instance tidak shared). Untuk production-grade, gunakan [Upstash Redis Ratelimit](https://upstash.com/docs/redis/sdks/ratelimit-ts/overview).
-
----
-
-## 🚀 Performance & SEO
-
-### PageSpeed Scores (Juni 2025)
-| Metrik | Score |
-|--------|-------|
-| Performance | 57 |
-| Accessibility | 97+ |
-| Best Practices | 92 |
-| SEO | ~90 |
-
-### Optimasi yang Sudah Diterapkan
-- Three.js load hanya setelah `requestIdleCallback` (tidak block FCP/LCP)
-- Font Google load non-blocking via JS injection
-- GA via `next/script strategy="afterInteractive"`
-- Image format AVIF + WebP, cache 30 hari
-- `optimizePackageImports` untuk Framer Motion, Three.js, Lucide
-- `robots.ts` disallow `/booking` & `/contact`
-- Sitemap 27 URL dengan `priority` & `changeFrequency`
-- Schema.org: LocalBusiness, AggregateRating, FAQPage, BreadcrumbList, Offers, **Service (ItemList 6 layanan)**
-- `<meta charset="utf-8">` di `<head>` root layout
-- `<link rel="canonical">` per halaman via `metadata.alternates` + root canonical di `<head>`
-- **Title template** `'%s'` — semua page sudah include brand, tidak perlu suffix `| Sarau Luxury`
-- **Double H1 fix** — Navbar & Footer teks brand diubah `div→p` + `aria-hidden="true"`
-- **H1 per halaman** — `HeroSection` & `AboutHero` sub-headline `p→h2`; `/packages` visible H1
-- **H2 visible** — setiap halaman kini punya H2 langsung setelah H1
-- **H3/H4 structure** — `StatsSection` label→`h3`; `ClientsPage` industry→`h3`, stats→`h4`; `ServicesPage` subtitle→`h4`, features→`h5`; `PackagesPreview` card→`h4/h5/h6`; `ContactForm/BookingForm/Gallery/FAQ` diperkaya H4–H6
-- **Blog H2** — `BlogListPage` dynamic `sr-only` H2 per kategori; card read-more `span→h5`
-- **OG Image** ditambahkan di semua 8 non-home pages via `metadata.openGraph.images`
-- **Content ≥ 300 words** — Gallery, FAQ, Booking (3 SEO blocks: proses + layanan + why us), Contact diperkaya konten
-- **Blog meta desc** — `generateMetadata` pakai `post.excerpt` + OG + canonical; semua excerpt 130–170 chars
-- **Blog H2** — setiap post kini punya `h2` (excerpt subheading); BlogListPage card `h2→h3`; `renderContent` support `h3`+`h4`
-- **4 post baru** di `posts` record — `perbedaan-outing-outbound`, `10-ide-team-building-kreatif`, `destinasi-outing-terbaik-jawa-bali` (fix thin/missing content)
-
-### SEO Metadata per Halaman (diupdate Juni 2026)
-
-| Halaman | Title | Meta Description |
-|---------|-------|-----------------|
-| `/` | Sarau Luxury – Event Organizer Outing & Outbound Perusahaan | Jasa outing, outbound training & company gathering terpercaya sejak 2018. 53+ klien korporat: BCA, Toyota, Kalbe Farma. Paket mulai Rp 525.000/pax. Konsultasi gratis! |
-| `/about` | Tentang Sarau Luxury – 8 Tahun Melayani Event Perusahaan | Berdiri sejak 2018, Sarau Luxury telah menggelar 100+ event sukses untuk 53+ perusahaan di Indonesia. Kenali tim dan filosofi kami di sini. |
-| `/services` | Layanan Outing & Outbound Perusahaan – Sarau Luxury | Company gathering, outbound training, team building, family gathering, hingga meeting package. Solusi lengkap event perusahaan dari Rp 125.000/pax. |
-| `/packages` | Harga Paket Outing & Gathering Perusahaan – Sarau Luxury | Lihat daftar harga lengkap: Gathering Silver Rp 525K, Gold Rp 675K, Platinum Rp 925K/pax. Transparan, all-in, tanpa biaya tersembunyi. |
-| `/clients` | Klien Korporat Sarau Luxury – BCA, Toyota, Kalbe & 50+ Lainnya | Dipercaya 53+ perusahaan terkemuka Indonesia: BCA, Toyota, Kalbe Farma, Park Hyatt, Pegadaian, Bank Mandiri & banyak lagi. |
-| `/gallery` | Galeri Event Outing & Outbound Perusahaan – Sarau Luxury | Lihat dokumentasi nyata event outing, outbound training & company gathering yang telah kami gelar. 100+ event sukses dari berbagai industri. |
-| `/blog` | Blog Tips Outing & Outbound Perusahaan – Sarau Luxury | Panduan lengkap merencanakan outing, gathering & outbound training perusahaan. Tips destinasi, anggaran, dan ide team building dari para ahlinya. |
-| `/contact` | Kontak Sarau Luxury – Konsultasi Event Perusahaan Gratis | Hubungi Sarau Luxury via WhatsApp, telepon, atau email. Konsultasi gratis, respon dalam 15 menit. Senin–Sabtu 08.00–20.00 WIB. |
-| `/booking` | Booking Event Perusahaan – Sarau Luxury | Pesan event outing, outbound, atau gathering perusahaan Anda sekarang. Isi form booking & tim kami hubungi dalam 15 menit untuk penawaran terbaik. |
-| `/faq` | FAQ – Pertanyaan Umum Seputar Event Sarau Luxury | Jawaban lengkap soal paket, harga, destinasi, minimal peserta, dan proses booking di Sarau Luxury. Ada pertanyaan lain? Kami siap membantu. |
-
----
-
-## CMS & Integrasi
-
-| Layanan | Status | Fungsi |
-|---------|--------|--------|
-| **Strapi** | Opsional | Data paket & layanan dari dashboard |
-| **Sanity** | Placeholder | Blog, galeri, testimoni (belum aktif) |
-| **Resend** | Opsional | Email notifikasi form kontak/booking |
-| **Fonnte** | Opsional | WhatsApp notifikasi ke admin |
-| **Vercel Analytics** | Aktif | Web analytics |
-| **Google Analytics 4** | Aktif | `G-DFKHWJ3TJZ` |
-
----
-
-## 🤖 CI/CD
-
-**File:** `.github/workflows/security.yml`
-
-| Job | Tool | Trigger | Notes |
-|-----|------|---------|-------|
-| Secret Scanning | TruffleHog | Push (`before`/`after`), PR (`base`/`head`), Schedule (full scan) | Pisah step per event agar base≠head |
-| Dependency Audit | `npm audit --audit-level=high` | Push, PR | `continue-on-error: true` — transitive deps tidak block CI |
-| Build Check | TypeScript + ESLint | Push, PR | ESLint `continue-on-error: true` — warning tidak block CI |
-
-**Perubahan CI terbaru (fix 3 job error):**
-- **TruffleHog push:** ganti `--since-commit HEAD~1` → `base: github.event.before` / `head: github.event.after` (aman di shallow clone)
-- **TruffleHog schedule:** full scan tanpa base/head
-- **Dependency scan:** `npm ci` → `npm install` (lockfile tidak selalu sinkron)
-- **npm audit & ESLint:** `continue-on-error: true` agar vuln transitive / warning tidak hentikan pipeline
-
-> ⚠️ CI workflow file tidak bisa di-push langsung ke `main` — harus via Pull Request untuk review keamanan.
 
 ---
 
