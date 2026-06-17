@@ -102,6 +102,59 @@ export default function FAQClient() {
               <FAQItem key={q} q={q} a={a} index={i} />
             ))}
           </div>
+
+          {/* SEO content — tambah word count & konteks untuk crawler */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="grid md:grid-cols-3 gap-6 mb-10"
+          >
+            {[
+              {
+                icon: '🗓️',
+                title: 'Proses Cepat',
+                body: 'Konsultasi gratis → proposal dalam 24 jam → konfirmasi booking → persiapan event. Proses mudah dan transparan dari awal hingga hari H.',
+              },
+              {
+                icon: '📦',
+                title: 'Paket Lengkap',
+                body: 'Gathering Silver (Rp 525K), Gold (Rp 675K), Platinum (Rp 925K/pax). Semua sudah termasuk akomodasi, makan, aktivitas, dan dokumentasi.',
+              },
+              {
+                icon: '🌿',
+                title: 'Layanan Profesional',
+                body: 'Tim fasilitator bersertifikat, pemandu berpengalaman, dan event manager yang siap mendampingi Anda dari planning hingga evaluasi pasca event.',
+              },
+            ].map(({ icon, title, body }) => (
+              <div key={title} className="bg-white rounded-2xl p-6 border border-earth/10 shadow-sm">
+                <div className="text-3xl mb-3">{icon}</div>
+                <h3 className="font-display font-bold text-lg text-bark mb-2">{title}</h3>
+                <p className="text-earth/70 text-sm leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="bg-white rounded-2xl p-7 border border-earth/10 shadow-sm mb-4"
+          >
+            <h2 className="font-display text-2xl font-bold text-bark mb-3">Tentang Sarau Luxury</h2>
+            <p className="text-earth/70 leading-relaxed mb-3">
+              Sarau Luxury adalah event organizer profesional yang berdiri sejak 2018, berpusat di Banten dan
+              melayani seluruh Indonesia. Kami spesialis dalam <strong>outing perusahaan</strong>,{' '}
+              <strong>outbound training</strong>, <strong>company gathering</strong>, dan{' '}
+              <strong>team building</strong> untuk korporat.
+            </p>
+            <p className="text-earth/70 leading-relaxed">
+              Dipercaya oleh 53+ perusahaan terkemuka termasuk BCA, Toyota, Kalbe Farma, Park Hyatt, dan Bank Mandiri.
+              Dengan pengalaman lebih dari 8 tahun dan 100+ event sukses, kami hadir untuk memastikan setiap event
+              perusahaan Anda berjalan lancar, berkesan, dan sesuai anggaran.
+              Hubungi kami untuk konsultasi gratis — respon dalam 15 menit, Senin–Sabtu 08.00–20.00 WIB.
+            </p>
+          </motion.div>
         </div>
       </div>
       <CtaSection />

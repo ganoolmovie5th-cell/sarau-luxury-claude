@@ -346,7 +346,7 @@ function AddOnCard({ item, i, inView }: { item: AddOnItem; i: number; inView: bo
 
 // ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
-export default function PackagesPreview() {
+export default function PackagesPreview({ hideHeader = false }: { hideHeader?: boolean }) {
   const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true })
   const [activeTab, setActiveTab] = useState('gathering')
 
@@ -358,22 +358,24 @@ export default function PackagesPreview() {
       />
 
       <div className="container-wide relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-10"
-        >
-          <span className="section-tag mb-4 inline-flex">💼 Price List</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-bark mb-4">
-            Paket & Harga yang{' '}
-            <span className="gradient-text">Transparan</span>
-          </h2>
-          <p className="text-earth/80 text-lg max-w-xl mx-auto">
-            Semua harga sudah termasuk fasilitas lengkap. Hubungi kami untuk penawaran spesial grup besar.
-          </p>
-        </motion.div>
+        {/* Header — disembunyikan jika halaman sudah punya H1 sendiri */}
+        {!hideHeader && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7 }}
+            className="text-center mb-10"
+          >
+            <span className="section-tag mb-4 inline-flex">💼 Price List</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-bark mb-4">
+              Paket & Harga yang{' '}
+              <span className="gradient-text">Transparan</span>
+            </h2>
+            <p className="text-earth/80 text-lg max-w-xl mx-auto">
+              Semua harga sudah termasuk fasilitas lengkap. Hubungi kami untuk penawaran spesial grup besar.
+            </p>
+          </motion.div>
+        )}
 
         {/* Tabs */}
         <motion.div

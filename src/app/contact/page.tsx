@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     title: 'Kontak Sarau Luxury – Konsultasi Event Perusahaan Gratis',
     description: 'Hubungi Sarau Luxury via WhatsApp, telepon, atau email. Konsultasi gratis, respon dalam 15 menit. Senin–Sabtu 08.00–20.00 WIB.',
     url: `${SITE_URL}/contact`,
+    images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: 'Sarau Luxury – Kontak & Konsultasi Gratis' }],
   },
 }
 

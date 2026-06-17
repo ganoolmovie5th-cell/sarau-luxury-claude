@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     title: 'Harga Paket Outing & Gathering Perusahaan – Sarau Luxury',
     description: 'Lihat daftar harga lengkap: Gathering Silver Rp 525K, Gold Rp 675K, Platinum Rp 925K/pax. Transparan, all-in, tanpa biaya tersembunyi.',
     url: `${SITE_URL}/packages`,
+    images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: 'Sarau Luxury – Paket & Harga Event Perusahaan' }],
   },
 }
 
@@ -28,14 +29,25 @@ const breadcrumbJsonLd = {
 
 export default function PackagesPage() {
   return (
-    <div className="pt-24">
+    <div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      {/* H1 untuk SEO — secara visual tersembunyi, paketsection pakai h2 */}
-      <h1 className="sr-only">Harga Paket Outing &amp; Gathering Perusahaan – Sarau Luxury</h1>
-      <PackagesPreview />
+      {/* Page hero header dengan H1 visible */}
+      <div className="pt-36 pb-10 bg-cream text-center">
+        <div className="container-tight">
+          <span className="section-tag mb-4 inline-flex">💼 Price List</span>
+          <h1 className="font-display text-5xl md:text-6xl font-bold text-bark mb-4">
+            Paket & Harga yang{' '}
+            <span className="gradient-text">Transparan</span>
+          </h1>
+          <p className="text-earth/70 text-lg max-w-xl mx-auto">
+            Semua harga sudah all-in tanpa biaya tersembunyi. Mulai dari Rp 125.000/pax untuk outbound hingga Rp 925.000/pax untuk gathering platinum.
+          </p>
+        </div>
+      </div>
+      <PackagesPreview hideHeader />
       <CtaSection />
     </div>
   )

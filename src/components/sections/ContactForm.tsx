@@ -272,6 +272,36 @@ export default function ContactForm() {
               Buka di Google Maps →
             </a>
           </div>
+
+          {/* SEO content block */}
+          <div className="mt-10 grid md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-2xl p-6 border border-earth/10 shadow-sm">
+              <h2 className="font-display text-xl font-bold text-bark mb-3">Kenapa Pilih Sarau Luxury?</h2>
+              <ul className="space-y-2 text-sm text-earth/70">
+                <li className="flex items-start gap-2"><span className="text-forest mt-0.5">✓</span> <span>Berpengalaman sejak 2018 — 100+ event sukses</span></li>
+                <li className="flex items-start gap-2"><span className="text-forest mt-0.5">✓</span> <span>Dipercaya 53+ perusahaan terkemuka: BCA, Toyota, Kalbe Farma</span></li>
+                <li className="flex items-start gap-2"><span className="text-forest mt-0.5">✓</span> <span>Paket all-in mulai Rp 125.000/pax — transparan, tanpa biaya tersembunyi</span></li>
+                <li className="flex items-start gap-2"><span className="text-forest mt-0.5">✓</span> <span>Layanan 20+ destinasi: Lembang, Bali, Bromo, Anyer & seluruh Indonesia</span></li>
+                <li className="flex items-start gap-2"><span className="text-forest mt-0.5">✓</span> <span>Tim fasilitator bersertifikat & pemandu berpengalaman</span></li>
+                <li className="flex items-start gap-2"><span className="text-forest mt-0.5">✓</span> <span>Respon cepat — konsultasi gratis dalam 15 menit</span></li>
+              </ul>
+            </div>
+            <div className="bg-white rounded-2xl p-6 border border-earth/10 shadow-sm">
+              <h2 className="font-display text-xl font-bold text-bark mb-3">Layanan Kami</h2>
+              <div className="grid grid-cols-2 gap-2 text-sm text-earth/70">
+                {[
+                  '🏕️ Company Gathering', '⛺ Outing Perusahaan',
+                  '🏔️ Outbound Training', '🤝 Team Building',
+                  '❤️ Family Gathering', '🎤 Meeting Package',
+                  '📸 Dokumentasi Event', '🚌 Transportasi',
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-1.5 bg-cream rounded-lg px-3 py-2 text-xs font-medium text-bark">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

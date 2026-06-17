@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     title: 'Booking Event Perusahaan – Sarau Luxury',
     description: 'Pesan event outing, outbound, atau gathering perusahaan Anda sekarang. Isi form booking & tim kami hubungi dalam 15 menit untuk penawaran terbaik.',
     url: `${SITE_URL}/booking`,
+    images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: 'Sarau Luxury – Booking Event Perusahaan' }],
   },
 }
 

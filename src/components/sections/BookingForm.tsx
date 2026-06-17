@@ -125,6 +125,21 @@ export default function BookingForm() {
           <p className="text-earth/70 mt-3">Isi form di bawah dan kami siapkan penawaran terbaik untuk Anda.</p>
         </div>
 
+        {/* SEO content */}
+        <div className="grid grid-cols-3 gap-4 mb-8">
+          {[
+            { icon: '⚡', label: 'Respon 15 Menit', desc: 'Tim kami siap merespons cepat' },
+            { icon: '💰', label: 'Konsultasi Gratis', desc: 'Tanpa biaya konsultasi awal' },
+            { icon: '📋', label: 'Proposal 24 Jam', desc: 'Penawaran lengkap & transparan' },
+          ].map(({ icon, label, desc }) => (
+            <div key={label} className="bg-white rounded-xl p-4 text-center border border-earth/10 shadow-sm">
+              <div className="text-2xl mb-1">{icon}</div>
+              <div className="font-semibold text-bark text-xs mb-0.5">{label}</div>
+              <div className="text-earth/60 text-xs">{desc}</div>
+            </div>
+          ))}
+        </div>
+
         {/* Progress */}
         <div className="flex items-center justify-center mb-10 gap-3">
           {steps.map(({ id, label, icon: Icon }, i) => (

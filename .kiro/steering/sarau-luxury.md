@@ -61,10 +61,14 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - **Jangan ubah title/desc tanpa referensi dokumen SEO** — sudah dikurasi untuk intent B2B
 
 ## SEO Technical (update Juni 2026)
-- `<meta charset="utf-8">` ditambahkan di root `layout.tsx` `<head>`
-- `<link rel="canonical" href="https://sarau-luxury.com/">` ditambahkan di root `<head>` (homepage), halaman lain via `metadata.alternates.canonical`
-- **H1 audit selesai** — semua 10 halaman kini punya tepat 1 H1; `/packages` pakai `<h1 className="sr-only">` karena section-nya pakai `h2`
-- **Service JSON-LD** ditambahkan di `services/page.tsx` — `ItemList` berisi 6 `Service` schema: Company Gathering, Outing Perusahaan, Outbound Training, Team Building, Family Gathering, Meeting Package
+- `<meta charset="utf-8">` di root `layout.tsx` `<head>`
+- `<link rel="canonical">` per halaman via `metadata.alternates` + root di `<head>`
+- **Title ≤ 60 chars** — semua halaman dicek; `clients` dipangkas, layout default dipersingkat
+- **OG Image** — semua 8 non-home pages punya `openGraph.images` (1200×630, `/opengraph-image`)
+- **1 H1 per halaman** — `/packages` punya visible H1 di page header; `PackagesPreview` terima prop `hideHeader` agar tidak render `h2` duplicate header saat dipanggil dari halaman packages
+- **Service JSON-LD** di `services/page.tsx` — `ItemList` 6 Service schema
+- **Content ≥ 300 words** — Gallery (stats cards + SEO block), FAQ (3 info cards + about block), Booking (3 stats cards), Contact (kenapa pilih + layanan grid)
+- **Jangan hapus konten SEO block** di komponen Gallery, FAQ, Booking, Contact — ini penting untuk word count crawler
 
 ## Single Source of Truth
 - Semua data kontak, statistik, sosial media → `src/lib/constants.ts`

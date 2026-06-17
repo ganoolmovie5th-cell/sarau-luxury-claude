@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     title: 'Tentang Sarau Luxury – 8 Tahun Melayani Event Perusahaan',
     description: 'Berdiri sejak 2018, Sarau Luxury telah menggelar 100+ event sukses untuk 53+ perusahaan di Indonesia. Kenali tim dan filosofi kami di sini.',
     url: `${SITE_URL}/about`,
+    images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: 'Sarau Luxury – Event Organizer Outing & Outbound Perusahaan' }],
   },
 }
 

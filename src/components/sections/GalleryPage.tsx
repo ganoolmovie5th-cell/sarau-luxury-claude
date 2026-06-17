@@ -65,6 +65,52 @@ export default function GalleryPage() {
           </p>
         </motion.div>
 
+        {/* SEO Content block */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="grid md:grid-cols-4 gap-5 mb-12"
+        >
+          {[
+            { icon: '🎉', label: '100+ Event', desc: 'Dokumentasi sukses dari berbagai industri' },
+            { icon: '📍', label: '20+ Destinasi', desc: 'Lembang, Bali, Bromo, Anyer & seluruh Indonesia' },
+            { icon: '👥', label: '53+ Klien', desc: 'Perusahaan terkemuka dari berbagai sektor' },
+            { icon: '⭐', label: '8 Tahun', desc: 'Pengalaman menggelar event sejak 2018' },
+          ].map(({ icon, label, desc }) => (
+            <div key={label} className="bg-white rounded-2xl p-5 text-center border border-earth/10 shadow-sm">
+              <div className="text-3xl mb-2">{icon}</div>
+              <div className="font-display font-bold text-xl text-forest mb-1">{label}</div>
+              <div className="text-earth/60 text-sm">{desc}</div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* SEO text */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="bg-white rounded-2xl p-7 mb-10 border border-earth/10 shadow-sm"
+        >
+          <h2 className="font-display text-2xl font-bold text-bark mb-3">Dokumentasi Nyata Event Perusahaan</h2>
+          <p className="text-earth/70 leading-relaxed mb-3">
+            Galeri ini menampilkan koleksi foto dan momen nyata dari ratusan event yang telah kami gelar sejak 2018.
+            Dari <strong>outbound training</strong> penuh adrenalin di alam terbuka, <strong>company gathering</strong> yang hangat dan berkesan,
+            hingga <strong>team building</strong> kreatif yang mempererat sinergi tim — semua terabadikan di sini.
+          </p>
+          <p className="text-earth/70 leading-relaxed mb-3">
+            Setiap event dirancang khusus sesuai kebutuhan dan karakter tim klien kami. Klien kami mencakup perusahaan
+            dari berbagai industri: perbankan (BCA, Mandiri, BNI), otomotif (Toyota, Hino), farmasi (Kalbe Farma),
+            hospitality (Park Hyatt, Mercure), hingga manufaktur multinasional.
+          </p>
+          <p className="text-earth/70 leading-relaxed">
+            Gunakan filter kategori di bawah untuk melihat foto berdasarkan jenis aktivitas:
+            <strong> Outbound</strong>, <strong>Team Building</strong>, <strong>Gathering</strong>, atau <strong>Outing</strong>.
+            Klik foto untuk melihat detail lebih besar.
+          </p>
+        </motion.div>
+
         {/* Filters */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}

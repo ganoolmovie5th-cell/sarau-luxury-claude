@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     title: 'Layanan Outing & Outbound Perusahaan – Sarau Luxury',
     description: 'Company gathering, outbound training, team building, family gathering, hingga meeting package. Solusi lengkap event perusahaan dari Rp 125.000/pax.',
     url: `${SITE_URL}/services`,
+    images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: 'Sarau Luxury – Layanan Event Perusahaan' }],
   },
 }
 

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: 'FAQ – Pertanyaan Umum Seputar Event Sarau Luxury',
     description: 'Jawaban lengkap soal paket, harga, destinasi, minimal peserta, dan proses booking di Sarau Luxury. Ada pertanyaan lain? Kami siap membantu.',
     url: `${BASE_URL}/faq`,
+    images: [{ url: `${BASE_URL}/opengraph-image`, width: 1200, height: 630, alt: 'Sarau Luxury – FAQ Event Perusahaan' }],
   },
 }
 
