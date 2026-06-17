@@ -183,7 +183,9 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
           )}
         </div>
         <h2 className="font-display text-3xl md:text-4xl font-bold text-bark mb-4">{service.title}</h2>
+        <h4 className="text-earth/50 text-sm font-semibold uppercase tracking-widest mb-4">{service.subtitle}</h4>
         <p className="text-earth/80 leading-relaxed mb-6">{service.desc}</p>
+        <h5 className="text-bark font-semibold text-xs uppercase tracking-widest mb-3">Yang Sudah Termasuk:</h5>
         <ul className="space-y-2 mb-8">
           {service.features.map((f) => (
             <li key={f} className="flex items-center gap-3 text-sm text-earth/80">

@@ -129,8 +129,8 @@ export default function FAQClient() {
             ].map(({ icon, title, body }) => (
               <div key={title} className="bg-white rounded-2xl p-6 border border-earth/10 shadow-sm">
                 <div className="text-3xl mb-3">{icon}</div>
-                <h3 className="font-display font-bold text-lg text-bark mb-2">{title}</h3>
-                <p className="text-earth/70 text-sm leading-relaxed">{body}</p>
+                <h4 className="font-display font-bold text-lg text-bark mb-2">{title}</h4>
+                <h6 className="text-earth/70 text-sm leading-relaxed">{body}</h6>
               </div>
             ))}
           </motion.div>

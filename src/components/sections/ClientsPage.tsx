@@ -122,15 +122,15 @@ function ClientCard({ client, i, inView }: {
         {initials}
       </div>
       <div className="text-center">
-        <div className="font-semibold text-bark text-sm leading-tight mb-1.5 group-hover:text-forest transition-colors">
+        <h5 className="font-semibold text-bark text-sm leading-tight mb-1.5 group-hover:text-forest transition-colors">
           {client.name}
-        </div>
-        <span
+        </h5>
+        <h6
           className="text-xs px-2.5 py-0.5 rounded-full font-medium"
           style={{ backgroundColor: `${client.color}18`, color: client.color }}
         >
           {client.industry}
-        </span>
+        </h6>
       </div>
     </motion.div>
   )

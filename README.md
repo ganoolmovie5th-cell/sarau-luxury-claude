@@ -252,7 +252,8 @@ sarau-luxury-claude/
 - **Double H1 fix** — Navbar & Footer teks brand diubah `div→p` + `aria-hidden="true"`
 - **H1 per halaman** — `HeroSection` & `AboutHero` sub-headline `p→h2`; `/packages` visible H1
 - **H2 visible** — setiap halaman kini punya H2 langsung setelah H1
-- **H3/H4 structure** — `StatsSection` label→`h3`; `ClientsPage` industry tag→`h3`, stats→`h4`
+- **H3/H4 structure** — `StatsSection` label→`h3`; `ClientsPage` industry→`h3`, stats→`h4`; `ServicesPage` subtitle→`h4`, features→`h5`; `PackagesPreview` card→`h4/h5/h6`; `ContactForm/BookingForm/Gallery/FAQ` diperkaya H4–H6
+- **Blog H2** — `BlogListPage` dynamic `sr-only` H2 per kategori; card read-more `span→h5`
 - **OG Image** ditambahkan di semua 8 non-home pages via `metadata.openGraph.images`
 - **Content ≥ 300 words** — Gallery, FAQ, Booking (3 SEO blocks: proses + layanan + why us), Contact diperkaya konten
 - **Blog meta desc** — `generateMetadata` pakai `post.excerpt` + OG + canonical; semua excerpt 130–170 chars

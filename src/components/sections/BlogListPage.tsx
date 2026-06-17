@@ -68,6 +68,11 @@ export default function BlogListPage() {
           ))}
         </div>
 
+        {/* Section H2 */}
+        <h2 className="sr-only">
+          {activeCategory === 'Semua' ? 'Semua Artikel Blog Sarau Luxury' : `Artikel Kategori ${activeCategory}`}
+        </h2>
+
         {/* Posts grid */}
         <AnimatePresence mode="wait">
           <motion.div
@@ -100,9 +105,9 @@ export default function BlogListPage() {
                         {title}
                       </h3>
                       <p className="text-earth/70 text-sm leading-relaxed mb-4 line-clamp-2">{excerpt}</p>
-                      <span className="flex items-center gap-2 text-forest text-sm font-semibold">
+                      <h5 className="flex items-center gap-2 text-forest text-sm font-semibold">
                         <BookOpen size={14} /> Baca Selengkapnya
-                      </span>
+                      </h5>
                     </div>
                   </Link>
                 </motion.div>

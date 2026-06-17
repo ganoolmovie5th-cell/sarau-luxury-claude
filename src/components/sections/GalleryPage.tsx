@@ -80,8 +80,8 @@ export default function GalleryPage() {
           ].map(({ icon, label, desc }) => (
             <div key={label} className="bg-white rounded-2xl p-5 text-center border border-earth/10 shadow-sm">
               <div className="text-3xl mb-2">{icon}</div>
-              <div className="font-display font-bold text-xl text-forest mb-1">{label}</div>
-              <div className="text-earth/60 text-sm">{desc}</div>
+              <h4 className="font-display font-bold text-xl text-forest mb-1">{label}</h4>
+              <h6 className="text-earth/60 text-sm">{desc}</h6>
             </div>
           ))}
         </motion.div>
@@ -104,6 +104,7 @@ export default function GalleryPage() {
             dari berbagai industri: perbankan (BCA, Mandiri, BNI), otomotif (Toyota, Hino), farmasi (Kalbe Farma),
             hospitality (Park Hyatt, Mercure), hingga manufaktur multinasional.
           </p>
+          <h5 className="text-earth/50 text-xs uppercase tracking-widest font-semibold mb-2">Filter berdasarkan kategori:</h5>
           <p className="text-earth/70 leading-relaxed">
             Gunakan filter kategori di bawah untuk melihat foto berdasarkan jenis aktivitas:
             <strong> Outbound</strong>, <strong>Team Building</strong>, <strong>Gathering</strong>, atau <strong>Outing</strong>.

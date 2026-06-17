@@ -267,16 +267,16 @@ function GatheringCard({ pkg, i, inView }: { pkg: typeof gatheringPackages[0]; i
         </div>
       )}
       <div className={`p-7 ${pkg.badge ? 'pt-12' : ''}`}>
-        <div className={`font-display font-bold text-xl mb-1 ${isPopular ? 'text-cream' : 'text-bark'}`}>{pkg.name}</div>
+        <h4 className={`font-display font-bold text-xl mb-1 ${isPopular ? 'text-cream' : 'text-bark'}`}>{pkg.name}</h4>
         {pkg.note && (
-          <div className={`text-xs font-semibold mb-1 px-2 py-1 rounded-full inline-block ${isPopular ? 'bg-white/15 text-cream/80' : 'bg-forest/10 text-forest'}`}>
+          <h6 className={`text-xs font-semibold mb-1 px-2 py-1 rounded-full inline-block ${isPopular ? 'bg-white/15 text-cream/80' : 'bg-forest/10 text-forest'}`}>
             {pkg.note}
-          </div>
+          </h6>
         )}
         <div className={`text-xs mb-5 ${isPopular ? 'text-cream/60' : 'text-earth/60'}`}>{pkg.minPax}</div>
 
         {/* Price */}
-        <div className="mb-6">
+        <div className="mb-4">
           <div className={`font-display font-bold text-3xl ${isPopular ? 'text-sun' : 'text-forest'}`}>
             Rp {pkg.price}
           </div>
@@ -284,6 +284,7 @@ function GatheringCard({ pkg, i, inView }: { pkg: typeof gatheringPackages[0]; i
         </div>
 
         {/* Features */}
+        <h5 className={`text-xs font-semibold uppercase tracking-widest mb-2 ${isPopular ? 'text-cream/50' : 'text-earth/50'}`}>Sudah Termasuk:</h5>
         <ul className="space-y-2 mb-8">
           {pkg.features.map((f) => (
             <li key={f} className="flex items-start gap-2.5">
@@ -324,14 +325,15 @@ function AddOnCard({ item, i, inView }: { item: AddOnItem; i: number; inView: bo
           <Icon size={18} className="text-forest" />
         </div>
         <div className="flex-1 min-w-0">
-          <div className="font-semibold text-bark text-sm leading-tight">{item.name}</div>
-          {item.note && <div className="text-xs text-forest font-medium mt-0.5">{item.note}</div>}
+          <h4 className="font-semibold text-bark text-sm leading-tight">{item.name}</h4>
+          {item.note && <h6 className="text-xs text-forest font-medium mt-0.5">{item.note}</h6>}
         </div>
       </div>
       <div className="mb-3">
         <span className="font-display font-bold text-xl text-forest">Rp {item.price}</span>
         <span className="text-xs text-earth/60 ml-1">{item.unit}</span>
       </div>
+      <h5 className="text-xs font-semibold text-earth/40 uppercase tracking-widest mb-1.5">Termasuk:</h5>
       <ul className="space-y-1">
         {item.features.map((f) => (
           <li key={f} className="flex items-start gap-2 text-xs text-earth/70">

@@ -88,6 +88,7 @@ export default function MissionVision() {
               <span className="section-tag mb-5 inline-flex">{label}</span>
               <h3 className="font-display text-2xl font-bold text-bark mb-4">{title}</h3>
               <p className="text-earth/80 leading-relaxed">{text}</p>
+              <h5 className="sr-only">Detail {title} Sarau Luxury</h5>
             </motion.div>
           ))}
         </div>
@@ -100,30 +101,31 @@ export default function MissionVision() {
           className="text-center mb-12"
         >
           <h2 className="font-display text-3xl md:text-4xl font-bold text-bark">
-            Nilai-Nilai yang Kami <span className="gradient-text">Pegang</span>
-          </h2>
-          <p className="mt-3 text-earth/60 max-w-md mx-auto">
-            Empat pilar yang menjadi fondasi setiap event yang kami hadirkan.
-          </p>
-        </motion.div>
+          Nilai-Nilai yang Kami <span className="gradient-text">Pegang</span>
+        </h2>
+        <p className="mt-3 text-earth/60 max-w-md mx-auto">
+          Empat pilar yang menjadi fondasi setiap event yang kami hadirkan.
+        </p>
+      </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {values.map(({ icon: Icon, emoji, title, desc, iconBg, iconColor }, i) => (
-            <motion.div
-              key={title}
-              initial={{ opacity: 0, y: 25 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
-              className="text-center p-7 bg-white rounded-3xl shadow-sm border border-earth/8 group hover:shadow-xl hover:shadow-forest/10 hover:-translate-y-1 transition-all duration-500"
-            >
-              <div className={`w-16 h-16 rounded-2xl ${iconBg} flex items-center justify-center mx-auto mb-5 transition-all duration-300`}>
-                <Icon size={28} className={`${iconColor} transition-colors duration-300`} />
-              </div>
-              <div className="text-3xl mb-3">{emoji}</div>
-              <h3 className="font-display text-lg font-bold text-bark mb-3">{title}</h3>
-              <p className="text-earth/70 text-sm leading-relaxed">{desc}</p>
-            </motion.div>
-          ))}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {values.map(({ icon: Icon, emoji, title, desc, iconBg, iconColor }, i) => (
+          <motion.div
+            key={title}
+            initial={{ opacity: 0, y: 25 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
+            className="text-center p-7 bg-white rounded-3xl shadow-sm border border-earth/8 group hover:shadow-xl hover:shadow-forest/10 hover:-translate-y-1 transition-all duration-500"
+          >
+            <div className={`w-16 h-16 rounded-2xl ${iconBg} flex items-center justify-center mx-auto mb-5 transition-all duration-300`}>
+              <Icon size={28} className={`${iconColor} transition-colors duration-300`} />
+            </div>
+            <div className="text-3xl mb-3">{emoji}</div>
+            <h3 className="font-display text-lg font-bold text-bark mb-3">{title}</h3>
+            <p className="text-earth/70 text-sm leading-relaxed">{desc}</p>
+            <h6 className="sr-only">Nilai {title} dalam setiap event Sarau Luxury</h6>
+          </motion.div>
+        ))}
         </div>
 
       </div>

@@ -134,8 +134,8 @@ export default function BookingForm() {
           ].map(({ icon, label, desc }) => (
             <div key={label} className="bg-white rounded-xl p-4 text-center border border-earth/10 shadow-sm">
               <div className="text-2xl mb-1">{icon}</div>
-              <div className="font-semibold text-bark text-xs mb-0.5">{label}</div>
-              <div className="text-earth/60 text-xs">{desc}</div>
+              <h4 className="font-semibold text-bark text-xs mb-0.5">{label}</h4>
+              <h6 className="text-earth/60 text-xs">{desc}</h6>
             </div>
           ))}
         </div>
@@ -340,8 +340,8 @@ export default function BookingForm() {
               <div key={step} className="flex gap-3">
                 <div className="w-8 h-8 rounded-full bg-forest text-cream font-bold text-xs flex items-center justify-center flex-shrink-0">{step}</div>
                 <div>
-                  <h3 className="font-semibold text-bark text-sm mb-1">{title}</h3>
-                  <p className="text-earth/60 text-xs leading-relaxed">{desc}</p>
+                  <h4 className="font-semibold text-bark text-sm mb-1">{title}</h4>
+                  <h6 className="text-earth/60 text-xs leading-relaxed">{desc}</h6>
                 </div>
               </div>
             ))}
@@ -362,8 +362,8 @@ export default function BookingForm() {
               <div key={name} className="flex items-center gap-3 p-3 bg-cream rounded-xl">
                 <span className="text-xl">{icon}</span>
                 <div>
-                  <div className="font-semibold text-bark text-xs">{name}</div>
-                  <div className="text-earth/60 text-xs">{price}</div>
+                  <h5 className="font-semibold text-bark text-xs">{name}</h5>
+                  <h6 className="text-earth/60 text-xs">{price}</h6>
                 </div>
               </div>
             ))}

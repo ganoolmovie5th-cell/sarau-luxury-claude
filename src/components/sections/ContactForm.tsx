@@ -92,7 +92,7 @@ export default function ContactForm() {
             <div className="gradient-forest rounded-3xl p-8 text-cream relative overflow-hidden noise-overlay">
               <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full translate-x-1/2 -translate-y-1/2" />
               <h3 className="font-display text-2xl font-bold mb-2 relative z-10">Info Kontak</h3>
-              <p className="text-cream/70 text-sm mb-8 relative z-10">Kami selalu siap melayani Anda</p>
+              <h5 className="text-cream/70 text-sm mb-8 relative z-10">Kami selalu siap melayani Anda</h5>
               <div className="space-y-5 relative z-10">
                 {contactInfo.map(({ icon: Icon, label, value, href }) => (
                   <div key={label} className="flex items-start gap-4">
@@ -100,7 +100,7 @@ export default function ContactForm() {
                       <Icon size={18} />
                     </div>
                     <div>
-                      <div className="text-cream/50 text-xs mb-0.5">{label}</div>
+                      <h6 className="text-cream/50 text-xs mb-0.5">{label}</h6>
                       {href ? (
                         <a href={href} className="text-cream text-sm font-medium hover:text-sun transition-colors">{value}</a>
                       ) : (
@@ -288,6 +288,7 @@ export default function ContactForm() {
             </div>
             <div className="bg-white rounded-2xl p-6 border border-earth/10 shadow-sm">
               <h2 className="font-display text-xl font-bold text-bark mb-3">Layanan Kami</h2>
+              <h4 className="text-earth/50 text-xs uppercase tracking-widest font-semibold mb-3">Pilih jenis event perusahaan Anda:</h4>
               <div className="grid grid-cols-2 gap-2 text-sm text-earth/70">
                 {[
                   '🏕️ Company Gathering', '⛺ Outing Perusahaan',
