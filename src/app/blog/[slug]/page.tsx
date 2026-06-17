@@ -327,7 +327,7 @@ const posts: Record<string, Post> = {
     title: 'Destinasi Outing Terbaik di Jawa & Bali untuk Perusahaan',
     category: 'Destinasi', readTime: '8 menit', date: '1 Jun 2025',
     author: 'Muhammad Dwi Muhaimin', emoji: '🗺️',
-    excerpt: 'Panduan lengkap memilih destinasi outing yang tepat sesuai budget dan karakter tim Anda — dari Bandung, Bali, Bromo, hingga Lombok. Dengan estimasi harga dan tips terbaik.',
+    excerpt: 'Panduan lengkap memilih destinasi outing yang tepat sesuai budget dan karakter tim Anda — dari Bandung, Bali, Bromo, hingga Lombok. Estimasi harga & tips terbaik.',
     content: [
       { type: 'intro', text: 'Indonesia adalah surga destinasi outing! Dari pegunungan berselimut kabut hingga pantai kristal, dari sawah hijau hingga hutan tropis eksotis — semuanya tersedia untuk outing perusahaan yang tak terlupakan. Ini panduan lengkapnya.' },
       { type: 'h2', text: '🏔️ Bandung & Lembang — Paling Mudah Dijangkau' },
