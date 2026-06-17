@@ -355,6 +355,7 @@ const posts: Record<string, Post> = {
       { type: 'tip', text: 'Sarau Luxury melayani outing ke seluruh destinasi di atas. Kami urus transportasi, akomodasi, aktivitas, dan catering. Konsultasi gratis!' },
     ],
   },
+  'venue-team-building-bandung': {
     title: '15 Venue Team Building Terbaik di Bandung & Sekitarnya',
     category: 'Destinasi', readTime: '9 menit', date: '25 Apr 2025',
     author: 'Muhammad Dwi Muhaimin', emoji: '📍',
