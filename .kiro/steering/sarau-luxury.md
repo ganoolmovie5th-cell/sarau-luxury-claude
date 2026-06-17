@@ -69,7 +69,8 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - **Double H1 fix** — Navbar & Footer: teks brand diubah ke `<p>` + `aria-hidden="true"` agar tidak terdeteksi audit tool sebagai heading
 - **H1 per halaman** — `HeroSection` sub-headline diubah `p→h2`; `AboutHero` paragraf bawah H1 diubah `p→h2`; `/packages` punya visible H1 di page header
 - **H2 missing** — `HeroSection`, `AboutHero` kini punya H2 visible langsung di bawah H1
-- **H3/H4 structure** — `StatsSection` label → `h3`; `ClientsPage` industry tags → `h3`, stats row → `h4`
+- **H3/H4/H5/H6 structure** — `StatsSection` label→`h3`; `ClientsPage` industry→`h3`, stats→`h4`, client name→`h5`, industry tag→`h6`; `ServicesPage` subtitle→`h4`, features label→`h5`; `PackagesPreview` card name→`h4`, notes→`h6`, features label→`h5`, add-on name→`h4`; `ContactForm` label→`h6`; `BookingForm` step→`h4/h6`, layanan→`h5/h6`; `GalleryPage` stats→`h4/h6`, filter→`h5`; `FAQClient` info→`h4/h6`; `MissionVision` value→`h6`; `HeroSection` stat label→`h4`
+- **Blog H2** — `BlogListPage` dynamic `sr-only` H2 per kategori; card read-more `span→h5`
 - **Service JSON-LD** di `services/page.tsx` — `ItemList` 6 Service schema
 - **Content ≥ 300 words** — Gallery (stats cards + SEO block), FAQ (3 info cards + about block), Booking (3 SEO blocks: proses 4 steps + 6 layanan + kenapa Sarau Luxury), Contact (kenapa pilih + layanan grid)
 - **Blog meta description** — `generateMetadata` di `blog/[slug]/page.tsx` pakai `post.excerpt` sebagai desc + OG image + canonical; semua excerpt diperluas ke 130–170 chars
