@@ -57,17 +57,17 @@ export default function Navbar() {
             />
           </div>
           {/* aria-hidden: teks logo bukan heading — mencegah audit tools mendeteksi sebagai H1 */}
-          <div aria-hidden="true">
-            <p className={`font-display font-bold text-xl leading-tight transition-colors ${
+          <div aria-hidden="true" role="presentation">
+            <span className={`font-display font-bold text-xl leading-tight transition-colors block ${
               scrolled || !isHome ? 'text-bark' : 'text-cream'
             }`}>
               Sarau Luxury
-            </p>
-            <p className={`font-accent text-xs leading-none transition-colors ${
+            </span>
+            <span className={`font-accent text-xs leading-none transition-colors block ${
               scrolled || !isHome ? 'text-forest' : 'text-leaf'
             }`}>
               Where Teams Grow Together
-            </p>
+            </span>
           </div>
         </Link>
 

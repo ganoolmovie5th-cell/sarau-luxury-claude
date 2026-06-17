@@ -94,9 +94,9 @@ export default function Footer() {
                 />
               </div>
               {/* aria-hidden: teks brand di footer bukan heading */}
-              <div aria-hidden="true">
-                <p className="font-display font-bold text-2xl text-cream">Sarau Luxury</p>
-                <p className="font-accent text-sm text-leaf">Where Teams Grow Together</p>
+              <div aria-hidden="true" role="presentation">
+                <span className="font-display font-bold text-2xl text-cream block">Sarau Luxury</span>
+                <span className="font-accent text-sm text-leaf block">Where Teams Grow Together</span>
               </div>
             </Link>
             <p className="text-cream/80 text-sm leading-relaxed mb-6 max-w-xs">
