@@ -49,8 +49,8 @@ export default function StatsSection() {
                 ) : '0'}
                 <span className="text-forest">{suffix}</span>
               </div>
-              <div className="font-semibold text-bark text-sm md:text-base mb-1">{label}</div>
-              <div className="text-earth/70 text-xs md:text-sm">{desc}</div>
+              <h3 className="font-semibold text-bark text-sm md:text-base mb-1">{label}</h3>
+              <p className="text-earth/70 text-xs md:text-sm">{desc}</p>
             </motion.div>
           ))}
         </div>

@@ -164,14 +164,15 @@ export default function ClientsPage() {
       {/* Industry tags */}
       <section className="py-10 bg-white border-b border-earth/10">
         <div className="container-wide">
+          <h2 className="sr-only">Industri Klien Sarau Luxury</h2>
           <div className="flex flex-wrap justify-center gap-3">
             {industries.map(({ label, icon }) => (
               <div
                 key={label}
                 className="flex items-center gap-2 px-4 py-2 rounded-full bg-cream border border-earth/15 text-earth/80 text-sm font-medium"
               >
-                <span>{icon}</span>
-                <span>{label}</span>
+                <span aria-hidden="true">{icon}</span>
+                <h3 className="text-sm font-medium text-earth/80">{label}</h3>
               </div>
             ))}
           </div>
@@ -218,9 +219,9 @@ export default function ClientsPage() {
               { value: STATS.googleRatingStr,      label: 'Rating Google',     icon: '⭐' },
             ].map(({ value, label, icon }) => (
               <div key={label} className="bg-white rounded-2xl p-5 text-center border border-earth/10 shadow-sm">
-                <div className="text-3xl mb-2">{icon}</div>
+                <div className="text-3xl mb-2" aria-hidden="true">{icon}</div>
                 <div className="font-display font-bold text-3xl text-forest mb-1">{value}</div>
-                <div className="text-earth/60 text-sm">{label}</div>
+                <h4 className="text-earth/60 text-sm">{label}</h4>
               </div>
             ))}
           </motion.div>

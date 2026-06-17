@@ -21,10 +21,10 @@ export default function AboutHero() {
             Kami Adalah Pencerita<br />
             <span className="text-sun">Pengalaman Tim Anda</span>
           </h1>
-          <p className="text-cream/70 text-xl max-w-2xl mx-auto leading-relaxed">
+          <h2 className="text-cream/70 text-xl max-w-2xl mx-auto leading-relaxed font-normal">
             Sarau Luxury lahir dari satu keyakinan: setiap tim berhak mendapatkan pengalaman
             yang mengubah cara mereka bekerja, berkomunikasi, dan bertumbuh bersama.
-          </p>
+          </h2>
         </motion.div>
       </div>
     </section>

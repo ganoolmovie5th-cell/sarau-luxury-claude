@@ -248,10 +248,15 @@ sarau-luxury-claude/
 - Schema.org: LocalBusiness, AggregateRating, FAQPage, BreadcrumbList, Offers, **Service (ItemList 6 layanan)**
 - `<meta charset="utf-8">` di `<head>` root layout
 - `<link rel="canonical">` per halaman via `metadata.alternates` + root canonical di `<head>`
-- **1 H1 per halaman** — `/packages` pakai visible H1 di page header, `PackagesPreview` terima prop `hideHeader`
+- **Title template** `'%s'` — semua page sudah include brand, tidak perlu suffix `| Sarau Luxury`
+- **Double H1 fix** — Navbar & Footer teks brand diubah `div→p` + `aria-hidden="true"`
+- **H1 per halaman** — `HeroSection` & `AboutHero` sub-headline `p→h2`; `/packages` visible H1
+- **H2 visible** — setiap halaman kini punya H2 langsung setelah H1
+- **H3/H4 structure** — `StatsSection` label→`h3`; `ClientsPage` industry tag→`h3`, stats→`h4`
 - **OG Image** ditambahkan di semua 8 non-home pages via `metadata.openGraph.images`
-- **Content ≥ 300 words** — Gallery, FAQ, Booking, Contact diperkaya konten deskriptif (stats cards, SEO block, layanan grid)
-- **Title ≤ 60 chars** — semua 10 halaman sudah dicek & dipangkas; layout default dipersingkat
+- **Content ≥ 300 words** — Gallery, FAQ, Booking (3 SEO blocks: proses + layanan + why us), Contact diperkaya konten
+- **Blog meta desc** — `generateMetadata` di `blog/[slug]` pakai `post.excerpt` + OG image + canonical
+- **Title ≤ 60 chars** — semua halaman dicek; `blog/[slug]` auto-truncate di 60 chars
 
 ### SEO Metadata per Halaman (diupdate Juni 2026)
 

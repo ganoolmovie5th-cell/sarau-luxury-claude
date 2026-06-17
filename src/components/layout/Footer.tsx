@@ -84,18 +84,19 @@ export default function Footer() {
         <div className="pt-20 pb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-3 group mb-6">
+            <Link href="/" className="flex items-center gap-3 group mb-6" aria-label="Sarau Luxury – Beranda">
               <div className="relative w-14 h-14 flex-shrink-0">
                 <Image
                   src="/sarau-luxury-logo.jpeg"
-                  alt="Sarau Luxury Logo"
+                  alt="Sarau Luxury"
                   fill
                   className="object-contain"
                 />
               </div>
-              <div>
-                <div className="font-display font-bold text-2xl text-cream">Sarau Luxury</div>
-                <div className="font-accent text-sm text-leaf">Where Teams Grow Together</div>
+              {/* aria-hidden: teks brand di footer bukan heading */}
+              <div aria-hidden="true">
+                <p className="font-display font-bold text-2xl text-cream">Sarau Luxury</p>
+                <p className="font-accent text-sm text-leaf">Where Teams Grow Together</p>
               </div>
             </Link>
             <p className="text-cream/80 text-sm leading-relaxed mb-6 max-w-xs">

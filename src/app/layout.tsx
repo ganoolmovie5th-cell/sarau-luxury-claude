@@ -13,7 +13,7 @@ import { CONTACT, SOCIAL, STATS, SITE_URL, BRAND } from '@/lib/constants'
 export const metadata: Metadata = {
   title: {
     default: 'Sarau Luxury – Event Organizer Outing & Outbound',
-    template: '%s | Sarau Luxury',
+    template: '%s',
   },
   icons: {
     icon: [

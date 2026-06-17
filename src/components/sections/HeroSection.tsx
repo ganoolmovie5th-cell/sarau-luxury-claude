@@ -84,13 +84,13 @@ export default function HeroSection() {
           </motion.h1>
 
           {/* Sub */}
-          <motion.p
+          <motion.h2
             variants={itemVariants}
-            className="text-cream/70 text-lg md:text-xl leading-relaxed mb-10 max-w-xl"
+            className="text-cream/70 text-lg md:text-xl leading-relaxed mb-10 max-w-xl font-normal"
           >
             Sarau Luxury merancang pengalaman outing dan outbound terbaik untuk perusahaan Anda —
             dari team building seru hingga gathering eksklusif yang penuh kenangan.
-          </motion.p>
+          </motion.h2>
 
           {/* CTAs */}
           <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-16">

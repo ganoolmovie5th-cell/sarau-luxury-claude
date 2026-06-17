@@ -160,8 +160,7 @@ export default function BookingForm() {
         </div>
 
         {/* Form card */}
-        <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-earth/8">
-          <AnimatePresence mode="wait">
+        <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-earth/8">          <AnimatePresence mode="wait">
             {step === 1 && (
               <motion.div key="s1" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} className="space-y-5">
                 <h3 className="font-display text-xl font-bold text-bark mb-6">Data Perusahaan</h3>
@@ -324,6 +323,72 @@ export default function BookingForm() {
             )}
           </div>
         </div>
+      </div>
+
+      {/* ── SEO Content Block ─────────────────────────────────────────────── */}
+      <div className="container-tight max-w-2xl relative z-10 mt-12 space-y-6">
+
+        <div className="bg-white rounded-2xl p-7 border border-earth/10 shadow-sm">
+          <h2 className="font-display text-2xl font-bold text-bark mb-4">Proses Booking Sarau Luxury</h2>
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { step: '01', title: 'Isi Form Inquiry', desc: 'Lengkapi data perusahaan, jenis event, jumlah peserta, dan preferensi destinasi Anda.' },
+              { step: '02', title: 'Konsultasi Gratis', desc: 'Tim kami menghubungi Anda dalam 15 menit untuk memahami kebutuhan event secara lebih detail.' },
+              { step: '03', title: 'Terima Proposal', desc: 'Proposal lengkap berisi rundown, harga transparan, dan opsi paket dikirim dalam 24 jam kerja.' },
+              { step: '04', title: 'Konfirmasi & DP', desc: 'Setujui proposal, tandatangani kontrak, dan event Anda resmi terjadwal bersama Sarau Luxury.' },
+            ].map(({ step, title, desc }) => (
+              <div key={step} className="flex gap-3">
+                <div className="w-8 h-8 rounded-full bg-forest text-cream font-bold text-xs flex items-center justify-center flex-shrink-0">{step}</div>
+                <div>
+                  <h3 className="font-semibold text-bark text-sm mb-1">{title}</h3>
+                  <p className="text-earth/60 text-xs leading-relaxed">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-white rounded-2xl p-7 border border-earth/10 shadow-sm">
+          <h2 className="font-display text-2xl font-bold text-bark mb-4">Layanan yang Bisa Dipesan</h2>
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { icon: '🏕️', name: 'Company Gathering', price: 'Mulai Rp 525.000/pax' },
+              { icon: '⛺', name: 'Outing Perusahaan', price: 'Harga custom' },
+              { icon: '🏔️', name: 'Outbound Training', price: 'Mulai Rp 125.000/pax' },
+              { icon: '🤝', name: 'Team Building', price: 'Mulai Rp 125.000/pax' },
+              { icon: '❤️', name: 'Family Gathering', price: 'Harga custom' },
+              { icon: '🎤', name: 'Meeting Package', price: 'Mulai Rp 225.000/pax' },
+            ].map(({ icon, name, price }) => (
+              <div key={name} className="flex items-center gap-3 p-3 bg-cream rounded-xl">
+                <span className="text-xl">{icon}</span>
+                <div>
+                  <div className="font-semibold text-bark text-xs">{name}</div>
+                  <div className="text-earth/60 text-xs">{price}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-white rounded-2xl p-7 border border-earth/10 shadow-sm">
+          <h2 className="font-display text-2xl font-bold text-bark mb-3">Kenapa Booking Lewat Sarau Luxury?</h2>
+          <p className="text-earth/70 text-sm leading-relaxed mb-4">
+            Sarau Luxury adalah event organizer profesional yang telah berpengalaman sejak 2018.
+            Kami telah menggelar <strong>100+ event sukses</strong> untuk <strong>53+ perusahaan terkemuka</strong>
+            di seluruh Indonesia — dari BCA, Toyota, Kalbe Farma, hingga Park Hyatt Jakarta.
+          </p>
+          <p className="text-earth/70 text-sm leading-relaxed mb-4">
+            Setiap event kami tangani end-to-end: dari konsultasi awal, perencanaan konsep, koordinasi vendor,
+            eksekusi hari H, hingga dokumentasi pasca event. Anda tidak perlu khawatir tentang logistik —
+            kami yang handle semua detail agar event Anda berjalan sempurna.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {['53+ Klien Korporat', '100+ Event Sukses', '20+ Destinasi', '8 Tahun Pengalaman', 'Fasilitator Bersertifikat', 'All-in Package'].map((tag) => (
+              <span key={tag} className="px-3 py-1 bg-forest/10 text-forest text-xs font-semibold rounded-full">{tag}</span>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   )

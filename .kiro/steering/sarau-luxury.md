@@ -63,11 +63,16 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 ## SEO Technical (update Juni 2026)
 - `<meta charset="utf-8">` di root `layout.tsx` `<head>`
 - `<link rel="canonical">` per halaman via `metadata.alternates` + root di `<head>`
-- **Title ≤ 60 chars** — semua halaman dicek; `clients` dipangkas, layout default dipersingkat
+- **Title template** diubah ke `'%s'` — semua page title sudah include brand, tidak perlu suffix `| Sarau Luxury`
+- **Title ≤ 60 chars** — semua halaman dicek & dipangkas; `clients` dipangkas, `blog/[slug]` auto-truncate ke 60 chars
 - **OG Image** — semua 8 non-home pages punya `openGraph.images` (1200×630, `/opengraph-image`)
-- **1 H1 per halaman** — `/packages` punya visible H1 di page header; `PackagesPreview` terima prop `hideHeader` agar tidak render `h2` duplicate header saat dipanggil dari halaman packages
+- **Double H1 fix** — Navbar & Footer: teks brand diubah ke `<p>` + `aria-hidden="true"` agar tidak terdeteksi audit tool sebagai heading
+- **H1 per halaman** — `HeroSection` sub-headline diubah `p→h2`; `AboutHero` paragraf bawah H1 diubah `p→h2`; `/packages` punya visible H1 di page header
+- **H2 missing** — `HeroSection`, `AboutHero` kini punya H2 visible langsung di bawah H1
+- **H3/H4 structure** — `StatsSection` label → `h3`; `ClientsPage` industry tags → `h3`, stats row → `h4`
 - **Service JSON-LD** di `services/page.tsx` — `ItemList` 6 Service schema
-- **Content ≥ 300 words** — Gallery (stats cards + SEO block), FAQ (3 info cards + about block), Booking (3 stats cards), Contact (kenapa pilih + layanan grid)
+- **Content ≥ 300 words** — Gallery (stats cards + SEO block), FAQ (3 info cards + about block), Booking (3 SEO blocks: proses 4 steps + 6 layanan + kenapa Sarau Luxury), Contact (kenapa pilih + layanan grid)
+- **Blog meta description** — `generateMetadata` di `blog/[slug]/page.tsx` pakai `post.excerpt` sebagai desc + OG image + canonical per post
 - **Jangan hapus konten SEO block** di komponen Gallery, FAQ, Booking, Contact — ini penting untuk word count crawler
 
 ## Single Source of Truth

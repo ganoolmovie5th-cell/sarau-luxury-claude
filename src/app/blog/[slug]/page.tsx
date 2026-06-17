@@ -332,9 +332,26 @@ type Props = { params: { slug: string } }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = posts[params.slug]
+  if (!post) return { title: 'Artikel Tidak Ditemukan' }
+
+  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
+  // Potong title ≤ 60 chars
+  const rawTitle = post.title
+  const titleTrunc = rawTitle.length > 60 ? rawTitle.slice(0, 57) + '...' : rawTitle
+
   return {
-    title: post ? `${post.title} | Sarau Luxury Blog` : 'Blog Post',
-    description: post?.excerpt || '',
+    title: titleTrunc,
+    description: post.excerpt,
+    alternates: { canonical: `${BASE_URL}/blog/${params.slug}` },
+    openGraph: {
+      title: titleTrunc,
+      description: post.excerpt,
+      url: `${BASE_URL}/blog/${params.slug}`,
+      type: 'article',
+      publishedTime: post.date,
+      authors: [post.author],
+      images: [{ url: `${BASE_URL}/opengraph-image`, width: 1200, height: 630, alt: post.title }],
+    },
   }
 }
 

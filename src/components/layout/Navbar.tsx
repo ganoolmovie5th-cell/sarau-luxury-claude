@@ -46,27 +46,28 @@ export default function Navbar() {
     >
       <div className="container-wide flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group" aria-label="Sarau Luxury – Beranda">
           <div className="relative w-12 h-12 flex-shrink-0">
             <Image
               src="/sarau-luxury-logo.jpeg"
-              alt="Sarau Luxury Logo"
+              alt="Sarau Luxury"
               fill
               className="object-contain"
               priority
             />
           </div>
-          <div>
-            <div className={`font-display font-bold text-xl leading-tight transition-colors ${
+          {/* aria-hidden: teks logo bukan heading — mencegah audit tools mendeteksi sebagai H1 */}
+          <div aria-hidden="true">
+            <p className={`font-display font-bold text-xl leading-tight transition-colors ${
               scrolled || !isHome ? 'text-bark' : 'text-cream'
             }`}>
               Sarau Luxury
-            </div>
-            <div className={`font-accent text-xs leading-none transition-colors ${
+            </p>
+            <p className={`font-accent text-xs leading-none transition-colors ${
               scrolled || !isHome ? 'text-forest' : 'text-leaf'
             }`}>
               Where Teams Grow Together
-            </div>
+            </p>
           </div>
         </Link>
 
