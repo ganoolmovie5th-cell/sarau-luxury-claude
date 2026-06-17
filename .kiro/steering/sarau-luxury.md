@@ -60,6 +60,12 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - Keywords & alternates dipertahankan dari versi sebelumnya
 - **Jangan ubah title/desc tanpa referensi dokumen SEO** — sudah dikurasi untuk intent B2B
 
+## SEO Technical (update Juni 2026)
+- `<meta charset="utf-8">` ditambahkan di root `layout.tsx` `<head>`
+- `<link rel="canonical" href="https://sarau-luxury.com/">` ditambahkan di root `<head>` (homepage), halaman lain via `metadata.alternates.canonical`
+- **H1 audit selesai** — semua 10 halaman kini punya tepat 1 H1; `/packages` pakai `<h1 className="sr-only">` karena section-nya pakai `h2`
+- **Service JSON-LD** ditambahkan di `services/page.tsx` — `ItemList` berisi 6 `Service` schema: Company Gathering, Outing Perusahaan, Outbound Training, Team Building, Family Gathering, Meeting Package
+
 ## Single Source of Truth
 - Semua data kontak, statistik, sosial media → `src/lib/constants.ts`
 - Jangan hardcode email/telepon di komponen — selalu import dari `CONTACT` constant

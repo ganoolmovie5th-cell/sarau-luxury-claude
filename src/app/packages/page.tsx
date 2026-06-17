@@ -33,6 +33,8 @@ export default function PackagesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {/* H1 untuk SEO — secara visual tersembunyi, paketsection pakai h2 */}
+      <h1 className="sr-only">Harga Paket Outing &amp; Gathering Perusahaan – Sarau Luxury</h1>
       <PackagesPreview />
       <CtaSection />
     </div>

@@ -245,7 +245,10 @@ sarau-luxury-claude/
 - `optimizePackageImports` untuk Framer Motion, Three.js, Lucide
 - `robots.ts` disallow `/booking` & `/contact`
 - Sitemap 27 URL dengan `priority` & `changeFrequency`
-- Schema.org: LocalBusiness, AggregateRating, FAQPage, BreadcrumbList, Offers
+- Schema.org: LocalBusiness, AggregateRating, FAQPage, BreadcrumbList, Offers, **Service (ItemList 6 layanan)**
+- `<meta charset="utf-8">` di `<head>` root layout
+- `<link rel="canonical">` per halaman via `metadata.alternates` + root canonical di `<head>`
+- **1 H1 per halaman** — audit Juni 2026, `/packages` pakai `h1.sr-only`
 
 ### SEO Metadata per Halaman (diupdate Juni 2026)
 

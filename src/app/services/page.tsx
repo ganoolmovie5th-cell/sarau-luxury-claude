@@ -25,12 +25,121 @@ const breadcrumbJsonLd = {
   ],
 }
 
+const servicesJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Layanan Event Sarau Luxury',
+  url: `${BASE_URL}/services`,
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      item: {
+        '@type': 'Service',
+        name: 'Company Gathering',
+        url: `${BASE_URL}/services#gathering`,
+        description: 'Paket gathering perusahaan 2D1N lengkap: penginapan, makan, kolam renang, fun game & dokumentasi. Tersedia paket Silver, Gold, dan Platinum mulai Rp 525.000/pax.',
+        provider: { '@type': 'LocalBusiness', name: 'Sarau Luxury' },
+        areaServed: 'Indonesia',
+        offers: {
+          '@type': 'Offer',
+          price: '525000',
+          priceCurrency: 'IDR',
+          description: 'Mulai dari Rp 525.000/pax (Paket Silver)',
+        },
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      item: {
+        '@type': 'Service',
+        name: 'Outing Perusahaan',
+        url: `${BASE_URL}/services#outing`,
+        description: 'Wisata outing perusahaan ke 20+ destinasi pilihan: Lembang, Bali, Bromo & sekitarnya. Konsep custom, tepat waktu, on-budget.',
+        provider: { '@type': 'LocalBusiness', name: 'Sarau Luxury' },
+        areaServed: 'Indonesia',
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      item: {
+        '@type': 'Service',
+        name: 'Outbound Training',
+        url: `${BASE_URL}/services#outbound`,
+        description: 'Program outbound training profesional: rafting, paintball, ATV, trekking & fun game. Mulai Rp 125.000/pax. Cocok untuk 20–500 peserta.',
+        provider: { '@type': 'LocalBusiness', name: 'Sarau Luxury' },
+        areaServed: 'Indonesia',
+        offers: {
+          '@type': 'Offer',
+          price: '125000',
+          priceCurrency: 'IDR',
+          description: 'Mulai dari Rp 125.000/pax',
+        },
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
+      item: {
+        '@type': 'Service',
+        name: 'Team Building',
+        url: `${BASE_URL}/services#teambuilding`,
+        description: 'Aktivitas team building kreatif indoor & outdoor yang memperkuat sinergi tim. Program fleksibel 3 jam hingga full day, desain custom sesuai kebutuhan.',
+        provider: { '@type': 'LocalBusiness', name: 'Sarau Luxury' },
+        areaServed: 'Indonesia',
+        offers: {
+          '@type': 'Offer',
+          price: '125000',
+          priceCurrency: 'IDR',
+          description: 'Mulai dari Rp 125.000/pax',
+        },
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 5,
+      item: {
+        '@type': 'Service',
+        name: 'Family Gathering',
+        url: `${BASE_URL}/services#family`,
+        description: 'Paket family gathering perusahaan dengan BBQ, live entertainment, games & doorprize. Spesialis family gathering korporat untuk semua usia.',
+        provider: { '@type': 'LocalBusiness', name: 'Sarau Luxury' },
+        areaServed: 'Indonesia',
+      },
+    },
+    {
+      '@type': 'ListItem',
+      position: 6,
+      item: {
+        '@type': 'Service',
+        name: 'Meeting Package',
+        url: `${BASE_URL}/services#meeting`,
+        description: 'Paket meeting perusahaan lengkap: ruangan, konsumsi & dokumentasi. Halfday Rp 225.000/pax, Fullday Rp 300.000/pax.',
+        provider: { '@type': 'LocalBusiness', name: 'Sarau Luxury' },
+        areaServed: 'Indonesia',
+        offers: {
+          '@type': 'Offer',
+          price: '225000',
+          priceCurrency: 'IDR',
+          description: 'Mulai dari Rp 225.000/pax (Halfday)',
+        },
+      },
+    },
+  ],
+}
+
 export default function Services() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
       />
       <ServicesPage />
     </>
