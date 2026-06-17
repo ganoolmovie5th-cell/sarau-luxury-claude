@@ -142,6 +142,7 @@ export default function FAQClient() {
             className="bg-white rounded-2xl p-7 border border-earth/10 shadow-sm mb-4"
           >
             <h2 className="font-display text-2xl font-bold text-bark mb-3">Tentang Sarau Luxury</h2>
+            <h5 className="text-forest font-semibold text-xs uppercase tracking-widest mb-3">Event Organizer Profesional · Banten · Indonesia</h5>
             <p className="text-earth/70 leading-relaxed mb-3">
               Sarau Luxury adalah event organizer profesional yang berdiri sejak 2018, berpusat di Banten dan
               melayani seluruh Indonesia. Kami spesialis dalam <strong>outing perusahaan</strong>,{' '}

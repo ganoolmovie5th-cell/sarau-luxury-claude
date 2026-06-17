@@ -25,6 +25,7 @@ export default function AboutHero() {
             Sarau Luxury lahir dari satu keyakinan: setiap tim berhak mendapatkan pengalaman
             yang mengubah cara mereka bekerja, berkomunikasi, dan bertumbuh bersama.
           </h2>
+          <h4 className="sr-only">Event Organizer Profesional sejak 2018 — 100+ Event Sukses, 53+ Klien Korporat</h4>
         </motion.div>
       </div>
     </section>

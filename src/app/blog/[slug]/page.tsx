@@ -10,7 +10,7 @@ type Post = {
   date: string; author: string; emoji: string; excerpt: string
   content: Section[]
 }
-type Section = { type: 'intro' | 'h2' | 'h3' | 'h4' | 'p' | 'ul' | 'ol' | 'tip' | 'quote' | 'hr'; text?: string; items?: string[] }
+type Section = { type: 'intro' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'ul' | 'ol' | 'tip' | 'quote' | 'hr'; text?: string; items?: string[] }
 
 const posts: Record<string, Post> = {
   // ── Artikel baru (update mingguan) ──
@@ -33,6 +33,9 @@ const posts: Record<string, Post> = {
       { type: 'p', text: 'Di era media sosial, momen foto adalah bagian tak terpisahkan dari gathering. Siapkan spot foto khusus, props sesuai tema, dan fotografer profesional yang bisa menangkap momen spontan.' },
       { type: 'h2', text: '5. 🎁 Buat Kenang-kenangan yang Bermakna' },
       { type: 'p', text: 'Souvenir bukan sekadar formalitas. Buat kenang-kenangan yang personal dan bermanfaat — foto polaroid tim, totebag dengan nama peserta, atau sertifikat penghargaan yang lucu tapi bermakna.' },
+      { type: 'h5', text: 'Tips Eksekusi Konsep Gathering' },
+      { type: 'ul', items: ['Libatkan karyawan dalam voting tema sejak awal', 'Buat moodboard visual untuk semua vendor', 'Test run aktivitas utama sebelum hari H', 'Siapkan backup plan untuk setiap sesi'] },
+      { type: 'h6', text: 'Butuh bantuan merancang konsep? Konsultasi gratis dengan tim Sarau Luxury.' },
       { type: 'quote', text: 'Gathering yang berkesan bukan soal seberapa mahal budgetnya, tapi seberapa banyak perhatian dan kreativitas yang dituangkan ke dalamnya.' },
       { type: 'tip', text: 'Tim Sarau Luxury siap membantu merancang konsep gathering yang unik dan disesuaikan dengan karakter perusahaan Anda. Konsultasi gratis, hubungi kami sekarang!' },
     ],
@@ -55,6 +58,9 @@ const posts: Record<string, Post> = {
       { type: 'p', text: 'Paket gathering all-in seperti Gathering Silver (Rp 525rb/pax) sudah include penginapan, makan, dan aktivitas. Jika dihitung satuan, bisa 40-60% lebih mahal.' },
       { type: 'h2', text: '📸 5. Batasi Add-On yang Tidak Perlu' },
       { type: 'p', text: 'Fokus pada kualitas pengalaman, bukan kuantitas aktivitas. 2-3 aktivitas utama yang bagus lebih berkesan dari 6 aktivitas biasa-biasa saja.' },
+      { type: 'h5', text: 'Estimasi Penghematan per Strategi' },
+      { type: 'ul', items: ['Booking 3 bulan lebih awal: hemat 20-30%', 'Pilih hari kerja: hemat 30-40% akomodasi', 'Sewa bus bersama: hemat 60% vs kendaraan pribadi', 'Paket all-in vs satuan: hemat 40-60%'] },
+      { type: 'h6', text: 'Total potensi penghematan dengan 4 strategi di atas: hingga 50% dari total budget outing.' },
       { type: 'tip', text: 'Sarau Luxury memiliki berbagai paket fleksibel yang bisa disesuaikan dengan budget Anda. Hubungi kami untuk simulasi budget gratis!' },
     ],
   },
@@ -77,6 +83,9 @@ const posts: Record<string, Post> = {
       { type: 'p', text: 'Simulasi kompetisi antar tim dengan skenario bisnis atau militer. Sangat efektif untuk melatih strategic thinking, adaptasi cepat, dan kemampuan memotivasi tim saat tekanan tinggi.' },
       { type: 'h2', text: '📊 Mengapa Ini Efektif?' },
       { type: 'p', text: 'Situasi luar biasa (extraordinary situation) memunculkan perilaku yang tidak akan muncul di meeting room. Otak beroperasi berbeda saat ada tantangan fisik — lebih kreatif, lebih instinktif, lebih authentic.' },
+      { type: 'h5', text: 'Kompetensi Leadership yang Terlatih' },
+      { type: 'ul', items: ['Pengambilan keputusan cepat di bawah tekanan', 'Komunikasi efektif tanpa gangguan digital', 'Memotivasi tim saat situasi sulit', 'Delegasi berbasis kekuatan, bukan hierarki'] },
+      { type: 'h6', text: 'Semua aktivitas di atas tersedia dalam program outbound Sarau Luxury — bisa dikombinasikan sesuai tujuan kompetensi yang ingin dicapai.' },
       { type: 'quote', text: 'Leadership sejati tidak bisa diajarkan di kelas. Ia hanya bisa dimunculkan melalui pengalaman nyata yang menantang.' },
       { type: 'tip', text: 'Sarau Luxury merancang program outbound berbasis kompetensi kepemimpinan yang dapat dikustomisasi untuk kebutuhan industri dan level jabatan tim Anda.' },
     ],
@@ -478,6 +487,18 @@ function renderContent(sections: Section[]) {
           <h4 key={i} className="font-semibold text-bark text-lg mt-6 mb-2">
             {s.text}
           </h4>
+        )
+      case 'h5':
+        return (
+          <h5 key={i} className="font-semibold text-forest text-sm uppercase tracking-widest mt-5 mb-2">
+            {s.text}
+          </h5>
+        )
+      case 'h6':
+        return (
+          <h6 key={i} className="font-medium text-earth/60 text-xs mt-4 mb-1">
+            {s.text}
+          </h6>
         )
       case 'p':
         return <p key={i} className="text-earth/80 leading-relaxed mb-5">{s.text}</p>

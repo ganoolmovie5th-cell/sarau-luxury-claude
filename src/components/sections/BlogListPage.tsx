@@ -95,16 +95,16 @@ export default function BlogListPage() {
                     <div className="h-48 bg-gradient-to-br from-forest/10 to-leaf/20 flex items-center justify-center text-6xl rounded-t-3xl">
                       {emoji}
                     </div>
-                    <div className="p-6">
+                      <div className="p-6">
                       <div className="flex items-center gap-3 mb-3">
                         <span className="text-xs font-semibold px-3 py-1 rounded-full bg-forest/10 text-forest">{category}</span>
                         <span className="flex items-center gap-1 text-xs text-earth/60"><Clock size={11} /> {readTime}</span>
-                        <span className="text-xs text-earth/40 ml-auto">{date}</span>
+                        <h6 className="text-xs text-earth/40 ml-auto">{date}</h6>
                       </div>
                       <h3 className="font-display font-semibold text-lg text-bark leading-snug mb-3 group-hover:text-forest transition-colors line-clamp-2">
                         {title}
                       </h3>
-                      <p className="text-earth/70 text-sm leading-relaxed mb-4 line-clamp-2">{excerpt}</p>
+                      <h4 className="text-earth/70 text-sm leading-relaxed mb-4 line-clamp-2">{excerpt}</h4>
                       <h5 className="flex items-center gap-2 text-forest text-sm font-semibold">
                         <BookOpen size={14} /> Baca Selengkapnya
                       </h5>

@@ -70,7 +70,7 @@ export default function TeamSection() {
 
               <div className="mt-6">
                 <h3 className="font-display font-bold text-bark text-xl mb-1">{name}</h3>
-                <p className="text-earth/60 text-sm mb-4">{role}</p>
+                <h4 className="text-earth/60 text-sm mb-4">{role}</h4>
                 <div className="flex justify-center gap-3">
                   <a
                     href={instagram}

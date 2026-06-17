@@ -199,6 +199,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         <Link href="/booking" className="btn-primary">
           Inquiry Sekarang <ArrowRight size={17} />
         </Link>
+        <h6 className="sr-only">Hubungi Sarau Luxury untuk layanan {service.title} — konsultasi gratis dalam 15 menit</h6>
       </div>
     </motion.div>
   )
