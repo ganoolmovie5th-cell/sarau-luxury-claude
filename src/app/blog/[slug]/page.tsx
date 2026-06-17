@@ -10,7 +10,7 @@ type Post = {
   date: string; author: string; emoji: string; excerpt: string
   content: Section[]
 }
-type Section = { type: 'intro' | 'h2' | 'p' | 'ul' | 'ol' | 'tip' | 'quote' | 'hr'; text?: string; items?: string[] }
+type Section = { type: 'intro' | 'h2' | 'h3' | 'h4' | 'p' | 'ul' | 'ol' | 'tip' | 'quote' | 'hr'; text?: string; items?: string[] }
 
 const posts: Record<string, Post> = {
   // ── Artikel baru (update mingguan) ──
@@ -41,7 +41,7 @@ const posts: Record<string, Post> = {
     title: 'Tips Hemat Budget Outing Perusahaan Tanpa Mengurangi Keseruan',
     category: 'Tips', readTime: '5 menit', date: '5 Jun 2026',
     author: 'Muhammad Dwi Muhaimin', emoji: '💰',
-    excerpt: 'Strategi cerdas mengoptimalkan anggaran outing agar tetap seru, berkesan, dan efisien.',
+    excerpt: 'Strategi cerdas mengoptimalkan anggaran outing agar tetap seru, berkesan, dan efisien. Booking awal, pilih hari kerja, dan paket all-in bisa hemat hingga 40%.',
     content: [
       { type: 'intro', text: 'Budget terbatas bukan alasan untuk menggelar outing yang membosankan. Dengan perencanaan yang cerdas, outing berkesan tetap bisa terwujud tanpa menguras kas perusahaan.' },
       { type: 'h2', text: '💡 1. Booking Jauh-Jauh Hari' },
@@ -263,11 +263,102 @@ const posts: Record<string, Post> = {
       { type: 'tip', text: 'Sarau Luxury memenuhi semua 8 kriteria di atas — dengan 8+ tahun pengalaman, 53+ klien korporat, dan rating Google 5.0. Konsultasi gratis tanpa komitmen!' },
     ],
   },
-  'venue-team-building-bandung': {
+  'perbedaan-outing-outbound': {
+    title: 'Outing vs Outbound: Apa Bedanya dan Mana yang Cocok untuk Tim Anda?',
+    category: 'Tips', readTime: '4 menit', date: '5 Mei 2025',
+    author: 'Muhammad Dwi Muhaimin', emoji: '🤔',
+    excerpt: 'Banyak yang masih bingung membedakan outing dan outbound. Padahal keduanya punya tujuan dan format yang sangat berbeda. Ini panduan memilih yang paling cocok untuk tim Anda.',
+    content: [
+      { type: 'intro', text: 'Saat HR hendak mengajukan budget event ke manajemen, pertanyaan pertama yang sering muncul adalah: "Kita mau outing atau outbound?" Terdengar sepele, tapi perbedaan keduanya sangat signifikan — baik dari sisi tujuan, aktivitas, hingga anggaran.' },
+      { type: 'h2', text: '🏖️ Apa itu Outing Perusahaan?' },
+      { type: 'p', text: 'Outing adalah kegiatan rekreasi bersama yang bertujuan utama untuk relaksasi dan refreshing. Tim keluar dari rutinitas kantor, menikmati suasana baru, dan mempererat hubungan informal. Tidak ada target kompetensi yang diukur.' },
+      { type: 'ul', items: ['Tujuan: rekreasi, refreshing, employee engagement', 'Format: wisata, kuliner, games santai, free time', 'Suasana: sangat santai, tidak ada tekanan', 'Durasi: bisa 1 hari (daytrip) hingga 2D1N', 'Budget: lebih terjangkau karena tidak ada fasilitator khusus'] },
+      { type: 'h2', text: '🏔️ Apa itu Outbound Training?' },
+      { type: 'p', text: 'Outbound training adalah program pembelajaran berbasis pengalaman di luar ruangan. Setiap aktivitas dirancang untuk melatih kompetensi spesifik — komunikasi, leadership, problem solving, atau trust building — dengan fasilitator terlatih.' },
+      { type: 'ul', items: ['Tujuan: pengembangan kompetensi & perilaku kerja', 'Format: simulasi, games terstruktur, debriefing', 'Suasana: ada tantangan dan sedikit tekanan positif', 'Durasi: minimal 1 hari penuh, idealnya 2D1N', 'Budget: lebih tinggi karena butuh fasilitator bersertifikat'] },
+      { type: 'h2', text: '🤔 Mana yang Harus Dipilih?' },
+      { type: 'ol', items: [
+        'Pilih Outing jika tim butuh istirahat dari tekanan kerja yang tinggi dan Anda ingin meningkatkan suasana positif secara umum',
+        'Pilih Outbound jika ada isu spesifik (komunikasi buruk, konflik tim, low performance) yang ingin diselesaikan secara terstruktur',
+        'Pilih keduanya dalam 1 event untuk hasil terbaik — outbound di pagi hari, outing/rekreasi di sore hingga malam',
+      ]},
+      { type: 'h2', text: '💡 Tips dari Sarau Luxury' },
+      { type: 'p', text: 'Sebelum memutuskan, jawab dulu pertanyaan ini: "Apa yang ingin berubah setelah event ini?" Jika jawabannya abstrak (sekedar happy), pilih outing. Jika jawabannya spesifik (tim lebih kompak, komunikasi lebih baik), pilih outbound.' },
+      { type: 'h3', text: 'Perbandingan Singkat' },
+      { type: 'ul', items: ['Outing: rekreasi, informal, budget rendah, tidak ada target kompetensi', 'Outbound: training, terstruktur, budget lebih tinggi, ada target kompetensi terukur'] },
+      { type: 'quote', text: 'Outing membangun kebahagiaan tim. Outbound membangun kapabilitas tim. Idealnya, Anda butuh keduanya.' },
+      { type: 'tip', text: 'Sarau Luxury menyediakan paket kombinasi Outing + Outbound dalam satu event — hemat waktu dan biaya, dampak maksimal. Konsultasi gratis!' },
+    ],
+  },
+  '10-ide-team-building-kreatif': {
+    title: '10 Ide Team Building Kreatif yang Wajib Dicoba Tim Anda',
+    category: 'Tips', readTime: '5 menit', date: '15 Jun 2025',
+    author: 'Muhammad Dwi Muhaimin', emoji: '🎯',
+    excerpt: 'Bosan dengan team building yang itu-itu saja? Temukan 10 ide segar yang terbukti meningkatkan semangat, kekompakan, dan produktivitas tim perusahaan Anda.',
+    content: [
+      { type: 'intro', text: 'Team building yang baik tidak harus mahal atau rumit. Terkadang ide paling sederhana justru menciptakan dampak paling besar. Ini 10 ide team building kreatif yang sudah kami implementasikan bersama 53+ klien korporat Sarau Luxury.' },
+      { type: 'h2', text: '1. 🍳 MasterChef Challenge' },
+      { type: 'p', text: 'Tim dibagi dalam kelompok dan harus memasak hidangan tertentu dengan waktu dan bahan yang terbatas. Mengajarkan pembagian peran, komunikasi cepat, dan manajemen sumber daya. Seru karena hasilnya langsung bisa dimakan!' },
+      { type: 'h2', text: '2. 🎭 Improvisasi Theater' },
+      { type: 'p', text: 'Tidak ada skrip — peserta harus bereaksi spontan dalam skenario yang diberikan fasilitator. Sangat efektif untuk melatih adaptasi, kreativitas, dan mendengarkan aktif. Bonus: penuh tawa!' },
+      { type: 'h2', text: '3. 🏗️ LEGO Serious Play' },
+      { type: 'p', text: 'Membangun model LEGO yang merepresentasikan visi tim atau tantangan yang dihadapi. Metode ini membantu anggota tim yang introvert untuk mengekspresikan ide secara visual dan setara.' },
+      { type: 'h2', text: '4. 🎵 Flash Mob Rehearsal' },
+      { type: 'p', text: 'Tim latihan flash mob bersama — koreografi sederhana yang dipelajari dalam beberapa jam. Membangun energi, kebersamaan, dan kepercayaan diri. Bisa dijadikan "kejutan" untuk event penutup.' },
+      { type: 'h2', text: '5. 🧩 Room Escape DIY' },
+      { type: 'p', text: 'Rancang escape room sendiri di venue event — lebih murah dan bisa dikustomisasi dengan tema perusahaan. Tim harus bekerjasama memecahkan teka-teki dalam batas waktu. Melatih problem solving dan komunikasi di bawah tekanan.' },
+      { type: 'h2', text: '6. 📸 Photo Scavenger Hunt' },
+      { type: 'p', text: 'Tim berkeliling lokasi menyelesaikan misi foto. Setiap misi membutuhkan kreativitas berbeda. Hasilnya dikumpulkan dan divoting bersama. Ringan, seru, dan menghasilkan konten media sosial perusahaan!' },
+      { type: 'h2', text: '7. 🎯 Archery Tag' },
+      { type: 'p', text: 'Kombinasi panahan dan dodgeball menggunakan anak panah berbusa aman. Tidak perlu keahlian khusus — siapa saja bisa langsung main. Memacu adrenalin tanpa risiko cedera serius.' },
+      { type: 'h2', text: '8. 🌱 CSR Tree Planting' },
+      { type: 'p', text: 'Team building sambil berkontribusi untuk lingkungan. Menanam pohon bersama memberikan sense of purpose yang lebih dalam. Setiap tim menamai pohon mereka — kenangan yang tumbuh bersama tahun ke tahun.' },
+      { type: 'h2', text: '9. 🎲 Trivia War' },
+      { type: 'p', text: 'Kuis seru dengan kategori: pengetahuan umum, fakta perusahaan, pop culture. Bisa dimainkan indoor dengan layar besar. Menambah pengetahuan sekaligus mempererat ikatan antar tim lintas divisi.' },
+      { type: 'h2', text: '10. 🎨 Mural Bersama' },
+      { type: 'p', text: 'Setiap anggota tim melukis bagian dari mural besar yang menjadi simbol visi perusahaan. Hasilnya dipajang di kantor sebagai pengingat permanen momen kebersamaan tersebut.' },
+      { type: 'h3', text: 'Pilih yang Sesuai Karakter Tim' },
+      { type: 'p', text: 'Tidak semua ide cocok untuk semua tim. Kenali karakter peserta — apakah lebih suka kompetisi atau kolaborasi, aktivitas fisik atau kreativitas — sebelum memilih.' },
+      { type: 'quote', text: 'Team building terbaik adalah yang membuat orang lupa mereka sedang "dilatih" dan hanya fokus menikmati pengalaman bersama.' },
+      { type: 'tip', text: 'Sarau Luxury bisa mengkombinasikan beberapa aktivitas di atas dalam satu program team building yang kohesif. Konsultasi gratis untuk rekomendasi terbaik bagi tim Anda!' },
+    ],
+  },
+  'destinasi-outing-terbaik-jawa-bali': {
+    title: 'Destinasi Outing Terbaik di Jawa & Bali untuk Perusahaan',
+    category: 'Destinasi', readTime: '8 menit', date: '1 Jun 2025',
+    author: 'Muhammad Dwi Muhaimin', emoji: '🗺️',
+    excerpt: 'Panduan lengkap memilih destinasi outing yang tepat sesuai budget dan karakter tim Anda — dari Bandung, Bali, Bromo, hingga Lombok. Dengan estimasi harga dan tips terbaik.',
+    content: [
+      { type: 'intro', text: 'Indonesia adalah surga destinasi outing! Dari pegunungan berselimut kabut hingga pantai kristal, dari sawah hijau hingga hutan tropis eksotis — semuanya tersedia untuk outing perusahaan yang tak terlupakan. Ini panduan lengkapnya.' },
+      { type: 'h2', text: '🏔️ Bandung & Lembang — Paling Mudah Dijangkau' },
+      { type: 'p', text: 'Pilihan paling praktis untuk perusahaan berbasis di Jakarta dan Banten. 2-3 jam perjalanan, ratusan pilihan venue, infrastruktur outbound terlengkap, dan udara sejuk.' },
+      { type: 'ul', items: ['Lembang: Grafika Cikole, The Ranch, Farm House', 'Ciwidey: Kawah Putih, Situ Patengan', 'Estimasi biaya: Rp 525.000 – Rp 925.000/pax (all-in 2D1N)'] },
+      { type: 'h2', text: '🌊 Bali — Premium & Berkesan' },
+      { type: 'p', text: 'Pilihan terbaik untuk gathering eksklusif atau reward tim terbaik. Infrastruktur pariwisata kelas dunia, aktivitas beragam, dan suasana yang tidak tertandingi.' },
+      { type: 'ul', items: ['Ubud: rafting, trekking, spa, budaya Bali', 'Seminyak/Kuta: pantai, water sport, sunset dinner', 'Estimasi biaya: Rp 1.500.000 – Rp 3.000.000/pax (all-in 3D2N)'] },
+      { type: 'h2', text: '🌋 Bromo, Malang & Batu — Petualangan Sesungguhnya' },
+      { type: 'p', text: 'Untuk tim yang ingin pengalaman "epic" — sunrise di Bromo, rafting Songa, apple picking di Batu. Perjalanan panjang terbayar dengan kenangan seumur hidup.' },
+      { type: 'ul', items: ['Bromo: sunrise, savana, lautan pasir', 'Malang-Batu: rafting Songa, Jatim Park, Coban Rondo', 'Estimasi biaya: Rp 1.200.000 – Rp 2.000.000/pax (3D2N)'] },
+      { type: 'h2', text: '🏖️ Anyer & Carita — Pantai Terdekat dari Jakarta/Banten' },
+      { type: 'p', text: 'Pantai paling mudah dijangkau dari Banten dan Jakarta. Ideal untuk family gathering atau gathering santai dengan aktivitas pantai, sunset cruise, dan seafood.' },
+      { type: 'ul', items: ['Estimasi biaya: Rp 650.000 – Rp 1.200.000/pax (2D1N)', 'Jarak dari Curug Banten: 1,5 jam'] },
+      { type: 'h2', text: '🏝️ Lombok — Alternatif Bali yang Lebih Tenang' },
+      { type: 'p', text: 'Alam masih sangat asri, lebih sepi dari Bali, namun dengan fasilitas yang terus berkembang. Gili Islands, Rinjani, dan pantai-pantai eksotis menjadikannya pilihan premium yang berbeda.' },
+      { type: 'h2', text: '💡 Tips Memilih Destinasi' },
+      { type: 'ol', items: [
+        'Sesuaikan dengan budget — jangan korbankan kualitas untuk jarak jauh jika budget terbatas',
+        'Pertimbangkan waktu tempuh — destinasi jauh butuh hari lebih banyak',
+        'Kenali preferensi tim — ada yang suka petualangan, ada yang suka relaksasi',
+        'Booking minimal 2 bulan sebelumnya untuk dapatkan harga terbaik',
+      ]},
+      { type: 'quote', text: 'Destinasi yang sempurna bukan yang paling jauh atau paling mahal, tapi yang paling sesuai dengan karakter dan tujuan tim Anda.' },
+      { type: 'tip', text: 'Sarau Luxury melayani outing ke seluruh destinasi di atas. Kami urus transportasi, akomodasi, aktivitas, dan catering. Konsultasi gratis!' },
+    ],
+  },
     title: '15 Venue Team Building Terbaik di Bandung & Sekitarnya',
     category: 'Destinasi', readTime: '9 menit', date: '25 Apr 2025',
     author: 'Muhammad Dwi Muhaimin', emoji: '📍',
-    excerpt: 'Rekomendasi venue indoor dan outdoor terbaik untuk berbagai jenis aktivitas team building.',
+    excerpt: 'Rekomendasi venue indoor dan outdoor terbaik untuk berbagai jenis aktivitas team building di Bandung, Lembang, Ciwidey, dan sekitarnya. Lengkap dengan tips memilih venue.',
     content: [
       { type: 'intro', text: 'Bandung dan sekitarnya adalah surga venue team building! Dari pegunungan Lembang hingga resort Ciwidey — semua tersedia untuk berbagai ukuran tim dan budget.' },
       { type: 'h2', text: '🏔️ Area Lembang' },
@@ -285,7 +376,7 @@ const posts: Record<string, Post> = {
     title: 'Tips Sukses Family Gathering Ratusan Peserta yang Berkesan',
     category: 'Panduan', readTime: '6 menit', date: '20 Mei 2025',
     author: 'Muhammad Dwi Muhaimin', emoji: '👨‍👩‍👧‍👦',
-    excerpt: 'Step-by-step panduan menggelar family gathering besar yang berkesan dan sesuai anggaran.',
+    excerpt: 'Step-by-step panduan menggelar family gathering besar yang berkesan dan sesuai anggaran. Dari perencanaan 6 bulan sebelum hingga dokumentasi pasca event.',
     content: [
       { type: 'intro', text: 'Family gathering adalah event paling dinantikan karyawan. Ketika berhasil, dampaknya luar biasa pada loyalitas. Ini panduan lengkapnya!' },
       { type: 'h2', text: '📅 6 Bulan Sebelum: Perencanaan Awal' },
@@ -303,7 +394,7 @@ const posts: Record<string, Post> = {
     title: 'Bagaimana Outbound Training Meningkatkan Produktivitas Tim Secara Nyata',
     category: 'Insight', readTime: '7 menit', date: '10 Mei 2025',
     author: 'Muhammad Dwi Muhaimin', emoji: '📈',
-    excerpt: 'Riset dan fakta tentang dampak nyata program outbound terhadap kinerja tim pasca event.',
+    excerpt: 'Riset dan fakta nyata tentang dampak program outbound terhadap kinerja, retensi, dan produktivitas tim pasca event. Disertai 5 kompetensi yang dilatih dan kapan waktu terbaiknya.',
     content: [
       { type: 'intro', text: 'Banyak perusahaan masih memandang outbound sebagai "foya-foya". Padahal riset membuktikan sebaliknya — program outbound yang dirancang baik memberikan ROI yang terukur.' },
       { type: 'h2', text: '📊 Apa Kata Riset?' },
@@ -374,6 +465,18 @@ function renderContent(sections: Section[]) {
           <h2 key={i} className="font-display text-2xl font-bold text-bark mt-10 mb-4 flex items-center gap-2">
             {s.text}
           </h2>
+        )
+      case 'h3':
+        return (
+          <h3 key={i} className="font-display text-xl font-bold text-bark mt-8 mb-3">
+            {s.text}
+          </h3>
+        )
+      case 'h4':
+        return (
+          <h4 key={i} className="font-semibold text-bark text-lg mt-6 mb-2">
+            {s.text}
+          </h4>
         )
       case 'p':
         return <p key={i} className="text-earth/80 leading-relaxed mb-5">{s.text}</p>
@@ -467,9 +570,13 @@ export default function BlogPostPage({ params }: Props) {
 
           {/* Emoji + Title */}
           <div className="text-7xl mb-5 leading-none">{post.emoji}</div>
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-bark mb-6 leading-tight">
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-bark mb-4 leading-tight">
             {post.title}
           </h1>
+          {/* H2 subheading = excerpt sebagai ringkasan artikel untuk SEO */}
+          <h2 className="text-earth/70 text-lg leading-relaxed font-normal mb-6 border-l-4 border-forest/30 pl-4 italic">
+            {post.excerpt}
+          </h2>
 
           {/* Meta */}
           <div className="flex flex-wrap items-center gap-5 pb-8 border-b border-earth/10">

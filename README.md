@@ -255,8 +255,9 @@ sarau-luxury-claude/
 - **H3/H4 structure** — `StatsSection` label→`h3`; `ClientsPage` industry tag→`h3`, stats→`h4`
 - **OG Image** ditambahkan di semua 8 non-home pages via `metadata.openGraph.images`
 - **Content ≥ 300 words** — Gallery, FAQ, Booking (3 SEO blocks: proses + layanan + why us), Contact diperkaya konten
-- **Blog meta desc** — `generateMetadata` di `blog/[slug]` pakai `post.excerpt` + OG image + canonical
-- **Title ≤ 60 chars** — semua halaman dicek; `blog/[slug]` auto-truncate di 60 chars
+- **Blog meta desc** — `generateMetadata` pakai `post.excerpt` + OG + canonical; semua excerpt 130–170 chars
+- **Blog H2** — setiap post kini punya `h2` (excerpt subheading); BlogListPage card `h2→h3`; `renderContent` support `h3`+`h4`
+- **4 post baru** di `posts` record — `perbedaan-outing-outbound`, `10-ide-team-building-kreatif`, `destinasi-outing-terbaik-jawa-bali` (fix thin/missing content)
 
 ### SEO Metadata per Halaman (diupdate Juni 2026)
 

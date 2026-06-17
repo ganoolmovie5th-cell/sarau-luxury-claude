@@ -72,7 +72,9 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - **H3/H4 structure** — `StatsSection` label → `h3`; `ClientsPage` industry tags → `h3`, stats row → `h4`
 - **Service JSON-LD** di `services/page.tsx` — `ItemList` 6 Service schema
 - **Content ≥ 300 words** — Gallery (stats cards + SEO block), FAQ (3 info cards + about block), Booking (3 SEO blocks: proses 4 steps + 6 layanan + kenapa Sarau Luxury), Contact (kenapa pilih + layanan grid)
-- **Blog meta description** — `generateMetadata` di `blog/[slug]/page.tsx` pakai `post.excerpt` sebagai desc + OG image + canonical per post
+- **Blog meta description** — `generateMetadata` di `blog/[slug]/page.tsx` pakai `post.excerpt` sebagai desc + OG image + canonical; semua excerpt diperluas ke 130–170 chars
+- **Blog H2** — setiap post page kini punya H2 (excerpt sebagai subheading di bawah H1); BlogListPage card title `h2→h3`; `renderContent` support `h3` dan `h4`; `Section` type diupdate
+- **Blog posts** — 3 post baru ditambahkan ke `posts` record (`perbedaan-outing-outbound`, `10-ide-team-building-kreatif`, `destinasi-outing-terbaik-jawa-bali`) agar tidak thin/missing content
 - **Jangan hapus konten SEO block** di komponen Gallery, FAQ, Booking, Contact — ini penting untuk word count crawler
 
 ## Single Source of Truth

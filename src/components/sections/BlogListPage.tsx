@@ -96,9 +96,9 @@ export default function BlogListPage() {
                         <span className="flex items-center gap-1 text-xs text-earth/60"><Clock size={11} /> {readTime}</span>
                         <span className="text-xs text-earth/40 ml-auto">{date}</span>
                       </div>
-                      <h2 className="font-display font-semibold text-lg text-bark leading-snug mb-3 group-hover:text-forest transition-colors line-clamp-2">
+                      <h3 className="font-display font-semibold text-lg text-bark leading-snug mb-3 group-hover:text-forest transition-colors line-clamp-2">
                         {title}
-                      </h2>
+                      </h3>
                       <p className="text-earth/70 text-sm leading-relaxed mb-4 line-clamp-2">{excerpt}</p>
                       <span className="flex items-center gap-2 text-forest text-sm font-semibold">
                         <BookOpen size={14} /> Baca Selengkapnya
