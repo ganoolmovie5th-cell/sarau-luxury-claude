@@ -55,7 +55,7 @@ Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk mengha
 
 ## Fitur Utama
 
-- 📄 **Downloadable Company Profile** — PDF 5 halaman (Cover, About, Services, Packages, Contact) di-generate server-side via `@react-pdf/renderer`. Gated download: isi Nama, Perusahaan, Email → lead dikirim ke admin via Resend & Fonnte → PDF langsung terunduh
+- 📄 **Downloadable Company Profile** — PDF 5 halaman (Cover, About, Services, Packages, Contact) di-generate server-side via `@react-pdf/renderer`. Gated download: isi Nama, Perusahaan, Email → lead dikirim ke admin via Resend & Fonnte → PDF langsung terunduh. Font-safe: semua karakter Unicode non-Helvetica diganti ASCII.
 - 🎨 **Hero 3D Interaktif** — Three.js di-load hanya setelah `requestIdleCallback` untuk tidak block FCP/LCP
 - ✨ **Animasi Framer Motion** — transisi halaman dan animasi scroll yang halus
 - 📦 **Price List Lengkap** — paket Gathering Silver/Gold/Platinum, add-on aktivitas, meeting package dengan tab interaktif

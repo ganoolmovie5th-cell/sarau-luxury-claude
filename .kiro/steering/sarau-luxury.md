@@ -91,6 +91,8 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - **next.config.js:** `experimental.serverComponentsExternalPackages: ['@react-pdf/renderer']`
 - **PDF Response:** `renderToBuffer` → `.buffer.slice()` → `ArrayBuffer` untuk kompatibilitas `NextResponse`
 - **Lead capture:** setiap download tercatat di email admin (subject: `📥 Download Company Profile`) dan WA notif via Fonnte
+- **Unicode fix:** `✦`, `★`, `→` bukan bagian dari Helvetica → diganti ASCII (`-`, `*`, `>`) agar tidak muncul sebagai `&`
+- **PackagesPage overflow fix:** `pkgCard` padding 18→12, marginBottom 12→6 agar tidak overflow ke halaman kosong
 
 ## Troubleshooting Fonnte
 - Error `request invalid on disconnected device` → device di Fonnte tidak terkoneksi, scan ulang QR

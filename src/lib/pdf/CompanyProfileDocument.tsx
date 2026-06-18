@@ -73,8 +73,8 @@ const s = StyleSheet.create({
   statLabel:     { fontSize: 9, color: C.leaf, textAlign: 'center', lineHeight: 1.4 },
 
   // Package
-  pkgCard:       { borderWidth: 1, borderColor: C.border, borderRadius: 10, padding: 18, marginBottom: 12 },
-  pkgCardPrime:  { borderWidth: 2, borderColor: C.sun, borderRadius: 10, padding: 18, marginBottom: 12, backgroundColor: '#FFFBF5' },
+  pkgCard:       { borderWidth: 1, borderColor: C.border, borderRadius: 10, padding: 12, marginBottom: 6 },
+  pkgCardPrime:  { borderWidth: 2, borderColor: C.sun, borderRadius: 10, padding: 12, marginBottom: 6, backgroundColor: '#FFFBF5' },
   pkgName:       { fontSize: 14, color: C.forestDark, fontFamily: 'Helvetica-Bold', marginBottom: 4 },
   pkgPrice:      { fontSize: 18, color: C.forest, fontFamily: 'Helvetica-Bold', marginBottom: 6 },
   pkgPriceSub:   { fontSize: 9, color: C.gray },
@@ -117,7 +117,7 @@ function PageFooter({ page }: { page: number }) {
 function Feature({ text }: { text: string }) {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 4 }}>
-      <Text style={s.pkgBullet}>✦</Text>
+      <Text style={s.pkgBullet}>-</Text>
       <Text style={s.pkgFeature}>{text}</Text>
     </View>
   )
@@ -191,7 +191,7 @@ function AboutPage() {
             { num: '8+',   label: 'Tahun\nPengalaman' },
             { num: '100+', label: 'Event\nSukses' },
             { num: '53+',  label: 'Klien\nKorporat' },
-            { num: '5.0★', label: 'Rating\nGoogle' },
+            { num: '5.0*', label: 'Rating\nGoogle' },
           ].map(({ num, label }) => (
             <View key={num} style={s.statBox}>
               <Text style={s.statNum}>{num}</Text>
@@ -260,7 +260,7 @@ function ServicesPage() {
           <View style={{ flex: 1, marginRight: 6 }}>
             {services.slice(0, 3).map(({ title, desc }) => (
               <View key={title} style={s.card}>
-                <View style={s.cardBadge}><Text style={s.cardBadgeText}>✦ LAYANAN</Text></View>
+                <View style={s.cardBadge}><Text style={s.cardBadgeText}>LAYANAN</Text></View>
                 <Text style={s.cardTitle}>{title}</Text>
                 <Text style={s.cardDesc}>{desc}</Text>
               </View>
@@ -269,7 +269,7 @@ function ServicesPage() {
           <View style={{ flex: 1, marginLeft: 6 }}>
             {services.slice(3).map(({ title, desc }) => (
               <View key={title} style={s.card}>
-                <View style={s.cardBadge}><Text style={s.cardBadgeText}>✦ LAYANAN</Text></View>
+                <View style={s.cardBadge}><Text style={s.cardBadgeText}>LAYANAN</Text></View>
                 <Text style={s.cardTitle}>{title}</Text>
                 <Text style={s.cardDesc}>{desc}</Text>
               </View>
@@ -330,7 +330,7 @@ function PackagesPage() {
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 4 }}>
             <View>
               <View style={{ backgroundColor: C.sun, borderRadius: 4, paddingHorizontal: 8, paddingVertical: 2, alignSelf: 'flex-start', marginBottom: 6 }}>
-                <Text style={{ fontSize: 8, color: C.white, fontFamily: 'Helvetica-Bold' }}>★ TERPOPULER</Text>
+                <Text style={{ fontSize: 8, color: C.white, fontFamily: 'Helvetica-Bold' }}>TERPOPULER</Text>
               </View>
               <Text style={s.pkgName}>Gathering Gold</Text>
               <Text style={s.pkgPriceSub}>Paket Unggulan</Text>
@@ -443,7 +443,7 @@ function ContactPage() {
             Tim kami akan merespons dalam 15 menit (jam kerja).
           </Text>
           <Text style={{ fontSize: 10, color: C.white, fontFamily: 'Helvetica-Bold' }}>
-            → Chat WhatsApp: +62 857-1178-6561
+            &gt; Chat WhatsApp: +62 857-1178-6561
           </Text>
         </View>
       </View>
