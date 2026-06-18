@@ -84,9 +84,11 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - Jangan hardcode email/telepon di komponen — selalu import dari `CONTACT` constant
 
 ## Fix: Gallery & Client Logos v2 (Juni 2025)
-- **Logo Proxy API** — `src/app/api/logo/[domain]/route.ts`: server-side proxy dengan fallback chain: Clearbit → Google Favicon v2 (128px) → DuckDuckGo favicon → 404. Cache-Control 7 hari. Tidak ada CSP/remotePatterns dependency karena request dari `'self'`.
-- **ClientsPage + ClientsMarquee** — src logo diubah dari `https://logo.clearbit.com/` ke `/api/logo/` (local proxy)
-- **Gallery +24 foto** — 24 foto terpilih dari Google Drive folder `1Y5lysdoLbWqh1wL0kHx5We0mTXlzXd5O`; dipilih berdasarkan file size (≥329KB), orientasi (12 portrait tall:true + 12 landscape), dan distribusi merata per kategori (Outbound 6, Team Building 6, Gathering 6, Outing 6). Total galeri kini 44 foto.
+- **Gallery broken fix:** tambah `unoptimized` di semua `<Image>` GalleryPage & GalleryPreview → bypass Next.js server-side optimization yang gagal fetch Google Drive
+- **Gallery +24 foto:** dari Google Drive folder `1Y5lysdoLbWqh1wL0kHx5We0mTXlzXd5O`; 12 portrait (tall:true) + 12 landscape; Outbound 6, Team Building 6, Gathering 6, Outing 6. **Total galeri: 44 foto**
+- **Gallery duplikat:** dicek — 0 duplikat
+
+## Feature: Downloadable Company Profile (Juni 2025)
 - **PDF Generator:** `src/lib/pdf/CompanyProfileDocument.tsx` — 5 halaman (Cover, About, Services, Packages, Contact) menggunakan `@react-pdf/renderer` v4.5.1
 - **API Route:** `POST /api/download-profile` — validasi (name, company, email) → kirim lead notif ke admin via Resend + Fonnte → return PDF binary
 - **Section Component:** `src/components/sections/CompanyProfileDownload.tsx` — gated download, modal form 3 field, trigger download via fetch + Blob
@@ -96,6 +98,28 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - **Lead capture:** setiap download tercatat di email admin (subject: `📥 Download Company Profile`) dan WA notif via Fonnte
 - **Unicode fix:** `✦`, `★`, `→` bukan bagian dari Helvetica → diganti ASCII (`-`, `*`, `>`) agar tidak muncul sebagai `&`
 - **PackagesPage overflow fix:** `pkgCard` padding 18→12, marginBottom 12→6 agar tidak overflow ke halaman kosong
+
+## Feature: Client Logo Proxy (Juni 2025)
+- **API Route:** `GET /api/logo/[domain]` — fallback chain 4 tier:
+  1. **Local file** `/public/logos/{domain}.{ext}` (png/svg/jpg/webp) — prioritas tertinggi
+  2. **Clearbit** `logo.clearbit.com/{domain}` — kualitas terbaik, international brands
+  3. **Google Favicon v2** `t2.gstatic.com/faviconV2` — hanya HTTP 200 diterima (skip 404 placeholder)
+  4. **DuckDuckGo** `icons.duckduckgo.com/ip3/{domain}.ico` — last resort
+- **Cache:** `Cache-Control: public, max-age=604800, stale-while-revalidate=2592000` (7 hari)
+- **Fallback akhir:** colored initials di component (onError handler)
+- **CSP:** tidak perlu update — request dari `'self'` (`/api/logo/...`)
+- **Client names:** semua prefix `PT.`, `RS.` sudah dihapus; nama pakai Capitalize
+- **Status logo (Juni 2025):** 18 company tampil logo, **34 company masih inisial** menunggu upload
+
+## Logo Upload — Cara & Status (TODO)
+**Folder:** `public/logos/`
+**Naming:** `{domain}.png` (atau `.svg`, `.jpg`, `.webp`)
+**Ukuran ideal:** 128×128 px atau 256×256 px, transparan, < 100 KB
+
+**34 company yang butuh logo diupload (belum selesai):**
+`adaro.co.id` · `mapactive.com` · `hyatt.com` · `asiapartindotech.com` · `nippon-steel.com` · `clariant.com` · `modena.com` · `escalierinterior.com` · `trisakti.co.id` · `mahawira.co.id` · `tatamulia.co.id` · `saranaenergi.co.id` · `epson.co.id` · `fluidsciencedynamics.com` · `sahabatsolusindo.com` · `taf.co.id` · `cimbniaga.co.id` · `auliacosmetic.com` · `mayham.co.id` · `aulychelly.com` · `konnichiwa.co.id` · `primasid.com` · `cakramedika.co.id` · `mastravel.co.id` · `notarislola.co.id` · `sdndayabersama.sch.id` · `tiarakasih.sch.id` · `gkicinere.org` · `visiotek.co.id` · `takprime.co.id` · `serpongmas.co.id` · `intertrans.co.id` · `guritals.co.id` · `bogasari.com`
+
+→ Lihat detail lengkap di `public/logos/README.md`
 
 ## Troubleshooting Fonnte
 - Error `request invalid on disconnected device` → device di Fonnte tidak terkoneksi, scan ulang QR

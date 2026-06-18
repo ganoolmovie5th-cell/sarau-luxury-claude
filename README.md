@@ -66,7 +66,7 @@ Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk mengha
 - 🌐 **Marquee Klien** — animasi logo 53+ klien perusahaan
 - 📰 **Blog** — halaman daftar & detail artikel dengan Open Graph image dinamis
 - 🖼️ **Galeri** — 44 foto event (20 original + 24 dari Google Drive); `unoptimized` untuk bypass server-side optimization; masonry grid dengan lightbox
-- 🏢 **Client Logos** — logo proxy API (`/api/logo/[domain]`) → Clearbit → Google Favicon → DDG; fallback colored initials per card
+- 🏢 **Client Logos** — logo proxy API (`/api/logo/[domain]`): cek local file `/public/logos/{domain}.png` → Clearbit → Google Favicon → DuckDuckGo → colored initials. Upload logo PNG/SVG ke `public/logos/` untuk company yang belum ada logo-nya.
 - 📍 **Schema.org Terstruktur** — LocalBusiness, AggregateRating, FAQPage, BreadcrumbList, Offers
 - 🔒 **HTTP Security Headers** — CSP, HSTS, COOP, X-Frame-Options, Permissions-Policy
 - 🛡️ **Rate Limiting & Input Sanitization** — API dilindungi dari spam dan XSS
@@ -181,11 +181,16 @@ sarau-luxury-claude/
 │   └── workflows/
 │       ├── security.yml       # CI: TruffleHog, npm audit, tsc, eslint
 │       └── e2e.yml            # CI: Playwright E2E
-├── public/                    # Aset statis (logo, foto founder)
+├── public/
+│   ├── logos/                 # Logo klien — upload {domain}.png/svg di sini
+│   │   └── README.md          # Daftar 34 company yang butuh logo + naming convention
+│   ├── founder.jpeg
+│   └── sarau-luxury-logo.jpeg
 ├── src/
 │   ├── app/                   # Next.js App Router
-│   │   ├── api/contact/       # API route: form kontak & booking
+│   │   ├── api/contact/          # API route: form kontak & booking
 │   │   ├── api/download-profile/ # API route: generate & download Company Profile PDF
+│   │   ├── api/logo/[domain]/    # API route: logo proxy (local → Clearbit → Google → DDG)
 │   │   ├── about/             # Halaman About
 │   │   ├── blog/[slug]/       # Halaman Blog + detail
 │   │   ├── booking/           # Halaman Booking (disallow robots)
