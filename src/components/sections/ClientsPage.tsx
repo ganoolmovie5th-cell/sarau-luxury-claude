@@ -128,7 +128,7 @@ function ClientCard({ client, i, inView }: {
       ) : (
         <div className="w-14 h-14 rounded-2xl overflow-hidden bg-white flex items-center justify-center flex-shrink-0 border border-earth/10 p-1.5 shadow-sm">
           <Image
-            src={`https://logo.clearbit.com/${client.domain}`}
+            src={`/api/logo/${client.domain}`}
             alt={`${client.name} logo`}
             width={48}
             height={48}

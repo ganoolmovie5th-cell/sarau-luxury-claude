@@ -78,7 +78,7 @@ function LogoCard({ name, domain, color }: { name: string; domain: string; color
       ) : (
         <div className="w-8 h-8 rounded-lg overflow-hidden bg-white flex items-center justify-center flex-shrink-0 border border-earth/10 p-0.5">
           <Image
-            src={`https://logo.clearbit.com/${domain}`}
+            src={`/api/logo/${domain}`}
             alt={`${name} logo`}
             width={32}
             height={32}

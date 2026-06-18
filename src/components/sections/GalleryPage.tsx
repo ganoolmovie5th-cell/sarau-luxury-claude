@@ -35,6 +35,35 @@ const items = [
   { id: 21, src: gd('1ob1dQbH-htgnIHRgBaFlK_7u0UNusuF8'), title: 'Senyum Keberhasilan Bersama',   category: 'Gathering',     tall: false },
   // id 22 (Foto Bersama yang Berkesan) — dihapus: duplikat
   { id: 23, src: gd('12jjmiI8Yr9WJgXzR2rSqA139vTa5RlOx'), title: 'Serunya Outbound Alam Bebas',   category: 'Outbound',      tall: true  },
+  // ── Batch 3 — Drive folder 1Y5lysdoLb… (Juni 2025) ──
+  // Outbound
+  { id: 24, src: gd('1N0Z9T5qWOqdan6-WLnO_QSWDnFYA-dvx'), title: 'Semangat Tim di Alam Bebas',    category: 'Outbound',      tall: false },
+  { id: 25, src: gd('1T2mEwD8WAlIZnyh2V1JmtDyvYexrxSjz'), title: 'Aksi Outbound Penuh Energi',    category: 'Outbound',      tall: true  },
+  { id: 26, src: gd('1S_m_DAdY7Os1svNFe4z5ISDU-1C3t-kC'), title: 'Keberanian Tim Bersama',        category: 'Outbound',      tall: false },
+  { id: 27, src: gd('1RDJa1DGaW8KSVg-FcOnFKpMSotkTRYWx'), title: 'Challenge Outbound Korporat',   category: 'Outbound',      tall: true  },
+  { id: 28, src: gd('191xURKps14OeOqJYa3Rfj2uRu2Pj9ZUQ'), title: 'Aktivitas Luar Ruangan Seru',   category: 'Outbound',      tall: false },
+  { id: 29, src: gd('1EtE9ok0bf7wyqnAg7bO25Sl5HOeCR61f'), title: 'Semangat Juang Tim',            category: 'Outbound',      tall: false },
+  // Team Building
+  { id: 30, src: gd('1Zh64N1TsvGR53Py1lOas8o6dKbLE4a0h'), title: 'Kekompakan Tim yang Solid',     category: 'Team Building', tall: false },
+  { id: 31, src: gd('1ltAMvtnF7g_htlBjwQtlTmv2HWoVa3iL'), title: 'Sinergi Tim Terbaik',           category: 'Team Building', tall: true  },
+  { id: 32, src: gd('1f5bCk3fn0R6qKXhkHvoqWHorq8ePtnvq'), title: 'Kolaborasi Tanpa Batas',        category: 'Team Building', tall: false },
+  { id: 33, src: gd('1mBeeJnM491X6V-9vk0ab3uemdCGiKVzI'), title: 'Membangun Tim Impian',          category: 'Team Building', tall: true  },
+  { id: 34, src: gd('1V2SYj9yXI0Pov9Q86pBJKhWiPMlMNxcS'), title: 'Games Strategi Bersama',        category: 'Team Building', tall: false },
+  { id: 35, src: gd('1cvjpw0NFRc_qGVsO8ccc0Ylj17Q6NO1P'), title: 'Kepemimpinan dalam Aksi',       category: 'Team Building', tall: true  },
+  // Gathering
+  { id: 36, src: gd('1M7rhL0jogbxCjM5I6q3oAUgz8e8RQ6VG'), title: 'Suasana Gathering Hangat',      category: 'Gathering',     tall: false },
+  { id: 37, src: gd('1UNuqwv0FFZkli9sQ_1NNVw7_9Uimsbeb'), title: 'Momen Keakraban Bersama',       category: 'Gathering',     tall: true  },
+  { id: 38, src: gd('1H1cCnkKw4s6KKPHrrCeh_YfbhsUM1y0r'), title: 'Company Gathering Meriah',      category: 'Gathering',     tall: false },
+  { id: 39, src: gd('16yGpPvIFN91-KLaUe4Bujmwpn_SpgtdU'), title: 'Apresiasi Karyawan Terbaik',    category: 'Gathering',     tall: true  },
+  { id: 40, src: gd('1mZ4f8tURJ_0r4KcfcATlMWK-c9FQexsR'), title: 'Perayaan Keberhasilan Tim',     category: 'Gathering',     tall: false },
+  { id: 41, src: gd('1MEyRk95w2sLwFJVdnNZlOxMMCE26-qUG'), title: 'Gathering Penuh Kebahagiaan',   category: 'Gathering',     tall: true  },
+  // Outing
+  { id: 42, src: gd('194ejNAoY_8UBaNayJ_ka-zq94huaME7_'), title: 'Jelajah Destinasi Bersama',     category: 'Outing',        tall: false },
+  { id: 43, src: gd('1Y3ovuzeeMnc5MRwrAgabx_Zd2oB5OIRJ'), title: 'Eksplorasi Alam Nusantara',     category: 'Outing',        tall: true  },
+  { id: 44, src: gd('1VM60Bwbpyq-r-cw2QJMX7GQatpbiwCir'), title: 'Petualangan Seru Tim',          category: 'Outing',        tall: false },
+  { id: 45, src: gd('1jvaguzb7UQ3UoyftjTyaXEsWzjar066g'), title: 'Menikmati Keindahan Destinasi', category: 'Outing',        tall: true  },
+  { id: 46, src: gd('1BbIRUD8u_Ml54J2UR_7cTfUIy7jwy2gz'), title: 'Liburan Berkesan Bersama',      category: 'Outing',        tall: true  },
+  { id: 47, src: gd('1VOySYu2ma2BqgetM5COGMk5wkhTEYpfJ'), title: 'Kenangan Indah Outing',         category: 'Outing',        tall: true  },
 ]
 
 const categories = ['Semua', 'Outbound', 'Team Building', 'Gathering', 'Outing']
