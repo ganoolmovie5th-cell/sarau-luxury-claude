@@ -65,7 +65,8 @@ Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk mengha
 - 📊 **Scroll Progress Bar** — indikator progres scroll di bagian atas
 - 🌐 **Marquee Klien** — animasi logo 53+ klien perusahaan
 - 📰 **Blog** — halaman daftar & detail artikel dengan Open Graph image dinamis
-- 🖼️ **Galeri** — galeri foto dokumentasi event
+- 🖼️ **Galeri** — galeri foto dokumentasi event dengan lazy load; `unoptimized` untuk bypass server-side optimization agar Google Drive images tidak broken
+- 🏢 **Client Logos** — Clearbit Logo API (`logo.clearbit.com/{domain}`) untuk logo resmi perusahaan; fallback ke colored initials jika 404
 - 📍 **Schema.org Terstruktur** — LocalBusiness, AggregateRating, FAQPage, BreadcrumbList, Offers
 - 🔒 **HTTP Security Headers** — CSP, HSTS, COOP, X-Frame-Options, Permissions-Policy
 - 🛡️ **Rate Limiting & Input Sanitization** — API dilindungi dari spam dan XSS

@@ -83,7 +83,10 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - Semua data kontak, statistik, sosial media → `src/lib/constants.ts`
 - Jangan hardcode email/telepon di komponen — selalu import dari `CONTACT` constant
 
-## Feature: Downloadable Company Profile (Juni 2025)
+## Fix: Gallery & Client Logos (Juni 2025)
+- **Gallery broken images fix:** tambah `unoptimized` pada semua `<Image>` di GalleryPage & GalleryPreview → bypass Next.js server-side optimization yang gagal fetch Google Drive (Google rate-limit server requests)
+- **Client logos:** ganti colored initials dengan logo resmi via **Clearbit Logo API** (`https://logo.clearbit.com/${domain}`) di ClientsPage & ClientsMarquee; `onError` fallback ke colored initials untuk company tanpa logo di Clearbit
+- **CSP + remotePatterns:** tambah `https://logo.clearbit.com` ke `img-src` di CSP header & ke `images.remotePatterns` di next.config.js
 - **PDF Generator:** `src/lib/pdf/CompanyProfileDocument.tsx` — 5 halaman (Cover, About, Services, Packages, Contact) menggunakan `@react-pdf/renderer` v4.5.1
 - **API Route:** `POST /api/download-profile` — validasi (name, company, email) → kirim lead notif ke admin via Resend + Fonnte → return PDF binary
 - **Section Component:** `src/components/sections/CompanyProfileDownload.tsx` — gated download, modal form 3 field, trigger download via fetch + Blob

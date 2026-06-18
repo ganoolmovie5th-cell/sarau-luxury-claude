@@ -2,9 +2,10 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { useState } from 'react'
+import Image from 'next/image'
 import TestimonialsSection from './TestimonialsSection'
 import CtaSection from './CtaSection'
-
 import { STATS } from '@/lib/constants'
 
 // ─── Client data ──────────────────────────────────────────────────────────────
@@ -106,6 +107,7 @@ const industries = [
 function ClientCard({ client, i, inView }: {
   client: typeof clients[0]; i: number; inView: boolean
 }) {
+  const [logoErr, setLogoErr] = useState(false)
   const initials = client.name.replace(/^(PT\.|Bank|RS\.)\s*/i, '').trim().slice(0, 2).toUpperCase()
 
   return (
@@ -115,12 +117,27 @@ function ClientCard({ client, i, inView }: {
       transition={{ duration: 0.5, delay: i * 0.06 }}
       className="bg-white rounded-2xl border border-earth/10 p-5 flex flex-col items-center justify-center gap-4 hover:shadow-lg hover:shadow-forest/10 hover:-translate-y-1 hover:border-forest/20 transition-all duration-300 group min-h-[140px]"
     >
-      <div
-        className="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-display font-bold text-xl flex-shrink-0 shadow-sm"
-        style={{ backgroundColor: client.color }}
-      >
-        {initials}
-      </div>
+      {/* Logo — Clearbit, fallback ke initials */}
+      {logoErr ? (
+        <div
+          className="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-display font-bold text-xl flex-shrink-0 shadow-sm"
+          style={{ backgroundColor: client.color }}
+        >
+          {initials}
+        </div>
+      ) : (
+        <div className="w-14 h-14 rounded-2xl overflow-hidden bg-white flex items-center justify-center flex-shrink-0 border border-earth/10 p-1.5 shadow-sm">
+          <Image
+            src={`https://logo.clearbit.com/${client.domain}`}
+            alt={`${client.name} logo`}
+            width={48}
+            height={48}
+            unoptimized
+            className="object-contain w-full h-full"
+            onError={() => setLogoErr(true)}
+          />
+        </div>
+      )}
       <div className="text-center">
         <h5 className="font-semibold text-bark text-sm leading-tight mb-1.5 group-hover:text-forest transition-colors">
           {client.name}
