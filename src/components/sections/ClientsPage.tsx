@@ -17,23 +17,23 @@ const clients = [
   { name: 'Aloft Hotel',                   domain: 'alofthotels.com',        industry: 'Hospitality', color: '#e31837' },
   { name: 'Four Points Hotel',             domain: 'fourpoints.com',         industry: 'Hospitality', color: '#8b1a1a' },
   // ── Otomotif ──
-  { name: 'PT. Hino Motors Indonesia',    domain: 'hino.co.id',             industry: 'Otomotif', color: '#CC0000' },
+  { name: 'Hino Motors Indonesia',         domain: 'hino.co.id',             industry: 'Otomotif', color: '#CC0000' },
   { name: 'Astra',                          domain: 'astra.co.id',             industry: 'Otomotif', color: '#eb0a1e' },
   { name: 'Indopenske',                    domain: 'indopenske.co.id',        industry: 'Otomotif', color: '#003087' },
   { name: 'Asia Part Indotech',            domain: 'asiapartindotech.com',    industry: 'Otomotif', color: '#c0392b' },
   // ── Manufaktur ──
-  { name: 'Nippon Steel',                  domain: 'nipponsteel.com',        industry: 'Manufaktur', color: '#1a1a2e' },
-  { name: 'PT. Clariant Indonesia',        domain: 'clariant.com',           industry: 'Manufaktur', color: '#e2001a' },
-  { name: 'Modena',                        domain: 'modena.id',              industry: 'Manufaktur', color: '#c0392b' },
+  { name: 'Nippon Steel',                  domain: 'nippon-steel.com',       industry: 'Manufaktur', color: '#1a1a2e' },
+  { name: 'Clariant Indonesia',            domain: 'clariant.com',           industry: 'Manufaktur', color: '#e2001a' },
+  { name: 'Modena',                        domain: 'modena.com',             industry: 'Manufaktur', color: '#c0392b' },
   { name: 'Escalier Interior',             domain: 'escalierinterior.com',   industry: 'Manufaktur', color: '#1a5fa0' },
   { name: 'Trisakti Mekar Mandiri',        domain: 'trisakti.co.id',         industry: 'Manufaktur', color: '#1a5276' },
   { name: 'Mahawira Putra Teknik',         domain: 'mahawira.co.id',         industry: 'Manufaktur', color: '#117a65' },
-  { name: 'PT. Tata Mulia',               domain: 'tatamulia.co.id',         industry: 'Konstruksi', color: '#e67e22' },
+  { name: 'Tata Mulia',                    domain: 'tatamulia.co.id',         industry: 'Konstruksi', color: '#e67e22' },
   // ── Energi ──
-  { name: 'Adaro Energy Indonesia',        domain: 'adaro.com',              industry: 'Energi', color: '#003366' },
+  { name: 'Adaro Energy Indonesia',        domain: 'adaro.co.id',            industry: 'Energi', color: '#003366' },
   { name: 'Sarana Energi Investama',       domain: 'saranaenergi.co.id',     industry: 'Energi', color: '#e67e22' },
   // ── Teknologi ──
-  { name: 'PT. Epson Indonesia',           domain: 'epson.co.id',            industry: 'Teknologi', color: '#00539f' },
+  { name: 'Epson Indonesia',               domain: 'epson.co.id',            industry: 'Teknologi', color: '#00539f' },
   { name: 'Fluid Science Dynamics',        domain: 'fluidsciencedynamics.com', industry: 'Teknologi', color: '#0077b6' },
   { name: 'Sahabat Solusindo',             domain: 'sahabatsolusindo.com',   industry: 'Teknologi', color: '#0e8a6e' },
   // ── Keuangan ──
@@ -41,7 +41,7 @@ const clients = [
   { name: 'Bank Mandiri',                  domain: 'bankmandiri.co.id',      industry: 'Keuangan', color: '#003d79' },
   { name: 'Bank BNI',                      domain: 'bni.co.id',              industry: 'Keuangan', color: '#f77f00' },
   { name: 'MNC Bank',                      domain: 'mncbank.co.id',          industry: 'Keuangan', color: '#e31837' },
-  { name: 'PT. Lippo General Insurance',   domain: 'lippoinsurance.com',     industry: 'Keuangan', color: '#d4380d' },
+  { name: 'Lippo General Insurance',       domain: 'lippoinsurance.com',     industry: 'Keuangan', color: '#d4380d' },
   { name: 'Pegadaian',                     domain: 'pegadaian.co.id',        industry: 'Keuangan', color: '#00703a' },
   // ── Kecantikan & Retail ──
   { name: 'Aulia Cosmetic',                domain: 'auliacosmetic.com',      industry: 'Kecantikan', color: '#b5006e' },
@@ -52,12 +52,12 @@ const clients = [
   // ── F&B ──
   { name: 'Konnichiwa',                    domain: 'konnichiwa.co.id',       industry: 'F&B', color: '#d62828' },
   // ── Distribusi & Konstruksi ──
-  { name: 'PT. Primasid Andalan Utama',    domain: 'primasid.com',           industry: 'Distribusi', color: '#c44a15' },
-  { name: 'PT. Asfindo Berkah Mandiri',    domain: 'asfindo.com',            industry: 'Konstruksi', color: '#2d6a4f' },
+  { name: 'Primasid Andalan Utama',        domain: 'primasid.com',           industry: 'Distribusi', color: '#c44a15' },
+  { name: 'Asfindo Berkah Mandiri',        domain: 'asfindo.com',            industry: 'Konstruksi', color: '#2d6a4f' },
   // ── Farmasi ──
-  { name: 'PT. Kalbe Farma',               domain: 'kalbe.co.id',            industry: 'Farmasi', color: '#007bff' },
+  { name: 'Kalbe Farma',                   domain: 'kalbe.co.id',            industry: 'Farmasi', color: '#007bff' },
   // ── Kesehatan ──
-  { name: 'RS. Siloam',                    domain: 'siloamhospitals.com',    industry: 'Kesehatan', color: '#005baa' },
+  { name: 'Siloam Hospitals',              domain: 'siloamhospitals.com',    industry: 'Kesehatan', color: '#005baa' },
   { name: 'Cakra Medika',                  domain: 'cakramedika.co.id',      industry: 'Kesehatan', color: '#e74c3c' },
   // ── Travel ──
   { name: 'Mas Travel',                    domain: 'mastravel.co.id',        industry: 'Travel', color: '#16a085' },
@@ -71,13 +71,13 @@ const clients = [
   { name: 'Tak Prime',                     domain: 'takprime.co.id',          industry: 'Teknologi', color: '#1a252f' },
   { name: 'SMT',                           domain: 'serpongmas.co.id',        industry: 'Teknologi', color: '#148f77' },
   // ── Otomotif & Keuangan Baru ──
-  { name: 'TAF',                           domain: 'toyotafinance.co.id',     industry: 'Keuangan', color: '#eb0a1e' },
+  { name: 'TAF',                           domain: 'taf.co.id',               industry: 'Keuangan', color: '#eb0a1e' },
   { name: 'Bank CIMB Niaga',               domain: 'cimbniaga.co.id',         industry: 'Keuangan', color: '#d4001a' },
   { name: 'MAP',                           domain: 'map.co.id',               industry: 'Retail', color: '#c0392b' },
   // ── Logistik & Industri ──
   { name: 'Intertrans Global Logistics',   domain: 'intertrans.co.id',        industry: 'Logistik', color: '#1f618d' },
   { name: 'Gurita Lintas Samudera',        domain: 'guritals.co.id',          industry: 'Logistik', color: '#117a65' },
-  { name: 'PT. Bogasari',                  domain: 'bogasari.com',            industry: 'Manufaktur', color: '#a85a10' },
+  { name: 'Bogasari',                      domain: 'bogasari.com',            industry: 'Manufaktur', color: '#a85a10' },
 ]
 
 const industries = [
