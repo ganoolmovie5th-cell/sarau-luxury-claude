@@ -42,6 +42,7 @@ Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk mengha
 | Animasi              | Framer Motion 11                                       |
 | 3D / WebGL           | Three.js + React Three Fiber + Drei                    |
 | Ikon                 | Lucide React                                           |
+| PDF Generation       | [@react-pdf/renderer](https://react-pdf.org) v4        |
 | Email                | [Resend](https://resend.com)                           |
 | WhatsApp Notif       | [Fonnte API](https://fonnte.com)                       |
 | CMS (Paket/Layanan)  | Strapi (opsional)                                      |
@@ -54,6 +55,7 @@ Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk mengha
 
 ## Fitur Utama
 
+- 📄 **Downloadable Company Profile** — PDF 5 halaman (Cover, About, Services, Packages, Contact) di-generate server-side via `@react-pdf/renderer`. Gated download: isi Nama, Perusahaan, Email → lead dikirim ke admin via Resend & Fonnte → PDF langsung terunduh
 - 🎨 **Hero 3D Interaktif** — Three.js di-load hanya setelah `requestIdleCallback` untuk tidak block FCP/LCP
 - ✨ **Animasi Framer Motion** — transisi halaman dan animasi scroll yang halus
 - 📦 **Price List Lengkap** — paket Gathering Silver/Gold/Platinum, add-on aktivitas, meeting package dengan tab interaktif
@@ -182,6 +184,7 @@ sarau-luxury-claude/
 ├── src/
 │   ├── app/                   # Next.js App Router
 │   │   ├── api/contact/       # API route: form kontak & booking
+│   │   ├── api/download-profile/ # API route: generate & download Company Profile PDF
 │   │   ├── about/             # Halaman About
 │   │   ├── blog/[slug]/       # Halaman Blog + detail
 │   │   ├── booking/           # Halaman Booking (disallow robots)
@@ -200,11 +203,12 @@ sarau-luxury-claude/
 │   ├── components/
 │   │   ├── 3d/                # HeroScene — Three.js, idle-loaded
 │   │   ├── layout/            # Navbar, Footer
-│   │   ├── sections/          # 19 section components
+│   │   ├── sections/          # 20 section components (+ CompanyProfileDownload)
 │   │   └── ui/                # WhatsApp button, Progress bar, dll
 │   ├── hooks/                 # useScrollProgress, useMediaQuery
 │   ├── lib/
 │   │   ├── constants.ts       # Single source of truth (stats, kontak, sosial)
+│   │   ├── pdf/               # CompanyProfileDocument — @react-pdf/renderer
 │   │   ├── security.ts        # Rate limiter, sanitizer HTML/plain, validators
 │   │   ├── strapi.ts          # Klien Strapi CMS (opsional)
 │   │   └── sanity.ts          # Placeholder Sanity (belum aktif)

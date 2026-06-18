@@ -32,12 +32,13 @@
 ## Third-Party Services
 | Service | Status | Fungsi |
 |---------|--------|--------|
-| Resend | Aktif | Email notifikasi form kontak & booking |
+| Resend | Aktif | Email notifikasi form kontak, booking & lead company profile |
 | Fonnte | Opsional | WhatsApp notifikasi ke admin |
 | Strapi | Opsional | Simpan data kontak ke CMS (skip jika tidak ada token) |
 | Sanity | Placeholder | Blog/galeri (belum aktif) |
 | Vercel Analytics | Aktif | Web analytics |
 | Google Analytics 4 | Aktif | `G-DFKHWJ3TJZ` |
+| @react-pdf/renderer | Aktif | Generate PDF Company Profile server-side (v4.5.1) |
 
 ## Catatan Strapi
 Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI_API_TOKEN` keduanya diset di env. Jika tidak diset, step save ke Strapi di-skip tanpa error.
@@ -81,6 +82,15 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 ## Single Source of Truth
 - Semua data kontak, statistik, sosial media → `src/lib/constants.ts`
 - Jangan hardcode email/telepon di komponen — selalu import dari `CONTACT` constant
+
+## Feature: Downloadable Company Profile (Juni 2025)
+- **PDF Generator:** `src/lib/pdf/CompanyProfileDocument.tsx` — 5 halaman (Cover, About, Services, Packages, Contact) menggunakan `@react-pdf/renderer` v4.5.1
+- **API Route:** `POST /api/download-profile` — validasi (name, company, email) → kirim lead notif ke admin via Resend + Fonnte → return PDF binary
+- **Section Component:** `src/components/sections/CompanyProfileDownload.tsx` — gated download, modal form 3 field, trigger download via fetch + Blob
+- **Posisi di Homepage:** ditambahkan sebelum `CtaSection`
+- **next.config.js:** `experimental.serverComponentsExternalPackages: ['@react-pdf/renderer']`
+- **PDF Response:** `renderToBuffer` → `.buffer.slice()` → `ArrayBuffer` untuk kompatibilitas `NextResponse`
+- **Lead capture:** setiap download tercatat di email admin (subject: `📥 Download Company Profile`) dan WA notif via Fonnte
 
 ## Troubleshooting Fonnte
 - Error `request invalid on disconnected device` → device di Fonnte tidak terkoneksi, scan ulang QR

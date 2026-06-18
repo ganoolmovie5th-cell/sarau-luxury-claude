@@ -9,6 +9,7 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import ClientsMarquee from '@/components/sections/ClientsMarquee'
 import GalleryPreview from '@/components/sections/GalleryPreview'
 import BlogPreview from '@/components/sections/BlogPreview'
+import CompanyProfileDownload from '@/components/sections/CompanyProfileDownload'
 import CtaSection from '@/components/sections/CtaSection'
 
 export const metadata: Metadata = {
@@ -51,6 +52,7 @@ export default function HomePage() {
       <TestimonialsSection />
       <GalleryPreview />
       <BlogPreview />
+      <CompanyProfileDownload />
       <CtaSection />
     </>
   )

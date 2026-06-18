@@ -12,8 +12,11 @@
     "test:e2e:report": "playwright show-report"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^4.5.1",
     "@react-three/drei": "^9.109.0",
     "@react-three/fiber": "^8.17.0",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.0",
     "lucide-react": "^0.400.0",
@@ -22,8 +25,6 @@
     "react-countup": "^6.5.3",
     "react-dom": "^18.3.0",
     "react-intersection-observer": "^9.13.0",
-    "@vercel/analytics": "^2.0.1",
-    "@vercel/speed-insights": "^2.0.0",
     "resend": "^6.12.4",
     "sharp": "^0.33.4",
     "tailwind-merge": "^2.4.0",
