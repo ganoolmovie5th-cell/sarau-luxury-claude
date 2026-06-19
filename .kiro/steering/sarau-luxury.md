@@ -14,6 +14,13 @@
 - **Jangan buat commit terpisah** — satukan dalam 1 commit bersama perubahan kode
 - **Selalu push langsung ke `main`**, jangan buat PR
 
+## Konfigurasi GTM
+- **GTM Container ID:** `GTM-5L5LR2KW`
+- **Posisi script:** inline di `<head>` setelah consent default, noscript sebagai elemen pertama `<body>`
+- **Urutan wajib di `<head>`:** (1) consent default → (2) GTM script
+- **GA4 direct (gtag.js):** tetap aktif di body. Jika GA4 tag dikonfigurasi di dalam GTM, hapus dua Script GA4 di body layout.tsx untuk menghindari double-tracking
+- **Jangan pindahkan GTM script ke bawah consent default** — Consent Mode v2 harus sudah di dataLayer sebelum GTM ter-inisialisasi
+
 ## Konfigurasi Email (Resend)
 - **RESEND_API_KEY:** `re_Rp8yVY7x_MDE4zZWfy4xFmhg2RwZWmSca`
 - **RESEND_FROM_EMAIL:** `no-reply@sarau-luxury.com`
@@ -38,6 +45,7 @@
 | Sanity | Placeholder | Blog/galeri (belum aktif) |
 | Vercel Analytics | Aktif | Web analytics |
 | Google Analytics 4 | Aktif | `G-1SJ8G9TVER` |
+| Google Tag Manager | Aktif | `GTM-5L5LR2KW` |
 | @react-pdf/renderer | Aktif | Generate PDF Company Profile server-side (v4.5.1) |
 
 ## Catatan Strapi

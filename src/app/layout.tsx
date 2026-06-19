@@ -146,6 +146,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/*
+         * 1. Consent default — WAJIB sebelum GTM load agar Consent Mode v2 bekerja.
+         *    analytics_storage default: 'denied' sampai user klik "Terima Semua".
+         */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});`,
+          }}
+        />
+        {/* 2. Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5L5LR2KW');`,
+          }}
+        />
         {/* Load font non-blocking via JS */}
         <script
           dangerouslySetInnerHTML={{
@@ -158,6 +173,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        {/* 3. Google Tag Manager (noscript) — tepat setelah <body> untuk browser tanpa JS */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5L5LR2KW"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <ScrollProgressBar />
         <Navbar />
         <PageTransition>
@@ -167,14 +191,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <WhatsAppButton />
         <CookieConsent />
         {/*
-         * GA4 Consent Mode v2 — urutan script PENTING:
-         * 1. ga-consent-default : inisialisasi dataLayer + gtag + set default DENIED sebelum GA load
-         * 2. gtag.js            : muat library GA4 dari Google
-         * 3. ga-init            : konfigurasi GA4 (hanya tracking setelah user consent)
+         * GA4 direct — gtag.js tetap aktif.
+         * PERINGATAN: jika GA4 tag juga dikonfigurasi di GTM (GTM-5L5LR2KW),
+         * hapus dua Script di bawah ini untuk menghindari double-tracking.
          */}
-        <Script id="ga-consent-default" strategy="afterInteractive">
-          {`window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});`}
-        </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-1SJ8G9TVER"
           strategy="afterInteractive"

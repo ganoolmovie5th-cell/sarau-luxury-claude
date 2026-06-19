@@ -47,7 +47,7 @@ Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk mengha
 | WhatsApp Notif       | [Fonnte API](https://fonnte.com)                       |
 | CMS (Paket/Layanan)  | Strapi (opsional)                                      |
 | CMS (Blog/Galeri)    | Sanity (placeholder, belum aktif)                      |
-| Analytics            | Google Analytics 4 + Vercel Analytics                  |
+| Analytics            | Google Analytics 4 + Google Tag Manager + Vercel Analytics |
 | Performance          | Vercel Speed Insights                                  |
 | Deployment           | [Vercel](https://vercel.com)                           |
 
@@ -168,6 +168,9 @@ NEXT_PUBLIC_SITE_URL=https://sarau-luxury.com
 
 # ── Google Analytics ──────────────────────────────────────────────────────────
 NEXT_PUBLIC_GA_ID=G-1SJ8G9TVER
+
+# ── Google Tag Manager ────────────────────────────────────────────────────────
+NEXT_PUBLIC_GTM_ID=GTM-5L5LR2KW
 ```
 
 > **Catatan:** `RESEND_API_KEY`, `FONNTE_TOKEN`, dan `STRAPI_API_TOKEN` **opsional** — jika tidak diset, fitur terkait dilewati tanpa error.
