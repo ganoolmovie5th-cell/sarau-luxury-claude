@@ -73,6 +73,7 @@ Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk mengha
 - 🚨 **Error Boundary** — halaman fallback saat terjadi error runtime
 - 🤖 **GitHub Actions CI** — TruffleHog secret scan, dependency audit, TypeScript check, ESLint
 - 🧪 **E2E Testing** — Playwright smoke tests + GitHub Actions
+- 🍪 **Cookie Consent Banner** — banner izin kustom (GA4 Consent Mode v2) sesuai brand: glass-dark design, expand detail, pilihan "Terima Semua" / "Hanya Esensial", preferensi tersimpan di localStorage, analytics default DENIED hingga user memberi izin
 
 ---
 

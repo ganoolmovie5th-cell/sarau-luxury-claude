@@ -4,6 +4,7 @@ import '../styles/globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppButton from '@/components/ui/WhatsAppButton'
+import CookieConsent from '@/components/ui/CookieConsent'
 import PageTransition from '@/components/ui/PageTransition'
 import ScrollProgressBar from '@/components/ui/ScrollProgressBar'
 import { Analytics } from '@vercel/analytics/next'
@@ -164,13 +165,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </PageTransition>
         <Footer />
         <WhatsAppButton />
-        {/* Google Analytics — afterInteractive agar tidak block FCP/LCP */}
+        <CookieConsent />
+        {/*
+         * GA4 Consent Mode v2 — urutan script PENTING:
+         * 1. ga-consent-default : inisialisasi dataLayer + gtag + set default DENIED sebelum GA load
+         * 2. gtag.js            : muat library GA4 dari Google
+         * 3. ga-init            : konfigurasi GA4 (hanya tracking setelah user consent)
+         */}
+        <Script id="ga-consent-default" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});`}
+        </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-1SJ8G9TVER"
           strategy="afterInteractive"
         />
         <Script id="ga-init" strategy="afterInteractive">
-          {`window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1SJ8G9TVER');`}
+          {`gtag('js',new Date());gtag('config','G-1SJ8G9TVER');`}
         </Script>
         <Analytics />
         <SpeedInsights />

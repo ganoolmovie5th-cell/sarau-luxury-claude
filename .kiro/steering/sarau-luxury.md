@@ -88,6 +88,17 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - **Gallery +24 foto:** dari Google Drive folder `1Y5lysdoLbWqh1wL0kHx5We0mTXlzXd5O`; 12 portrait (tall:true) + 12 landscape; Outbound 6, Team Building 6, Gathering 6, Outing 6. **Total galeri: 44 foto**
 - **Gallery duplikat:** dicek — 0 duplikat
 
+## Feature: Cookie Consent Banner (Juni 2026)
+- **Komponen:** `src/components/ui/CookieConsent.tsx` — banner kustom GA4 Consent Mode v2
+- **Desain:** glass-dark background, accent line gradient (forest→sun→leaf), animasi slide-up Framer Motion, expand detail cookie types
+- **Pilihan user:** "Terima Semua" (grant analytics_storage) | "Hanya Esensial" (keep denied)
+- **Storage:** localStorage key `sarau_cookie_consent` = `'all'` | `'essential'`
+- **Integrasi GA4:** `gtag('consent','update',{...})` dipanggil saat user memilih; pada page reload preferensi lama di-re-apply
+- **Default GA4:** `analytics_storage: 'denied'` — set via `ga-consent-default` script di `layout.tsx` sebelum GA library load
+- **Urutan scripts di layout.tsx:** `ga-consent-default` → `gtag.js` → `ga-init` (urutan ini WAJIB)
+- **Jangan ubah urutan GA scripts** — consent default harus dikirim ke dataLayer sebelum library GA4 ter-load
+- **`ad_storage`, `ad_user_data`, `ad_personalization`:** selalu `denied` (tidak ada iklan)
+
 ## Feature: Downloadable Company Profile (Juni 2025)
 - **PDF Generator:** `src/lib/pdf/CompanyProfileDocument.tsx` — 5 halaman (Cover, About, Services, Packages, Contact) menggunakan `@react-pdf/renderer` v4.5.1
 - **API Route:** `POST /api/download-profile` — validasi (name, company, email) → kirim lead notif ke admin via Resend + Fonnte → return PDF binary
