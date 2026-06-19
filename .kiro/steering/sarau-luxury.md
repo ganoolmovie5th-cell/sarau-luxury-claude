@@ -37,7 +37,7 @@
 | Strapi | Opsional | Simpan data kontak ke CMS (skip jika tidak ada token) |
 | Sanity | Placeholder | Blog/galeri (belum aktif) |
 | Vercel Analytics | Aktif | Web analytics |
-| Google Analytics 4 | Aktif | `G-DFKHWJ3TJZ` |
+| Google Analytics 4 | Aktif | `G-1SJ8G9TVER` |
 | @react-pdf/renderer | Aktif | Generate PDF Company Profile server-side (v4.5.1) |
 
 ## Catatan Strapi

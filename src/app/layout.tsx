@@ -166,11 +166,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <WhatsAppButton />
         {/* Google Analytics — afterInteractive agar tidak block FCP/LCP */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-DFKHWJ3TJZ"
+          src="https://www.googletagmanager.com/gtag/js?id=G-1SJ8G9TVER"
           strategy="afterInteractive"
         />
         <Script id="ga-init" strategy="afterInteractive">
-          {`window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DFKHWJ3TJZ');`}
+          {`window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1SJ8G9TVER');`}
         </Script>
         <Analytics />
         <SpeedInsights />

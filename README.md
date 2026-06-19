@@ -166,7 +166,7 @@ NEXT_PUBLIC_WHATSAPP_NUMBER=6285711786561    # untuk tombol floating (boleh publ
 NEXT_PUBLIC_SITE_URL=https://sarau-luxury.com
 
 # ── Google Analytics ──────────────────────────────────────────────────────────
-NEXT_PUBLIC_GA_ID=G-DFKHWJ3TJZ
+NEXT_PUBLIC_GA_ID=G-1SJ8G9TVER
 ```
 
 > **Catatan:** `RESEND_API_KEY`, `FONNTE_TOKEN`, dan `STRAPI_API_TOKEN` **opsional** — jika tidak diset, fitur terkait dilewati tanpa error.
