@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import ClientsPage from '@/components/sections/ClientsPage'
 import { SITE_URL } from '@/lib/constants'
 
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: 'Klien Korporat – BCA, Toyota, Kalbe & 50+ Perusahaan',
   description: 'Dipercaya 53+ perusahaan terkemuka Indonesia: BCA, Toyota, Kalbe Farma, Park Hyatt, Pegadaian, Bank Mandiri & banyak lagi. Lihat portofolio lengkap kami.',

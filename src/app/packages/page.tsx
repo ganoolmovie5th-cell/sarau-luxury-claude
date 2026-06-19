@@ -5,6 +5,8 @@ import CtaSection from '@/components/sections/CtaSection'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: 'Harga Paket Outing & Gathering Perusahaan – Sarau Luxury',
   description: 'Lihat daftar harga lengkap: Gathering Silver Rp 525K, Gold Rp 675K, Platinum Rp 925K/pax. Transparan, all-in, tanpa biaya tersembunyi.',

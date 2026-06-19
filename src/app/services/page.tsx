@@ -4,6 +4,8 @@ import ServicesPage from '@/components/sections/ServicesPage'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: 'Layanan Outing & Outbound Perusahaan – Sarau Luxury',
   description: 'Company gathering, outbound training, team building, family gathering, hingga meeting package. Solusi lengkap event perusahaan dari Rp 125.000/pax.',

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Playfair_Display, DM_Sans, Caveat } from 'next/font/google'
 import Script from 'next/script'
 import '../styles/globals.css'
 import Navbar from '@/components/layout/Navbar'
@@ -10,6 +11,32 @@ import ScrollProgressBar from '@/components/ui/ScrollProgressBar'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { CONTACT, SOCIAL, STATS, SITE_URL, BRAND } from '@/lib/constants'
+
+// ─── Fonts: self-hosted via next/font (tidak ada HTTP request ke Google runtime) ──
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['700'],
+  style: ['normal', 'italic'],
+  variable: '--font-display',
+  display: 'swap',
+  preload: true,
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-body',
+  display: 'swap',
+  preload: true,
+})
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  weight: ['600'],
+  variable: '--font-accent',
+  display: 'swap',
+  preload: false, // dekoratif, tidak critical untuk FCP
+})
 
 export const metadata: Metadata = {
   title: {
@@ -138,14 +165,10 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id">
+    <html lang="id" className={`${playfair.variable} ${dmSans.variable} ${caveat.variable}`}>
       <head>
         <meta charSet="utf-8" />
         <link rel="canonical" href="https://sarau-luxury.com/" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/*
          * 1. Consent default — WAJIB sebelum GTM load agar Consent Mode v2 bekerja.
          *    analytics_storage default: 'denied' sampai user klik "Terima Semua".
@@ -159,12 +182,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5L5LR2KW');`,
-          }}
-        />
-        {/* Load font non-blocking via JS */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Caveat:wght@600&display=swap';document.head.appendChild(l);})();`,
           }}
         />
         <script

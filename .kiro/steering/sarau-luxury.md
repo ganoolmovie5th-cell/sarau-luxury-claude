@@ -96,6 +96,11 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - **Gallery +24 foto:** dari Google Drive folder `1Y5lysdoLbWqh1wL0kHx5We0mTXlzXd5O`; 12 portrait (tall:true) + 12 landscape; Outbound 6, Team Building 6, Gathering 6, Outing 6. **Total galeri: 44 foto**
 - **Gallery duplikat:** dicek — 0 duplikat
 
+## Performance (Juni 2026)
+- **Fonts:** `next/font/google` — self-hosted di Vercel, tidak ada HTTP request ke Google Fonts runtime → FCP lebih cepat
+- **Hero LCP:** H1 tidak start di `opacity:0` (pakai `h1Variants` y-only); stagger dikurangi 0.15→0.07; duration 0.8→0.5s
+- **ISR:** `export const revalidate = 3600` di 8 halaman statis (homepage, about, services, packages, gallery, clients, faq, blog) → TTFB dari edge cache setelah request pertama
+
 ## Feature: Cookie Consent Banner (Juni 2026)
 - **Komponen:** `src/components/ui/CookieConsent.tsx` — banner kustom GA4 Consent Mode v2
 - **Desain:** glass-dark background, accent line gradient (forest→sun→leaf), animasi slide-up Framer Motion, expand detail cookie types

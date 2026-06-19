@@ -3,6 +3,8 @@ import FAQClient from './FAQClient'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: 'FAQ – Pertanyaan Umum Seputar Event Sarau Luxury',
   description: 'Jawaban lengkap soal paket, harga, destinasi, minimal peserta, dan proses booking di Sarau Luxury. Ada pertanyaan lain? Kami siap membantu.',

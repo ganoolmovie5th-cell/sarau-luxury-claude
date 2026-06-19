@@ -7,6 +7,8 @@ import CtaSection from '@/components/sections/CtaSection'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: 'Tentang Sarau Luxury – 8 Tahun Melayani Event Perusahaan',
   description: 'Berdiri sejak 2018, Sarau Luxury telah menggelar 100+ event sukses untuk 53+ perusahaan di Indonesia. Kenali tim dan filosofi kami di sini.',

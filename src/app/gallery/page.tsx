@@ -4,6 +4,8 @@ import { SITE_URL } from '@/lib/constants'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: 'Galeri Event Outing & Outbound Perusahaan – Sarau Luxury',
   description: 'Lihat dokumentasi nyata event outing, outbound training & company gathering yang telah kami gelar. 100+ event sukses dari berbagai industri.',

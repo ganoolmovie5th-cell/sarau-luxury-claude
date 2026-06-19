@@ -3,6 +3,8 @@ import BlogListPage from '@/components/sections/BlogListPage'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: 'Blog Tips Outing & Outbound Perusahaan – Sarau Luxury',
   description: 'Panduan lengkap merencanakan outing, gathering & outbound training perusahaan. Tips destinasi, anggaran, dan ide team building dari para ahlinya.',

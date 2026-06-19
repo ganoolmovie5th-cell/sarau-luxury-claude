@@ -12,6 +12,8 @@ import BlogPreview from '@/components/sections/BlogPreview'
 import CompanyProfileDownload from '@/components/sections/CompanyProfileDownload'
 import CtaSection from '@/components/sections/CtaSection'
 
+export const revalidate = 3600 // ISR: cache 1 jam di Vercel edge → TTFB < 50ms setelah request pertama
+
 export const metadata: Metadata = {
   title: 'Sarau Luxury – Event Organizer Outing & Outbound Perusahaan',
   description: 'Jasa outing, outbound training & company gathering terpercaya sejak 2018. 53+ klien korporat: BCA, Toyota, Kalbe Farma. Paket mulai Rp 525.000/pax. Konsultasi gratis!',

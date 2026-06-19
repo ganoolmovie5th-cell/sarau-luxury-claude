@@ -14,12 +14,19 @@ const HeroScene = dynamic(() => import('@/components/3d/HeroScene'), {
 })
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.07 } }, // dikurangi dari 0.15 → LCP lebih cepat
 }
 
 const itemVariants = {
-  hidden:   { opacity: 0, y: 40 },
-  visible:  { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+  hidden:   { opacity: 0, y: 24 },                    // dikurangi y: 40→24
+  visible:  { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }, // 0.8→0.5s
+}
+
+// Variant khusus H1 (LCP element) — TIDAK pakai opacity:0
+// Browser mendeteksi LCP hanya jika elemen visible; opacity:0 menunda deteksi
+const h1Variants = {
+  hidden:   { y: 24 },
+  visible:  { y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 }
 
 export default function HeroSection() {
@@ -69,7 +76,7 @@ export default function HeroSection() {
 
           {/* Headline */}
           <motion.h1
-            variants={itemVariants}
+            variants={h1Variants}
             className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-cream leading-[1.1] mb-6"
           >
             Where Teams{' '}

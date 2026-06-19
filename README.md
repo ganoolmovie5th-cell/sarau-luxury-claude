@@ -48,7 +48,7 @@ Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk mengha
 | CMS (Paket/Layanan)  | Strapi (opsional)                                      |
 | CMS (Blog/Galeri)    | Sanity (placeholder, belum aktif)                      |
 | Analytics            | Google Analytics 4 + Google Tag Manager + Vercel Analytics |
-| Performance          | Vercel Speed Insights                                  |
+| Performance          | Vercel Speed Insights + ISR edge cache (revalidate=3600) |
 | Deployment           | [Vercel](https://vercel.com)                           |
 
 ---
