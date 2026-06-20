@@ -10,8 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: [
           '/api/',       // API routes tidak perlu diindex
-          '/booking',    // Form halaman — tidak perlu diindex
-          '/contact',    // Form halaman — tidak perlu diindex
         ],
       },
     ],
