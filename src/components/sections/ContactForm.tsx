@@ -250,7 +250,7 @@ export default function ContactForm() {
           <div className="rounded-3xl overflow-hidden border border-earth/10 shadow-sm" style={{ height: 340 }}>
             <iframe
               title="Lokasi Sarau Luxury"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.5!2d106.5864722!3d-6.2526389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb50eef8000d%3A0x1!2sBinong+Permai+Blok+R-10%2F14%2C+Curug%2C+Banten!5e0!3m2!1sid!2sid!4v1"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.5!2d106.5864722!3d-6.2526389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb50eef8000d%3A0x1!2sBinong%20Permai%20Blok%20R-10%2F14%2C%20Curug%2C%20Banten!5e0!3m2!1sen!2sid!4v1700000000000"
               width="100%"
               height="340"
               style={{ border: 0 }}
@@ -280,7 +280,7 @@ export default function ContactForm() {
               <ul className="space-y-2 text-sm text-earth/70">
                 <li className="flex items-start gap-2"><span className="text-forest mt-0.5">✓</span> <span>Berpengalaman sejak 2018 — 100+ event sukses</span></li>
                 <li className="flex items-start gap-2"><span className="text-forest mt-0.5">✓</span> <span>Dipercaya 53+ perusahaan terkemuka: BCA, Toyota, Kalbe Farma</span></li>
-                <li className="flex items-start gap-2"><span className="text-forest mt-0.5">✓</span> <span>Paket all-in mulai Rp 125.000/pax — transparan, tanpa biaya tersembunyi</span></li>
+                <li className="flex items-start gap-2"><span className="text-forest mt-0.5">✓</span> <span>Paket outbound & team building mulai Rp 125.000/pax, gathering mulai Rp 525.000/pax — transparan, tanpa biaya tersembunyi</span></li>
                 <li className="flex items-start gap-2"><span className="text-forest mt-0.5">✓</span> <span>Layanan 20+ destinasi: Lembang, Bali, Bromo, Anyer & seluruh Indonesia</span></li>
                 <li className="flex items-start gap-2"><span className="text-forest mt-0.5">✓</span> <span>Tim fasilitator bersertifikat & pemandu berpengalaman</span></li>
                 <li className="flex items-start gap-2"><span className="text-forest mt-0.5">✓</span> <span>Respon cepat — konsultasi gratis dalam 15 menit</span></li>
