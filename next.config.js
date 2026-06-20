@@ -113,6 +113,8 @@ const nextConfig = {
   },
 
   experimental: {
+    // Inline critical CSS (butuh paket 'critters') — kurangi render-blocking CSS request
+    optimizeCss: true,
     optimizePackageImports: ['lucide-react', 'framer-motion', '@react-three/fiber', '@react-three/drei'],
     serverComponentsExternalPackages: ['@react-pdf/renderer'],
   },

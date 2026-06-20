@@ -178,7 +178,7 @@ export default function HeroScene() {
       <MistOrb position={[3, -1.5, 1]} />
 
       {/* Stars through tree canopy */}
-      <Stars radius={60} depth={40} count={500} factor={2.5} saturation={0} fade speed={0.3} />
+      <Stars radius={60} depth={40} count={250} factor={2.5} saturation={0} fade speed={0.3} />
 
       {/* Atmospheric fog */}
       <fog attach="fog" args={['#0D2818', 12, 35]} />
