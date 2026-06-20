@@ -63,6 +63,17 @@ const securityHeaders = [
 ]
 
 const nextConfig = {
+  // ── Redirects for Indonesian URL aliases ──────────────────────────────
+  async redirects() {
+    return [
+      { source: '/paket',    destination: '/packages',  permanent: true },
+      { source: '/tentang',  destination: '/about',     permanent: true },
+      { source: '/layanan',  destination: '/services',  permanent: true },
+      { source: '/kontak',   destination: '/contact',   permanent: true },
+      { source: '/galeri',   destination: '/gallery',   permanent: true },
+    ]
+  },
+
   // Source maps production dimatikan — file .map terlalu besar & timeout di Lighthouse
   productionBrowserSourceMaps: false,
 
