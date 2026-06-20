@@ -51,8 +51,10 @@ export default function Navbar() {
             <Image
               src="/sarau-luxury-logo.jpeg"
               alt="Sarau Luxury"
-              fill
-              className="object-contain"
+              width={48}
+              height={48}
+              sizes="48px"
+              className="object-contain w-12 h-12"
               priority
             />
           </div>

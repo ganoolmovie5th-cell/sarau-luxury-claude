@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, DM_Sans, Caveat } from 'next/font/google'
-import Script from 'next/script'
 import '../styles/globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -207,18 +206,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <WhatsAppButton />
         <CookieConsent />
-        {/*
-         * GA4 direct — gtag.js tetap aktif.
-         * PERINGATAN: jika GA4 tag juga dikonfigurasi di GTM (GTM-5L5LR2KW),
-         * hapus dua Script di bawah ini untuk menghindari double-tracking.
-         */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-1SJ8G9TVER"
-          strategy="afterInteractive"
-        />
-        <Script id="ga-init" strategy="afterInteractive">
-          {`gtag('js',new Date());gtag('config','G-1SJ8G9TVER');`}
-        </Script>
+        {/* GA4 di-handle sepenuhnya via GTM (GTM-5L5LR2KW) — tidak ada gtag.js langsung agar tidak double-tracking */}
         <Analytics />
         <SpeedInsights />
       </body>

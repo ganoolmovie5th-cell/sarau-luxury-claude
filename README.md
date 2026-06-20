@@ -275,4 +275,17 @@ Pastikan semua environment variables sudah dikonfigurasi di **Vercel Dashboard �
 
 ---
 
+## ⚡ Optimasi PageSpeed (Juni 2026)
+
+Perbaikan berdasarkan temuan [PageSpeed Insights](https://pagespeed.web.dev/):
+
+- **Logo navbar (`Navbar.tsx`)** — `<Image>` logo diubah dari `fill` + default `sizes="100vw"` menjadi `width={48} height={48}` + `sizes="48px"`. Sebelumnya Next.js men-generate varian 750px untuk kotak 48×48 (−24 KiB, perbaikan LCP).
+- **GA4 (`layout.tsx`)** — Script `gtag.js` (`G-1SJ8G9TVER`) langsung dihapus; analytics kini **sepenuhnya via GTM** (`GTM-5L5LR2KW`) untuk menghilangkan double-tracking & menghemat ~157 KiB JS. Consent Mode v2 (consent-default → GTM) tetap dipertahankan.
+- **Legacy JS (`package.json`)** — ditambahkan `browserslist` modern (Chrome/Edge/Firefox ≥111, Safari ≥16.4) agar SWC tidak meng-inject polyfill ES6+ (−12 KiB).
+- **Heading order (`HeroSection.tsx`)** — label statistik diubah dari `<h4>` ke `<p>` untuk memperbaiki urutan heading (Accessibility: H1→H2→H4 menjadi runtut).
+- **Render-blocking CSS (`next.config.js`)** — `experimental.optimizeCss: true` (paket `critters`) untuk inline critical CSS.
+- **Main-thread (`HeroScene.tsx`)** — `<Stars count>` diturunkan 500 → 250 untuk mengurangi beban Three.js.
+
+---
+
 <p align="center">Made with ❤️ for <strong>Sarau Luxury</strong> — <em>Where Teams Grow Together</em></p>

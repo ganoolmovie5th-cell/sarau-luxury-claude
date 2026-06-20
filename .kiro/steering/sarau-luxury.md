@@ -164,3 +164,14 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - Input sanitasi: XSS protection di semua field form
 - `WHATSAPP_ADMIN_NUMBER` & `FONNTE_TOKEN` = server-only (tidak ke browser)
 - CI: TruffleHog scan di setiap push
+
+
+## Optimasi PageSpeed (Juni 2026)
+Perbaikan dari temuan PageSpeed Insights (Performance 48, Accessibility 99):
+- **Logo navbar:** `src/components/layout/Navbar.tsx` — `<Image>` logo pakai `width={48} height={48}` + `sizes="48px"` (bukan `fill` + default `100vw`). Mencegah Next.js generate varian 750px untuk display 48×48 (−24 KiB, perbaikan LCP).
+- **GA4 → GTM-only:** Script `gtag.js` (`G-1SJ8G9TVER`) langsung di `layout.tsx` **dihapus**. GA4 sekarang di-handle penuh lewat GTM (`GTM-5L5LR2KW`). Hemat ~157 KiB JS + hilangkan double-tracking. **Penting:** GA4 tag harus dikonfigurasi di dalam GTM container; jangan tambahkan kembali gtag.js langsung. Import `next/script` di layout.tsx ikut dihapus (tidak lagi dipakai).
+- **Urutan script consent tetap:** `ga-consent-default` (inline `<head>`) → GTM. Consent Mode v2 wajib di dataLayer sebelum GTM init — jangan diubah.
+- **browserslist (`package.json`):** ditambah target modern (Chrome/Edge/Firefox ≥111, Safari ≥16.4) agar SWC tidak inject polyfill ES6+ legacy (−12 KiB). Ditambah devDependency `critters`.
+- **optimizeCss (`next.config.js`):** `experimental.optimizeCss: true` untuk inline critical CSS (kurangi render-blocking CSS ~150 ms). Butuh paket `critters`.
+- **Heading order (`HeroSection.tsx`):** label statistik hero diubah `<h4>` → `<p>` agar urutan heading tidak melompat (H1→H2→H4). Ini label angka, bukan heading konten SEO.
+- **Three.js (`HeroScene.tsx`):** `<Stars count={500}>` → `{250}` untuk kurangi beban main-thread. Three.js tetap deferred via `requestIdleCallback` + `dynamic(ssr:false)`.

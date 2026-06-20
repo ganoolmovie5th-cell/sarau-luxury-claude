@@ -132,7 +132,7 @@ export default function HeroSection() {
             ].map((stat) => (
               <div key={stat.label} className="flex items-center gap-3">
                 <div className="text-sun font-display font-bold text-3xl">{stat.value}</div>
-                <h4 className="text-cream/50 text-sm leading-tight max-w-[80px]">{stat.label}</h4>
+                <p className="text-cream/50 text-sm leading-tight max-w-[80px]">{stat.label}</p>
               </div>
             ))}
           </motion.div>
