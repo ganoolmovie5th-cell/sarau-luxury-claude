@@ -251,8 +251,10 @@ const tabs = [
 
 // ─── SUB COMPONENTS ───────────────────────────────────────────────────────────
 
-function GatheringCard({ pkg, i, inView }: { pkg: typeof gatheringPackages[0]; i: number; inView: boolean }) {
+function GatheringCard({ pkg, i, inView, nameLevel = 3 }: { pkg: typeof gatheringPackages[0]; i: number; inView: boolean; nameLevel?: 2 | 3 }) {
   const isPopular = pkg.popular
+  const NameTag = `h${nameLevel}` as 'h2' | 'h3'
+  const FeaturesTag = `h${nameLevel + 1}` as 'h3' | 'h4'
   return (
     <motion.div
       key={pkg.name}
@@ -267,7 +269,7 @@ function GatheringCard({ pkg, i, inView }: { pkg: typeof gatheringPackages[0]; i
         </div>
       )}
       <div className={`p-7 ${pkg.badge ? 'pt-12' : ''}`}>
-        <h4 className={`font-display font-bold text-xl mb-1 ${isPopular ? 'text-cream' : 'text-bark'}`}>{pkg.name}</h4>
+        <NameTag className={`font-display font-bold text-xl mb-1 ${isPopular ? 'text-cream' : 'text-bark'}`}>{pkg.name}</NameTag>
         {pkg.note && (
           <p className={`text-xs font-semibold mb-1 px-2 py-1 rounded-full inline-block ${isPopular ? 'bg-white/15 text-cream/80' : 'bg-forest/10 text-forest'}`}>
             {pkg.note}
@@ -284,7 +286,7 @@ function GatheringCard({ pkg, i, inView }: { pkg: typeof gatheringPackages[0]; i
         </div>
 
         {/* Features */}
-        <h5 className={`text-xs font-semibold uppercase tracking-widest mb-2 ${isPopular ? 'text-cream/50' : 'text-earth/50'}`}>Sudah Termasuk:</h5>
+        <FeaturesTag className={`text-xs font-semibold uppercase tracking-widest mb-2 ${isPopular ? 'text-cream/50' : 'text-earth/50'}`}>Sudah Termasuk:</FeaturesTag>
         <ul className="space-y-2 mb-8">
           {pkg.features.map((f) => (
             <li key={f} className="flex items-start gap-2.5">
@@ -311,8 +313,10 @@ function GatheringCard({ pkg, i, inView }: { pkg: typeof gatheringPackages[0]; i
   )
 }
 
-function AddOnCard({ item, i, inView }: { item: AddOnItem; i: number; inView: boolean }) {
+function AddOnCard({ item, i, inView, nameLevel = 3 }: { item: AddOnItem; i: number; inView: boolean; nameLevel?: 2 | 3 }) {
   const Icon = item.icon
+  const NameTag = `h${nameLevel}` as 'h2' | 'h3'
+  const FeaturesTag = `h${nameLevel + 1}` as 'h3' | 'h4'
   return (
     <motion.div
       initial={{ opacity: 0, y: 25 }}
@@ -325,7 +329,7 @@ function AddOnCard({ item, i, inView }: { item: AddOnItem; i: number; inView: bo
           <Icon size={18} className="text-forest" />
         </div>
         <div className="flex-1 min-w-0">
-          <h4 className="font-semibold text-bark text-sm leading-tight">{item.name}</h4>
+          <NameTag className="font-semibold text-bark text-sm leading-tight">{item.name}</NameTag>
           {item.note && <p className="text-xs text-forest font-medium mt-0.5">{item.note}</p>}
         </div>
       </div>
@@ -333,7 +337,7 @@ function AddOnCard({ item, i, inView }: { item: AddOnItem; i: number; inView: bo
         <span className="font-display font-bold text-xl text-forest">Rp {item.price}</span>
         <span className="text-xs text-earth/60 ml-1">{item.unit}</span>
       </div>
-      <h5 className="text-xs font-semibold text-earth/40 uppercase tracking-widest mb-1.5">Termasuk:</h5>
+      <FeaturesTag className="text-xs font-semibold text-earth/40 uppercase tracking-widest mb-1.5">Termasuk:</FeaturesTag>
       <ul className="space-y-1">
         {item.features.map((f) => (
           <li key={f} className="flex items-start gap-2 text-xs text-earth/70">
@@ -351,6 +355,10 @@ function AddOnCard({ item, i, inView }: { item: AddOnItem; i: number; inView: bo
 export default function PackagesPreview({ hideHeader = false }: { hideHeader?: boolean }) {
   const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true })
   const [activeTab, setActiveTab] = useState('gathering')
+
+  // hideHeader=true  → halaman /packages, h1 ada di page header, card = h2, features = h3
+  // hideHeader=false → homepage/section, ada h2 di atas, card = h3, features = h4
+  const nameLevel = hideHeader ? 2 : 3
 
   return (
     <section ref={ref} className="section-padding bg-cream/80 relative overflow-hidden">
@@ -413,7 +421,7 @@ export default function PackagesPreview({ hideHeader = false }: { hideHeader?: b
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-7 items-start">
                 {gatheringPackages.map((pkg, i) => (
-                  <GatheringCard key={pkg.name} pkg={pkg} i={i} inView={inView} />
+                  <GatheringCard key={pkg.name} pkg={pkg} i={i} inView={inView} nameLevel={nameLevel} />
                 ))}
               </div>
             </motion.div>
@@ -429,7 +437,7 @@ export default function PackagesPreview({ hideHeader = false }: { hideHeader?: b
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                 {addOns.map((item, i) => (
-                  <AddOnCard key={item.name + item.price} item={item} i={i} inView={inView} />
+                  <AddOnCard key={item.name + item.price} item={item} i={i} inView={inView} nameLevel={nameLevel} />
                 ))}
               </div>
             </motion.div>
@@ -445,7 +453,7 @@ export default function PackagesPreview({ hideHeader = false }: { hideHeader?: b
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {meetingAddOns.map((item, i) => (
-                  <AddOnCard key={item.name} item={item} i={i} inView={inView} />
+                  <AddOnCard key={item.name} item={item} i={i} inView={inView} nameLevel={nameLevel} />
                 ))}
               </div>
             </motion.div>
