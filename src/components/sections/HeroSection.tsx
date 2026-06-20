@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Play, ChevronDown } from 'lucide-react'
 import { STATS } from '@/lib/constants'
+import HeroSceneBoundary from '@/components/3d/HeroSceneBoundary'
 
 // Lazy load Three.js hanya setelah browser idle — tidak block FCP/LCP
 const HeroScene = dynamic(() => import('@/components/3d/HeroScene'), {
@@ -49,9 +50,11 @@ export default function HeroSection() {
       {/* 3D Canvas background — hanya render setelah idle */}
       <div className="absolute inset-0 z-0">
         {sceneReady && (
-          <Suspense fallback={null}>
-            <HeroScene />
-          </Suspense>
+          <HeroSceneBoundary>
+            <Suspense fallback={null}>
+              <HeroScene />
+            </Suspense>
+          </HeroSceneBoundary>
         )}
       </div>
 
