@@ -269,9 +269,9 @@ function GatheringCard({ pkg, i, inView }: { pkg: typeof gatheringPackages[0]; i
       <div className={`p-7 ${pkg.badge ? 'pt-12' : ''}`}>
         <h4 className={`font-display font-bold text-xl mb-1 ${isPopular ? 'text-cream' : 'text-bark'}`}>{pkg.name}</h4>
         {pkg.note && (
-          <h6 className={`text-xs font-semibold mb-1 px-2 py-1 rounded-full inline-block ${isPopular ? 'bg-white/15 text-cream/80' : 'bg-forest/10 text-forest'}`}>
+          <p className={`text-xs font-semibold mb-1 px-2 py-1 rounded-full inline-block ${isPopular ? 'bg-white/15 text-cream/80' : 'bg-forest/10 text-forest'}`}>
             {pkg.note}
-          </h6>
+          </p>
         )}
         <div className={`text-xs mb-5 ${isPopular ? 'text-cream/60' : 'text-earth/60'}`}>{pkg.minPax}</div>
 
@@ -326,7 +326,7 @@ function AddOnCard({ item, i, inView }: { item: AddOnItem; i: number; inView: bo
         </div>
         <div className="flex-1 min-w-0">
           <h4 className="font-semibold text-bark text-sm leading-tight">{item.name}</h4>
-          {item.note && <h6 className="text-xs text-forest font-medium mt-0.5">{item.note}</h6>}
+          {item.note && <p className="text-xs text-forest font-medium mt-0.5">{item.note}</p>}
         </div>
       </div>
       <div className="mb-3">
