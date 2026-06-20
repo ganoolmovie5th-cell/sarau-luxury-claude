@@ -14,6 +14,12 @@
 - **Jangan buat commit terpisah** — satukan dalam 1 commit bersama perubahan kode
 - **Selalu push langsung ke `main`**, jangan buat PR
 
+## Bug Fixes (Juni 2026)
+- **Homepage crash fix:** Three.js HeroScene dibungkus `HeroSceneBoundary` (ErrorBoundary) — jika WebGL gagal, hero degrade ke gradient background instead of crash seluruh halaman
+- **Google Maps embed fix:** URL embed diperbaiki (encoding `+` → `%20`, timestamp valid)
+- **Redirect ID route:** Tambah redirect `/paket` → `/packages`, `/tentang` → `/about`, `/layanan` → `/services`, `/kontak` → `/contact`, `/galeri` → `/gallery` di `next.config.js`
+- **Price inconsistency fix:** Contact page "Paket all-in mulai Rp 125.000/pax" → "Paket outbound & team building mulai Rp 125.000/pax, gathering mulai Rp 525.000/pax"
+
 ## Konfigurasi GTM
 - **GTM Container ID:** `GTM-5L5LR2KW`
 - **Posisi script:** inline di `<head>` setelah consent default, noscript sebagai elemen pertama `<body>`
