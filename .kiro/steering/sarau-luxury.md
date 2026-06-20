@@ -149,10 +149,10 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 **Naming:** `{domain}.png` (atau `.svg`, `.jpg`, `.webp`)
 **Ukuran ideal:** 128×128 px atau 256×256 px, transparan, < 100 KB
 
-**34 company yang butuh logo diupload (belum selesai):**
-`adaro.co.id` · `mapactive.com` · `hyatt.com` · `asiapartindotech.com` · `nippon-steel.com` · `clariant.com` · `modena.com` · `escalierinterior.com` · `trisakti.co.id` · `mahawira.co.id` · `tatamulia.co.id` · `saranaenergi.co.id` · `epson.co.id` · `fluidsciencedynamics.com` · `sahabatsolusindo.com` · `taf.co.id` · `cimbniaga.co.id` · `auliacosmetic.com` · `mayham.co.id` · `aulychelly.com` · `konnichiwa.co.id` · `primasid.com` · `cakramedika.co.id` · `mastravel.co.id` · `notarislola.co.id` · `sdndayabersama.sch.id` · `tiarakasih.sch.id` · `gkicinere.org` · `visiotek.co.id` · `takprime.co.id` · `serpongmas.co.id` · `intertrans.co.id` · `guritals.co.id` · `bogasari.com`
+**7 company yang masih inisial (belum ada logo):**
+`trisakti.co.id` · `mahawira.co.id` · `mayham.co.id` · `aulychelly.com` · `notarislola.co.id` · `sdndayabersama.sch.id` · `takprime.co.id`
 
-→ Lihat detail lengkap di `public/logos/README.md`
+**Status Juni 2026:** 45 logo tampil (18 via Clearbit/API + 9 via Google Favicon/DDG + 18 upload manual), 7 masih inisial
 
 ## Troubleshooting Fonnte
 - Error `request invalid on disconnected device` → device di Fonnte tidak terkoneksi, scan ulang QR
