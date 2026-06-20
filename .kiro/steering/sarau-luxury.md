@@ -16,9 +16,12 @@
 
 ## Bug Fixes (Juni 2026)
 - **Homepage crash fix:** Three.js HeroScene dibungkus `HeroSceneBoundary` (ErrorBoundary) — jika WebGL gagal, hero degrade ke gradient background instead of crash seluruh halaman
+- **Homepage section crash fix:** Setiap section homepage dibungkus `SectionErrorBoundary` (`src/components/3d/SectionErrorBoundary.tsx`) — jika satu section crash (Google Drive image, Three.js, dll), sisanya tetap jalan
 - **Google Maps embed fix:** URL embed diperbaiki (encoding `+` → `%20`, timestamp valid)
 - **Redirect ID route:** Tambah redirect `/paket` → `/packages`, `/tentang` → `/about`, `/layanan` → `/services`, `/kontak` → `/contact`, `/galeri` → `/gallery` di `next.config.js`
 - **Price inconsistency fix:** Contact page "Paket all-in mulai Rp 125.000/pax" → "Paket outbound & team building mulai Rp 125.000/pax, gathering mulai Rp 525.000/pax"
+- **SEO: robots.txt unblock:** Hapus `Disallow: /booking` & `/contact` dari `robots.ts` — halaman konversi sekarang bisa di-crawl & diindex Google
+- **SEO: sitemap trailing slash:** Homepage URL di sitemap `https://sarau-luxury.com` → `https://sarau-luxury.com/` untuk konsistensi
 
 ## Konfigurasi GTM
 - **GTM Container ID:** `GTM-5L5LR2KW`
