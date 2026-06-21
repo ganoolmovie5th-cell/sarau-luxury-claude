@@ -118,7 +118,7 @@ const nextConfig = {
   experimental: {
     // Inline critical CSS — kurangi render-blocking CSS request
     optimizeCss: true,
-    optimizePackageImports: ['lucide-react', 'framer-motion', '@react-three/fiber', '@react-three/drei'],
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
 }
 

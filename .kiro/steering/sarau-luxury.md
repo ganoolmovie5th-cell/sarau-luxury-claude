@@ -4,7 +4,7 @@
 - **Nama:** Sarau Luxury
 - **Tagline:** Where Teams Grow Together
 - **Website:** https://sarau-luxury.com
-- **Framework:** Next.js 15 App Router + TypeScript + Tailwind CSS (React 18)
+- **Framework:** Next.js 15 App Router + TypeScript + Tailwind CSS (React 19)
 - **Deployment:** Vercel (push ke `main` = auto deploy)
 
 ## Aturan Commit
@@ -206,3 +206,18 @@ Perubahan breaking yang dikerjakan di branch:
 - **Override `glob` 10.5.0** (Langkah C) tetap dipertahankan di `package.json`.
 
 **Sebelum merge ke `main`:** wajib `npm run test:e2e` (Playwright) terhadap Vercel preview deployment branch ini. **Hindari lompat ke Next 16** (breaking change ganda).
+
+## Fix: Hero 3D hilang setelah Next 15 (React 19 upgrade) — Juni 2026
+**Gejala:** homepage hero cuma menampilkan background coklat (`bg-bark`), hutan 3D (Three.js `ForestScene`) hilang. Console: `TypeError: Cannot read properties of undefined (reading 'ReactCurrentBatchConfig')` → `HeroSceneBoundary` menangkap & degrade ke gradient.
+
+**Akar masalah:** Next 15 mem-bundle **React 19 (vendored)**, sementara project masih React 18 + `@react-three/fiber` **v8** (`react-reconciler@0.27.0`) yang membaca internal React 18 (`__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentBatchConfig`). Di bundle, `react` ter-resolve ke React 19.2 (internalnya bernama `__CLIENT_INTERNALS…`) → `undefined` → reconciler crash. Terbukti: build chunk berisi DUA React (`version:"18.3"` + `version:"19.2"`).
+
+**Fix (branch `fix/hero-react19`):** selaraskan ke React 19.
+- `react`/`react-dom` → **^19.2**, `@types/react(-dom)` → **^19**
+- `@react-three/fiber` → **^9** (`react-reconciler` kompatibel React 19), `@react-three/drei` → **^10**
+- `.npmrc` baru: `legacy-peer-deps=true` (transisi peer-deps React 19; Vercel ikut pakai ini)
+- `next.config.js`: `@react-three/fiber`/`drei` dikeluarkan dari `optimizePackageImports` (pencegahan; bukan akar masalah)
+- `PackagesPreview.tsx`: `icon: React.ElementType` → `LucideIcon` (types React 19 lebih ketat → props jadi `never`)
+- **Verifikasi:** `next build` ✅ (33 halaman), `npm audit` = 0, probe headless → `<canvas>` render 1366×768, tidak ada error `ReactCurrentBatchConfig`.
+
+**Catatan untuk ke depan:** semua library yang menyentuh React internals (Three.js/R3F, animasi) harus versi React 19. Jangan turunkan React ke 18 selama di Next 15.

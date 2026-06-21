@@ -322,3 +322,9 @@ Perubahan breaking yang dikerjakan:
 - **`optimizeCss`** — tetap aktif; Next 15 memakai `beasties` (fork `critters`), ditambahkan ke devDependencies.
 
 > ⚠️ Branch ini **belum di-merge ke `main`**. Sebelum merge: jalankan `npm run test:e2e` (Playwright) terhadap deploy preview Vercel. **Hindari lompat ke Next 16** (breaking change ganda).
+
+### 🌲 Fix: Hero 3D hilang setelah Next 15 (upgrade React 19)
+
+Setelah Next 15, hero homepage hanya menampilkan background coklat — hutan 3D (Three.js) hilang. Penyebab: Next 15 mem-bundle **React 19**, tetapi `@react-three/fiber` **v8** (`react-reconciler` lama) membaca internal React 18 (`ReactCurrentBatchConfig`) yang tidak ada di React 19 → reconciler crash → `HeroSceneBoundary` degrade ke gradient.
+
+**Fix (`fix/hero-react19`):** selaraskan seluruh stack ke React 19 — `react`/`react-dom` → **19.2**, `@react-three/fiber` → **9**, `@react-three/drei` → **10**, `@types/react(-dom)` → **19**, tambah `.npmrc` (`legacy-peer-deps=true`), keluarkan R3F dari `optimizePackageImports`, dan `PackagesPreview.tsx` `React.ElementType` → `LucideIcon`. Verifikasi: `next build` ✅, `npm audit` = 0, `<canvas>` hero render normal.

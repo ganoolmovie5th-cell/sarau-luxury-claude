@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Check, ArrowRight, Bus, Gamepad2, Waves, Mountain, Tent, Bike, Users, Utensils, TreePine, Mic2 } from 'lucide-react'
+import { Check, ArrowRight, Bus, Gamepad2, Waves, Mountain, Tent, Bike, Users, Utensils, TreePine, Mic2, type LucideIcon } from 'lucide-react'
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -86,7 +86,7 @@ const gatheringPackages = [
 ]
 
 type AddOnItem = {
-  icon: React.ElementType
+  icon: LucideIcon
   name: string
   price: string
   unit: string
