@@ -28,7 +28,7 @@
 
 Sarau Luxury didirikan tahun 2018 dan telah menangani **100+ event** untuk **53+ perusahaan** di **19+ industri** dengan destinasi mencakup **20+ lokasi** di seluruh Indonesia.
 
-Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk menghadirkan pengalaman yang mewah, cepat, dan SEO-friendly bagi calon klien perusahaan.
+Website ini dibangun dengan **Next.js 15 App Router** dan dirancang untuk menghadirkan pengalaman yang mewah, cepat, dan SEO-friendly bagi calon klien perusahaan.
 
 ---
 
@@ -36,7 +36,7 @@ Website ini dibangun dengan **Next.js 14 App Router** dan dirancang untuk mengha
 
 | Kategori             | Teknologi                                              |
 | -------------------- | ------------------------------------------------------ |
-| Framework            | [Next.js 14](https://nextjs.org) (App Router)          |
+| Framework            | [Next.js 15](https://nextjs.org) (App Router)          |
 | Bahasa               | TypeScript 5                                           |
 | Styling              | Tailwind CSS 3                                         |
 | Animasi              | Framer Motion 11                                       |
@@ -313,4 +313,12 @@ Mitigasi cepat tanpa risiko ke production (dev/transitif saja):
 - Ini sekaligus menutup alert turunan di `eslint-config-next` & `@next/eslint-plugin-next`.
 - **Hasil:** audit turun dari 5 paket (4 high + 1 moderate) → **2** (`next` high + `postcss` nested moderate).
 
-⏭️ **Sisa (langkah B, terpisah):** advisory `next` & `postcss` nested hanya teratasi dengan upgrade Next 14→15 (breaking, butuh codemod + test) — akan dikerjakan di branch terpisah, bukan langsung `main`.
+✅ **Langkah B (selesai, di branch `upgrade/nextjs-15` — BUKAN `main`):** upgrade **Next.js 14.2.35 → 15.5.x** (React 18 dipertahankan) + bump **postcss → 8.5.x** (via direct dep + scoped override `"postcss": "$postcss"` agar copy nested di dalam `next` ikut ter-patch). Hasil: **`npm audit` = 0 vulnerabilities**, `next build` ✅ (33 halaman ter-generate).
+
+Perubahan breaking yang dikerjakan:
+- **Async request APIs** — `params` kini Promise. Diperbaiki di `api/logo/[domain]/route.ts`, `blog/[slug]/page.tsx` (generateMetadata + page), dan `blog/[slug]/opengraph-image.tsx` (`await params`).
+- **`next.config.js`** — `experimental.serverComponentsExternalPackages` dipindah ke top-level `serverExternalPackages` (Next 15).
+- **`tsconfig.json`** — tambah `"target": "ES2017"` (untuk top-level await).
+- **`optimizeCss`** — tetap aktif; Next 15 memakai `beasties` (fork `critters`), ditambahkan ke devDependencies.
+
+> ⚠️ Branch ini **belum di-merge ke `main`**. Sebelum merge: jalankan `npm run test:e2e` (Playwright) terhadap deploy preview Vercel. **Hindari lompat ke Next 16** (breaking change ganda).

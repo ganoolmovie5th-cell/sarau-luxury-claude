@@ -31,10 +31,11 @@ const categoryColors: Record<string, string> = {
   Insight:   '#f472b6',
 }
 
-type Props = { params: { slug: string } }
+type Props = { params: Promise<{ slug: string }> }
 
-export default function BlogOGImage({ params }: Props) {
-  const meta     = postMeta[params.slug]
+export default async function BlogOGImage({ params }: Props) {
+  const { slug } = await params
+  const meta     = postMeta[slug]
   const emoji    = meta?.emoji    ?? '📝'
   const title    = meta?.title    ?? 'Artikel Blog Sarau Luxury'
   const category = meta?.category ?? 'Blog'

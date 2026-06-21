@@ -438,10 +438,11 @@ function getRelated(currentSlug: string) {
 }
 
 // ─── METADATA ─────────────────────────────────────────────────────────────────
-type Props = { params: { slug: string } }
+type Props = { params: Promise<{ slug: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = posts[params.slug]
+  const { slug } = await params
+  const post = posts[slug]
   if (!post) return { title: 'Artikel Tidak Ditemukan' }
 
   const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
@@ -452,11 +453,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: titleTrunc,
     description: post.excerpt,
-    alternates: { canonical: `${BASE_URL}/blog/${params.slug}` },
+    alternates: { canonical: `${BASE_URL}/blog/${slug}` },
     openGraph: {
       title: titleTrunc,
       description: post.excerpt,
-      url: `${BASE_URL}/blog/${params.slug}`,
+      url: `${BASE_URL}/blog/${slug}`,
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
@@ -559,9 +560,10 @@ function renderContent(sections: Section[]) {
 }
 
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
-export default function BlogPostPage({ params }: Props) {
-  const post    = posts[params.slug]
-  const related = getRelated(params.slug)
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params
+  const post    = posts[slug]
+  const related = getRelated(slug)
 
   if (!post) {
     return (

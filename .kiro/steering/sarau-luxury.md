@@ -4,7 +4,7 @@
 - **Nama:** Sarau Luxury
 - **Tagline:** Where Teams Grow Together
 - **Website:** https://sarau-luxury.com
-- **Framework:** Next.js 14 App Router + TypeScript + Tailwind CSS
+- **Framework:** Next.js 15 App Router + TypeScript + Tailwind CSS (React 18)
 - **Deployment:** Vercel (push ke `main` = auto deploy)
 
 ## Aturan Commit
@@ -196,4 +196,13 @@ Audit Vercel Web Interface Guidelines — 24 file diperbaiki dalam 1 commit:
 - Lockfile di-regenerate via `npm install --package-lock-only`.
 - Audit: 5 paket (4 high + 1 moderate) → 2 (`next`, `postcss`).
 
-**Langkah B (TODO, JANGAN di-main langsung):** upgrade `next` 14.2.35 → 15.5.x (React 18 tetap) untuk menutup advisory `next` + `postcss` nested. 14.2.35 adalah rilis terakhir lini 14.x sehingga tidak bisa dipatch in-place. Wajib: `npx @next/codemod@latest upgrade` + `next build` + Playwright E2E di branch terpisah sebelum merge. **Hindari lompat ke Next 16** (breaking change ganda).
+**Langkah B (SELESAI di branch `upgrade/nextjs-15`, JANGAN merge ke `main` sebelum E2E):** upgrade `next` 14.2.35 → 15.5.x (React 18 dipertahankan) + `eslint-config-next` 15.5.x. `postcss` di-bump ke 8.5.x via direct devDep + scoped override `"postcss": "$postcss"` supaya copy nested di dalam `next` ikut ter-patch. **Hasil: `npm audit` = 0 vulnerabilities, `next build` ✅ (33 halaman).**
+
+Perubahan breaking yang dikerjakan di branch:
+- **Async request APIs (Next 15):** `params` sekarang `Promise`. Sudah di-`await` di `src/app/api/logo/[domain]/route.ts`, `src/app/blog/[slug]/page.tsx` (generateMetadata + default page → `async`), `src/app/blog/[slug]/opengraph-image.tsx` (→ `async`). **Catatan:** kalau menambah route dinamis baru, ingat `params` wajib di-`await`.
+- **`next.config.js`:** `experimental.serverComponentsExternalPackages` → top-level `serverExternalPackages: ['@react-pdf/renderer']`.
+- **`tsconfig.json`:** tambah `"target": "ES2017"` (top-level await). Jangan biarkan `next build` auto-reformat seluruh file — cukup field ini.
+- **`optimizeCss`:** tetap `true`; Next 15 pakai `beasties` (fork `critters`) → ditambah ke devDependencies. `critters` lama dibiarkan (deprecated, tidak dipakai lagi).
+- **Override `glob` 10.5.0** (Langkah C) tetap dipertahankan di `package.json`.
+
+**Sebelum merge ke `main`:** wajib `npm run test:e2e` (Playwright) terhadap Vercel preview deployment branch ini. **Hindari lompat ke Next 16** (breaking change ganda).

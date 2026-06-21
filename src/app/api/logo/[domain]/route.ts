@@ -41,9 +41,10 @@ async function tryFetch(url: string): Promise<Response | null> {
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { domain: string } }
+  { params }: { params: Promise<{ domain: string }> }
 ) {
-  const domain = params.domain.toLowerCase().replace(/[^a-z0-9.-]/g, '')
+  const { domain: domainParam } = await params
+  const domain = domainParam.toLowerCase().replace(/[^a-z0-9.-]/g, '')
 
   if (!domain || domain.length < 4) {
     return new NextResponse(null, { status: 400 })
