@@ -67,7 +67,7 @@ export default function WhyUsSection() {
                 initial={{ opacity: 0, y: 25 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="bg-white/10 hover:bg-white/15 border border-white/10 rounded-2xl p-5 transition-all duration-300 group"
+                className="bg-white/10 hover:bg-white/15 border border-white/10 rounded-2xl p-5 transition duration-300 group"
               >
                 <div className="w-10 h-10 rounded-xl bg-sun/20 flex items-center justify-center mb-4 group-hover:bg-sun/30 transition-colors">
                   <Icon size={20} className="text-sun" />

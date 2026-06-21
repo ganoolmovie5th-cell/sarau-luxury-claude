@@ -33,7 +33,7 @@ export default function StatsSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-forest/15 hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group"
+              className="bg-white rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-forest/15 hover:shadow-xl transition duration-500 hover:-translate-y-1 group"
             >
               <div className="w-12 h-12 rounded-2xl bg-forest/10 group-hover:bg-forest flex items-center justify-center mb-5 transition-colors duration-300">
                 <Icon size={22} className="text-forest group-hover:text-cream transition-colors duration-300" />

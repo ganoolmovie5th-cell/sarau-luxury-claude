@@ -145,7 +145,7 @@ export default function BookingForm() {
           {steps.map(({ id, label, icon: Icon }, i) => (
             <div key={id} className="flex items-center gap-3">
               <div className="flex flex-col items-center">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center transition duration-300 ${
                   step > id ? 'bg-forest text-cream' : step === id ? 'bg-sun text-bark' : 'bg-earth/15 text-earth/50'
                 }`}>
                   {step > id ? <CheckCircle size={18} /> : <Icon size={18} />}
@@ -153,7 +153,7 @@ export default function BookingForm() {
                 <span className={`text-xs mt-1 font-medium hidden sm:block ${step >= id ? 'text-bark' : 'text-earth/40'}`}>{label}</span>
               </div>
               {i < steps.length - 1 && (
-                <div className={`h-0.5 w-8 sm:w-14 rounded-full transition-all duration-500 ${step > id ? 'bg-forest' : 'bg-earth/20'}`} />
+                <div className={`h-0.5 w-8 sm:w-14 rounded-full transition duration-500 ${step > id ? 'bg-forest' : 'bg-earth/20'}`} />
               )}
             </div>
           ))}
@@ -317,7 +317,7 @@ export default function BookingForm() {
                   </div>
                 )}
                 <button onClick={submit} disabled={loading} className="btn-primary py-3 px-8 disabled:opacity-60">
-                  {loading ? 'Mengirim...' : 'Kirim Inquiry 🌿'}
+                  {loading ? 'Mengirim…' : 'Kirim Inquiry 🌿'}
                 </button>
               </div>
             )}

@@ -51,7 +51,7 @@ function PhotoCard({ photo, className, delay, inView }: {
       <div className="absolute inset-0 bg-gradient-to-t from-bark/70 via-transparent to-transparent" />
 
       {/* Category badge */}
-      <div className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-cream text-xs font-bold ${categoryColor[photo.category] ?? 'bg-bark/70'} backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300`}>
+      <div className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-cream text-xs font-bold ${categoryColor[photo.category] ?? 'bg-bark/70'} backdrop-blur-sm opacity-0 group-hover:opacity-100 transition duration-300`}>
         {photo.category}
       </div>
 

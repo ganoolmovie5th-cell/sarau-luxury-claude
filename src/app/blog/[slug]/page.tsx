@@ -447,7 +447,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
   // Potong title ≤ 60 chars
   const rawTitle = post.title
-  const titleTrunc = rawTitle.length > 60 ? rawTitle.slice(0, 57) + '...' : rawTitle
+  const titleTrunc = rawTitle.length > 60 ? rawTitle.slice(0, 57) + '…' : rawTitle
 
   return {
     title: titleTrunc,
@@ -583,7 +583,7 @@ export default function BlogPostPage({ params }: Props) {
         <div className="container-tight max-w-3xl">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-forest text-sm font-semibold mb-8 hover:gap-3 transition-all group"
+            className="inline-flex items-center gap-2 text-forest text-sm font-semibold mb-8 hover:gap-3 transition group"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             Kembali ke Blog
@@ -665,7 +665,7 @@ export default function BlogPostPage({ params }: Props) {
                 <Link
                   key={slug}
                   href={`/blog/${slug}`}
-                  className="bg-white rounded-2xl border border-earth/8 p-5 hover:shadow-md hover:-translate-y-0.5 transition-all group"
+                  className="bg-white rounded-2xl border border-earth/8 p-5 hover:shadow-md hover:-translate-y-0.5 transition group"
                 >
                   <div className="text-3xl mb-3">{emoji}</div>
                   <span className="text-xs font-semibold text-forest bg-forest/10 px-2 py-0.5 rounded-full">{category}</span>

@@ -290,3 +290,17 @@ Perbaikan berdasarkan temuan [PageSpeed Insights](https://pagespeed.web.dev/):
 ---
 
 <p align="center">Made with ❤️ for <strong>Sarau Luxury</strong> — <em>Where Teams Grow Together</em></p>
+
+
+## ♿ Web Interface Guidelines Audit (Juni 2026)
+
+Audit kepatuhan terhadap [Vercel Web Interface Guidelines](https://github.com/vercel-labs/web-interface-guidelines). 24 file diperbaiki:
+
+| Kategori | Perubahan |
+|---|---|
+| ⚡ Animasi | `transition-all` → `transition` (Tailwind, daftar properti kurasi: color/bg/border/opacity/shadow/transform) di 42 lokasi — hindari memantau *semua* properti |
+| ♿ Fokus keyboard | `focus:ring*` → `focus-visible:ring*` (14×) agar ring hanya muncul saat navigasi keyboard, bukan klik mouse; `.btn-sun` ditambah focus ring |
+| 🎬 Reduced motion | Tambah blok global `@media (prefers-reduced-motion: reduce)` di `globals.css` — hormati preferensi pengguna (menonaktifkan animasi/transisi) |
+| ✍️ Tipografi | `...` → `…` pada teks UI (`loading.tsx`, `BookingForm`, `ContactForm`, `CompanyProfileDownload`, truncation `blog/[slug]/page.tsx`) |
+
+Catatan: spread operator JS (`...`) tidak diubah; viewport tidak menonaktifkan zoom (sudah aman).

@@ -106,7 +106,7 @@ export default function ServicesPreview() {
                 className="card-base block p-7 group cursor-pointer h-full"
               >
                 <div className="flex items-start justify-between mb-5">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 ${color}`}>
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition duration-300 ${color}`}>
                     <Icon size={26} />
                   </div>
                   {tag && (
@@ -119,7 +119,7 @@ export default function ServicesPreview() {
                   {title}
                 </h3>
                 <p className="text-earth/70 text-sm leading-relaxed mb-5">{desc}</p>
-                <div className="flex items-center gap-2 text-forest text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0" aria-hidden="true">
+                <div className="flex items-center gap-2 text-forest text-sm font-semibold opacity-0 group-hover:opacity-100 transition duration-300 translate-y-2 group-hover:translate-y-0" aria-hidden="true">
                   Selengkapnya <ArrowRight size={15} />
                 </div>
               </Link>

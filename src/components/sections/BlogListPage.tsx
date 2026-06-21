@@ -57,7 +57,7 @@ export default function BlogListPage() {
             <button
               key={c}
               onClick={() => setActiveCategory(c)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all ${
+              className={`px-5 py-2 rounded-full text-sm font-semibold border transition ${
                 activeCategory === c
                   ? 'bg-forest text-cream border-forest shadow-md shadow-forest/20'
                   : 'bg-white border-earth/20 text-earth/80 hover:border-forest/40 hover:text-forest'

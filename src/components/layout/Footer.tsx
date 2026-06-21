@@ -111,7 +111,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full bg-forest/20 hover:bg-forest flex items-center justify-center transition-all duration-200 hover:scale-110"
+                  className="w-10 h-10 rounded-full bg-forest/20 hover:bg-forest flex items-center justify-center transition duration-200 hover:scale-110"
                 >
                   <Icon size={18} />
                 </a>

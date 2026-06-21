@@ -176,3 +176,14 @@ Perbaikan dari temuan PageSpeed Insights (Performance 48, Accessibility 99):
 - **optimizeCss (`next.config.js`):** `experimental.optimizeCss: true` untuk inline critical CSS (kurangi render-blocking CSS ~150 ms). Butuh paket `critters`.
 - **Heading order (`HeroSection.tsx`):** label statistik hero diubah `<h4>` → `<p>` agar urutan heading tidak melompat (H1→H2→H4). Ini label angka, bukan heading konten SEO.
 - **Three.js (`HeroScene.tsx`):** `<Stars count={500}>` → `{250}` untuk kurangi beban main-thread. Three.js tetap deferred via `requestIdleCallback` + `dynamic(ssr:false)`.
+
+
+## A11y: Web Interface Guidelines Audit (Juni 2026)
+
+Audit Vercel Web Interface Guidelines — 24 file diperbaiki dalam 1 commit:
+- **`transition-all` → `transition`** (42×): Tailwind `transition` memakai daftar properti kurasi (color/bg/border/opacity/shadow/transform/filter), bukan `all`. Memenuhi guideline "list properties explicitly" tanpa mengubah desain/durasi.
+- **`focus:ring*` → `focus-visible:ring*`** (14×) di komponen tsx + `.btn-primary/.btn-secondary/.input-base` (globals.css). `:focus-visible` hanya tampil saat fokus keyboard, klik mouse tetap bersih.
+- **`.btn-sun`** (globals.css): satu-satunya tombol tanpa focus state → ditambah `focus:outline-none focus-visible:ring-2 focus-visible:ring-sun focus-visible:ring-offset-2`.
+- **`prefers-reduced-motion`**: ditambah blok global di akhir `globals.css` (sebelumnya TIDAK ada sama sekali) — menonaktifkan animasi/transisi untuk pengguna reduce-motion (Three.js, framer-motion, marquee).
+- **Tipografi `...` → `…`**: `loading.tsx`, `BookingForm.tsx`, `ContactForm.tsx`, `CompanyProfileDownload.tsx`, truncation di `blog/[slug]/page.tsx`. Spread operator JS dilindungi.
+- Catatan: 3 flag "icon button tanpa aria-label" diverifikasi false-positive (semua punya teks terlihat). Viewport tidak menonaktifkan zoom.

@@ -7,7 +7,7 @@ export default function Loading() {
           <div className="absolute inset-0 rounded-full border-4 border-forest border-t-transparent animate-spin" />
         </div>
         <div className="font-display text-forest font-semibold">Sarau Luxury</div>
-        <div className="font-accent text-earth/60 text-sm">Memuat halaman...</div>
+        <div className="font-accent text-earth/60 text-sm">Memuat halaman…</div>
       </div>
     </div>
   )
