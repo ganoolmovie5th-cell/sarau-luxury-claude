@@ -104,7 +104,7 @@ export default function GalleryPreview() {
         </motion.div>
 
         {/* ── Bento grid layout ── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-[220px_220px_220px] md:grid-rows-[260px_260px] gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[220px] md:auto-rows-[260px] gap-3 md:gap-4">
 
           {/* Foto 1 — besar kiri, span 2 row */}
           <PhotoCard

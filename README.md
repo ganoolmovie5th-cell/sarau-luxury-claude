@@ -260,6 +260,7 @@ Pastikan semua environment variables sudah dikonfigurasi di **Vercel Dashboard �
 | Price inconsistency | Contact page: "all-in mulai Rp 125.000" → "outbound & team building mulai Rp 125.000, gathering mulai Rp 525.000" |
 | robots.txt unblock | Hapus `Disallow: /booking` & `/contact` — halaman konversi sekarang bisa di-crawl Google |
 | Sitemap trailing slash | Homepage URL `https://sarau-luxury.com` → `https://sarau-luxury.com/` (konsistensi) |
+| Gallery preview height 0 | `GalleryPreview` bento grid: `grid-rows-[…]` kurang baris → 3 foto terakhir jatuh di implicit row (tinggi 0), bikin `<Image fill>` warning & gambar tak tampil. Ganti ke `auto-rows-[220px] md:auto-rows-[260px]` agar semua baris (eksplisit + implicit) punya tinggi |
 
 ---
 
