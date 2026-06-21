@@ -187,3 +187,13 @@ Audit Vercel Web Interface Guidelines — 24 file diperbaiki dalam 1 commit:
 - **`prefers-reduced-motion`**: ditambah blok global di akhir `globals.css` (sebelumnya TIDAK ada sama sekali) — menonaktifkan animasi/transisi untuk pengguna reduce-motion (Three.js, framer-motion, marquee).
 - **Tipografi `...` → `…`**: `loading.tsx`, `BookingForm.tsx`, `ContactForm.tsx`, `CompanyProfileDownload.tsx`, truncation di `blog/[slug]/page.tsx`. Spread operator JS dilindungi.
 - Catatan: 3 flag "icon button tanpa aria-label" diverifikasi false-positive (semua punya teks terlihat). Viewport tidak menonaktifkan zoom.
+
+
+## Security: Dependency Audit Remediation (Juni 2026)
+
+**Langkah C (selesai, di `main`):** mitigasi dev/transitif tanpa risiko production.
+- Tambah scoped `overrides` di `package.json`: `{"@next/eslint-plugin-next": {"glob": "10.5.0"}}` → menutup `glob` command-injection (GHSA-5j98-mcp5-4vw2) + alert turunan `eslint-config-next`/`@next/eslint-plugin-next`. `rimraf` (glob 7) sengaja tidak di-override.
+- Lockfile di-regenerate via `npm install --package-lock-only`.
+- Audit: 5 paket (4 high + 1 moderate) → 2 (`next`, `postcss`).
+
+**Langkah B (TODO, JANGAN di-main langsung):** upgrade `next` 14.2.35 → 15.5.x (React 18 tetap) untuk menutup advisory `next` + `postcss` nested. 14.2.35 adalah rilis terakhir lini 14.x sehingga tidak bisa dipatch in-place. Wajib: `npx @next/codemod@latest upgrade` + `next build` + Playwright E2E di branch terpisah sebelum merge. **Hindari lompat ke Next 16** (breaking change ganda).

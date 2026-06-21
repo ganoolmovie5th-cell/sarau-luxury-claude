@@ -304,3 +304,13 @@ Audit kepatuhan terhadap [Vercel Web Interface Guidelines](https://github.com/ve
 | ✍️ Tipografi | `...` → `…` pada teks UI (`loading.tsx`, `BookingForm`, `ContactForm`, `CompanyProfileDownload`, truncation `blog/[slug]/page.tsx`) |
 
 Catatan: spread operator JS (`...`) tidak diubah; viewport tidak menonaktifkan zoom (sudah aman).
+
+
+## 🔒 Security: dependency audit (Juni 2026) — langkah C
+
+Mitigasi cepat tanpa risiko ke production (dev/transitif saja):
+- **`glob` command-injection** ([GHSA-5j98-mcp5-4vw2](https://github.com/advisories/GHSA-5j98-mcp5-4vw2)): ditambah scoped `overrides` di `package.json` memaksa `glob` di dalam `@next/eslint-plugin-next` → `10.5.0`. `rimraf` (glob 7) tidak terpengaruh.
+- Ini sekaligus menutup alert turunan di `eslint-config-next` & `@next/eslint-plugin-next`.
+- **Hasil:** audit turun dari 5 paket (4 high + 1 moderate) → **2** (`next` high + `postcss` nested moderate).
+
+⏭️ **Sisa (langkah B, terpisah):** advisory `next` & `postcss` nested hanya teratasi dengan upgrade Next 14→15 (breaking, butuh codemod + test) — akan dikerjakan di branch terpisah, bukan langsung `main`.
