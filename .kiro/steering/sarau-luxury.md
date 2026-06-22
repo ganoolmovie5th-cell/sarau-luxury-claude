@@ -4,7 +4,7 @@
 - **Nama:** Sarau Luxury
 - **Tagline:** Where Teams Grow Together
 - **Website:** https://sarau-luxury.com
-- **Framework:** Next.js 14 App Router + TypeScript + Tailwind CSS
+- **Framework:** Next.js 15 App Router + TypeScript + Tailwind CSS (React 19)
 - **Deployment:** Vercel (push ke `main` = auto deploy)
 
 ## Aturan Commit
@@ -22,6 +22,7 @@
 - **Price inconsistency fix:** Contact page "Paket all-in mulai Rp 125.000/pax" → "Paket outbound & team building mulai Rp 125.000/pax, gathering mulai Rp 525.000/pax"
 - **SEO: robots.txt unblock:** Hapus `Disallow: /booking` & `/contact` dari `robots.ts` — halaman konversi sekarang bisa di-crawl & diindex Google
 - **SEO: sitemap trailing slash:** Homepage URL di sitemap `https://sarau-luxury.com` → `https://sarau-luxury.com/` untuk konsistensi
+- **Gallery preview height 0 fix:** `GalleryPreview.tsx` bento grid memakai `grid-rows-[220px_220px_220px] md:grid-rows-[260px_260px]` yang jumlah barisnya kurang dari kebutuhan layout (mobile butuh 5 baris, desktop 3 baris). Akibatnya 3 foto terakhir (foto 5/6/7) jatuh di *implicit row* tanpa tinggi → tinggi ter-render 0 → Next.js warning `Image ... has "fill" and a height value of 0` + gambar berpotensi tidak tampil. **Fix:** ganti ke `auto-rows-[220px] md:auto-rows-[260px]` supaya semua baris (eksplisit + implicit) punya tinggi tetap; kartu `row-span-2` otomatis = 2× tinggi baris. **Catatan:** kalau menambah/mengurangi jumlah foto di bento grid, jangan kembali ke `grid-rows-[…]` dengan jumlah baris hardcoded — pakai `auto-rows` agar tidak terulang. `GalleryPage.tsx` tidak terdampak (pakai CSS columns + tinggi eksplisit `h-80`/`h-52`).
 
 ## Konfigurasi GTM
 - **GTM Container ID:** `GTM-5L5LR2KW`
@@ -199,3 +200,48 @@ Perbaikan dari temuan PageSpeed Insights (Performance 48, Accessibility 99):
 - **optimizeCss (`next.config.js`):** `experimental.optimizeCss: true` untuk inline critical CSS (kurangi render-blocking CSS ~150 ms). Butuh paket `critters`.
 - **Heading order (`HeroSection.tsx`):** label statistik hero diubah `<h4>` → `<p>` agar urutan heading tidak melompat (H1→H2→H4). Ini label angka, bukan heading konten SEO.
 - **Three.js (`HeroScene.tsx`):** `<Stars count={500}>` → `{250}` untuk kurangi beban main-thread. Three.js tetap deferred via `requestIdleCallback` + `dynamic(ssr:false)`.
+
+
+## A11y: Web Interface Guidelines Audit (Juni 2026)
+
+Audit Vercel Web Interface Guidelines — 24 file diperbaiki dalam 1 commit:
+- **`transition-all` → `transition`** (42×): Tailwind `transition` memakai daftar properti kurasi (color/bg/border/opacity/shadow/transform/filter), bukan `all`. Memenuhi guideline "list properties explicitly" tanpa mengubah desain/durasi.
+- **`focus:ring*` → `focus-visible:ring*`** (14×) di komponen tsx + `.btn-primary/.btn-secondary/.input-base` (globals.css). `:focus-visible` hanya tampil saat fokus keyboard, klik mouse tetap bersih.
+- **`.btn-sun`** (globals.css): satu-satunya tombol tanpa focus state → ditambah `focus:outline-none focus-visible:ring-2 focus-visible:ring-sun focus-visible:ring-offset-2`.
+- **`prefers-reduced-motion`**: ditambah blok global di akhir `globals.css` (sebelumnya TIDAK ada sama sekali) — menonaktifkan animasi/transisi untuk pengguna reduce-motion (Three.js, framer-motion, marquee).
+- **Tipografi `...` → `…`**: `loading.tsx`, `BookingForm.tsx`, `ContactForm.tsx`, `CompanyProfileDownload.tsx`, truncation di `blog/[slug]/page.tsx`. Spread operator JS dilindungi.
+- Catatan: 3 flag "icon button tanpa aria-label" diverifikasi false-positive (semua punya teks terlihat). Viewport tidak menonaktifkan zoom.
+
+
+## Security: Dependency Audit Remediation (Juni 2026)
+
+**Langkah C (selesai, di `main`):** mitigasi dev/transitif tanpa risiko production.
+- Tambah scoped `overrides` di `package.json`: `{"@next/eslint-plugin-next": {"glob": "10.5.0"}}` → menutup `glob` command-injection (GHSA-5j98-mcp5-4vw2) + alert turunan `eslint-config-next`/`@next/eslint-plugin-next`. `rimraf` (glob 7) sengaja tidak di-override.
+- Lockfile di-regenerate via `npm install --package-lock-only`.
+- Audit: 5 paket (4 high + 1 moderate) → 2 (`next`, `postcss`).
+
+**Langkah B (SELESAI di branch `upgrade/nextjs-15`, JANGAN merge ke `main` sebelum E2E):** upgrade `next` 14.2.35 → 15.5.x (React 18 dipertahankan) + `eslint-config-next` 15.5.x. `postcss` di-bump ke 8.5.x via direct devDep + scoped override `"postcss": "$postcss"` supaya copy nested di dalam `next` ikut ter-patch. **Hasil: `npm audit` = 0 vulnerabilities, `next build` ✅ (33 halaman).**
+
+Perubahan breaking yang dikerjakan di branch:
+- **Async request APIs (Next 15):** `params` sekarang `Promise`. Sudah di-`await` di `src/app/api/logo/[domain]/route.ts`, `src/app/blog/[slug]/page.tsx` (generateMetadata + default page → `async`), `src/app/blog/[slug]/opengraph-image.tsx` (→ `async`). **Catatan:** kalau menambah route dinamis baru, ingat `params` wajib di-`await`.
+- **`next.config.js`:** `experimental.serverComponentsExternalPackages` → top-level `serverExternalPackages: ['@react-pdf/renderer']`.
+- **`tsconfig.json`:** tambah `"target": "ES2017"` (top-level await). Jangan biarkan `next build` auto-reformat seluruh file — cukup field ini.
+- **`optimizeCss`:** tetap `true`; Next 15 pakai `beasties` (fork `critters`) → ditambah ke devDependencies. `critters` lama dibiarkan (deprecated, tidak dipakai lagi).
+- **Override `glob` 10.5.0** (Langkah C) tetap dipertahankan di `package.json`.
+
+**Sebelum merge ke `main`:** wajib `npm run test:e2e` (Playwright) terhadap Vercel preview deployment branch ini. **Hindari lompat ke Next 16** (breaking change ganda).
+
+## Fix: Hero 3D hilang setelah Next 15 (React 19 upgrade) — Juni 2026
+**Gejala:** homepage hero cuma menampilkan background coklat (`bg-bark`), hutan 3D (Three.js `ForestScene`) hilang. Console: `TypeError: Cannot read properties of undefined (reading 'ReactCurrentBatchConfig')` → `HeroSceneBoundary` menangkap & degrade ke gradient.
+
+**Akar masalah:** Next 15 mem-bundle **React 19 (vendored)**, sementara project masih React 18 + `@react-three/fiber` **v8** (`react-reconciler@0.27.0`) yang membaca internal React 18 (`__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentBatchConfig`). Di bundle, `react` ter-resolve ke React 19.2 (internalnya bernama `__CLIENT_INTERNALS…`) → `undefined` → reconciler crash. Terbukti: build chunk berisi DUA React (`version:"18.3"` + `version:"19.2"`).
+
+**Fix (branch `fix/hero-react19`):** selaraskan ke React 19.
+- `react`/`react-dom` → **^19.2**, `@types/react(-dom)` → **^19**
+- `@react-three/fiber` → **^9** (`react-reconciler` kompatibel React 19), `@react-three/drei` → **^10**
+- `.npmrc` baru: `legacy-peer-deps=true` (transisi peer-deps React 19; Vercel ikut pakai ini)
+- `next.config.js`: `@react-three/fiber`/`drei` dikeluarkan dari `optimizePackageImports` (pencegahan; bukan akar masalah)
+- `PackagesPreview.tsx`: `icon: React.ElementType` → `LucideIcon` (types React 19 lebih ketat → props jadi `never`)
+- **Verifikasi:** `next build` ✅ (33 halaman), `npm audit` = 0, probe headless → `<canvas>` render 1366×768, tidak ada error `ReactCurrentBatchConfig`.
+
+**Catatan untuk ke depan:** semua library yang menyentuh React internals (Three.js/R3F, animasi) harus versi React 19. Jangan turunkan React ke 18 selama di Next 15.

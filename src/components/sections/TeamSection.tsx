@@ -76,7 +76,7 @@ export default function TeamSection() {
                     href={instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-full bg-forest/10 hover:bg-forest flex items-center justify-center text-forest hover:text-cream transition-all duration-200 hover:scale-110"
+                    className="w-9 h-9 rounded-full bg-forest/10 hover:bg-forest flex items-center justify-center text-forest hover:text-cream transition duration-200 hover:scale-110"
                   >
                     <Instagram size={15} />
                   </a>

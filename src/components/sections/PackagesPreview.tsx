@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Check, ArrowRight, Bus, Gamepad2, Waves, Mountain, Tent, Bike, Users, Utensils, TreePine, Mic2 } from 'lucide-react'
+import { Check, ArrowRight, Bus, Gamepad2, Waves, Mountain, Tent, Bike, Users, Utensils, TreePine, Mic2, type LucideIcon } from 'lucide-react'
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -86,7 +86,7 @@ const gatheringPackages = [
 ]
 
 type AddOnItem = {
-  icon: React.ElementType
+  icon: LucideIcon
   name: string
   price: string
   unit: string
@@ -300,7 +300,7 @@ function GatheringCard({ pkg, i, inView, nameLevel = 3 }: { pkg: typeof gatherin
 
         <Link
           href="/booking"
-          className={`flex items-center justify-center gap-2 w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-200 ${
+          className={`flex items-center justify-center gap-2 w-full py-3 px-6 rounded-xl font-semibold text-sm transition duration-200 ${
             isPopular
               ? 'bg-sun text-bark hover:bg-sun/90'
               : 'bg-forest text-cream hover:bg-forest/90'
@@ -322,7 +322,7 @@ function AddOnCard({ item, i, inView, nameLevel = 3 }: { item: AddOnItem; i: num
       initial={{ opacity: 0, y: 25 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.45, delay: i * 0.06 }}
-      className="bg-white rounded-2xl border border-earth/10 p-5 hover:shadow-lg hover:shadow-forest/8 hover:-translate-y-0.5 transition-all duration-300"
+      className="bg-white rounded-2xl border border-earth/10 p-5 hover:shadow-lg hover:shadow-forest/8 hover:-translate-y-0.5 transition duration-300"
     >
       <div className="flex items-start gap-3 mb-3">
         <div className="w-9 h-9 rounded-xl bg-forest/10 flex items-center justify-center flex-shrink-0">
@@ -398,7 +398,7 @@ export default function PackagesPreview({ hideHeader = false }: { hideHeader?: b
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 ${
+              className={`px-6 py-2.5 rounded-full text-sm font-semibold border transition duration-200 ${
                 activeTab === tab.id
                   ? 'bg-forest text-cream border-forest shadow-md shadow-forest/20'
                   : 'bg-white border-earth/20 text-earth/80 hover:border-forest/40 hover:text-forest'

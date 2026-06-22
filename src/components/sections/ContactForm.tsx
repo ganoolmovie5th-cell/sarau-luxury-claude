@@ -117,7 +117,7 @@ export default function ContactForm() {
               href={`https://wa.me/${CONTACT.phone1Wa}?text=Halo%20Sarau%20Luxury%2C%20saya%20ingin%20konsultasi!`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-6 bg-white rounded-2xl border border-earth/10 shadow-sm hover:shadow-forest/15 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
+              className="flex items-center gap-4 p-6 bg-white rounded-2xl border border-earth/10 shadow-sm hover:shadow-forest/15 hover:shadow-xl transition duration-300 hover:-translate-y-1 group"
             >
               <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: '#25D366' }}>
                 <svg viewBox="0 0 24 24" fill="white" width="22" height="22">
@@ -228,7 +228,7 @@ export default function ContactForm() {
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
                         </svg>
-                        Mengirim...
+                        Mengirim…
                       </span>
                     ) : (
                       <>Kirim Pesan <Send size={17} /></>
@@ -257,7 +257,7 @@ export default function ContactForm() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+              className="w-full h-full grayscale hover:grayscale-0 transition duration-500"
             />
           </div>
           <div className="flex items-center gap-2 mt-3 text-earth/60 text-sm">

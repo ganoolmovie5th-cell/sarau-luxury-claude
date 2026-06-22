@@ -51,7 +51,7 @@ function PhotoCard({ photo, className, delay, inView }: {
       <div className="absolute inset-0 bg-gradient-to-t from-bark/70 via-transparent to-transparent" />
 
       {/* Category badge */}
-      <div className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-cream text-xs font-bold ${categoryColor[photo.category] ?? 'bg-bark/70'} backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300`}>
+      <div className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-cream text-xs font-bold ${categoryColor[photo.category] ?? 'bg-bark/70'} backdrop-blur-sm opacity-0 group-hover:opacity-100 transition duration-300`}>
         {photo.category}
       </div>
 
@@ -104,7 +104,7 @@ export default function GalleryPreview() {
         </motion.div>
 
         {/* ── Bento grid layout ── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-[220px_220px_220px] md:grid-rows-[260px_260px] gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[220px] md:auto-rows-[260px] gap-3 md:gap-4">
 
           {/* Foto 1 — besar kiri, span 2 row */}
           <PhotoCard

@@ -152,7 +152,7 @@ export default function GalleryPage() {
             <button
               key={cat}
               onClick={() => setActive(cat)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition duration-300 ${
                 active === cat
                   ? 'bg-forest text-cream shadow-forest shadow-md'
                   : 'bg-white border border-earth/20 text-earth/80 hover:border-forest/40 hover:text-forest'
@@ -193,14 +193,14 @@ export default function GalleryPage() {
                   sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 />
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-bark/0 group-hover:bg-bark/50 transition-all duration-300" />
+                <div className="absolute inset-0 bg-bark/0 group-hover:bg-bark/50 transition duration-300" />
                 {/* Caption */}
-                <div className="absolute inset-0 p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                <div className="absolute inset-0 p-4 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition duration-300 translate-y-2 group-hover:translate-y-0">
                   <span className="text-xs font-semibold text-leaf mb-1">{item.category}</span>
                   <span className="font-display font-semibold text-cream text-sm leading-tight">{item.title}</span>
                 </div>
                 {/* Zoom icon */}
-                <div className="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <div className="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                   <ZoomIn size={14} className="text-white" />
                 </div>
               </motion.div>

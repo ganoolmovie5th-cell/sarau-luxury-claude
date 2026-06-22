@@ -151,7 +151,7 @@ export default function TestimonialsSection() {
                   role="tab"
                   aria-selected={i === current}
                   aria-label={`Testimoni ${i + 1} dari ${testimonials.length}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${
+                  className={`h-2 rounded-full transition duration-300 ${
                     i === current ? 'w-8 bg-forest' : 'w-2 bg-earth/30'
                   }`}
                 />
@@ -162,7 +162,7 @@ export default function TestimonialsSection() {
               <button
                 onClick={prev}
                 aria-label="Testimoni sebelumnya"
-                className="w-12 h-12 rounded-full border-2 border-forest/30 hover:border-forest hover:bg-forest hover:text-cream text-forest flex items-center justify-center transition-all duration-200"
+                className="w-12 h-12 rounded-full border-2 border-forest/30 hover:border-forest hover:bg-forest hover:text-cream text-forest flex items-center justify-center transition duration-200"
               >
                 <ChevronLeft size={20} aria-hidden="true" />
               </button>

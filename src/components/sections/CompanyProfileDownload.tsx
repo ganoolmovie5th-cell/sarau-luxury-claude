@@ -149,7 +149,7 @@ function DownloadModal({ onClose }: { onClose: () => void }) {
                     placeholder="Contoh: Budi Santoso"
                     required
                     disabled={status === 'loading'}
-                    className="w-full pl-9 pr-4 py-3 rounded-xl border border-cream-dark bg-white text-bark text-sm placeholder:text-bark/30 focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest transition disabled:opacity-60"
+                    className="w-full pl-9 pr-4 py-3 rounded-xl border border-cream-dark bg-white text-bark text-sm placeholder:text-bark/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/30 focus:border-forest transition disabled:opacity-60"
                   />
                 </div>
               </div>
@@ -169,7 +169,7 @@ function DownloadModal({ onClose }: { onClose: () => void }) {
                     placeholder="Contoh: PT Maju Bersama"
                     required
                     disabled={status === 'loading'}
-                    className="w-full pl-9 pr-4 py-3 rounded-xl border border-cream-dark bg-white text-bark text-sm placeholder:text-bark/30 focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest transition disabled:opacity-60"
+                    className="w-full pl-9 pr-4 py-3 rounded-xl border border-cream-dark bg-white text-bark text-sm placeholder:text-bark/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/30 focus:border-forest transition disabled:opacity-60"
                   />
                 </div>
               </div>
@@ -189,7 +189,7 @@ function DownloadModal({ onClose }: { onClose: () => void }) {
                     placeholder="Contoh: budi@perusahaan.com"
                     required
                     disabled={status === 'loading'}
-                    className="w-full pl-9 pr-4 py-3 rounded-xl border border-cream-dark bg-white text-bark text-sm placeholder:text-bark/30 focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest transition disabled:opacity-60"
+                    className="w-full pl-9 pr-4 py-3 rounded-xl border border-cream-dark bg-white text-bark text-sm placeholder:text-bark/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-forest/30 focus:border-forest transition disabled:opacity-60"
                   />
                 </div>
               </div>
@@ -214,7 +214,7 @@ function DownloadModal({ onClose }: { onClose: () => void }) {
                 {status === 'loading' ? (
                   <>
                     <Loader2 size={16} className="animate-spin" />
-                    Menyiapkan PDF...
+                    Menyiapkan PDF…
                   </>
                 ) : (
                   <>

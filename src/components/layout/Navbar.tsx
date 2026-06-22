@@ -38,7 +38,7 @@ export default function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition duration-500 ${
         scrolled || !isHome
           ? 'glass shadow-sm py-3'
           : 'bg-transparent py-5'
@@ -79,7 +79,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+              className={`relative px-4 py-2 rounded-full text-sm font-medium transition duration-200
                 ${pathname === link.href
                   ? 'bg-forest text-cream'
                   : scrolled || !isHome
@@ -96,7 +96,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/booking"
-            className={`hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
+            className={`hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition duration-300 hover:-translate-y-0.5 ${
               scrolled || !isHome
                 ? 'bg-forest text-cream hover:bg-forest-light shadow-forest'
                 : 'bg-sun text-bark hover:bg-sun-light'

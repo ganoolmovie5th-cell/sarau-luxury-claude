@@ -91,7 +91,7 @@ export default function ShareButtons() {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95 ${className}`}
+          className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition duration-200 hover:scale-105 active:scale-95 ${className}`}
         >
           {icon}
           {label}
@@ -101,7 +101,7 @@ export default function ShareButtons() {
       {/* Copy link */}
       <button
         onClick={copyLink}
-        className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold border transition-all duration-200 hover:scale-105 active:scale-95 ${
+        className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold border transition duration-200 hover:scale-105 active:scale-95 ${
           copied
             ? 'bg-forest text-cream border-forest'
             : 'bg-white text-earth border-earth/20 hover:border-forest hover:text-forest'

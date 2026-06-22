@@ -438,25 +438,26 @@ function getRelated(currentSlug: string) {
 }
 
 // ─── METADATA ─────────────────────────────────────────────────────────────────
-type Props = { params: { slug: string } }
+type Props = { params: Promise<{ slug: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = posts[params.slug]
+  const { slug } = await params
+  const post = posts[slug]
   if (!post) return { title: 'Artikel Tidak Ditemukan' }
 
   const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
   // Potong title ≤ 60 chars
   const rawTitle = post.title
-  const titleTrunc = rawTitle.length > 60 ? rawTitle.slice(0, 57) + '...' : rawTitle
+  const titleTrunc = rawTitle.length > 60 ? rawTitle.slice(0, 57) + '…' : rawTitle
 
   return {
     title: titleTrunc,
     description: post.excerpt,
-    alternates: { canonical: `${BASE_URL}/blog/${params.slug}` },
+    alternates: { canonical: `${BASE_URL}/blog/${slug}` },
     openGraph: {
       title: titleTrunc,
       description: post.excerpt,
-      url: `${BASE_URL}/blog/${params.slug}`,
+      url: `${BASE_URL}/blog/${slug}`,
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
@@ -559,9 +560,10 @@ function renderContent(sections: Section[]) {
 }
 
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
-export default function BlogPostPage({ params }: Props) {
-  const post    = posts[params.slug]
-  const related = getRelated(params.slug)
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params
+  const post    = posts[slug]
+  const related = getRelated(slug)
 
   if (!post) {
     return (
@@ -583,7 +585,7 @@ export default function BlogPostPage({ params }: Props) {
         <div className="container-tight max-w-3xl">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-forest text-sm font-semibold mb-8 hover:gap-3 transition-all group"
+            className="inline-flex items-center gap-2 text-forest text-sm font-semibold mb-8 hover:gap-3 transition group"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             Kembali ke Blog
@@ -665,7 +667,7 @@ export default function BlogPostPage({ params }: Props) {
                 <Link
                   key={slug}
                   href={`/blog/${slug}`}
-                  className="bg-white rounded-2xl border border-earth/8 p-5 hover:shadow-md hover:-translate-y-0.5 transition-all group"
+                  className="bg-white rounded-2xl border border-earth/8 p-5 hover:shadow-md hover:-translate-y-0.5 transition group"
                 >
                   <div className="text-3xl mb-3">{emoji}</div>
                   <span className="text-xs font-semibold text-forest bg-forest/10 px-2 py-0.5 rounded-full">{category}</span>

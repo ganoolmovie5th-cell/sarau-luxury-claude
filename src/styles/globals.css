@@ -103,8 +103,8 @@ body {
   .btn-primary {
     @apply inline-flex items-center gap-2 px-8 py-4 rounded-full font-body font-semibold
            text-cream bg-forest hover:bg-forest-light
-           transition-all duration-300 hover:-translate-y-0.5
-           focus:outline-none focus:ring-2 focus:ring-forest focus:ring-offset-2;
+           transition duration-300 hover:-translate-y-0.5
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2;
     box-shadow: none;
   }
   .btn-primary:hover {
@@ -115,14 +115,15 @@ body {
     @apply inline-flex items-center gap-2 px-8 py-4 rounded-full font-body font-semibold
            text-forest border-2 border-forest
            hover:bg-forest hover:text-cream
-           transition-all duration-300 hover:-translate-y-0.5
-           focus:outline-none focus:ring-2 focus:ring-forest focus:ring-offset-2;
+           transition duration-300 hover:-translate-y-0.5
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2;
   }
 
   .btn-sun {
     @apply inline-flex items-center gap-2 px-8 py-4 rounded-full font-body font-semibold
            text-bark bg-sun hover:bg-sun-light
-           transition-all duration-300 hover:-translate-y-0.5;
+           transition duration-300 hover:-translate-y-0.5
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-sun focus-visible:ring-offset-2;
   }
   .btn-sun:hover {
     box-shadow: 0 20px 60px rgba(139, 94, 60, 0.25);
@@ -135,15 +136,15 @@ body {
 
   .card-base {
     @apply bg-white rounded-3xl overflow-hidden shadow-sm
-           hover:shadow-xl transition-all duration-500
+           hover:shadow-xl transition duration-500
            hover:-translate-y-2;
   }
 
   .input-base {
     @apply w-full px-5 py-3.5 rounded-2xl border border-earth/20
            bg-white/80 backdrop-blur-sm
-           focus:outline-none focus:ring-2 focus:ring-forest focus:border-transparent
-           placeholder:text-earth/50 text-bark font-body transition-all duration-200;
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-forest focus:border-transparent
+           placeholder:text-earth/50 text-bark font-body transition duration-200;
   }
 }
 
@@ -200,4 +201,16 @@ body {
 }
 .animate-marquee2:hover {
   animation-play-state: paused;
+}
+
+/* ─── Accessibility: honor reduced-motion (Web Interface Guidelines) ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

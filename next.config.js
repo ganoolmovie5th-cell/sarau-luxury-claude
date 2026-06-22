@@ -112,11 +112,13 @@ const nextConfig = {
     ],
   },
 
+  // Next 15: dipindah dari experimental.serverComponentsExternalPackages ke top-level
+  serverExternalPackages: ['@react-pdf/renderer'],
+
   experimental: {
-    // Inline critical CSS (butuh paket 'critters') — kurangi render-blocking CSS request
+    // Inline critical CSS — kurangi render-blocking CSS request
     optimizeCss: true,
-    optimizePackageImports: ['lucide-react', 'framer-motion', '@react-three/fiber', '@react-three/drei'],
-    serverComponentsExternalPackages: ['@react-pdf/renderer'],
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
 }
 

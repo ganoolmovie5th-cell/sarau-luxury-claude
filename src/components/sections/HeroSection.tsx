@@ -111,7 +111,7 @@ export default function HeroSection() {
             <Link
               href="/gallery"
               aria-label="Lihat galeri dokumentasi event kami"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-cream border border-cream/30 hover:bg-cream/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-cream border border-cream/30 hover:bg-cream/10 backdrop-blur-sm transition duration-300 hover:-translate-y-0.5"
             >
               <span className="w-10 h-10 rounded-full bg-cream/20 flex items-center justify-center" aria-hidden="true">
                 <Play size={14} fill="currentColor" />
