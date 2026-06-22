@@ -75,7 +75,7 @@ Website ini dibangun dengan **Next.js 15 App Router** dan dirancang untuk mengha
 - 🧪 **E2E Testing** — Playwright smoke tests + GitHub Actions
 - 🍪 **Cookie Consent Banner** — banner izin kustom (GA4 Consent Mode v2) sesuai brand: glass-dark design, expand detail, pilihan "Terima Semua" / "Hanya Esensial", preferensi tersimpan di localStorage, analytics default DENIED hingga user memberi izin
 - 🗺️ **Process Timeline** — visualisasi 7 langkah cara kerja (Konsultasi → Survei → Proposal → Konfirmasi → Persiapan → Hari H → Evaluasi), animasi zigzag alternating desktop, vertical mobile, ditempatkan setelah WhyUs di homepage
-- 🔍 **FAQ Search** — search bar real-time di halaman FAQ dengan highlight kata kunci, animasi result count, empty state, dan tombol clear
+- 🔍 **FAQ Search** — search bar real-time di halaman FAQ dengan highlight kata kunci, animasi result count, empty state, dan tombol clear (`type="text"` untuk menghindari duplikat tombol clear browser native)
 - ⚡ **Skeleton Loading** — placeholder animasi pulse untuk Blog, Gallery, dan Clients page saat navigasi; komponen reusable di `src/components/ui/Skeleton.tsx`
 
 ---

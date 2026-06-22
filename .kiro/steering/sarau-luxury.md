@@ -88,7 +88,7 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - **Double H1 fix** — Navbar & Footer: teks brand diubah ke `<p>` + `aria-hidden="true"` agar tidak terdeteksi audit tool sebagai heading
 - **H1 per halaman** — `HeroSection` sub-headline diubah `p→h2`; `AboutHero` paragraf bawah H1 diubah `p→h2`; `/packages` punya visible H1 di page header
 - **H2 missing** — `HeroSection`, `AboutHero` kini punya H2 visible langsung di bawah H1
-- **H3/H4/H5/H6 structure** — `StatsSection` label→`h3`; `ClientsPage` industry→`h3`, stats→`h4`, client name→`h5`, industry tag→`h6`; `ServicesPage` subtitle→`h4`, features label→`h5`; `PackagesPreview` card name→`h4`, notes→`h6`, features label→`h5`, add-on name→`h4`; `ContactForm` label→`h6`; `BookingForm` step→`h4/h6`, layanan→`h5/h6`; `GalleryPage` stats→`h4/h6`, filter→`h5`; `FAQClient` info→`h4/h6`; `MissionVision` value→`h6`; `HeroSection` stat label→`h4`
+- **H3/H4/H5/H6 structure** — `StatsSection` label→`h3`; `ClientsPage` industry→`h3`, stats→`h4`, client name→`h5`, industry tag→`h6`; `ServicesPage` subtitle→`h4`, features label→`h5`; `PackagesPreview` card name dinamis (`h2` di /packages, `h3` di homepage), note badge→`p`, features label dinamis (`h3`/`h4`); `ContactForm` label→`h6`; `BookingForm` step→`h4/h6`, layanan→`h5/h6`; `GalleryPage` stats→`h4/h6`, filter→`h5`; `FAQClient` info→`h4/h6`; `MissionVision` value→`h6`; `HeroSection` stat label→`p` (bukan heading)
 - **Blog H2** — `BlogListPage` dynamic `sr-only` H2 per kategori; card read-more `span→h5`
 - **Service JSON-LD** di `services/page.tsx` — `ItemList` 6 Service schema
 - **Content ≥ 300 words** — Gallery (stats cards + SEO block), FAQ (3 info cards + about block), Booking (3 SEO blocks: proses 4 steps + 6 layanan + kenapa Sarau Luxury), Contact (kenapa pilih + layanan grid)
@@ -125,6 +125,7 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - **Fitur:** search bar real-time, filter `q` dan `a`, highlight kata kunci via `<mark>`, result count, empty state dengan tombol "Tampilkan semua", tombol clear (X)
 - **State:** `query` + `useMemo` untuk filtered results
 - **Aksesibilitas:** `aria-expanded` di accordion, `aria-label` di tombol clear
+- **Fix:** `type="text"` (bukan `type="search"`) — mencegah tombol clear duplikat dari browser native
 
 ### Skeleton Loading
 - **Komponen reusable:** `src/components/ui/Skeleton.tsx`
@@ -177,7 +178,8 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 **7 company yang masih inisial (belum ada logo):**
 `trisakti.co.id` · `mahawira.co.id` · `mayham.co.id` · `aulychelly.com` · `notarislola.co.id` · `sdndayabersama.sch.id` · `takprime.co.id`
 
-**Status Juni 2026:** 45 logo tampil (18 via Clearbit/API + 9 via Google Favicon/DDG + 18 upload manual), 7 masih inisial
+**Status Juni 2026:** 46 logo tampil (18 via Clearbit/API + 9 via Google Favicon/DDG + 18 upload manual + 1 `map.co.id.png` duplikat dari `mapactive.com.png` untuk ClientsPage), 7 masih inisial
+- **Catatan `map.co.id.png`:** ClientsPage pakai domain `map.co.id`, ClientsMarquee pakai `mapactive.com`. Keduanya menunjuk perusahaan MAP Group yang sama — file di-duplikat agar logo tampil di kedua komponen.
 
 ## Troubleshooting Fonnte
 - Error `request invalid on disconnected device` → device di Fonnte tidak terkoneksi, scan ulang QR
