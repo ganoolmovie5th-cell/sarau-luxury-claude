@@ -142,7 +142,7 @@ export default function FAQClient() {
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-earth/40 pointer-events-none"
               />
               <input
-                type="search"
+                type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Cari pertanyaan…"
