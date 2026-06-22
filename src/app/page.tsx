@@ -6,6 +6,7 @@ import StatsSection from '@/components/sections/StatsSection'
 import ServicesPreview from '@/components/sections/ServicesPreview'
 import PackagesPreview from '@/components/sections/PackagesPreview'
 import WhyUsSection from '@/components/sections/WhyUsSection'
+import ProcessTimeline from '@/components/sections/ProcessTimeline'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import ClientsMarquee from '@/components/sections/ClientsMarquee'
 import GalleryPreview from '@/components/sections/GalleryPreview'
@@ -57,6 +58,9 @@ export default function HomePage() {
       </SectionErrorBoundary>
       <SectionErrorBoundary name="WhyUs">
         <WhyUsSection />
+      </SectionErrorBoundary>
+      <SectionErrorBoundary name="ProcessTimeline">
+        <ProcessTimeline />
       </SectionErrorBoundary>
       <SectionErrorBoundary name="Packages">
         <PackagesPreview />

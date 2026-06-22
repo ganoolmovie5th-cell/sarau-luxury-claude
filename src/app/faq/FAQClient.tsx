@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Search, X } from 'lucide-react'
 import CtaSection from '@/components/sections/CtaSection'
 
 const faqs = [
@@ -40,20 +40,41 @@ const faqs = [
   },
 ]
 
-function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
+function highlight(text: string, query: string) {
+  if (!query.trim()) return <>{text}</>
+  const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi')
+  const parts = text.split(regex)
+  return (
+    <>
+      {parts.map((part, i) =>
+        regex.test(part) ? (
+          <mark key={i} className="bg-sun/40 text-bark rounded px-0.5">
+            {part}
+          </mark>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </>
+  )
+}
+
+function FAQItem({ q, a, index, query }: { q: string; a: string; index: number; query: string }) {
   const [open, setOpen] = useState(false)
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.06 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ delay: index * 0.04 }}
       className="border border-earth/15 rounded-2xl overflow-hidden bg-white"
     >
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between p-6 text-left hover:bg-cream/50 transition-colors"
+        aria-expanded={open}
       >
-        <span className="font-semibold text-bark pr-4">{q}</span>
+        <span className="font-semibold text-bark pr-4">{highlight(q, query)}</span>
         <ChevronDown
           size={20}
           className={`text-forest flex-shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
@@ -68,7 +89,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
             transition={{ duration: 0.3 }}
           >
             <div className="px-6 pb-6 text-earth/80 text-sm leading-relaxed border-t border-earth/10 pt-4">
-              {a}
+              {highlight(a, query)}
             </div>
           </motion.div>
         )}
@@ -78,6 +99,17 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 }
 
 export default function FAQClient() {
+  const [query, setQuery] = useState('')
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    if (!q) return faqs
+    return faqs.filter(
+      ({ q: question, a: answer }) =>
+        question.toLowerCase().includes(q) || answer.toLowerCase().includes(q)
+    )
+  }, [query])
+
   return (
     <div>
       <div className="pt-36 pb-24 bg-cream">
@@ -86,7 +118,7 @@ export default function FAQClient() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-center mb-14"
+            className="text-center mb-10"
           >
             <span className="section-tag mb-4 inline-flex">❓ FAQ</span>
             <h1 className="font-display text-5xl md:text-6xl font-bold text-bark mb-5">
@@ -97,13 +129,98 @@ export default function FAQClient() {
             </p>
           </motion.div>
 
-          <div className="space-y-3 mb-10">
-            {faqs.map(({ q, a }, i) => (
-              <FAQItem key={q} q={q} a={a} index={i} />
-            ))}
-          </div>
+          {/* ── Search bar ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="relative max-w-lg mx-auto mb-10"
+          >
+            <div className="relative">
+              <Search
+                size={18}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-earth/40 pointer-events-none"
+              />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Cari pertanyaan…"
+                className="w-full pl-11 pr-10 py-3.5 rounded-2xl border border-earth/20 bg-white
+                           text-bark placeholder:text-earth/40 text-sm
+                           focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest/50
+                           transition-all duration-200"
+              />
+              {query && (
+                <button
+                  onClick={() => setQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full
+                             bg-earth/10 hover:bg-earth/20 flex items-center justify-center
+                             transition-colors"
+                  aria-label="Hapus pencarian"
+                >
+                  <X size={13} className="text-earth/60" />
+                </button>
+              )}
+            </div>
+            {/* Result count */}
+            <AnimatePresence>
+              {query.trim() && (
+                <motion.p
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="text-xs text-earth/50 mt-2 text-center"
+                >
+                  {filtered.length > 0
+                    ? `${filtered.length} pertanyaan ditemukan untuk "${query}"`
+                    : `Tidak ada hasil untuk "${query}"`}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </motion.div>
 
-          {/* SEO content — tambah word count & konteks untuk crawler */}
+          {/* ── FAQ list ── */}
+          <AnimatePresence mode="wait">
+            {filtered.length > 0 ? (
+              <motion.div
+                key="results"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="space-y-3 mb-10"
+              >
+                {filtered.map(({ q, a }, i) => (
+                  <FAQItem key={q} q={q} a={a} index={i} query={query} />
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div
+                key="empty"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="text-center py-16 mb-10"
+              >
+                <div className="text-5xl mb-4">🔍</div>
+                <p className="font-display font-semibold text-xl text-bark mb-2">
+                  Tidak ada hasil
+                </p>
+                <p className="text-earth/60 text-sm mb-5">
+                  Coba kata kunci lain, atau hubungi kami langsung.
+                </p>
+                <button
+                  onClick={() => setQuery('')}
+                  className="text-forest text-sm font-semibold underline underline-offset-2
+                             hover:text-forest/70 transition-colors"
+                >
+                  Tampilkan semua pertanyaan
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* SEO content blocks */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -130,7 +247,7 @@ export default function FAQClient() {
               <div key={title} className="bg-white rounded-2xl p-6 border border-earth/10 shadow-sm">
                 <div className="text-3xl mb-3">{icon}</div>
                 <h4 className="font-display font-bold text-lg text-bark mb-2">{title}</h4>
-                <h6 className="text-earth/70 text-sm leading-relaxed">{body}</h6>
+                <p className="text-earth/70 text-sm leading-relaxed">{body}</p>
               </div>
             ))}
           </motion.div>

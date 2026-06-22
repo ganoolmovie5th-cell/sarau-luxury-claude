@@ -110,6 +110,30 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - **Hero LCP:** H1 tidak start di `opacity:0` (pakai `h1Variants` y-only); stagger dikurangi 0.15→0.07; duration 0.8→0.5s
 - **ISR:** `export const revalidate = 3600` di 8 halaman statis (homepage, about, services, packages, gallery, clients, faq, blog) → TTFB dari edge cache setelah request pertama
 
+## Feature: Process Timeline, FAQ Search & Skeleton Loading (Juni 2026)
+
+### Process Timeline
+- **Komponen:** `src/components/sections/ProcessTimeline.tsx`
+- **Posisi homepage:** setelah `WhyUsSection`, sebelum `PackagesPreview`
+- **7 langkah:** Konsultasi Gratis → Survei & Analisis → Proposal → Konfirmasi & DP → Persiapan Matang → Hari H → Evaluasi & Dokumentasi
+- **Layout:** zigzag alternating kiri-kanan di desktop (grid cols), vertikal dengan line kiri di mobile
+- **Warna:** step ganjil = forest, step genap = sun; line center desktop via absolute pseudo element
+
+### FAQ Search
+- **File:** `src/app/faq/FAQClient.tsx`
+- **Fitur:** search bar real-time, filter `q` dan `a`, highlight kata kunci via `<mark>`, result count, empty state dengan tombol "Tampilkan semua", tombol clear (X)
+- **State:** `query` + `useMemo` untuk filtered results
+- **Aksesibilitas:** `aria-expanded` di accordion, `aria-label` di tombol clear
+
+### Skeleton Loading
+- **Komponen reusable:** `src/components/ui/Skeleton.tsx`
+- **Exports:** `Skeleton`, `SkeletonText`, `SkeletonBlogGrid`, `SkeletonGalleryGrid`, `SkeletonClientsGrid`
+- **loading.tsx dibuat di:**
+  - `src/app/blog/loading.tsx` → `SkeletonBlogGrid` (6 cards)
+  - `src/app/gallery/loading.tsx` → `SkeletonGalleryGrid` (masonry 12 item)
+  - `src/app/clients/loading.tsx` → `SkeletonClientsGrid` (hero + 20 cards)
+- **Animasi:** Tailwind `animate-pulse`, warna `bg-earth/10` sesuai design system
+
 ## Feature: Cookie Consent Banner (Juni 2026)
 - **Komponen:** `src/components/ui/CookieConsent.tsx` — banner kustom GA4 Consent Mode v2
 - **Desain:** glass-dark background, accent line gradient (forest→sun→leaf), animasi slide-up Framer Motion, expand detail cookie types
