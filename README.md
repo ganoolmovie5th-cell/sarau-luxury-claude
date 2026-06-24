@@ -257,6 +257,7 @@ Pastikan semua environment variables sudah dikonfigurasi di **Vercel Dashboard �
 | Fix | Keterangan |
 |---|---|
 | **React hydration** | `<html>` & `<body>` di `layout.tsx` ditambah `suppressHydrationWarning` — mencegah warning dari browser extension yang inject attribute (LastPass, Grammarly, Google Translate, dll). `new Date().getFullYear()` di `Footer.tsx` dipindah ke komponen `ClientYear` (`src/components/ui/ClientYear.tsx`) agar di-render client-side dengan `suppressHydrationWarning`, aman dari edge case ISR year-transition |
+| **Cypress failures: hydration #423 + opacity:0** | `PageTransition.tsx`: tambah `initial={false}` di `AnimatePresence` — halaman pertama load tanpa entry animation (tidak ada opacity:0), route-change tetap animasi. `Navbar.tsx`: hapus `opacity:0` dari `initial` — navbar selalu visible saat Cypress start. 16 section components: `useInView` ditambah `initialInView: true` — elemen langsung mulai visible tanpa menunggu IntersectionObserver fire, aman untuk headless testing |
 | Homepage crash | Three.js `HeroScene` dibungkus `HeroSceneBoundary` (ErrorBoundary) — WebGL failure → graceful fallback ke gradient |
 | Homepage section crash | Setiap section homepage dibungkus `SectionErrorBoundary` — jika satu section crash, sisanya tetap jalan |
 | Google Maps embed | URL embed diperbaiki (encoding `+` → `%20`, timestamp valid) |

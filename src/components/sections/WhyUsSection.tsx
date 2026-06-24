@@ -16,7 +16,7 @@ const reasons = [
 ]
 
 export default function WhyUsSection() {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true, initialInView: true })
 
   return (
     <section ref={ref} className="section-padding gradient-forest relative overflow-hidden noise-overlay">

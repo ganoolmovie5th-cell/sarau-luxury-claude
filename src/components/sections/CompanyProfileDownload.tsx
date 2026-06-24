@@ -247,7 +247,7 @@ const highlights = [
 
 export default function CompanyProfileDownload() {
   const [open, setOpen]       = useState(false)
-  const { ref, inView }       = useInView({ threshold: 0.2, triggerOnce: true })
+  const { ref, inView }       = useInView({ threshold: 0.2, triggerOnce: true, initialInView: true })
 
   return (
     <>

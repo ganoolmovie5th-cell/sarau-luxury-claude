@@ -94,7 +94,7 @@ function LogoCard({ name, domain, color }: { name: string; domain: string; color
 }
 
 export default function ClientsMarquee() {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true, initialInView: true })
 
   return (
     <section ref={ref} className="py-20 bg-cream relative overflow-hidden">

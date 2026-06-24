@@ -154,7 +154,7 @@ function ClientCard({ client, i, inView }: {
 
 // ─── Main page ────────────────────────────────────────────────────────────────
 export default function ClientsPage() {
-  const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true })
+  const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true, initialInView: true })
 
   return (
     <div>

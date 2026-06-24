@@ -17,7 +17,7 @@ const team = [
 ]
 
 export default function TeamSection() {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true, initialInView: true })
 
   return (
     <section ref={ref} className="section-padding bg-white">

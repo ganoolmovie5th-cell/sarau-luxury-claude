@@ -7,7 +7,7 @@ import { ArrowRight, Phone } from 'lucide-react'
 import { CONTACT } from '@/lib/constants'
 
 export default function CtaSection() {
-  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true })
+  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true, initialInView: true })
 
   return (
     <section ref={ref} className="py-24 bg-cream relative overflow-hidden">

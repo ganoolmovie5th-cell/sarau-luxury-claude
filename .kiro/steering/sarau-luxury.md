@@ -259,6 +259,37 @@ Perubahan breaking yang dikerjakan di branch:
 
 **Catatan untuk ke depan:** semua library yang menyentuh React internals (Three.js/R3F, animasi) harus versi React 19. Jangan turunkan React ke 18 selama di Next 15.
 
+## Fix: Cypress Failures — Hydration #423 + opacity:0 (Juni 2026)
+
+### Gejala
+Semua Cypress test gagal: skeleton masih terlihat, elemen tidak terdeteksi, form tidak muncul.
+Penyebab: React hydration error #423 + parent elements stuck di `opacity:0`.
+
+### Root cause
+1. **`PageTransition.tsx`** — `AnimatePresence` tanpa `initial={false}`: saat SSR, `motion.div` render tanpa inline style, saat client Framer Motion apply `style="opacity:0"` via `useLayoutEffect` → hydration mismatch → React error #423 → seluruh halaman fallback ke CSR → semua animasi restart dari `initial` state.
+2. **`Navbar.tsx`** — `initial={{ y:-100, opacity:0 }}`: navbar invisible saat Cypress start.
+3. **Semua section components** — `useInView` tanpa `initialInView:true`: di Cypress headless, IntersectionObserver tidak fire untuk elemen di luar viewport → `inView` tetap `false` → `animate={}` (empty) → elemen stuck di `initial={{ opacity:0 }}`.
+
+### Fix yang dilakukan
+| File | Perubahan |
+|------|-----------|
+| `PageTransition.tsx` | `<AnimatePresence mode="wait">` → `<AnimatePresence mode="wait" initial={false}>` |
+| `Navbar.tsx` | `initial={{ y:-100, opacity:0 }}` → `initial={{ y:-100 }}` |
+| 16 section components | `useInView({ threshold:X, triggerOnce:true })` → tambah `initialInView:true` |
+
+### Komponen yang diupdate
+`StatsSection`, `ServicesPreview`, `PackagesPreview`, `WhyUsSection`, `ProcessTimeline`, `TestimonialsSection`, `ClientsMarquee`, `CompanyProfileDownload`, `CtaSection`, `GalleryPreview`, `BlogPreview`, `ContactForm`, `ServicesPage` (ServiceCard), `ClientsPage`, `TeamSection`, `MissionVision`
+
+### Kenapa `initialInView: true` aman untuk production
+- Elemen **dalam viewport**: IntersectionObserver fire cepat, `inView` tetap `true`, observer disconnect (triggerOnce). Animasi berjalan normal.
+- Elemen **di bawah fold**: mulai animate ke visible → IO fire (not in view) → Framer Motion pertahankan posisi current (tidak reset ke `initial`) → user scroll → IO fire `inView:true` → animate ulang smooth ✓
+- Tidak ada flash karena Framer Motion tidak revert ke `initial` saat `animate` berubah ke `{}`.
+
+### Aturan ke depan
+- **Selalu tambah `initialInView: true`** saat membuat komponen baru dengan `useInView` + `animate={inView ? ... : {}}` pattern
+- **`AnimatePresence` di root/layout** WAJIB pakai `initial={false}` untuk mencegah hydration error
+- **Jangan gunakan `opacity:0` di `initial` Navbar/Header** — elemen navigasi harus selalu visible
+
 ## Fix: React Hydration (Juni 2026)
 
 ### Masalah yang diperbaiki

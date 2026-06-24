@@ -147,7 +147,7 @@ const services = [
 ]
 
 function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true })
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true, initialInView: true })
   const { icon: Icon } = service
   const isReversed = index % 2 !== 0
 

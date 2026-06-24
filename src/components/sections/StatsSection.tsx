@@ -15,7 +15,7 @@ const stats = [
 ]
 
 export default function StatsSection() {
-  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true })
+  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true, initialInView: true })
 
   return (
     <section ref={ref} className="relative -mt-1 bg-cream py-20 overflow-hidden">

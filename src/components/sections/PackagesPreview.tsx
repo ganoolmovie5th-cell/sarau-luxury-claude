@@ -353,7 +353,7 @@ function AddOnCard({ item, i, inView, nameLevel = 3 }: { item: AddOnItem; i: num
 // ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
 export default function PackagesPreview({ hideHeader = false }: { hideHeader?: boolean }) {
-  const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true })
+  const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true, initialInView: true })
   const [activeTab, setActiveTab] = useState('gathering')
 
   // hideHeader=true  → halaman /packages, h1 ada di page header, card = h2, features = h3

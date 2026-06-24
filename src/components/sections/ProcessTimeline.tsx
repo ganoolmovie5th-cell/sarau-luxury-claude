@@ -61,7 +61,7 @@ const steps = [
 ]
 
 export default function ProcessTimeline() {
-  const { ref, inView } = useInView({ threshold: 0.08, triggerOnce: true })
+  const { ref, inView } = useInView({ threshold: 0.08, triggerOnce: true, initialInView: true })
 
   return (
     <section ref={ref} className="section-padding bg-white relative overflow-hidden">
