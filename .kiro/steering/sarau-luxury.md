@@ -204,6 +204,17 @@ Perbaikan dari temuan PageSpeed Insights (Performance 48, Accessibility 99):
 - **Three.js (`HeroScene.tsx`):** `<Stars count={500}>` → `{250}` untuk kurangi beban main-thread. Three.js tetap deferred via `requestIdleCallback` + `dynamic(ssr:false)`.
 
 
+## PageSpeed: Source Maps — Intentionally Disabled (Juni 2026)
+
+PageSpeed Insights melaporkan *"Missing source maps for large first-party JavaScript"* untuk file seperti `chunks/b536a0f1.3bb8c3a1dc539741.js`. Item ini berstatus **Unscored** — tidak mempengaruhi skor Best Practices (sudah 100).
+
+**Keputusan: Source maps TIDAK diaktifkan.** Alasan:
+- Mengekspos kode TypeScript asli ke publik via browser DevTools → risiko keamanan
+- File `.js.map` 2–5× lebih besar dari file JS-nya → bandwidth naik, tidak ada manfaat untuk pengunjung
+- Next.js sengaja menonaktifkan source maps di production by default
+
+**Jangan aktifkan** `productionBrowserSourceMaps: true` di `next.config.js` kecuali ada setup **private source maps** ke error monitoring (Sentry/Datadog) yang memastikan file map tidak dapat diakses oleh browser publik.
+
 ## A11y: Web Interface Guidelines Audit (Juni 2026)
 
 Audit Vercel Web Interface Guidelines — 24 file diperbaiki dalam 1 commit:

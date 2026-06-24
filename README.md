@@ -266,6 +266,16 @@ Pastikan semua environment variables sudah dikonfigurasi di **Vercel Dashboard �
 | Sitemap trailing slash | Homepage URL `https://sarau-luxury.com` → `https://sarau-luxury.com/` (konsistensi) |
 | Gallery preview height 0 | `GalleryPreview` bento grid: `grid-rows-[…]` kurang baris → 3 foto terakhir jatuh di implicit row (tinggi 0), bikin `<Image fill>` warning & gambar tak tampil. Ganti ke `auto-rows-[220px] md:auto-rows-[260px]` agar semua baris (eksplisit + implicit) punya tinggi |
 
+### Catatan: Source Maps (intentionally disabled)
+
+PageSpeed Insights melaporkan *"Missing source maps for large first-party JavaScript"* sebagai item **Unscored** (tidak mempengaruhi skor). Source maps **sengaja tidak diaktifkan** di production karena:
+
+- Source maps mengekspos kode TypeScript asli ke publik (keamanan)
+- File `.js.map` berukuran 2–5× dari file JS-nya → memperberat bandwidth
+- Untuk website marketing/profil perusahaan, tidak ada manfaat debugging yang sepadan
+
+Jika di masa depan dibutuhkan (mis. integrasi Sentry private source maps), aktifkan lewat `productionBrowserSourceMaps: true` di `next.config.js` **hanya** jika source maps dikirim ke server monitoring, bukan ke browser publik.
+
 ---
 
 ## Kontak
