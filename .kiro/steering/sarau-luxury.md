@@ -247,3 +247,27 @@ Perubahan breaking yang dikerjakan di branch:
 - **Verifikasi:** `next build` ✅ (33 halaman), `npm audit` = 0, probe headless → `<canvas>` render 1366×768, tidak ada error `ReactCurrentBatchConfig`.
 
 **Catatan untuk ke depan:** semua library yang menyentuh React internals (Three.js/R3F, animasi) harus versi React 19. Jangan turunkan React ke 18 selama di Next 15.
+
+## Fix: React Hydration (Juni 2026)
+
+### Masalah yang diperbaiki
+Browser extension (LastPass, Grammarly, Google Translate, dll) men-inject attribute ke `<html>` dan `<body>` yang tidak ada di server-rendered HTML → React melempar hydration warning di console.
+
+### Perubahan
+- **`src/app/layout.tsx`:** `<html>` dan `<body>` ditambah `suppressHydrationWarning` — React mengabaikan attribute mismatch di kedua elemen ini (root DOM yang sering dimodifikasi browser extension)
+- **`src/components/ui/ClientYear.tsx`:** komponen baru `'use client'` yang meng-render `new Date().getFullYear()` dengan `suppressHydrationWarning` di `<span>`
+- **`src/components/layout/Footer.tsx`:** copyright year `© {new Date().getFullYear()}` diganti `© <ClientYear />` — tahun selalu akurat di client dan aman dari edge case ISR year-transition
+
+### Pola yang sudah aman (tidak perlu diubah)
+| Pola | Status | Alasan |
+|------|--------|--------|
+| `CookieConsent.tsx` localStorage di `useEffect` | ✅ Aman | Hanya berjalan di client |
+| `BookingForm.tsx` `Date.now()` di success state | ✅ Aman | Di-render setelah `submitted=true` (client-only) |
+| `HeroScene.tsx` `Math.random()` di `useMemo` | ✅ Aman | Component `ssr:false` — tidak pernah di-render server |
+| `hooks/index.ts` `useMediaQuery` → `false` awal | ✅ Aman | `useState(false)` + `useEffect` adalah pola SSR-safe yang benar |
+| `Navbar.tsx` `scrolled` state | ✅ Aman | `useState(false)` di SSR dan client awal sama → tidak mismatch |
+
+### Aturan ke depan
+- **Jangan hapus `suppressHydrationWarning`** dari `<html>` dan `<body>` di `layout.tsx`
+- **Gunakan `ClientYear`** setiap kali perlu menampilkan tahun sekarang di footer/copyright
+- **Untuk nilai client-only lainnya** (random ID, timestamp display, window size): gunakan pola `useState(null) + useEffect` atau buat Client Component dengan `suppressHydrationWarning`

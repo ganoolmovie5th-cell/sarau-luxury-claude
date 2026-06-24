@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react'
 import { CONTACT, SOCIAL } from '@/lib/constants'
+import ClientYear from '@/components/ui/ClientYear'
 
 const footerLinks = {
   layanan: [
@@ -163,7 +164,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-cream/70">
-          <p>© {new Date().getFullYear()} Sarau Luxury. All rights reserved.</p>
+          <p>© <ClientYear /> Sarau Luxury. All rights reserved.</p>
           <p>Designed & built with ❤️ for great teams</p>
         </div>
       </div>

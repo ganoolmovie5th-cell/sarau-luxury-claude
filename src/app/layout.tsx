@@ -164,7 +164,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" className={`${playfair.variable} ${dmSans.variable} ${caveat.variable}`}>
+    <html lang="id" suppressHydrationWarning className={`${playfair.variable} ${dmSans.variable} ${caveat.variable}`}>
       <head>
         <meta charSet="utf-8" />
         <link rel="canonical" href="https://sarau-luxury.com/" />
@@ -188,7 +188,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {/* 3. Google Tag Manager (noscript) — tepat setelah <body> untuk browser tanpa JS */}
         <noscript>
           <iframe
