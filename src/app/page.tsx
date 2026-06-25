@@ -11,6 +11,7 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import ClientsMarquee from '@/components/sections/ClientsMarquee'
 import GalleryPreview from '@/components/sections/GalleryPreview'
 import BlogPreview from '@/components/sections/BlogPreview'
+import PromotionsSection from '@/components/sections/PromotionsSection'
 import CompanyProfileDownload from '@/components/sections/CompanyProfileDownload'
 import CtaSection from '@/components/sections/CtaSection'
 
@@ -64,6 +65,9 @@ export default function HomePage() {
       </SectionErrorBoundary>
       <SectionErrorBoundary name="Packages">
         <PackagesPreview />
+      </SectionErrorBoundary>
+      <SectionErrorBoundary name="Promotions">
+        <PromotionsSection />
       </SectionErrorBoundary>
       <SectionErrorBoundary name="Clients">
         <ClientsMarquee />
