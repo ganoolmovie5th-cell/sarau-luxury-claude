@@ -65,13 +65,13 @@ export default function PromotionsSection() {
             >
               <Link
                 href="/booking"
-                className="group block relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 aspect-[4/5]"
+                className="group block relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 aspect-square"
               >
                 <Image
                   src={promo.src}
                   alt={promo.alt}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-contain transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 33vw"
                   unoptimized
                 />
