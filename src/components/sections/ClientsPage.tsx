@@ -18,6 +18,7 @@ const clients = [
   { name: 'Four Points Hotel',             domain: 'fourpoints.com',         industry: 'Hospitality', color: '#8b1a1a' },
   // ── Otomotif ──
   { name: 'Hino Motors Indonesia',         domain: 'hino.co.id',             industry: 'Otomotif', color: '#CC0000' },
+  { name: 'Toyota',                         domain: 'toyota.co.id',           industry: 'Otomotif', color: '#eb0a1e' },
   { name: 'Astra',                          domain: 'astra.co.id',             industry: 'Otomotif', color: '#eb0a1e' },
   { name: 'Indopenske',                    domain: 'indopenske.co.id',        industry: 'Otomotif', color: '#003087' },
   { name: 'Asia Part Indotech',            domain: 'asiapartindotech.com',    industry: 'Otomotif', color: '#c0392b' },

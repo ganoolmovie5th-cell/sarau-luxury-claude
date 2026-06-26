@@ -290,6 +290,22 @@ Penyebab: React hydration error #423 + parent elements stuck di `opacity:0`.
 - **`AnimatePresence` di root/layout** WAJIB pakai `initial={false}` untuk mencegah hydration error
 - **Jangan gunakan `opacity:0` di `initial` Navbar/Header** — elemen navigasi harus selalu visible
 
+## Fix: QA Dogfood + Cypress E2E (Juni 2026)
+
+Perbaikan dari hasil DOGFOOD QA (browser testing) + CYPRESS E2E yang dijalankan agent lain:
+
+| Masalah | Root cause | Fix |
+|---------|-----------|-----|
+| **Stats "0+" mismatch hero** | `StatsSection.tsx` pakai `react-countup` yang mulai dari 0. Di environment reduced-motion / headless browser, CountUp tidak animate → stuck di `0+` (hero menampilkan `100+`/`53+`/`8+` statis) | Tambah `useReducedMotion()` (framer-motion). Jika reduce-motion/headless → render nilai final langsung via `value.toFixed(decimal||0)`; selain itu tetap CountUp. Fallback non-inView juga diubah dari `'0'` ke nilai final |
+| **Cypress: Team info "Pencerita Pengalaman"** | `AboutHero.tsx` H1: `Kami Adalah Pencerita<br /><span>Pengalaman…</span>` → `textContent` = `"…PenceritaPengalaman…"` (tanpa spasi karena `<br/>`). `cy.contains('Pencerita Pengalaman')` gagal | Tambah `{' '}` sebelum `<br />` → textContent jadi `"Pencerita Pengalaman"`. Visual tidak berubah (spasi sebelum line-break tak terlihat) |
+| **Cypress: Client logos "Toyota"** | "Toyota" disebut di semua copy/metadata (clients, FAQ, PDF) tapi **tidak ada** di data klien aktual (`ClientsPage.tsx` & `ClientsMarquee.tsx` — otomotif hanya Astra/Hino/TAF) | Tambah entry `Toyota` (`domain: toyota.co.id`, industry Otomotif) di kedua list. Logo via proxy `/api/logo/toyota.co.id` (Clearbit fallback) |
+| **Cypress: FAQ "Pertanyaan yang Sering Ditanyakan"** | `FAQClient.tsx` H1 = "Pertanyaan yang Sering **Ditanya**" (kurang "kan") | Ubah span ke "Sering **Ditanyakan**" — frasa FAQ standar Indonesia |
+
+**Aturan ke depan:**
+- **Heading yang dipecah `<br/>` atau antar elemen** — jika perlu dicari utuh oleh test (`cy.contains`), pastikan ada `{' '}` di boundary agar `textContent` punya spasi
+- **Nama brand klien di copy/metadata** harus ada juga di data list klien (`ClientsPage`/`ClientsMarquee`) supaya konsisten & lolos E2E
+- **Komponen angka animasi** (CountUp dll) wajib punya fallback nilai final untuk reduced-motion/headless — jangan biarkan stuck di `0`
+
 ## Fix: React Hydration (Juni 2026)
 
 ### Masalah yang diperbaiki

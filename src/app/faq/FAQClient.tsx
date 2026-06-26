@@ -122,7 +122,7 @@ export default function FAQClient() {
           >
             <span className="section-tag mb-4 inline-flex">❓ FAQ</span>
             <h1 className="font-display text-5xl md:text-6xl font-bold text-bark mb-5">
-              Pertanyaan yang <span className="gradient-text">Sering Ditanya</span>
+              Pertanyaan yang <span className="gradient-text">Sering Ditanyakan</span>
             </h1>
             <p className="text-earth/70 text-xl max-w-xl mx-auto">
               Tidak menemukan jawaban? Hubungi kami langsung — kami siap membantu!

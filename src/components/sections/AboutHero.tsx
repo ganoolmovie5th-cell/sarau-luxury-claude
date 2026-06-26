@@ -18,7 +18,7 @@ export default function AboutHero() {
             🌿 Tentang Kami
           </span>
           <h1 className="font-display text-5xl md:text-6xl font-bold text-cream mb-6 leading-tight">
-            Kami Adalah Pencerita<br />
+            Kami Adalah Pencerita{' '}<br />
             <span className="text-sun">Pengalaman Tim Anda</span>
           </h1>
           <h2 className="text-cream/70 text-xl max-w-2xl mx-auto leading-relaxed font-normal">

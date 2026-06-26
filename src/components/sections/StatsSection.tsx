@@ -2,7 +2,7 @@
 
 import { useInView } from 'react-intersection-observer'
 import CountUp from 'react-countup'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Trophy, Users, MapPin, Star } from 'lucide-react'
 
 import { STATS } from '@/lib/constants'
@@ -16,6 +16,7 @@ const stats = [
 
 export default function StatsSection() {
   const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true, initialInView: true })
+  const reduceMotion = useReducedMotion()
 
   return (
     <section ref={ref} className="relative -mt-1 bg-cream py-20 overflow-hidden">
@@ -39,14 +40,16 @@ export default function StatsSection() {
                 <Icon size={22} className="text-forest group-hover:text-cream transition-colors duration-300" />
               </div>
               <div className="font-display font-bold text-4xl md:text-5xl text-bark mb-1">
-                {inView ? (
+                {inView && !reduceMotion ? (
                   <CountUp
                     end={value}
                     duration={2.5}
                     delay={i * 0.1}
                     decimals={decimal || 0}
                   />
-                ) : '0'}
+                ) : (
+                  value.toFixed(decimal || 0)
+                )}
                 <span className="text-forest">{suffix}</span>
               </div>
               <h3 className="font-semibold text-bark text-sm md:text-base mb-1">{label}</h3>

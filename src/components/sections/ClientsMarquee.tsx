@@ -21,6 +21,7 @@ const clients = [
   { name: 'Aloft Hotel',                   domain: 'alofthotels.com',          color: '#e31837' },
   { name: 'Four Points Hotel',             domain: 'fourpoints.com',           color: '#8b1a1a' },
   { name: 'Astra',                         domain: 'astra.co.id',              color: '#eb0a1e' },
+  { name: 'Toyota',                        domain: 'toyota.co.id',             color: '#eb0a1e' },
   { name: 'Modena',                        domain: 'modena.com',               color: '#c0392b' },
   { name: 'Escalier Interior',             domain: 'escalierinterior.com',     color: '#1a5fa0' },
   { name: 'Pegadaian',                     domain: 'pegadaian.co.id',          color: '#00703a' },
