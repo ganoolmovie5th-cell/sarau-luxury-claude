@@ -290,6 +290,25 @@ Penyebab: React hydration error #423 + parent elements stuck di `opacity:0`.
 - **`AnimatePresence` di root/layout** WAJIB pakai `initial={false}` untuk mencegah hydration error
 - **Jangan gunakan `opacity:0` di `initial` Navbar/Header** — elemen navigasi harus selalu visible
 
+## SEO: Heading Hierarchy h1–h6 di /packages & /faq (Juni 2026)
+
+Minor SEO polish — melengkapi hierarki heading agar tidak ada level yang dilompati (no-skip) dan semua level h1–h6 hadir secara natural (bukan empty heading / heading stuffing). Konten yang ditambahkan informatif & relevan.
+
+### /packages (`src/app/packages/page.tsx`)
+Sebelumnya hanya h1 (page header) → h2 (kartu paket) → h3 ("Sudah Termasuk"). Ditambah **SEO content block** "Panduan Memilih Paket Outing & Gathering" sebelum `CtaSection`:
+- `h2` Panduan Memilih Paket → `h3` Faktor yang Memengaruhi Harga → `h4` Jumlah Peserta, `h4` Destinasi & Durasi
+- `h3` Yang Sudah Termasuk → `h4` Fasilitas Inti → `h5` Biaya Tambahan → `h6` Catatan
+- Urutan DOM: h2→h3→h4→h4→h3→h4→h5→h6 (tiap langkah maksimal +1, tidak ada skip)
+
+### /faq (`src/app/faq/FAQClient.tsx`)
+Sebelumnya: h1 → h4 (kartu info) → h2 (Tentang) → h5 — ada **skip h1→h4** dan urutan kacau. Diperbaiki:
+- Tambah `h2` sr-only "Daftar Pertanyaan Umum" sebelum accordion (mengisi gap setelah h1)
+- Tambah `h2` sr-only "Ringkasan Layanan Sarau Luxury" sebelum 3 kartu info; judul kartu `h4`→`h3`
+- Blok "Tentang Sarau Luxury": subheading `h5`→`h3`; ditambah `h4` Layanan Unggulan → `h5` Outing/Outbound/Team Building → `h6` Area Layanan
+- Hasil: h1→h2→h3→h2→h3→h2→h3→h4→h5→h6 (no-skip, semua level hadir)
+
+**Catatan:** className styling tiap heading dipertahankan saat ganti tag (mis. h5→h3) sehingga **visual tidak berubah** — hanya semantik heading. Jangan hapus content block ini (penting untuk word count + hierarki crawler).
+
 ## Fix: QA Dogfood + Cypress E2E (Juni 2026)
 
 Perbaikan dari hasil DOGFOOD QA (browser testing) + CYPRESS E2E yang dijalankan agent lain:

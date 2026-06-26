@@ -181,6 +181,7 @@ export default function FAQClient() {
           </motion.div>
 
           {/* ── FAQ list ── */}
+          <h2 className="sr-only">Daftar Pertanyaan Umum</h2>
           <AnimatePresence mode="wait">
             {filtered.length > 0 ? (
               <motion.div
@@ -221,6 +222,7 @@ export default function FAQClient() {
           </AnimatePresence>
 
           {/* SEO content blocks */}
+          <h2 className="sr-only">Ringkasan Layanan Sarau Luxury</h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -246,7 +248,7 @@ export default function FAQClient() {
             ].map(({ icon, title, body }) => (
               <div key={title} className="bg-white rounded-2xl p-6 border border-earth/10 shadow-sm">
                 <div className="text-3xl mb-3">{icon}</div>
-                <h4 className="font-display font-bold text-lg text-bark mb-2">{title}</h4>
+                <h3 className="font-display font-bold text-lg text-bark mb-2">{title}</h3>
                 <p className="text-earth/70 text-sm leading-relaxed">{body}</p>
               </div>
             ))}
@@ -259,7 +261,7 @@ export default function FAQClient() {
             className="bg-white rounded-2xl p-7 border border-earth/10 shadow-sm mb-4"
           >
             <h2 className="font-display text-2xl font-bold text-bark mb-3">Tentang Sarau Luxury</h2>
-            <h5 className="text-forest font-semibold text-xs uppercase tracking-widest mb-3">Event Organizer Profesional · Banten · Indonesia</h5>
+            <h3 className="text-forest font-semibold text-xs uppercase tracking-widest mb-3">Event Organizer Profesional · Banten · Indonesia</h3>
             <p className="text-earth/70 leading-relaxed mb-3">
               Sarau Luxury adalah event organizer profesional yang berdiri sejak 2018, berpusat di Banten dan
               melayani seluruh Indonesia. Kami spesialis dalam <strong>outing perusahaan</strong>,{' '}
@@ -271,6 +273,18 @@ export default function FAQClient() {
               Dengan pengalaman lebih dari 8 tahun dan 100+ event sukses, kami hadir untuk memastikan setiap event
               perusahaan Anda berjalan lancar, berkesan, dan sesuai anggaran.
               Hubungi kami untuk konsultasi gratis — respon dalam 15 menit, Senin–Sabtu 08.00–20.00 WIB.
+            </p>
+
+            <h4 className="font-display font-bold text-lg text-bark mt-5 mb-2">Layanan Unggulan Kami</h4>
+            <h5 className="font-semibold text-forest text-sm mb-1">Outing, Outbound &amp; Team Building Korporat</h5>
+            <p className="text-earth/70 text-sm leading-relaxed mb-3">
+              Dari fun games dan ice breaking hingga program leadership dan problem solving — setiap aktivitas
+              dirancang untuk mempererat kerja sama tim dan meningkatkan produktivitas perusahaan Anda.
+            </p>
+            <h6 className="font-semibold text-earth/80 text-xs uppercase tracking-widest mb-1">Area Layanan</h6>
+            <p className="text-earth/60 text-sm leading-relaxed">
+              Jabodetabek, Bandung, Anyer, Bogor, Bali, hingga seluruh Indonesia — termasuk outbound tour ke luar
+              negeri seperti Singapura, Malaysia, dan Thailand.
             </p>
           </motion.div>
         </div>
