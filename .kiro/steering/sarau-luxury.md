@@ -290,6 +290,17 @@ Penyebab: React hydration error #423 + parent elements stuck di `opacity:0`.
 - **`AnimatePresence` di root/layout** WAJIB pakai `initial={false}` untuk mencegah hydration error
 - **Jangan gunakan `opacity:0` di `initial` Navbar/Header** — elemen navigasi harus selalu visible
 
+## A11y: Kontras Teks Earth di bg-white (Juni 2026)
+
+PageSpeed Accessibility (97) menandai *low-contrast text* di blok SEO `HomeSeoContent` (homepage). Root cause: `text-earth/70` (dan `/60`, `/80`) di atas `bg-white` hanya ~3:1 — di bawah WCAG AA 4.5:1 (earth `#8B5E3C`).
+
+**Fix:** ganti ke `text-earth` (full opacity) = ~5.58:1 ✓ AA. Hue coklat sama, hanya lebih solid — perubahan visual minimal. Diterapkan ke **3 blok SEO bg-white** yang ditambahkan/diedit sebelumnya:
+- `src/components/sections/HomeSeoContent.tsx` — 5 paragraf `text-earth/70`÷`/60` → `text-earth`
+- `src/app/packages/page.tsx` — blok "Panduan Memilih Paket": paragraf `text-earth/70`÷`/60` → `text-earth`; label h6 `text-earth/80` → `text-forest`
+- `src/app/faq/FAQClient.tsx` — body kartu info + blok "Tentang": `text-earth/70`÷`/60` → `text-earth`; h6 "Area Layanan" `text-earth/80` → `text-forest`
+
+**Aturan ke depan:** untuk teks di atas `bg-white` (atau background terang), **jangan pakai `text-earth/70` ke bawah** — minimal `text-earth` (full). `text-earth/70` hanya aman di atas background gelap/forest. Label kecil pakai `text-forest` (~6.39:1) atau `text-bark`.
+
 ## SEO: Heading Hierarchy h1–h6 di Homepage (Juni 2026)
 
 Audit heading depth menandai homepage `/` tidak punya `<h5>` & `<h6>` (sudah punya h1 hero, h2 judul section, h3 kartu paket, h4 fitur paket via `PackagesPreview` nameLevel=3).

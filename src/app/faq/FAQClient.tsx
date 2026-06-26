@@ -249,7 +249,7 @@ export default function FAQClient() {
               <div key={title} className="bg-white rounded-2xl p-6 border border-earth/10 shadow-sm">
                 <div className="text-3xl mb-3">{icon}</div>
                 <h3 className="font-display font-bold text-lg text-bark mb-2">{title}</h3>
-                <p className="text-earth/70 text-sm leading-relaxed">{body}</p>
+                <p className="text-earth text-sm leading-relaxed">{body}</p>
               </div>
             ))}
           </motion.div>
@@ -262,13 +262,13 @@ export default function FAQClient() {
           >
             <h2 className="font-display text-2xl font-bold text-bark mb-3">Tentang Sarau Luxury</h2>
             <h3 className="text-forest font-semibold text-xs uppercase tracking-widest mb-3">Event Organizer Profesional · Banten · Indonesia</h3>
-            <p className="text-earth/70 leading-relaxed mb-3">
+            <p className="text-earth leading-relaxed mb-3">
               Sarau Luxury adalah event organizer profesional yang berdiri sejak 2018, berpusat di Banten dan
               melayani seluruh Indonesia. Kami spesialis dalam <strong>outing perusahaan</strong>,{' '}
               <strong>outbound training</strong>, <strong>company gathering</strong>, dan{' '}
               <strong>team building</strong> untuk korporat.
             </p>
-            <p className="text-earth/70 leading-relaxed">
+            <p className="text-earth leading-relaxed">
               Dipercaya oleh 53+ perusahaan terkemuka termasuk BCA, Toyota, Kalbe Farma, Park Hyatt, dan Bank Mandiri.
               Dengan pengalaman lebih dari 8 tahun dan 100+ event sukses, kami hadir untuk memastikan setiap event
               perusahaan Anda berjalan lancar, berkesan, dan sesuai anggaran.
@@ -277,12 +277,12 @@ export default function FAQClient() {
 
             <h4 className="font-display font-bold text-lg text-bark mt-5 mb-2">Layanan Unggulan Kami</h4>
             <h5 className="font-semibold text-forest text-sm mb-1">Outing, Outbound &amp; Team Building Korporat</h5>
-            <p className="text-earth/70 text-sm leading-relaxed mb-3">
+            <p className="text-earth text-sm leading-relaxed mb-3">
               Dari fun games dan ice breaking hingga program leadership dan problem solving — setiap aktivitas
               dirancang untuk mempererat kerja sama tim dan meningkatkan produktivitas perusahaan Anda.
             </p>
-            <h6 className="font-semibold text-earth/80 text-xs uppercase tracking-widest mb-1">Area Layanan</h6>
-            <p className="text-earth/60 text-sm leading-relaxed">
+            <h6 className="font-semibold text-forest text-xs uppercase tracking-widest mb-1">Area Layanan</h6>
+            <p className="text-earth text-sm leading-relaxed">
               Jabodetabek, Bandung, Anyer, Bogor, Bali, hingga seluruh Indonesia — termasuk outbound tour ke luar
               negeri seperti Singapura, Malaysia, dan Thailand.
             </p>

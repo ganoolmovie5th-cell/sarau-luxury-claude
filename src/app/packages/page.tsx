@@ -57,7 +57,7 @@ export default function PackagesPage() {
           <h2 className="font-display text-3xl font-bold text-bark mb-3">
             Panduan Memilih Paket Outing &amp; Gathering
           </h2>
-          <p className="text-earth/70 leading-relaxed mb-8">
+          <p className="text-earth leading-relaxed mb-8">
             Setiap paket Sarau Luxury fleksibel dan dapat disesuaikan dengan kebutuhan, jumlah peserta,
             serta anggaran perusahaan Anda. Berikut panduan singkat agar Anda mendapatkan paket yang paling tepat.
           </p>
@@ -69,12 +69,12 @@ export default function PackagesPage() {
                 Faktor yang Memengaruhi Harga
               </h3>
               <h4 className="font-semibold text-bark mb-1">Jumlah Peserta</h4>
-              <p className="text-earth/70 text-sm leading-relaxed mb-4">
+              <p className="text-earth text-sm leading-relaxed mb-4">
                 Semakin banyak peserta, semakin efisien biaya per pax. Paket gathering berlaku untuk minimal 20 peserta,
                 dan kami siap melayani grup hingga 1000+ peserta.
               </p>
               <h4 className="font-semibold text-bark mb-1">Destinasi &amp; Durasi</h4>
-              <p className="text-earth/70 text-sm leading-relaxed">
+              <p className="text-earth text-sm leading-relaxed">
                 Lokasi seperti Bandung, Anyer, Bogor, hingga Bali memengaruhi biaya transportasi dan akomodasi 2D1N.
                 Kami bantu memilih destinasi terbaik sesuai budget Anda.
               </p>
@@ -86,16 +86,16 @@ export default function PackagesPage() {
                 Yang Sudah Termasuk
               </h3>
               <h4 className="font-semibold text-bark mb-1">Fasilitas Inti</h4>
-              <p className="text-earth/70 text-sm leading-relaxed mb-4">
+              <p className="text-earth text-sm leading-relaxed mb-4">
                 Akomodasi, konsumsi (3x meal + coffee break), aktivitas, fasilitator bersertifikat, dan dokumentasi
                 sudah termasuk di setiap paket gathering — transparan tanpa biaya tersembunyi.
               </p>
               <h5 className="font-semibold text-bark text-sm uppercase tracking-wide mb-1">Biaya Tambahan</h5>
-              <p className="text-earth/70 text-sm leading-relaxed mb-3">
+              <p className="text-earth text-sm leading-relaxed mb-3">
                 Beberapa item di luar paket, seperti penyewaan bus, dikenakan biaya terpisah sesuai pemakaian.
               </p>
-              <h6 className="font-semibold text-earth/80 text-xs uppercase tracking-widest mb-1">Catatan</h6>
-              <p className="text-earth/60 text-xs leading-relaxed">
+              <h6 className="font-semibold text-forest text-xs uppercase tracking-widest mb-1">Catatan</h6>
+              <p className="text-earth text-xs leading-relaxed">
                 Tol, parkir, dan tips driver belum termasuk dalam harga paket bus. Harga dapat berubah sesuai musim,
                 ketersediaan, dan jumlah peserta.
               </p>
