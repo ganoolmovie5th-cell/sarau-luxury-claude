@@ -142,7 +142,7 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - **Pilihan user:** "Terima Semua" (grant analytics_storage) | "Hanya Esensial" (keep denied)
 - **Storage:** localStorage key `sarau_cookie_consent` = `'all'` | `'essential'`
 - **Integrasi GA4:** `gtag('consent','update',{...})` dipanggil saat user memilih; pada page reload preferensi lama di-re-apply
-- **Default GA4:** `analytics_storage: 'denied'` — set via `ga-consent-default` script di `layout.tsx` sebelum GA library load
+- **Default GA4:** `analytics_storage: 'denied'` **hanya untuk EEA/UK/CH** (region-scoped) — set via `ga-consent-default` script di `layout.tsx` sebelum GA library load. Wilayah lain (mis. Indonesia) default `'granted'` (gating analytics tidak diwajibkan hukum di luar EEA) — fix "0% consent ratio" GA4 Container Quality
 - **Urutan scripts di layout.tsx:** `ga-consent-default` → `gtag.js` → `ga-init` (urutan ini WAJIB)
 - **Jangan ubah urutan GA scripts** — consent default harus dikirim ke dataLayer sebelum library GA4 ter-load
 - **`ad_storage`, `ad_user_data`, `ad_personalization`:** selalu `denied` (tidak ada iklan)
@@ -289,6 +289,20 @@ Penyebab: React hydration error #423 + parent elements stuck di `opacity:0`.
 - **Selalu tambah `initialInView: true`** saat membuat komponen baru dengan `useInView` + `animate={inView ? ... : {}}` pattern
 - **`AnimatePresence` di root/layout** WAJIB pakai `initial={false}` untuk mencegah hydration error
 - **Jangan gunakan `opacity:0` di `initial` Navbar/Header** — elemen navigasi harus selalu visible
+
+## Fix: Consent Mode Region-Scoped — 0% Consent Ratio (Juni 2026)
+
+GA4 Container Quality menandai **"rasio izin 0%, 100% denied di semua wilayah termasuk di luar EEA"** → measurement hilang. Akar masalah: consent default `analytics_storage:'denied'` di-set **global tanpa region scoping** di `layout.tsx`, sementara audiens utama Indonesia (non-EEA) di mana gating analytics tidak diwajibkan hukum.
+
+**Fix (`src/app/layout.tsx`):** dua `gtag('consent','default',...)` region-scoped (rekomendasi Google):
+1. **EEA + UK + CH** (32 kode region: 27 EU + IS/LI/NO + GB + CH) → `analytics_storage:'denied'` + `wait_for_update:500` (wajib GDPR, menunggu cookie banner)
+2. **Global default (wilayah lain, mis. Indonesia)** → `analytics_storage:'granted'`
+3. `ad_*` (`ad_storage`/`ad_user_data`/`ad_personalization`) tetap `'denied'` di **semua** wilayah — Sarau Luxury tidak beriklan
+4. `ads_data_redaction:true`
+
+**Urutan WAJIB:** region-specific (EEA denied) dulu, baru global default (granted) — region-specific override untuk wilayah yang match. Cookie banner (`CookieConsent.tsx`) tidak diubah: tetap memberi user kontrol (`update` ke denied saat "Hanya Esensial", granted saat "Terima Semua") di region manapun.
+
+**Catatan:** ini memulihkan consent ratio untuk trafik Indonesia (0% → ~100%) sambil tetap GDPR-compliant untuk EEA. Sebelumnya steering menyebut "Default GA4: analytics_storage 'denied'" — kini berlaku **hanya untuk EEA/UK/CH**.
 
 ## A11y: Kontras Teks Earth di bg-white (Juni 2026)
 

@@ -256,6 +256,7 @@ Pastikan semua environment variables sudah dikonfigurasi di **Vercel Dashboard �
 
 | Fix | Keterangan |
 |---|---|
+| **Consent Mode region-scoped (0% consent ratio)** | GA4 Container Quality menandai consent ratio 0% (100% denied semua wilayah). Fix di `layout.tsx`: consent default region-scoped — EEA+UK+CH `analytics_storage:'denied'` (GDPR), wilayah lain (Indonesia) `'granted'`; `ad_*` tetap denied (tidak beriklan) + `ads_data_redaction:true`. Memulihkan measurement non-EEA tanpa langgar GDPR |
 | **A11y kontras teks earth di bg-white** | PageSpeed A11y (97) menandai low-contrast: `text-earth/70` di atas `bg-white` ~3:1 (< AA 4.5:1). Fix ke `text-earth` full (~5.58:1) di 3 blok SEO bg-white (`HomeSeoContent`, blok panduan `/packages`, blok info+Tentang `/faq`); label h6 → `text-forest`. Aturan: jangan `text-earth/70` di background terang |
 | **SEO heading hierarchy homepage** | Homepage `/` belum punya h5 & h6 → komponen baru `HomeSeoContent.tsx` (blok konten SEO statis sebelum `CtaSection`) dengan cascade h2→h3→h4→h5→h6 no-skip. Item `/packages` & `/faq` di audit yang sama sudah diperbaiki commit sebelumnya |
 | **SEO heading hierarchy /packages & /faq** | Melengkapi hierarki heading h1–h6 tanpa skip level. `/packages`: tambah SEO block "Panduan Memilih Paket" (h2→h3→h4→h5→h6). `/faq`: perbaiki skip h1→h4 (tambah h2 sr-only sebelum accordion & kartu info, judul kartu h4→h3, blok Tentang subheading h5→h3 + tambah h4/h5/h6). Styling className dipertahankan → visual tidak berubah |

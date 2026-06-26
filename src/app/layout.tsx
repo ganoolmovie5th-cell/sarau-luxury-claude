@@ -170,11 +170,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="canonical" href="https://sarau-luxury.com/" />
         {/*
          * 1. Consent default — WAJIB sebelum GTM load agar Consent Mode v2 bekerja.
-         *    analytics_storage default: 'denied' sampai user klik "Terima Semua".
+         *    Region-scoped: EEA + UK + CH default 'denied' (wajib GDPR, menunggu consent banner).
+         *    Wilayah lain (mis. Indonesia) default analytics 'granted' — gating analytics
+         *    tidak diwajibkan hukum di luar EEA, memulihkan measurement. ad_* tetap 'denied'
+         *    di semua wilayah (Sarau Luxury tidak beriklan).
          */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});`,
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],wait_for_update:500});gtag('consent','default',{analytics_storage:'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});gtag('set','ads_data_redaction',true);`,
           }}
         />
         {/* 2. Google Tag Manager */}
