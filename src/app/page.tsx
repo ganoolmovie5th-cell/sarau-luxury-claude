@@ -13,6 +13,7 @@ import GalleryPreview from '@/components/sections/GalleryPreview'
 import BlogPreview from '@/components/sections/BlogPreview'
 import PromotionsSection from '@/components/sections/PromotionsSection'
 import CompanyProfileDownload from '@/components/sections/CompanyProfileDownload'
+import HomeSeoContent from '@/components/sections/HomeSeoContent'
 import CtaSection from '@/components/sections/CtaSection'
 
 export const revalidate = 3600 // ISR: cache 1 jam di Vercel edge → TTFB < 50ms setelah request pertama
@@ -84,6 +85,7 @@ export default function HomePage() {
       <SectionErrorBoundary name="CompanyProfile">
         <CompanyProfileDownload />
       </SectionErrorBoundary>
+      <HomeSeoContent />
       <SectionErrorBoundary name="CTA">
         <CtaSection />
       </SectionErrorBoundary>

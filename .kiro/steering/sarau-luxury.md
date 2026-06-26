@@ -290,6 +290,16 @@ Penyebab: React hydration error #423 + parent elements stuck di `opacity:0`.
 - **`AnimatePresence` di root/layout** WAJIB pakai `initial={false}` untuk mencegah hydration error
 - **Jangan gunakan `opacity:0` di `initial` Navbar/Header** — elemen navigasi harus selalu visible
 
+## SEO: Heading Hierarchy h1–h6 di Homepage (Juni 2026)
+
+Audit heading depth menandai homepage `/` tidak punya `<h5>` & `<h6>` (sudah punya h1 hero, h2 judul section, h3 kartu paket, h4 fitur paket via `PackagesPreview` nameLevel=3).
+
+**Fix:** komponen baru `src/components/sections/HomeSeoContent.tsx` — blok konten SEO statis (server component, tanpa `'use client'`/error boundary karena murni teks) ditempatkan **sebelum `CtaSection`** di `src/app/page.tsx`. Cascade heading menurun natural dengan konten informatif:
+- `h2` Event Organizer Outing & Outbound Terpercaya → `h3` Layanan untuk Setiap Kebutuhan Tim → `h4` Dari Team Building hingga Company Gathering → `h5` Harga Transparan Mulai Rp 125.000/pax → `h6` Konsultasi Gratis & Respon Cepat
+- Tiap langkah turun tepat +1 level (no-skip). Data jam operasional di-import dari `CONTACT` (single source of truth)
+
+**Catatan stale audit:** item `/packages` (h4/h5/h6) & `/faq` (h6) di laporan audit yang sama sudah diperbaiki di commit sebelumnya (`5a13f59`) — kemungkinan audit dijalankan terhadap deployment lama. Setelah deploy commit ini semua resolved.
+
 ## SEO: Heading Hierarchy h1–h6 di /packages & /faq (Juni 2026)
 
 Minor SEO polish — melengkapi hierarki heading agar tidak ada level yang dilompati (no-skip) dan semua level h1–h6 hadir secara natural (bukan empty heading / heading stuffing). Konten yang ditambahkan informatif & relevan.
