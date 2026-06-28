@@ -383,3 +383,12 @@ Browser extension (LastPass, Grammarly, Google Translate, dll) men-inject attrib
 - **Jangan hapus `suppressHydrationWarning`** dari `<html>` dan `<body>` di `layout.tsx`
 - **Gunakan `ClientYear`** setiap kali perlu menampilkan tahun sekarang di footer/copyright
 - **Untuk nilai client-only lainnya** (random ID, timestamp display, window size): gunakan pola `useState(null) + useEffect` atau buat Client Component dengan `suppressHydrationWarning`
+
+## Pembersihan Kode / Ponytail Audit (Juni 2026)
+
+Audit over-engineering — penghapusan murni berisiko rendah, tidak menyentuh keamanan/validasi/a11y. Verifikasi `tsc --noEmit` lolos.
+
+- **Dep tak terpakai dihapus:** `clsx`, `tailwind-merge` — repo ini tidak punya helper `cn()`, semua className pakai template string. Jangan tambahkan kembali kecuali benar-benar dipakai.
+- **File mati dihapus:** `src/types/index.ts` (0 referensi `@/types`), `src/lib/sanity.ts` (isi 100% komentar + `export {}`), `src/components/ui/GoogleAnalytics.tsx` (GA4 sudah penuh via GTM; menghapusnya cegah reintroduce double-tracking).
+- **`src/lib/strapi.ts`:** disisakan `submitContact` + `headers`/`STRAPI_URL` saja (dipakai `api/contact/route.ts`); fungsi `getPackages`/`getServices`/`submitBooking`/`extractData`/`extractSingle` dead → dihapus.
+- **`src/hooks/index.ts`:** `useMediaQuery` + `useIsMobile`/`useIsTablet`/`useIsDesktop` 0 referensi → dihapus; hanya `useScrollProgress` yang dipertahankan.

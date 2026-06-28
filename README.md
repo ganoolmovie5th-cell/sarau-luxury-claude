@@ -348,3 +348,11 @@ Perubahan breaking yang dikerjakan:
 Setelah Next 15, hero homepage hanya menampilkan background coklat — hutan 3D (Three.js) hilang. Penyebab: Next 15 mem-bundle **React 19**, tetapi `@react-three/fiber` **v8** (`react-reconciler` lama) membaca internal React 18 (`ReactCurrentBatchConfig`) yang tidak ada di React 19 → reconciler crash → `HeroSceneBoundary` degrade ke gradient.
 
 **Fix (`fix/hero-react19`):** selaraskan seluruh stack ke React 19 — `react`/`react-dom` → **19.2**, `@react-three/fiber` → **9**, `@react-three/drei` → **10**, `@types/react(-dom)` → **19**, tambah `.npmrc` (`legacy-peer-deps=true`), keluarkan R3F dari `optimizePackageImports`, dan `PackagesPreview.tsx` `React.ElementType` → `LucideIcon`. Verifikasi: `next build` ✅, `npm audit` = 0, `<canvas>` hero render normal.
+
+## Pembersihan Kode / Ponytail Audit (Juni 2026)
+
+Hapus dependency & kode mati tanpa menyentuh keamanan/validasi/aksesibilitas (verifikasi `tsc --noEmit` lolos):
+- Hapus dep tak terpakai `clsx`, `tailwind-merge` (tak ada `cn()` di repo ini).
+- Hapus file mati: `src/types/index.ts` (0 referensi `@/types`), `src/lib/sanity.ts` (placeholder komentar), `src/components/ui/GoogleAnalytics.tsx` (GA4 sudah via GTM).
+- Trim `src/lib/strapi.ts` ke `submitContact` (buang `getPackages`/`getServices`/`submitBooking`/`extractData`/`extractSingle` yang dead).
+- `src/hooks/index.ts`: hapus `useMediaQuery`+`useIsMobile`/`useIsTablet`/`useIsDesktop` (0 referensi); sisakan `useScrollProgress`.
