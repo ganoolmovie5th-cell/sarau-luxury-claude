@@ -3,7 +3,6 @@ import { createElement } from 'react'
 import { renderToBuffer } from '@react-pdf/renderer'
 import { CompanyProfileDocument } from '@/lib/pdf/CompanyProfileDocument'
 import {
-  rateLimit,
   sanitizeHtml,
   sanitizePlain,
   isValidEmail,
@@ -14,20 +13,6 @@ export const dynamic = 'force-dynamic'
 
 // ─── Main handler ─────────────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
-  // ── Rate limiting ────────────────────────────────────────────────────────────
-  const ip =
-    req.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
-    req.headers.get('x-real-ip') ||
-    'unknown'
-
-  const { allowed, retryAfter } = rateLimit(ip)
-  if (!allowed) {
-    return NextResponse.json(
-      { error: 'Terlalu banyak permintaan. Coba lagi dalam beberapa saat.' },
-      { status: 429, headers: { 'Retry-After': String(retryAfter) } }
-    )
-  }
-
   try {
     const raw = await req.json()
 
