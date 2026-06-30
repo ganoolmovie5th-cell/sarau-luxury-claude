@@ -16,7 +16,7 @@
 
 ## Bug Fixes (Juni 2026)
 - **Homepage crash fix:** Three.js HeroScene dibungkus `HeroSceneBoundary` (ErrorBoundary) — jika WebGL gagal, hero degrade ke gradient background instead of crash seluruh halaman
-- **Homepage section crash fix:** Setiap section homepage dibungkus `SectionErrorBoundary` (`src/components/3d/SectionErrorBoundary.tsx`) — jika satu section crash (Google Drive image, Three.js, dll), sisanya tetap jalan
+- **Homepage section crash fix:** ~~`SectionErrorBoundary` — dihapus (ponytail audit Juli 2026, lihat bawah)~~
 - **Google Maps embed fix:** URL embed diperbaiki (encoding `+` → `%20`, timestamp valid)
 - **Redirect ID route:** Tambah redirect `/paket` → `/packages`, `/tentang` → `/about`, `/layanan` → `/services`, `/kontak` → `/contact`, `/galeri` → `/gallery` di `next.config.js`
 - **Price inconsistency fix:** Contact page "Paket all-in mulai Rp 125.000/pax" → "Paket outbound & team building mulai Rp 125.000/pax, gathering mulai Rp 525.000/pax"
@@ -187,7 +187,7 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - Cek Vercel Function Logs → filter `/api/contact` → cari baris `[WA] Fonnte response:` untuk debug
 
 ## Security Notes
-- Rate limit: 5 req/menit per IP (in-memory, tidak scalable di Vercel serverless)
+- Rate limit: dihapus (in-memory tidak scalable di Vercel serverless; gunakan Vercel WAF atau middleware jika diperlukan kembali)
 - Input sanitasi: XSS protection di semua field form
 - `WHATSAPP_ADMIN_NUMBER` & `FONNTE_TOKEN` = server-only (tidak ke browser)
 - CI: TruffleHog scan di setiap push
@@ -390,5 +390,12 @@ Audit over-engineering — penghapusan murni berisiko rendah, tidak menyentuh ke
 
 - **Dep tak terpakai dihapus:** `clsx`, `tailwind-merge` — repo ini tidak punya helper `cn()`, semua className pakai template string. Jangan tambahkan kembali kecuali benar-benar dipakai.
 - **File mati dihapus:** `src/types/index.ts` (0 referensi `@/types`), `src/lib/sanity.ts` (isi 100% komentar + `export {}`), `src/components/ui/GoogleAnalytics.tsx` (GA4 sudah penuh via GTM; menghapusnya cegah reintroduce double-tracking).
-- **`src/lib/strapi.ts`:** disisakan `submitContact` + `headers`/`STRAPI_URL` saja (dipakai `api/contact/route.ts`); fungsi `getPackages`/`getServices`/`submitBooking`/`extractData`/`extractSingle` dead → dihapus.
+- **`src/lib/strapi.ts`:** seluruh file dihapus — fungsi `getPackages`/`getServices`/`submitBooking`/`extractData`/`extractSingle` + `submitContact` semua dead; fetch Strapi di-inline langsung di `api/contact/route.ts`.
 - **`src/hooks/index.ts`:** `useMediaQuery` + `useIsMobile`/`useIsTablet`/`useIsDesktop` 0 referensi → dihapus; hanya `useScrollProgress` yang dipertahankan.
+
+## Ponytail Audit — Juli 2026
+
+- **`src/lib/security.ts`:** hapus `rateLimit()` + in-memory `store` Map — tidak scalable di Vercel serverless (setiap instance punya Map sendiri). Input sanitasi (`sanitizeHtml`, `sanitizePlain`, `isValidEmail`, `isValidPhone`, `isValidLength`) DIPERTAHANKAN.
+- **`src/components/3d/SectionErrorBoundary.tsx`:** hapus — wrapper generik yang hanya merender children dalam try-catch sederhana; setiap section punya error boundary sendiri (`HeroSceneBoundary`) atau React 19 error boundaries. Membuatnya tidak ada tidak memengaruhi a11y/validasi.
+- **`src/lib/strapi.ts`:** hapus seluruh file (lihat Juni 2026 di atas — sekarang dieksekusi sepenuhnya).
+- **`src/app/api/contact/route.ts`:** hapus import `rateLimit` + `submitContact`; fetch Strapi di-inline langsung.
