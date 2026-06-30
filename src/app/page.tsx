@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { SITE_URL } from '@/lib/constants'
-import SectionErrorBoundary from '@/components/3d/SectionErrorBoundary'
 import HeroSection from '@/components/sections/HeroSection'
 import StatsSection from '@/components/sections/StatsSection'
 import ServicesPreview from '@/components/sections/ServicesPreview'
@@ -49,46 +48,20 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <SectionErrorBoundary name="Hero">
-        <HeroSection />
-      </SectionErrorBoundary>
-      <SectionErrorBoundary name="Stats">
-        <StatsSection />
-      </SectionErrorBoundary>
-      <SectionErrorBoundary name="Services">
-        <ServicesPreview />
-      </SectionErrorBoundary>
-      <SectionErrorBoundary name="WhyUs">
-        <WhyUsSection />
-      </SectionErrorBoundary>
-      <SectionErrorBoundary name="ProcessTimeline">
-        <ProcessTimeline />
-      </SectionErrorBoundary>
-      <SectionErrorBoundary name="Packages">
-        <PackagesPreview />
-      </SectionErrorBoundary>
-      <SectionErrorBoundary name="Promotions">
-        <PromotionsSection />
-      </SectionErrorBoundary>
-      <SectionErrorBoundary name="Clients">
-        <ClientsMarquee />
-      </SectionErrorBoundary>
-      <SectionErrorBoundary name="Testimonials">
-        <TestimonialsSection />
-      </SectionErrorBoundary>
-      <SectionErrorBoundary name="Gallery">
-        <GalleryPreview />
-      </SectionErrorBoundary>
-      <SectionErrorBoundary name="Blog">
-        <BlogPreview />
-      </SectionErrorBoundary>
-      <SectionErrorBoundary name="CompanyProfile">
-        <CompanyProfileDownload />
-      </SectionErrorBoundary>
+      <HeroSection />
+      <StatsSection />
+      <ServicesPreview />
+      <WhyUsSection />
+      <ProcessTimeline />
+      <PackagesPreview />
+      <PromotionsSection />
+      <ClientsMarquee />
+      <TestimonialsSection />
+      <GalleryPreview />
+      <BlogPreview />
+      <CompanyProfileDownload />
       <HomeSeoContent />
-      <SectionErrorBoundary name="CTA">
-        <CtaSection />
-      </SectionErrorBoundary>
+      <CtaSection />
     </>
   )
 }

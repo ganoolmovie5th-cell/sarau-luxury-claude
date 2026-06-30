@@ -1,34 +1,5 @@
-// ─── Rate Limiter (in-memory, per IP) ────────────────────────────────────────
-// Batas: MAX_REQUESTS request per WINDOW_MS milidetik per IP
-//
-// ⚠️  CATATAN SERVERLESS: Di Vercel, setiap request bisa jalan di instance
-// berbeda sehingga Map ini tidak shared antar instances.
-// Untuk production-grade rate limiting, gunakan Upstash Redis:
-// https://upstash.com/docs/redis/sdks/ratelimit-ts/overview
-// Implementasi saat ini tetap efektif untuk single-instance dev & low traffic.
-
-const WINDOW_MS    = 60 * 1000  // 1 menit
-const MAX_REQUESTS = 5           // maks 5 request/menit/IP
-
-const store = new Map<string, { count: number; resetAt: number }>()
-
-export function rateLimit(ip: string): { allowed: boolean; retryAfter: number } {
-  const now   = Date.now()
-  const entry = store.get(ip)
-
-  if (!entry || now > entry.resetAt) {
-    store.set(ip, { count: 1, resetAt: now + WINDOW_MS })
-    return { allowed: true, retryAfter: 0 }
-  }
-
-  if (entry.count >= MAX_REQUESTS) {
-    const retryAfter = Math.ceil((entry.resetAt - now) / 1000)
-    return { allowed: false, retryAfter }
-  }
-
-  entry.count++
-  return { allowed: true, retryAfter: 0 }
-}
+// ponytail: rate limiting dihapus — in-memory Map tidak shared antar Vercel instances (tidak efektif).
+// Gunakan Vercel WAF atau Upstash Redis jika perlu rate limiting production.
 
 // ─── Input Sanitization ───────────────────────────────────────────────────────
 // Escape karakter HTML berbahaya untuk mencegah XSS di email HTML

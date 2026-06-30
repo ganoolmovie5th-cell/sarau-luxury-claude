@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { submitContact } from '@/lib/strapi'
 import {
-  rateLimit,
   sanitizeHtml,
   sanitizePlain,
   isValidEmail,
@@ -84,23 +82,6 @@ async function sendWhatsAppNotif(body: {
 
 // ─── Main handler ─────────────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
-  // ── 0. Rate limiting ────────────────────────────────────────────────────────
-  const ip =
-    req.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
-    req.headers.get('x-real-ip') ||
-    'unknown'
-
-  const { allowed, retryAfter } = rateLimit(ip)
-  if (!allowed) {
-    return NextResponse.json(
-      { error: 'Terlalu banyak permintaan. Coba lagi dalam beberapa saat.' },
-      {
-        status: 429,
-        headers: { 'Retry-After': String(retryAfter) },
-      }
-    )
-  }
-
   try {
     const raw = await req.json()
 
@@ -162,7 +143,14 @@ export async function POST(req: NextRequest) {
     // ── 3. Save to Strapi (only if configured) ───────────────────────────────
     if (process.env.NEXT_PUBLIC_STRAPI_URL && process.env.STRAPI_API_TOKEN) {
       try {
-        await submitContact(plain)
+        await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/contacts`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+          },
+          body: JSON.stringify({ data: plain }),
+        })
       } catch (strapiErr) {
         console.warn('Strapi save skipped:', strapiErr)
       }
