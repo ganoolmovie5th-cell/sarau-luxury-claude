@@ -399,3 +399,4 @@ Audit over-engineering — penghapusan murni berisiko rendah, tidak menyentuh ke
 - **`src/components/3d/SectionErrorBoundary.tsx`:** hapus — wrapper generik yang hanya merender children dalam try-catch sederhana; setiap section punya error boundary sendiri (`HeroSceneBoundary`) atau React 19 error boundaries. Membuatnya tidak ada tidak memengaruhi a11y/validasi.
 - **`src/lib/strapi.ts`:** hapus seluruh file (lihat Juni 2026 di atas — sekarang dieksekusi sepenuhnya).
 - **`src/app/api/contact/route.ts`:** hapus import `rateLimit` + `submitContact`; fetch Strapi di-inline langsung.
+- **`src/app/api/download-profile/route.ts`:** hapus import `rateLimit` + blok rate-limit (sama seperti contact route — missed saat audit awal, ditemukan saat build gagal).
