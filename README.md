@@ -356,3 +356,11 @@ Hapus dependency & kode mati tanpa menyentuh keamanan/validasi/aksesibilitas (ve
 - Hapus file mati: `src/types/index.ts` (0 referensi `@/types`), `src/lib/sanity.ts` (placeholder komentar), `src/components/ui/GoogleAnalytics.tsx` (GA4 sudah via GTM).
 - Trim `src/lib/strapi.ts` ke `submitContact` (buang `getPackages`/`getServices`/`submitBooking`/`extractData`/`extractSingle` yang dead).
 - `src/hooks/index.ts`: hapus `useMediaQuery`+`useIsMobile`/`useIsTablet`/`useIsDesktop` (0 referensi); sisakan `useScrollProgress`.
+
+## Pembersihan Kode / Ponytail Audit (Juli 2026)
+
+Hapus dep duplikat & sentralisasi data. Verifikasi: `tsc --noEmit` lolos.
+- Hapus dep `react-intersection-observer`; ganti `useInView` di 17 komponen dengan `useInView` dari `framer-motion` yang sudah terpasang (pattern: `const ref = useRef(null)` + `useInView(ref, { once: true, amount: X })`)
+- Pertahankan dep `critters` di devDeps — dibutuhkan Pages Router runtime (`pages/_document.js`); `beasties` hanya untuk App Router
+- Hapus 6 field `xxxLabel` mati dari `src/lib/constants.ts` (`totalClientsLabel`, `totalEventsLabel`, dst.); label diganti string inline di tiap komponen
+- Ekstrak `BASE_SERVICES` ke `src/lib/constants.ts` sebagai single source of truth untuk `id`, `icon`, `title`, `badge` — `ServicesPreview.tsx` & `ServicesPage.tsx` tidak lagi duplikasi 7 entri layanan; tiap komponen hanya mendefinisikan field uniknya sendiri
