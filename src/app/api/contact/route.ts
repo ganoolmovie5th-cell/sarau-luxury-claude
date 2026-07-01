@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import {
-  sanitizeHtml,
-  sanitizePlain,
-  isValidEmail,
-  isValidPhone,
-  isValidLength,
-} from '@/lib/security'
+import { sanitizeHtml, isValidEmail } from '@/lib/security'
+
+// ponytail: inlined from security.ts — simple enough to not warrant a shared util
+function sanitizePlain(str: unknown): string {
+  if (typeof str !== 'string') return ''
+  return str.replace(/[<>]/g, '').replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '').trim().slice(0, 2000)
+}
 
 // ─── WhatsApp notification via Fonnte ────────────────────────────────────────
 async function sendWhatsAppNotif(body: {
@@ -96,21 +96,19 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    if (!isValidLength(raw.name, 2, 100)) {
+    const nameLen = typeof raw.name === 'string' ? raw.name.trim().length : 0
+    if (nameLen < 2 || nameLen > 100)
       return NextResponse.json({ error: 'Nama harus antara 2–100 karakter' }, { status: 400 })
-    }
-    if (!isValidLength(raw.company, 2, 100)) {
+    const companyLen = typeof raw.company === 'string' ? raw.company.trim().length : 0
+    if (companyLen < 2 || companyLen > 100)
       return NextResponse.json({ error: 'Nama perusahaan harus antara 2–100 karakter' }, { status: 400 })
-    }
-    if (!isValidEmail(raw.email)) {
+    if (!isValidEmail(raw.email))
       return NextResponse.json({ error: 'Format email tidak valid' }, { status: 400 })
-    }
-    if (!isValidPhone(raw.phone)) {
+    if (typeof raw.phone === 'string' && raw.phone.trim() !== '' && !/^\d{8,15}$/.test(raw.phone.replace(/[\s\-\+\(\)\.]/g, '')))
       return NextResponse.json({ error: 'Format nomor WhatsApp tidak valid' }, { status: 400 })
-    }
-    if (!isValidLength(raw.message, 10, 2000)) {
+    const msgLen = typeof raw.message === 'string' ? raw.message.trim().length : 0
+    if (msgLen < 10 || msgLen > 2000)
       return NextResponse.json({ error: 'Pesan harus antara 10–2000 karakter' }, { status: 400 })
-    }
 
     // ── 2. Sanitize semua input ──────────────────────────────────────────────
     // HTML-safe (untuk email)

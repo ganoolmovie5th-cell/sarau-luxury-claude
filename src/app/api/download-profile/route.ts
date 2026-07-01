@@ -2,12 +2,13 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createElement } from 'react'
 import { renderToBuffer } from '@react-pdf/renderer'
 import { CompanyProfileDocument } from '@/lib/pdf/CompanyProfileDocument'
-import {
-  sanitizeHtml,
-  sanitizePlain,
-  isValidEmail,
-  isValidLength,
-} from '@/lib/security'
+import { sanitizeHtml, isValidEmail } from '@/lib/security'
+
+// ponytail: inlined from security.ts
+function sanitizePlain(str: unknown): string {
+  if (typeof str !== 'string') return ''
+  return str.replace(/[<>]/g, '').replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '').trim().slice(0, 2000)
+}
 
 export const dynamic = 'force-dynamic'
 
@@ -22,9 +23,9 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: `Field ${field} wajib diisi` }, { status: 400 })
       }
     }
-    if (!isValidLength(raw.name, 2, 100))
+    if ((typeof raw.name !== 'string') || raw.name.trim().length < 2 || raw.name.trim().length > 100)
       return NextResponse.json({ error: 'Nama harus antara 2–100 karakter' }, { status: 400 })
-    if (!isValidLength(raw.company, 2, 100))
+    if ((typeof raw.company !== 'string') || raw.company.trim().length < 2 || raw.company.trim().length > 100)
       return NextResponse.json({ error: 'Perusahaan harus antara 2–100 karakter' }, { status: 400 })
     if (!isValidEmail(raw.email))
       return NextResponse.json({ error: 'Format email tidak valid' }, { status: 400 })
