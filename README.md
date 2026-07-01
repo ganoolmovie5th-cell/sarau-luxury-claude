@@ -364,3 +364,9 @@ Hapus dep duplikat & sentralisasi data. Verifikasi: `tsc --noEmit` lolos.
 - Pertahankan dep `critters` di devDeps — dibutuhkan Pages Router runtime (`pages/_document.js`); `beasties` hanya untuk App Router
 - Hapus 6 field `xxxLabel` mati dari `src/lib/constants.ts` (`totalClientsLabel`, `totalEventsLabel`, dst.); label diganti string inline di tiap komponen
 - Ekstrak `BASE_SERVICES` ke `src/lib/constants.ts` sebagai single source of truth untuk `id`, `icon`, `title`, `badge` — `ServicesPreview.tsx` & `ServicesPage.tsx` tidak lagi duplikasi 7 entri layanan; tiap komponen hanya mendefinisikan field uniknya sendiri
+
+### Audit Lanjutan 2 (Juli 2026)
+
+- `src/lib/security.ts`: hapus `sanitizePlain` (tidak pernah dipanggil) dan `isValidPhone`/`isValidLength` → inline validasi langsung di 2 route (`api/contact`, `api/download-profile`)
+- `src/components/ui/ClientYear.tsx`: hapus file; inline `<span suppressHydrationWarning>{new Date().getFullYear()}</span>` langsung di `Footer.tsx`
+- `src/components/ui/Skeleton.tsx`: `SkeletonBlogCard` & `SkeletonClientCard` sudah local (tidak ada export mubazir)
