@@ -1,9 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { motion, useInView } from 'framer-motion'
 
 const clients = [
   { name: 'Bank BCA',                      domain: 'bca.co.id',                color: '#006cb7' },
@@ -95,7 +94,8 @@ function LogoCard({ name, domain, color }: { name: string; domain: string; color
 }
 
 export default function ClientsMarquee() {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
     <section ref={ref} className="py-20 bg-cream relative overflow-hidden">

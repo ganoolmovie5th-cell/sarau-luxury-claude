@@ -1,8 +1,8 @@
 'use client'
+import { useRef } from 'react'
 
-import { useInView } from 'react-intersection-observer'
 import CountUp from 'react-countup'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion, useInView } from 'framer-motion'
 import { Trophy, Users, MapPin, Star } from 'lucide-react'
 
 import { STATS } from '@/lib/constants'
@@ -15,7 +15,8 @@ const stats = [
 ]
 
 export default function StatsSection() {
-  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.2 })
   const reduceMotion = useReducedMotion()
 
   return (

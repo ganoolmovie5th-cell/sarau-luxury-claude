@@ -1,22 +1,23 @@
 'use client'
+import { useRef } from 'react'
 
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { motion, useInView } from 'framer-motion'
 import { Shield, Clock, Sparkles, Headphones, Map, Award } from 'lucide-react'
 
 import { STATS } from '@/lib/constants'
 
 const reasons = [
-  { icon: Shield,      title: 'Terpercaya & Berpengalaman', desc: `${STATS.yearsExperienceLabel} tahun sejak ${STATS.foundedYear} menggelar ratusan event sukses di seluruh Indonesia.` },
+  { icon: Shield,      title: 'Terpercaya & Berpengalaman', desc: `${STATS.yearsExperience + '+'} tahun sejak ${STATS.foundedYear} menggelar ratusan event sukses di seluruh Indonesia.` },
   { icon: Sparkles,    title: 'Konsep Kreatif & Custom',    desc: 'Setiap event kami rancang unik sesuai karakter dan kebutuhan perusahaan Anda.' },
-  { icon: Map,         title: `${STATS.totalDestinationsLabel} Destinasi Pilihan`, desc: 'Pilihan destinasi terbaik di Jawa, Bali, dan sekitarnya untuk event yang berkesan.' },
+  { icon: Map,         title: `${STATS.totalDestinations + '+'} Destinasi Pilihan`, desc: 'Pilihan destinasi terbaik di Jawa, Bali, dan sekitarnya untuk event yang berkesan.' },
   { icon: Headphones,  title: 'Support 24/7',               desc: 'Tim kami siap melayani pertanyaan dan kebutuhan Anda kapan saja, sebelum hingga setelah event.' },
   { icon: Clock,       title: 'Tepat Waktu & On-Budget',    desc: 'Kami menjamin pelaksanaan sesuai jadwal dan anggaran yang telah disepakati.' },
   { icon: Award,       title: 'Vendor Terkurasi',           desc: 'Bekerja sama dengan vendor dan venue terbaik yang telah tersertifikasi.' },
 ]
 
 export default function WhyUsSection() {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
     <section ref={ref} className="section-padding gradient-forest relative overflow-hidden noise-overlay">
@@ -48,7 +49,7 @@ export default function WhyUsSection() {
 
             {/* Feature pills */}
             <div className="flex flex-wrap gap-3">
-              {[`Berdiri Sejak ${STATS.foundedYear}`, `Rating Google ${STATS.googleRatingStr} ⭐`, `${STATS.totalClientsLabel} Klien Korporat`, 'Minimal 20 Peserta'].map((badge) => (
+              {[`Berdiri Sejak ${STATS.foundedYear}`, `Rating Google ${String(STATS.googleRating)} ⭐`, `${STATS.totalClients + '+'} Klien Korporat`, 'Minimal 20 Peserta'].map((badge) => (
                 <span
                   key={badge}
                   className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-cream/80 text-sm font-medium"

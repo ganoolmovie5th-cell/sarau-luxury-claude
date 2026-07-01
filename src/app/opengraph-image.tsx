@@ -8,9 +8,9 @@ export const contentType = 'image/png'
 
 export default function OGImage() {
   const stats = [
-    { value: STATS.totalClientsLabel,    label: 'Klien' },
-    { value: STATS.yearsExperienceLabel, label: 'Tahun' },
-    { value: STATS.googleRatingStr,      label: 'Rating ⭐' },
+    { value: STATS.totalClients + '+',    label: 'Klien' },
+    { value: STATS.yearsExperience + '+', label: 'Tahun' },
+    { value: String(STATS.googleRating),      label: 'Rating ⭐' },
   ]
 
   return new ImageResponse(

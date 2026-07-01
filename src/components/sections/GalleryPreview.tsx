@@ -1,9 +1,9 @@
 'use client'
+import { useRef } from 'react'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { motion, useInView } from 'framer-motion'
 import { ArrowRight, Images } from 'lucide-react'
 
 const gd = (id: string) => `https://lh3.googleusercontent.com/d/${id}`
@@ -71,7 +71,8 @@ function PhotoCard({ photo, className, delay, inView }: {
 }
 
 export default function GalleryPreview() {
-  const { ref, inView } = useInView({ threshold: 0.08, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.08 })
 
   return (
     <section ref={ref} className="section-padding bg-white relative overflow-hidden">

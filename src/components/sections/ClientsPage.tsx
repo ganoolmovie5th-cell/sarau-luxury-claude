@@ -1,8 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { useState } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { useState, useRef } from 'react'
 import Image from 'next/image'
 import TestimonialsSection from './TestimonialsSection'
 import CtaSection from './CtaSection'
@@ -155,7 +154,8 @@ function ClientCard({ client, i, inView }: {
 
 // ─── Main page ────────────────────────────────────────────────────────────────
 export default function ClientsPage() {
-  const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.05 })
 
   return (
     <div>
@@ -230,10 +230,10 @@ export default function ClientsPage() {
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-5"
           >
             {[
-              { value: STATS.totalClientsLabel,    label: 'Klien Korporat',    icon: '🏢' },
-              { value: STATS.totalIndustriesLabel, label: 'Industri Berbeda',  icon: '🌐' },
-              { value: STATS.totalEventsLabel,     label: 'Event Sukses',      icon: '🎉' },
-              { value: STATS.googleRatingStr,      label: 'Rating Google',     icon: '⭐' },
+              { value: STATS.totalClients + '+',    label: 'Klien Korporat',    icon: '🏢' },
+              { value: STATS.totalIndustries + '+', label: 'Industri Berbeda',  icon: '🌐' },
+              { value: STATS.totalEvents + '+',     label: 'Event Sukses',      icon: '🎉' },
+              { value: String(STATS.googleRating),      label: 'Rating Google',     icon: '⭐' },
             ].map(({ value, label, icon }) => (
               <div key={label} className="bg-white rounded-2xl p-5 text-center border border-earth/10 shadow-sm">
                 <div className="text-3xl mb-2" aria-hidden="true">{icon}</div>

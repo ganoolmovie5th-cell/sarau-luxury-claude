@@ -1,8 +1,8 @@
 'use client'
+import { useRef } from 'react'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { motion, useInView } from 'framer-motion'
 import { ArrowRight, Clock, BookOpen } from 'lucide-react'
 
 const posts = [
@@ -36,7 +36,8 @@ const posts = [
 ]
 
 export default function BlogPreview() {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
     <section ref={ref} className="section-padding bg-white relative overflow-hidden">

@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { useState, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
 import { CONTACT } from '@/lib/constants'
 
@@ -15,7 +14,8 @@ const contactInfo = [
 ]
 
 export default function ContactForm() {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.1 })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading]     = useState(false)
   const [error, setError]         = useState<string | null>(null)

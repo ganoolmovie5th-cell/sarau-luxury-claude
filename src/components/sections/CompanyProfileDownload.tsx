@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { useState, useRef } from 'react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
 import {
   FileText, Download, X, CheckCircle, Loader2,
   User, Building2, Mail, ArrowRight, Shield, Star,
@@ -247,7 +246,8 @@ const highlights = [
 
 export default function CompanyProfileDownload() {
   const [open, setOpen]       = useState(false)
-  const { ref, inView }       = useInView({ threshold: 0.2, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.2 })
 
   return (
     <>

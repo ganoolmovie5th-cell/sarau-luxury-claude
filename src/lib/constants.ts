@@ -1,22 +1,29 @@
 // ─── Single Source of Truth untuk data statistik Sarau Luxury ─────────────────
 // Update file ini saja → semua halaman otomatis sync!
 
+import { Tent, Mountain, Users, Heart, Presentation, Camera, PartyPopper } from 'lucide-react'
+
+/** Canonical service list — icon, title, id, badge live here once. */
+export const BASE_SERVICES = [
+  { id: 'gathering',     icon: PartyPopper,  title: 'Company Gathering',  badge: 'Terlaris' as string | null },
+  { id: 'outing',        icon: Tent,          title: 'Outing Perusahaan',  badge: null },
+  { id: 'outbound',      icon: Mountain,      title: 'Outbound Training',  badge: 'Unggulan' as string | null },
+  { id: 'teambuilding',  icon: Users,         title: 'Team Building',      badge: null },
+  { id: 'family',        icon: Heart,         title: 'Family Gathering',   badge: null },
+  { id: 'meeting',       icon: Presentation,  title: 'Meeting Package',    badge: null },
+  { id: 'documentation', icon: Camera,        title: 'Dokumentasi Event',  badge: null },
+]
+
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
 
 export const STATS = {
   totalClients:          53,
-  totalClientsLabel:     '53+',
   totalIndustries:       19,
-  totalIndustriesLabel:  '19+',
   totalEvents:           100,
-  totalEventsLabel:      '100+',
   totalDestinations:     20,
-  totalDestinationsLabel:'20+',
   yearsExperience:       8,
-  yearsExperienceLabel:  '8+',
   foundedYear:           2018,
   googleRating:          5.0,
-  googleRatingStr:       '5.0',
 }
 
 export const CONTACT = {

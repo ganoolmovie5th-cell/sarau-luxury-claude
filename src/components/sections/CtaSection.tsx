@@ -1,13 +1,14 @@
 'use client'
+import { useRef } from 'react'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { motion, useInView } from 'framer-motion'
 import { ArrowRight, Phone } from 'lucide-react'
 import { CONTACT } from '@/lib/constants'
 
 export default function CtaSection() {
-  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.2 })
 
   return (
     <section ref={ref} className="py-24 bg-cream relative overflow-hidden">

@@ -1,7 +1,7 @@
 'use client'
+import { useRef } from 'react'
 
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { motion, useInView } from 'framer-motion'
 import {
   MessageCircle, Search, FileText,
   CheckCircle, Settings, PartyPopper, BarChart3,
@@ -61,7 +61,8 @@ const steps = [
 ]
 
 export default function ProcessTimeline() {
-  const { ref, inView } = useInView({ threshold: 0.08, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.08 })
 
   return (
     <section ref={ref} className="section-padding bg-white relative overflow-hidden">

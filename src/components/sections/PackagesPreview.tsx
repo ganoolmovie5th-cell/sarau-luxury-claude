@@ -1,9 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { useState, useRef } from 'react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { Check, ArrowRight, Bus, Gamepad2, Waves, Mountain, Tent, Bike, Users, Utensils, TreePine, Mic2, type LucideIcon } from 'lucide-react'
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
@@ -353,7 +352,8 @@ function AddOnCard({ item, i, inView, nameLevel = 3 }: { item: AddOnItem; i: num
 // ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
 export default function PackagesPreview({ hideHeader = false }: { hideHeader?: boolean }) {
-  const { ref, inView } = useInView({ threshold: 0.05, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.05 })
   const [activeTab, setActiveTab] = useState('gathering')
 
   // hideHeader=true  → halaman /packages, h1 ada di page header, card = h2, features = h3

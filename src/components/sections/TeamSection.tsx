@@ -1,8 +1,8 @@
 'use client'
+import { useRef } from 'react'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { motion, useInView } from 'framer-motion'
 import { Instagram } from 'lucide-react'
 
 const team = [
@@ -17,7 +17,8 @@ const team = [
 ]
 
 export default function TeamSection() {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
     <section ref={ref} className="section-padding bg-white">

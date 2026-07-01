@@ -1,9 +1,9 @@
 'use client'
+import { useRef } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { motion, useInView } from 'framer-motion'
 import { Tag } from 'lucide-react'
 
 const promos = [
@@ -22,7 +22,8 @@ const promos = [
 ]
 
 export default function PromotionsSection() {
-  const { ref, inView } = useInView({ threshold: 0.08, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.08 })
 
   return (
     <section ref={ref} className="section-padding bg-cream relative overflow-hidden">

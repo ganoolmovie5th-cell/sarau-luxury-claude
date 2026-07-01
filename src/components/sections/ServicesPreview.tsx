@@ -1,71 +1,27 @@
 'use client'
+import { useRef } from 'react'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { ArrowRight, Tent, Mountain, Users, Heart, Presentation, Camera, PartyPopper } from 'lucide-react'
+import { motion, useInView } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
+import { BASE_SERVICES } from '@/lib/constants'
 
-const services = [
-  {
-    icon: PartyPopper,
-    title: 'Company Gathering',
-    slug: 'gathering',
-    desc: 'Paket gathering lengkap 2D1N dengan penginapan, makan, kolam renang, fun game, dan pilihan rafting/paintball. Mulai Rp 525.000/pax.',
-    color: 'bg-sun/20 text-amber-700 group-hover:bg-sun group-hover:text-bark',
-    tag: 'Terlaris',
-  },
-  {
-    icon: Tent,
-    title: 'Outing Perusahaan',
-    slug: 'outing',
-    desc: 'Wisata keluar kantor yang menyenangkan dengan destinasi pilihan — Lembang, Bali, Bromo, dan banyak lagi.',
-    color: 'bg-forest/10 text-forest group-hover:bg-forest group-hover:text-cream',
-    tag: 'Populer',
-  },
-  {
-    icon: Mountain,
-    title: 'Outbound Training',
-    slug: 'outbound',
-    desc: 'Program pelatihan di alam terbuka — rafting, paintball, ATV, offroad, trekking, dan fun game. Mulai Rp 125.000/pax.',
-    color: 'bg-earth/10 text-earth group-hover:bg-earth group-hover:text-cream',
-    tag: 'Unggulan',
-  },
-  {
-    icon: Users,
-    title: 'Team Building',
-    slug: 'teambuilding',
-    desc: 'Aktivitas kreatif indoor & outdoor yang memperkuat sinergi dan komunikasi tim Anda. Fleksibel dari 3 jam hingga full day.',
-    color: 'bg-sun/20 text-earth-dark group-hover:bg-sun group-hover:text-bark',
-    tag: null,
-  },
-  {
-    icon: Heart,
-    title: 'Family Gathering',
-    slug: 'family',
-    desc: 'Rayakan kebersamaan seluruh keluarga besar perusahaan dengan BBQ, hiburan live, games, dan doorprize menarik.',
-    color: 'bg-leaf/20 text-forest group-hover:bg-leaf group-hover:text-bark',
-    tag: null,
-  },
-  {
-    icon: Presentation,
-    title: 'Meeting Package',
-    slug: 'meeting',
-    desc: 'Halfday & Fullday meeting package lengkap dengan ruangan, konsumsi, dan dokumentasi. Mulai Rp 225.000/pax.',
-    color: 'bg-forest/10 text-forest group-hover:bg-forest group-hover:text-cream',
-    tag: null,
-  },
-  {
-    icon: Camera,
-    title: 'Dokumentasi Event',
-    slug: 'documentation',
-    desc: 'Abadikan setiap momen berharga dengan tim fotografer dan videografer profesional kami, termasuk drone footage.',
-    color: 'bg-earth/10 text-earth group-hover:bg-earth group-hover:text-cream',
-    tag: null,
-  },
+// Preview-only fields — id/icon/title/badge come from BASE_SERVICES
+const previewData = [
+  { desc: 'Paket gathering lengkap 2D1N dengan penginapan, makan, kolam renang, fun game, dan pilihan rafting/paintball. Mulai Rp 525.000/pax.',       color: 'bg-sun/20 text-amber-700 group-hover:bg-sun group-hover:text-bark' },
+  { desc: 'Wisata keluar kantor yang menyenangkan dengan destinasi pilihan — Lembang, Bali, Bromo, dan banyak lagi.',                                   color: 'bg-forest/10 text-forest group-hover:bg-forest group-hover:text-cream' },
+  { desc: 'Program pelatihan di alam terbuka — rafting, paintball, ATV, offroad, trekking, dan fun game. Mulai Rp 125.000/pax.',                        color: 'bg-earth/10 text-earth group-hover:bg-earth group-hover:text-cream' },
+  { desc: 'Aktivitas kreatif indoor & outdoor yang memperkuat sinergi dan komunikasi tim Anda. Fleksibel dari 3 jam hingga full day.',                  color: 'bg-sun/20 text-earth-dark group-hover:bg-sun group-hover:text-bark' },
+  { desc: 'Rayakan kebersamaan seluruh keluarga besar perusahaan dengan BBQ, hiburan live, games, dan doorprize menarik.',                              color: 'bg-leaf/20 text-forest group-hover:bg-leaf group-hover:text-bark' },
+  { desc: 'Halfday & Fullday meeting package lengkap dengan ruangan, konsumsi, dan dokumentasi. Mulai Rp 225.000/pax.',                                 color: 'bg-forest/10 text-forest group-hover:bg-forest group-hover:text-cream' },
+  { desc: 'Abadikan setiap momen berharga dengan tim fotografer dan videografer profesional kami, termasuk drone footage.',                              color: 'bg-earth/10 text-earth group-hover:bg-earth group-hover:text-cream' },
 ]
 
+const services = BASE_SERVICES.map((base, i) => ({ ...base, slug: base.id, tag: base.badge, ...previewData[i] }))
+
 export default function ServicesPreview() {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true, initialInView: true })
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
     <section ref={ref} className="section-padding bg-cream relative overflow-hidden">
