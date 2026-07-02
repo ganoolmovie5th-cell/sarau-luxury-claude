@@ -103,7 +103,8 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 
 ## Fix: Gallery & Client Logos v2 (Juni 2025)
 - **Gallery broken fix:** tambah `unoptimized` di semua `<Image>` GalleryPage & GalleryPreview → bypass Next.js server-side optimization yang gagal fetch Google Drive
-- **Gallery +24 foto:** dari Google Drive folder `1Y5lysdoLbWqh1wL0kHx5We0mTXlzXd5O`; 12 portrait (tall:true) + 12 landscape; Outbound 6, Team Building 6, Gathering 6, Outing 6. **Total galeri: 44 foto**
+- **Gallery +24 foto:** dari Google Drive folder `1Y5lysdoLbWqh1wL0kHx5We0mTXlzXd5O`; 12 portrait (tall:true) + 12 landscape; Outbound 6, Team Building 6, Gathering 6, Outing 6. **Total galeri: 56 foto**
+- **Gallery +12 foto (Juli 2026):** 4 foto dari folder `1v0zqEy…` (IMG_1229.HEIC, IMG_7119.JPG, IMG_7474.JPG, IMG_8508.JPG) + 8 foto terpilih dari folder `1LfZ_NM…` (event Juli 2026). Kategori: Outbound 3, Team Building 4, Gathering 4, Outing 1.
 - **Gallery duplikat:** dicek — 0 duplikat
 
 ## Performance (Juni 2026)

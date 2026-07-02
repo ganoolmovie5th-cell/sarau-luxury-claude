@@ -65,7 +65,7 @@ Website ini dibangun dengan **Next.js 15 App Router** dan dirancang untuk mengha
 - 📊 **Scroll Progress Bar** — indikator progres scroll di bagian atas
 - 🌐 **Marquee Klien** — animasi logo 53+ klien perusahaan
 - 📰 **Blog** — halaman daftar & detail artikel dengan Open Graph image dinamis
-- 🖼️ **Galeri** — 44 foto event (20 original + 24 dari Google Drive); `unoptimized` untuk bypass server-side optimization; masonry grid dengan lightbox
+- 🖼️ **Galeri** — 56 foto event (20 original + 24 dari Google Drive batch 1 + 12 batch Juli 2026); `unoptimized` untuk bypass server-side optimization; masonry grid dengan lightbox
 - 🏢 **Client Logos** — logo proxy API (`/api/logo/[domain]`): cek local file `/public/logos/{domain}.png` → Clearbit → Google Favicon → DuckDuckGo → colored initials. Upload logo PNG/SVG ke `public/logos/` untuk company yang belum ada logo-nya.
 - 📍 **Schema.org Terstruktur** — LocalBusiness, AggregateRating, FAQPage, BreadcrumbList, Offers
 - 🔒 **HTTP Security Headers** — CSP, HSTS, COOP, X-Frame-Options, Permissions-Policy
