@@ -370,3 +370,8 @@ Hapus dep duplikat & sentralisasi data. Verifikasi: `tsc --noEmit` lolos.
 - `src/lib/security.ts`: hapus `sanitizePlain` (tidak pernah dipanggil) dan `isValidPhone`/`isValidLength` → inline validasi langsung di 2 route (`api/contact`, `api/download-profile`)
 - `src/components/ui/ClientYear.tsx`: hapus file; inline `<span suppressHydrationWarning>{new Date().getFullYear()}</span>` langsung di `Footer.tsx`
 - `src/components/ui/Skeleton.tsx`: `SkeletonBlogCard` & `SkeletonClientCard` sudah local (tidak ada export mubazir)
+
+### Audit Lanjutan 3 (Juli 2026)
+
+- `src/lib/security.ts`: kembalikan `sanitizePlain` ke security.ts (round 2 membuatnya duplikat di 2 route); `contact/route.ts` & `download-profile/route.ts` kembali import dari security.ts
+- `PageTransition.tsx` dipertahankan — menggunakan `usePathname` hook, tidak bisa di-inline ke Server Component layout
