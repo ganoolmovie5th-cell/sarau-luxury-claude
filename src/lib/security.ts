@@ -4,6 +4,12 @@
 // ─── Input Sanitization ───────────────────────────────────────────────────────
 // Escape karakter HTML berbahaya untuk mencegah XSS di email HTML
 
+// Strip HTML tags and control chars — safe for plain-text channels (WhatsApp, Strapi)
+export function sanitizePlain(str: unknown): string {
+  if (typeof str !== 'string') return ''
+  return str.replace(/[<>]/g, '').replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '').trim().slice(0, 2000)
+}
+
 export function sanitizeHtml(str: unknown): string {
   if (typeof str !== 'string') return ''
   return str

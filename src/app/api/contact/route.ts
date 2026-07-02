@@ -1,11 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { sanitizeHtml, isValidEmail } from '@/lib/security'
-
-// ponytail: inlined from security.ts — simple enough to not warrant a shared util
-function sanitizePlain(str: unknown): string {
-  if (typeof str !== 'string') return ''
-  return str.replace(/[<>]/g, '').replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '').trim().slice(0, 2000)
-}
+import { sanitizeHtml, sanitizePlain, isValidEmail } from '@/lib/security'
 
 // ─── WhatsApp notification via Fonnte ────────────────────────────────────────
 async function sendWhatsAppNotif(body: {
