@@ -1,7 +1,7 @@
 'use client'
 import { useRef } from 'react'
 
-import CountUp from 'react-countup'
+import CountUp from '@/components/ui/CountUp'
 import { motion, useReducedMotion, useInView } from 'framer-motion'
 import { Trophy, Users, MapPin, Star } from 'lucide-react'
 

@@ -401,3 +401,10 @@ Audit over-engineering — penghapusan murni berisiko rendah, tidak menyentuh ke
 - **`src/lib/strapi.ts`:** hapus seluruh file (lihat Juni 2026 di atas — sekarang dieksekusi sepenuhnya).
 - **`src/app/api/contact/route.ts`:** hapus import `rateLimit` + `submitContact`; fetch Strapi di-inline langsung.
 - **`src/app/api/download-profile/route.ts`:** hapus import `rateLimit` + blok rate-limit (sama seperti contact route — missed saat audit awal, ditemukan saat build gagal).
+
+## Ponytail Audit — Lanjutan (Juli 2026)
+
+- **Hapus dep `react-countup`** — diganti `src/components/ui/CountUp.tsx` native (rAF + cubic easeOut). Props: `end`, `duration?`, `decimals?`, `delay?`. `StatsSection.tsx` import dari `@/components/ui/CountUp`. Jangan tambah `react-countup` kembali.
+- **Dead CSS dihapus dari `globals.css`** (~25 baris): `@keyframes fadeInUp/fadeInLeft/scaleIn`, `.animate-fade-in-left`, `.animate-scale-in`, `.stagger > *:nth-child(N)` (6 rules), `.text-muted`, `.text-muted-light`, `.blob-shape` — semua 0 usage, animasi di-handle framer-motion.
+- **`src/types/` directory dihapus** — folder kosong (isi sudah dihapus di audit sebelumnya, skeleton tertinggal).
+- **`ClientYear.tsx` steering reference:** Footer sudah pakai `<span suppressHydrationWarning>{new Date().getFullYear()}</span>` inline (aman). Komponen terpisah `ClientYear.tsx` tidak diperlukan — steering lama salah menyebutnya dibuat; referensi diabaikan.
