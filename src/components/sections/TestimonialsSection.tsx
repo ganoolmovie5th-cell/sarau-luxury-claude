@@ -12,7 +12,7 @@ const testimonials = [
     rating: 5,
     text: 'Sarau Luxury luar biasa! Program outbound untuk tim kami sangat terorganisir dan penuh energi. Fasilitator yang profesional, lokasi yang indah, dan semua detail tertangani dengan baik. Tim kami pulang dengan semangat baru dan kekompakan yang meningkat pesat.',
     avatar: 'HM',
-    color: 'bg-red-600',
+    color: 'bg-red-700',
   },
   {
     name: 'Event Committee',
