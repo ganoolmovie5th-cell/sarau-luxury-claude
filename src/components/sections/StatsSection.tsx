@@ -54,7 +54,7 @@ export default function StatsSection() {
                 <span className="text-forest">{suffix}</span>
               </div>
               <h3 className="font-semibold text-bark text-sm md:text-base mb-1">{label}</h3>
-              <p className="text-earth/70 text-xs md:text-sm">{desc}</p>
+              <p className="text-earth text-xs md:text-sm">{desc}</p>
             </motion.div>
           ))}
         </div>

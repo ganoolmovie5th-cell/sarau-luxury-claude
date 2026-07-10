@@ -88,7 +88,7 @@ export default function ProcessTimeline() {
             Dari Konsultasi hingga{' '}
             <span className="gradient-text">Event Berkesan</span>
           </h2>
-          <p className="text-earth/70 text-lg max-w-xl mx-auto">
+          <p className="text-earth text-lg max-w-xl mx-auto">
             Proses terstruktur dan transparan — Anda tahu persis apa yang terjadi di setiap tahap.
           </p>
         </motion.div>
@@ -139,7 +139,7 @@ export default function ProcessTimeline() {
                       <h3 className="font-display font-bold text-xl text-bark mb-2 group-hover:text-forest transition-colors">
                         {step.title}
                       </h3>
-                      <p className="text-earth/70 text-sm leading-relaxed">
+                      <p className="text-earth text-sm leading-relaxed">
                         {step.desc}
                       </p>
                     </div>
@@ -170,7 +170,7 @@ export default function ProcessTimeline() {
                     {/* Step number */}
                     <span className={`
                       text-[10px] font-bold mt-1 tracking-widest
-                      ${i % 2 === 0 ? 'text-forest' : 'text-earth/60'}
+                      ${i % 2 === 0 ? 'text-forest' : 'text-earth'}
                     `}>
                       {step.number}
                     </span>
@@ -191,7 +191,7 @@ export default function ProcessTimeline() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-center mt-16"
         >
-          <p className="text-earth/60 text-sm mb-5">
+          <p className="text-earth text-sm mb-5">
             Rata-rata waktu dari konsultasi hingga eksekusi: <strong className="text-bark">2–4 minggu</strong>
           </p>
           <Link href="/booking" className="btn-primary inline-flex">

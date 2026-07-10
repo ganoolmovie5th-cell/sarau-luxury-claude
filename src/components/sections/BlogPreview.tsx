@@ -82,14 +82,14 @@ export default function BlogPreview() {
                     <span className="text-xs font-semibold px-3 py-1 rounded-full bg-forest/10 text-forest">
                       {category}
                     </span>
-                    <span className="flex items-center gap-1 text-xs text-earth/60">
+                    <span className="flex items-center gap-1 text-xs text-earth">
                       <Clock size={12} /> {readTime}
                     </span>
                   </div>
                   <h3 className="font-display font-semibold text-lg text-bark leading-snug mb-3 group-hover:text-forest transition-colors">
                     {title}
                   </h3>
-                  <p className="text-earth/70 text-sm leading-relaxed mb-5 line-clamp-3">{excerpt}</p>
+                  <p className="text-earth text-sm leading-relaxed mb-5 line-clamp-3">{excerpt}</p>
                   <span className="flex items-center gap-2 text-forest text-sm font-semibold">
                     <BookOpen size={15} /> Baca Selengkapnya
                   </span>

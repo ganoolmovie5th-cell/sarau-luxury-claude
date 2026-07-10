@@ -274,14 +274,14 @@ function GatheringCard({ pkg, i, inView, nameLevel = 3 }: { pkg: typeof gatherin
             {pkg.note}
           </p>
         )}
-        <div className={`text-xs mb-5 ${isPopular ? 'text-cream/60' : 'text-earth/60'}`}>{pkg.minPax}</div>
+        <div className={`text-xs mb-5 ${isPopular ? 'text-cream/60' : 'text-earth'}`}>{pkg.minPax}</div>
 
         {/* Price */}
         <div className="mb-4">
           <div className={`font-display font-bold text-3xl ${isPopular ? 'text-sun' : 'text-forest'}`}>
             Rp {pkg.price}
           </div>
-          <div className={`text-sm ${isPopular ? 'text-cream/60' : 'text-earth/60'}`}>{pkg.unit}</div>
+          <div className={`text-sm ${isPopular ? 'text-cream/60' : 'text-earth'}`}>{pkg.unit}</div>
         </div>
 
         {/* Features */}
@@ -334,12 +334,12 @@ function AddOnCard({ item, i, inView, nameLevel = 3 }: { item: AddOnItem; i: num
       </div>
       <div className="mb-3">
         <span className="font-display font-bold text-xl text-forest">Rp {item.price}</span>
-        <span className="text-xs text-earth/60 ml-1">{item.unit}</span>
+        <span className="text-xs text-earth ml-1">{item.unit}</span>
       </div>
       <FeaturesTag className="text-xs font-semibold text-earth/40 uppercase tracking-widest mb-1.5">Termasuk:</FeaturesTag>
       <ul className="space-y-1">
         {item.features.map((f) => (
-          <li key={f} className="flex items-start gap-2 text-xs text-earth/70">
+          <li key={f} className="flex items-start gap-2 text-xs text-earth">
             <Check size={10} className="text-forest flex-shrink-0 mt-0.5" />
             {f}
           </li>
@@ -467,7 +467,7 @@ export default function PackagesPreview({ hideHeader = false }: { hideHeader?: b
           transition={{ delay: 0.8 }}
           className="text-center mt-12 space-y-3"
         >
-          <p className="text-earth/60 text-sm">
+          <p className="text-earth text-sm">
             *Harga dapat berubah sesuai destinasi, fasilitas, dan jumlah peserta.
           </p>
           <Link

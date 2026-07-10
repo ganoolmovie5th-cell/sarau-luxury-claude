@@ -133,7 +133,7 @@ export default function TestimonialsSection() {
                   </div>
                   <div>
                     <div className="font-semibold text-bark text-lg">{t.name}</div>
-                    <div className="text-earth/70 text-sm">{t.role} · {t.company}</div>
+                    <div className="text-earth text-sm">{t.role} · {t.company}</div>
                   </div>
                 </div>
               </motion.div>
@@ -151,10 +151,12 @@ export default function TestimonialsSection() {
                   role="tab"
                   aria-selected={i === current}
                   aria-label={`Testimoni ${i + 1} dari ${testimonials.length}`}
-                  className={`h-2 rounded-full transition duration-300 ${
-                    i === current ? 'w-8 bg-forest' : 'w-2 bg-earth/30'
-                  }`}
-                />
+                  className="p-3 -m-3"
+                >
+                  <span className={`block h-2.5 rounded-full transition duration-300 ${
+                    i === current ? 'w-8 bg-forest' : 'w-2.5 bg-earth/30'
+                  }`} />
+                </button>
               ))}
             </div>
             {/* Arrows */}

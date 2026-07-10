@@ -101,7 +101,7 @@ export default function BookingForm() {
             <CheckCircle size={40} className="text-forest" />
           </div>
           <h2 className="font-display text-3xl font-bold text-bark mb-3">Inquiry Terkirim!</h2>
-          <p className="text-earth/70 mb-6">
+          <p className="text-earth mb-6">
             Tim Sarau Luxury akan menghubungi <b>{form.picName || 'Anda'}</b> melalui WhatsApp atau email
             dalam 1×24 jam kerja.
           </p>
@@ -122,7 +122,7 @@ export default function BookingForm() {
           <h1 className="font-display text-4xl md:text-5xl font-bold text-bark">
             Ajukan <span className="gradient-text">Inquiry</span>
           </h1>
-          <p className="text-earth/70 mt-3">Isi form di bawah dan kami siapkan penawaran terbaik untuk Anda.</p>
+          <p className="text-earth mt-3">Isi form di bawah dan kami siapkan penawaran terbaik untuk Anda.</p>
         </div>
 
         {/* SEO content */}
@@ -135,7 +135,7 @@ export default function BookingForm() {
             <div key={label} className="bg-white rounded-xl p-4 text-center border border-earth/10 shadow-sm">
               <div className="text-2xl mb-1">{icon}</div>
               <h4 className="font-semibold text-bark text-xs mb-0.5">{label}</h4>
-              <h6 className="text-earth/60 text-xs">{desc}</h6>
+              <h6 className="text-earth text-xs">{desc}</h6>
             </div>
           ))}
         </div>
@@ -283,12 +283,12 @@ export default function BookingForm() {
                     { label: 'Budget', value: form.budget ? `Rp ${form.budget} Juta` : '-' },
                   ].map(({ label, value }) => (
                     <div key={label} className="flex justify-between py-2 border-b border-earth/10 text-sm">
-                      <span className="text-earth/60 font-medium">{label}</span>
+                      <span className="text-earth font-medium">{label}</span>
                       <span className="text-bark font-semibold text-right max-w-[200px]">{value || '-'}</span>
                     </div>
                   ))}
                 </div>
-                <p className="text-earth/60 text-xs mt-6 leading-relaxed">
+                <p className="text-earth text-xs mt-6 leading-relaxed">
                   Dengan mengirim form ini, Anda menyetujui bahwa tim Sarau Luxury dapat menghubungi
                   Anda melalui email dan WhatsApp untuk membahas kebutuhan event Anda.
                 </p>
@@ -341,7 +341,7 @@ export default function BookingForm() {
                 <div className="w-8 h-8 rounded-full bg-forest text-cream font-bold text-xs flex items-center justify-center flex-shrink-0">{step}</div>
                 <div>
                   <h4 className="font-semibold text-bark text-sm mb-1">{title}</h4>
-                  <h6 className="text-earth/60 text-xs leading-relaxed">{desc}</h6>
+                  <h6 className="text-earth text-xs leading-relaxed">{desc}</h6>
                 </div>
               </div>
             ))}
@@ -363,7 +363,7 @@ export default function BookingForm() {
                 <span className="text-xl">{icon}</span>
                 <div>
                   <h5 className="font-semibold text-bark text-xs">{name}</h5>
-                  <h6 className="text-earth/60 text-xs">{price}</h6>
+                  <h6 className="text-earth text-xs">{price}</h6>
                 </div>
               </div>
             ))}
@@ -372,12 +372,12 @@ export default function BookingForm() {
 
         <div className="bg-white rounded-2xl p-7 border border-earth/10 shadow-sm">
           <h2 className="font-display text-2xl font-bold text-bark mb-3">Kenapa Booking Lewat Sarau Luxury?</h2>
-          <p className="text-earth/70 text-sm leading-relaxed mb-4">
+          <p className="text-earth text-sm leading-relaxed mb-4">
             Sarau Luxury adalah event organizer profesional yang telah berpengalaman sejak 2018.
             Kami telah menggelar <strong>100+ event sukses</strong> untuk <strong>53+ perusahaan terkemuka</strong>
             di seluruh Indonesia — dari BCA, Toyota, Kalbe Farma, hingga Park Hyatt Jakarta.
           </p>
-          <p className="text-earth/70 text-sm leading-relaxed mb-4">
+          <p className="text-earth text-sm leading-relaxed mb-4">
             Setiap event kami tangani end-to-end: dari konsultasi awal, perencanaan konsep, koordinasi vendor,
             eksekusi hari H, hingga dokumentasi pasca event. Anda tidak perlu khawatir tentang logistik —
             kami yang handle semua detail agar event Anda berjalan sempurna.

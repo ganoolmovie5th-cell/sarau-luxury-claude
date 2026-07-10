@@ -74,7 +74,7 @@ export default function ServicesPreview() {
                 <h3 className="font-display font-semibold text-xl text-bark mb-3 group-hover:text-forest transition-colors">
                   {title}
                 </h3>
-                <p className="text-earth/70 text-sm leading-relaxed mb-5">{desc}</p>
+                <p className="text-earth text-sm leading-relaxed mb-5">{desc}</p>
                 <div className="flex items-center gap-2 text-forest text-sm font-semibold opacity-0 group-hover:opacity-100 transition duration-300 translate-y-2 group-hover:translate-y-0" aria-hidden="true">
                   Selengkapnya <ArrowRight size={15} />
                 </div>

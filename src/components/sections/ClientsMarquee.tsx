@@ -111,7 +111,7 @@ export default function ClientsMarquee() {
             Dipercaya oleh{' '}
             <span className="gradient-text">Perusahaan Terkemuka</span>
           </h2>
-          <p className="text-earth/70 mt-3 text-base">dari berbagai industri di Indonesia</p>
+          <p className="text-earth mt-3 text-base">dari berbagai industri di Indonesia</p>
         </motion.div>
       </div>
 
