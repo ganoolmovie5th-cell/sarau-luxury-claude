@@ -120,7 +120,7 @@ function DownloadModal({ onClose }: { onClose: () => void }) {
               <h4 className="font-display text-xl font-bold text-bark mb-2">
                 Download Berhasil!
               </h4>
-              <p className="text-bark/60 text-sm mb-6 leading-relaxed">
+              <p className="text-bark text-sm mb-6 leading-relaxed">
                 Company Profile Sarau Luxury sedang diunduh. Cek folder Downloads Anda.
                 Tim kami akan menghubungi Anda segera.
               </p>
@@ -311,7 +311,7 @@ export default function CompanyProfileDownload() {
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-bark leading-tight mb-4">
                   Butuh Material<br />Presentasi ke Direksi?
                 </h3>
-                <p className="text-bark/60 text-sm leading-relaxed mb-8">
+                <p className="text-bark text-sm leading-relaxed mb-8">
                   Dapatkan Company Profile Sarau Luxury dalam format PDF berkualitas
                   tinggi. Lengkap dengan portofolio, layanan, paket harga, dan
                   informasi kontak — semua dalam satu dokumen siap pakai.
@@ -322,7 +322,7 @@ export default function CompanyProfileDownload() {
                   {['Format PDF', 'Branded Resmi', 'Data Terkini 2025', 'Gratis'].map((badge) => (
                     <span
                       key={badge}
-                      className="px-3 py-1 rounded-full bg-cream border border-cream-dark text-bark/60 text-xs"
+                      className="px-3 py-1 rounded-full bg-cream border border-cream-dark text-bark text-xs"
                     >
                       ✓ {badge}
                     </span>
@@ -338,7 +338,7 @@ export default function CompanyProfileDownload() {
                   <ArrowRight size={14} />
                 </button>
 
-                <p className="text-bark/35 text-xs mt-4 flex items-center gap-1">
+                <p className="text-bark/70 text-xs mt-4 flex items-center gap-1">
                   <Shield size={11} />
                   Isi 3 field singkat · Data Anda terlindungi
                 </p>

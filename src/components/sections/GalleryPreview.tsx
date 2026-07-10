@@ -95,7 +95,7 @@ export default function GalleryPreview() {
               Kenangan yang{' '}
               <span className="gradient-text">Tak Terlupakan</span>
             </h2>
-            <p className="text-earth/60 mt-3 max-w-md">
+            <p className="text-earth mt-3 max-w-md">
               Setiap momen berharga terabadikan — dari tawa, kerja sama, hingga pencapaian bersama.
             </p>
           </div>
@@ -172,7 +172,7 @@ export default function GalleryPreview() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
         >
-          <div className="flex items-center gap-2 text-earth/60 text-sm">
+          <div className="flex items-center gap-2 text-earth text-sm">
             <Images size={16} className="text-forest" />
             <span>23+ foto dari berbagai event</span>
           </div>

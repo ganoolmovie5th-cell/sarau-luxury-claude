@@ -151,7 +151,7 @@ export default function TestimonialsSection() {
                   role="tab"
                   aria-selected={i === current}
                   aria-label={`Testimoni ${i + 1} dari ${testimonials.length}`}
-                  className="p-3 -m-3"
+                  className="p-4 -m-2"
                 >
                   <span className={`block h-2.5 rounded-full transition duration-300 ${
                     i === current ? 'w-8 bg-forest' : 'w-2.5 bg-earth/30'

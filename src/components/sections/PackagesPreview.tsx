@@ -401,7 +401,7 @@ export default function PackagesPreview({ hideHeader = false }: { hideHeader?: b
               className={`px-6 py-2.5 rounded-full text-sm font-semibold border transition duration-200 ${
                 activeTab === tab.id
                   ? 'bg-forest text-cream border-forest shadow-md shadow-forest/20'
-                  : 'bg-white border-earth/20 text-earth/80 hover:border-forest/40 hover:text-forest'
+                  : 'bg-white border-earth/20 text-earth hover:border-forest/40 hover:text-forest'
               }`}
             >
               {tab.label}

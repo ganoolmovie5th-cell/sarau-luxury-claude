@@ -131,7 +131,7 @@ export default function ProcessTimeline() {
                       <span className={`
                         inline-flex text-[10px] font-bold uppercase tracking-widest
                         px-2.5 py-1 rounded-full mb-3
-                        ${i % 2 === 0 ? 'bg-forest/10 text-forest' : 'bg-sun/15 text-earth'}
+                        ${i % 2 === 0 ? 'bg-forest/15 text-forest' : 'bg-sun/20 text-bark'}
                       `}>
                         {step.tag}
                       </span>
@@ -170,7 +170,7 @@ export default function ProcessTimeline() {
                     {/* Step number */}
                     <span className={`
                       text-[10px] font-bold mt-1 tracking-widest
-                      ${i % 2 === 0 ? 'text-forest' : 'text-earth'}
+                      ${i % 2 === 0 ? 'text-forest' : 'text-bark'}
                     `}>
                       {step.number}
                     </span>
