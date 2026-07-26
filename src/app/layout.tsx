@@ -99,6 +99,7 @@ const jsonLd = {
   name: BRAND.name,
   description: 'Event organizer profesional untuk company gathering, outing perusahaan, outbound training, team building, dan family gathering di Indonesia.',
   url: SITE_URL,
+  image: `${SITE_URL}/sarau-luxury-logo.jpeg`,
   telephone: `+${CONTACT.phone1Wa}`,
   email: CONTACT.email,
   foundingDate: String(STATS.foundedYear),
@@ -108,6 +109,7 @@ const jsonLd = {
     streetAddress: 'Binong Permai Blok R-10/14',
     addressLocality: 'Curug',
     addressRegion: 'Banten',
+    postalCode: '15810',
     addressCountry: 'ID',
   },
   geo: {
@@ -177,7 +179,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
          */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],wait_for_update:500});gtag('consent','default',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'denied'});gtag('set','ads_data_redaction',true);`,
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],wait_for_update:500});gtag('consent','default',{analytics_storage:'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});gtag('set','ads_data_redaction',true);`,
           }}
         />
         {/* 2. Google Tag Manager */}
