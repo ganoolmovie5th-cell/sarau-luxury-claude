@@ -12,6 +12,20 @@ type Post = {
 }
 type Section = { type: 'intro' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'ul' | 'ol' | 'tip' | 'quote' | 'hr'; text?: string; items?: string[] }
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
+
+// Tanggal post ditulis format Indonesia ('5 Mei 2025') — schema.org butuh ISO 8601.
+const ID_MONTHS: Record<string, string> = {
+  Jan: '01', Feb: '02', Mar: '03', Apr: '04', Mei: '05', Jun: '06',
+  Jul: '07', Agu: '08', Sep: '09', Okt: '10', Nov: '11', Des: '12',
+}
+
+function toISODate(d: string): string {
+  const [day, mon, year] = d.split(' ')
+  const m = ID_MONTHS[mon]
+  return m ? `${year}-${m}-${day.padStart(2, '0')}` : d
+}
+
 const posts: Record<string, Post> = {
   // ── Artikel baru (update mingguan) ──
   'cara-membuat-konsep-gathering-unik': {
@@ -445,7 +459,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = posts[slug]
   if (!post) return { title: 'Artikel Tidak Ditemukan' }
 
-  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
   // Potong title ≤ 60 chars
   const rawTitle = post.title
   const titleTrunc = rawTitle.length > 60 ? rawTitle.slice(0, 57) + '…' : rawTitle
@@ -580,6 +593,27 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <div className="bg-cream min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: post.title,
+            description: post.excerpt,
+            datePublished: toISODate(post.date),
+            dateModified: toISODate(post.date),
+            author: { '@type': 'Person', name: post.author },
+            publisher: {
+              '@type': 'Organization',
+              name: 'Sarau Luxury',
+              logo: { '@type': 'ImageObject', url: `${BASE_URL}/sarau-luxury-logo.jpeg` },
+            },
+            image: [`${BASE_URL}/opengraph-image`],
+            mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/blog/${slug}` },
+          }),
+        }}
+      />
       {/* ── Hero ── */}
       <div className="pt-36 pb-12 bg-gradient-to-b from-white to-cream">
         <div className="container-tight max-w-3xl">

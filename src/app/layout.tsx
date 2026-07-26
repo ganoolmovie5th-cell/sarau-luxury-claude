@@ -38,6 +38,7 @@ const caveat = Caveat({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Sarau Luxury – Event Organizer Outing & Outbound',
     template: '%s',
@@ -167,7 +168,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="id" suppressHydrationWarning className={`${playfair.variable} ${dmSans.variable} ${caveat.variable}`}>
       <head>
         <meta charSet="utf-8" />
-        <link rel="canonical" href="https://sarau-luxury.com/" />
         {/*
          * 1. Consent default — WAJIB sebelum GTM load agar Consent Mode v2 bekerja.
          *    Region-scoped: EEA + UK + CH default 'denied' (wajib GDPR, menunggu consent banner).
