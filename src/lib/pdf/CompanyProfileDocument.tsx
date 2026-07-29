@@ -419,7 +419,7 @@ function ContactPage() {
         {[
           { label: 'Email',      value: 'sarauluxury@gmail.com', isLink: false },
           { label: 'WhatsApp',   value: '+62 857-1178-6561  |  +62 858-1062-9838', isLink: false },
-          { label: 'Website',    value: 'https://sarau-luxury.com', isLink: true },
+          { label: 'Website',    value: 'https://www.sarau-luxury.com', isLink: true },
           { label: 'Instagram',  value: '@sarauluxury', isLink: false },
           { label: 'Jam Kerja',  value: 'Senin – Sabtu, 08.00 – 20.00 WIB', isLink: false },
           { label: 'Alamat',     value: 'Binong Permai Blok R-10/14, Curug, Banten', isLink: false },

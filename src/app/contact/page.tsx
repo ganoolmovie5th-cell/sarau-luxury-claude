@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { SITE_URL } from '@/lib/constants'
 import ContactForm from '@/components/sections/ContactForm'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sarau-luxury.com'
 
 export const metadata: Metadata = {
   title: 'Kontak Sarau Luxury – Konsultasi Event Perusahaan Gratis',

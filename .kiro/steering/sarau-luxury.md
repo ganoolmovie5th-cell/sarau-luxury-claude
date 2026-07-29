@@ -3,7 +3,7 @@
 ## Info Proyek
 - **Nama:** Sarau Luxury
 - **Tagline:** Where Teams Grow Together
-- **Website:** https://sarau-luxury.com
+- **Website:** https://www.sarau-luxury.com
 - **Framework:** Next.js 15 App Router + TypeScript + Tailwind CSS (React 19)
 - **Deployment:** Vercel (push ke `main` = auto deploy)
 
@@ -21,7 +21,7 @@
 - **Redirect ID route:** Tambah redirect `/paket` → `/packages`, `/tentang` → `/about`, `/layanan` → `/services`, `/kontak` → `/contact`, `/galeri` → `/gallery` di `next.config.js`
 - **Price inconsistency fix:** Contact page "Paket all-in mulai Rp 125.000/pax" → "Paket outbound & team building mulai Rp 125.000/pax, gathering mulai Rp 525.000/pax"
 - **SEO: robots.txt unblock:** Hapus `Disallow: /booking` & `/contact` dari `robots.ts` — halaman konversi sekarang bisa di-crawl & diindex Google
-- **SEO: sitemap trailing slash:** Homepage URL di sitemap `https://sarau-luxury.com` → `https://sarau-luxury.com/` untuk konsistensi
+- **SEO: sitemap trailing slash:** Homepage URL di sitemap `https://www.sarau-luxury.com` → `https://www.sarau-luxury.com/` untuk konsistensi
 - **Gallery preview height 0 fix:** `GalleryPreview.tsx` bento grid memakai `grid-rows-[220px_220px_220px] md:grid-rows-[260px_260px]` yang jumlah barisnya kurang dari kebutuhan layout (mobile butuh 5 baris, desktop 3 baris). Akibatnya 3 foto terakhir (foto 5/6/7) jatuh di *implicit row* tanpa tinggi → tinggi ter-render 0 → Next.js warning `Image ... has "fill" and a height value of 0` + gambar berpotensi tidak tampil. **Fix:** ganti ke `auto-rows-[220px] md:auto-rows-[260px]` supaya semua baris (eksplisit + implicit) punya tinggi tetap; kartu `row-span-2` otomatis = 2× tinggi baris. **Catatan:** kalau menambah/mengurangi jumlah foto di bento grid, jangan kembali ke `grid-rows-[…]` dengan jumlah baris hardcoded — pakai `auto-rows` agar tidak terulang. `GalleryPage.tsx` tidak terdampak (pakai CSS columns + tinggi eksplisit `h-80`/`h-52`).
 
 ## Konfigurasi GTM
@@ -32,7 +32,7 @@
 - **Jangan pindahkan GTM script ke bawah consent default** — Consent Mode v2 harus sudah di dataLayer sebelum GTM ter-inisialisasi
 
 ## Konfigurasi Email (Resend)
-- **RESEND_API_KEY:** `re_Rp8yVY7x_MDE4zZWfy4xFmhg2RwZWmSca`
+- **RESEND_API_KEY:** `re_your_resend_api_key_here`
 - **RESEND_FROM_EMAIL:** `no-reply@sarau-luxury.com`
 - **CONTACT_EMAIL (penerima notifikasi):** `sarauluxury@gmail.com`
 - **Fallback from/to:** `no-reply@sarau-luxury.com` (domain sudah terverifikasi di Resend)

@@ -14,7 +14,7 @@ export const BASE_SERVICES = [
   { id: 'documentation', icon: Camera,        title: 'Dokumentasi Event',  badge: null },
 ]
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sarau-luxury.com'
 
 export const STATS = {
   totalClients:          53,

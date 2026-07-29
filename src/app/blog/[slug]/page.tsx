@@ -12,7 +12,7 @@ type Post = {
 }
 type Section = { type: 'intro' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'ul' | 'ol' | 'tip' | 'quote' | 'hr'; text?: string; items?: string[] }
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sarau-luxury.com'
 
 // Tanggal post ditulis format Indonesia ('5 Mei 2025') — schema.org butuh ISO 8601.
 const ID_MONTHS: Record<string, string> = {

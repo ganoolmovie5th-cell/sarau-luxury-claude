@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import GalleryPage from '@/components/sections/GalleryPage'
 import { SITE_URL } from '@/lib/constants'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sarau-luxury.com'
 
 export const revalidate = 3600
 

@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'id_ID',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sarau-luxury.com',
     title: 'Sarau Luxury | Event Organizer Outing & Gathering Perusahaan',
     description: 'Event organizer profesional untuk outing perusahaan, outbound training, company gathering & team building. Dipercaya 53+ perusahaan sejak 2018. Paket mulai Rp 525.000/pax.',
     siteName: 'Sarau Luxury',

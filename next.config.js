@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://sarau-luxury.com'
-
 // ─── HTTP Security Headers ────────────────────────────────────────────────────
 const securityHeaders = [
   // Cegah clickjacking — hanya izinkan iframe dari domain sendiri

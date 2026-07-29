@@ -157,7 +157,7 @@ NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 STRAPI_API_TOKEN=your_strapi_api_token
 
 # ── Email via Resend ──────────────────────────────────────────────────────────
-RESEND_API_KEY=re_Rp8yVY7x_MDE4zZWfy4xFmhg2RwZWmSca
+RESEND_API_KEY=re_your_resend_api_key_here
 RESEND_FROM_EMAIL=no-reply@sarau-luxury.com
 CONTACT_EMAIL=sarauluxury@gmail.com
 
@@ -167,7 +167,7 @@ FONNTE_TOKEN=your_fonnte_token
 NEXT_PUBLIC_WHATSAPP_NUMBER=6285711786561    # untuk tombol floating (boleh public)
 
 # ── Site URL ──────────────────────────────────────────────────────────────────
-NEXT_PUBLIC_SITE_URL=https://sarau-luxury.com
+NEXT_PUBLIC_SITE_URL=https://www.sarau-luxury.com
 
 # ── Google Analytics ──────────────────────────────────────────────────────────
 NEXT_PUBLIC_GA_ID=G-1SJ8G9TVER
@@ -269,7 +269,7 @@ Pastikan semua environment variables sudah dikonfigurasi di **Vercel Dashboard �
 | Redirect ID route | `/paket` → `/packages`, `/tentang` → `/about`, `/layanan` → `/services`, `/kontak` → `/contact`, `/galeri` → `/gallery` |
 | Price inconsistency | Contact page: "all-in mulai Rp 125.000" → "outbound & team building mulai Rp 125.000, gathering mulai Rp 525.000" |
 | robots.txt unblock | Hapus `Disallow: /booking` & `/contact` — halaman konversi sekarang bisa di-crawl Google |
-| Sitemap trailing slash | Homepage URL `https://sarau-luxury.com` → `https://sarau-luxury.com/` (konsistensi) |
+| Sitemap trailing slash | Homepage URL `https://www.sarau-luxury.com` → `https://www.sarau-luxury.com/` (konsistensi) |
 | Gallery preview height 0 | `GalleryPreview` bento grid: `grid-rows-[…]` kurang baris → 3 foto terakhir jatuh di implicit row (tinggi 0), bikin `<Image fill>` warning & gambar tak tampil. Ganti ke `auto-rows-[220px] md:auto-rows-[260px]` agar semua baris (eksplisit + implicit) punya tinggi |
 
 ### Catatan: Source Maps (intentionally disabled)
@@ -288,7 +288,7 @@ Jika di masa depan dibutuhkan (mis. integrasi Sentry private source maps), aktif
 
 | Channel   | Info                                                              |
 | --------- | ----------------------------------------------------------------- |
-| Website   | [sarau-luxury.com](https://sarau-luxury.com)                      |
+| Website   | [sarau-luxury.com](https://www.sarau-luxury.com)                      |
 | Instagram | [@sarauluxury](https://instagram.com/sarauluxury)                 |
 | WhatsApp  | [+62 857-1178-6561](https://wa.me/6285711786561)                  |
 | Email     | sarauluxury@gmail.com                                             |
