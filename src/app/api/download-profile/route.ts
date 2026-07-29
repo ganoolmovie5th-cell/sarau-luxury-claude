@@ -81,8 +81,12 @@ export async function POST(req: NextRequest) {
         })
         console.log('[download-profile] Lead email sent to admin')
       } catch (emailErr) {
-        console.warn('[download-profile] Email error (non-fatal):', emailErr)
+        // ponytail: error level supaya gagal kirim terlihat di Vercel Runtime Logs.
+        // Request tetap sukses: notif WhatsApp di bawah adalah jalur cadangan.
+        console.error('[download-profile] GAGAL kirim lead email:', emailErr)
       }
+    } else {
+      console.error('[download-profile] RESEND_API_KEY tidak diset, lead email dilewati.')
     }
 
     // ── WhatsApp notif via Fonnte ─────────────────────────────────────────────

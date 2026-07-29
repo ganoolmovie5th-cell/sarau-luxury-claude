@@ -207,8 +207,13 @@ export async function POST(req: NextRequest) {
 
         console.log(`[email] Notifikasi terkirim ke ${process.env.CONTACT_EMAIL}`)
       } catch (emailErr) {
-        console.warn('[email] Send skipped:', emailErr)
+        // ponytail: error level (bukan warn) supaya kegagalan kirim muncul di
+        // Vercel Runtime Logs dan bisa dipasangi alert. Request tetap sukses:
+        // notif WhatsApp di bawah adalah jalur cadangan, jadi lead tidak hilang.
+        console.error('[email] GAGAL kirim notifikasi Resend:', emailErr)
       }
+    } else {
+      console.error('[email] RESEND_API_KEY tidak diset, notifikasi email dilewati.')
     }
 
     // ── 5. WhatsApp notification via Fonnte ───────────────────────────────────

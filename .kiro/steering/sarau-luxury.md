@@ -187,6 +187,14 @@ Strapi **tidak wajib** — hanya aktif jika `NEXT_PUBLIC_STRAPI_URL` dan `STRAPI
 - API Fonnte harus dikirim sebagai `application/x-www-form-urlencoded`, bukan `application/json`
 - Cek Vercel Function Logs → filter `/api/contact` → cari baris `[WA] Fonnte response:` untuk debug
 
+## Troubleshooting Resend
+Kegagalan kirim email tidak pernah membuat request gagal: `/api/contact` dan `/api/download-profile` tetap balas `{ success: true }` karena notif WhatsApp adalah jalur cadangan, jadi lead tidak hilang. Konsekuensinya, key yang rusak tidak terlihat dari sisi website. Satu-satunya sinyal ada di log.
+- Cek Vercel Function Logs, cari `[email] GAGAL kirim notifikasi Resend:` atau `[download-profile] GAGAL kirim lead email:`
+- Baris `RESEND_API_KEY tidak diset` berarti env variable hilang di environment tersebut, bukan key-nya yang salah
+- Verifikasi key tanpa mengirim email: `curl -s -o /dev/null -w '%{http_code}\n' -H "Authorization: Bearer $KEY" https://api.resend.com/domains` (200 = valid, 401 = invalid)
+- `RESEND_FROM_EMAIL` fallback ke `no-reply@sarau-luxury.com`, jadi domain itu wajib berstatus Verified di Resend. Key valid + domain belum verified tetap gagal kirim
+- Log ini sengaja `console.error`, bukan `console.warn`, supaya bisa dipasangi alert
+
 ## Security Notes
 - Rate limit: dihapus (in-memory tidak scalable di Vercel serverless; gunakan Vercel WAF atau middleware jika diperlukan kembali)
 - Input sanitasi: XSS protection di semua field form
