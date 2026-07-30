@@ -196,6 +196,8 @@ Kegagalan kirim email tidak pernah membuat request gagal: `/api/contact` dan `/a
 - Log ini sengaja `console.error`, bukan `console.warn`, supaya bisa dipasangi alert
 
 ## Security Notes
+- **`overrides.sharp` di `package.json` jangan dihapus.** `next@15.5.x` menyematkan `sharp: ^0.34.3` sebagai optionalDependency, jadi npm memasang salinan bersarang di `node_modules/next/node_modules/sharp` walaupun root sudah `sharp@^0.35.3`. Resolusi Node menemukan salinan bersarang lebih dulu, jadi Next memakai versi rentan itu (libvips CVE-2026-33327, 33328, 35590, 35591) dan entri `sharp` di `dependencies` jadi tidak efektif. `"sharp": "$sharp"` memaksa dedupe ke versi root. Image optimization aktif dengan `remotePatterns` (`next.config.js:90-95`), jadi input remote membuat CVE ini reachable. Verifikasi: `npm ls sharp` harus menampilkan `deduped`, dan `node_modules/next/node_modules/sharp` tidak boleh ada
+- Sisa temuan `npm audit` (13 high) semuanya rantai `brace-expansion` GHSA-mh99-v99m-4gvg lewat toolchain ESLint. Semuanya devDependency, tidak masuk bundle production, dan fix-nya menuntut eslint major 8 ke 10 plus downgrade `eslint-config-next` ke 0.2.4. Sengaja tidak dikerjakan
 - Rate limit: dihapus (in-memory tidak scalable di Vercel serverless; gunakan Vercel WAF atau middleware jika diperlukan kembali)
 - Input sanitasi: XSS protection di semua field form
 - `WHATSAPP_ADMIN_NUMBER` & `FONNTE_TOKEN` = server-only (tidak ke browser)
