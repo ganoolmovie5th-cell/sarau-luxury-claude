@@ -25,5 +25,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/app/blog/
+          git add -A
           git diff --staged --quiet || (git commit -m "blog: auto-generate weekly article $(date -u +%Y-%m-%d)" && git push)

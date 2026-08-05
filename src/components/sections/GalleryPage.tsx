@@ -89,7 +89,7 @@ export default function GalleryPage() {
   const [active,   setActive]   = useState('Semua')
   const [lightbox, setLightbox] = useState<typeof items[0] | null>(null)
 
-  const filtered = active === 'Semua' ? items : items.filter((it) => it.category === active)
+  const filtered = (active === 'Semua' ? items : items.filter((it) => it.category === active)).slice().reverse()
 
   return (
     <div className="pt-32 pb-24 bg-cream min-h-screen">
