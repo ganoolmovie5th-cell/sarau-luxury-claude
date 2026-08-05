@@ -250,7 +250,7 @@ export default function ContactForm() {
           <div className="rounded-3xl overflow-hidden border border-earth/10 shadow-sm" style={{ height: 340 }}>
             <iframe
               title="Lokasi Sarau Luxury"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.5!2d106.5864722!3d-6.2526389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb50eef8000d%3A0x1!2sBinong%20Permai%20Blok%20R-10%2F14%2C%20Curug%2C%20Banten!5e0!3m2!1sen!2sid!4v1700000000000"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0!2d106.5544!3d-6.2365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fbd3b0ea3c7f%3A0x301576d14feb960!2sBinong+Permai!5e0!3m2!1sid!2sid!4v1700000000000"
               width="100%"
               height="340"
               style={{ border: 0 }}
