@@ -33,11 +33,17 @@ const cats = ['Semua', 'Tips', 'Destinasi', 'Panduan', 'Insight']
 export default function BlogListPage() {
   const [activeCategory, setActiveCategory] = useState('Semua')
 
+  const parseDate = (d: string) => {
+    const months: Record<string, number> = {Jan:0,Feb:1,Mar:2,Apr:3,Mei:4,May:4,Jun:5,Jul:6,Aug:7,Agu:7,Sep:8,Okt:9,Oct:9,Nov:10,Des:11,Dec:11}
+    const parts = d.split(' ')
+    return new Date(+parts[2], months[parts[1]] ?? 0, +parts[0])
+  }
+
   const filteredPosts = (
     activeCategory === 'Semua'
       ? posts
       : posts.filter((p) => p.category === activeCategory)
-  ).slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  ).slice().sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime())
 
   return (
     <div className="pt-32 pb-24 bg-cream min-h-screen">
