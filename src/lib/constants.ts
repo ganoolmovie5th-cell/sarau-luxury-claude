@@ -17,7 +17,7 @@ export const BASE_SERVICES = [
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sarau-luxury.com'
 
 export const STATS = {
-  totalClients:          53,
+  totalClients:          100,
   totalIndustries:       19,
   totalEvents:           100,
   totalDestinations:     20,
