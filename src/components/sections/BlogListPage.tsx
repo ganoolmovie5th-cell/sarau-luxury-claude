@@ -33,10 +33,11 @@ const cats = ['Semua', 'Tips', 'Destinasi', 'Panduan', 'Insight']
 export default function BlogListPage() {
   const [activeCategory, setActiveCategory] = useState('Semua')
 
-  const filteredPosts =
+  const filteredPosts = (
     activeCategory === 'Semua'
       ? posts
       : posts.filter((p) => p.category === activeCategory)
+  ).slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   return (
     <div className="pt-32 pb-24 bg-cream min-h-screen">
