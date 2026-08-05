@@ -7,7 +7,7 @@ import PackagesPreview from '@/components/sections/PackagesPreview'
 import WhyUsSection from '@/components/sections/WhyUsSection'
 import ProcessTimeline from '@/components/sections/ProcessTimeline'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
-import ClientsCarousel from '@/components/sections/ClientsCarousel'
+import ClientsMarquee from '@/components/sections/ClientsMarquee'
 import GalleryPreview from '@/components/sections/GalleryPreview'
 import BlogPreview from '@/components/sections/BlogPreview'
 import PromotionsSection from '@/components/sections/PromotionsSection'
@@ -55,7 +55,7 @@ export default function HomePage() {
       <ProcessTimeline />
       <PackagesPreview />
       <PromotionsSection />
-      <ClientsCarousel />
+      <ClientsMarquee />
       <TestimonialsSection />
       <GalleryPreview />
       <BlogPreview />
