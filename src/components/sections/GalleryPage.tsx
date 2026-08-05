@@ -78,6 +78,30 @@ const items = [
   { id: 57, src: gd('1-T596vuRxCJpk8NFgUF_N8cL-7gGDhCQ'), title: 'Energi Positif Tim',            category: 'Outing',        tall: false },
   { id: 58, src: gd('1bg4xRaAiuiBOUQnMUeEsbYRaJqiRl6d5'), title: 'Momen Hangat Bersama Rekan',    category: 'Gathering',     tall: true  },
   { id: 59, src: gd('1Gdc3gxmLqcOoxBZACHAOxEckxEhXvjzQ'), title: 'Dokumentasi Akhir Event',       category: 'Gathering',     tall: false },
+  // ── Batch 6 — Konnichiwa folder ──
+  { id: 60, src: gd('1jkWR923NbIxGhVCjG76UcI_r6h2YIHVD'), title: 'Kebersamaan Tim Konnichiwa',    category: 'Gathering',     tall: true  },
+  { id: 61, src: gd('1ff9_Fl5JzrMRqPHp9jOI0GLC1NlAt8Ge'), title: 'Fun Games Outdoor',             category: 'Team Building', tall: false },
+  { id: 62, src: gd('1I17BcAlEsNlPJ6MJAe7YVaWJTbtqVKV0'), title: 'Aktivitas Seru di Alam',        category: 'Outbound',      tall: false },
+  { id: 63, src: gd('1DdIPrSbD365TaIE6Y2_GHBwOOm5aJn0X'), title: 'Kekompakan Tim',               category: 'Team Building', tall: true  },
+  { id: 64, src: gd('1Mk5W8nMsIlDzkhqjz1nEjC-vmaRabrOw'), title: 'Momen Ceria Bersama',          category: 'Gathering',     tall: false },
+  // ── Batch 7 — NSCMJ folder ──
+  { id: 65, src: gd('1kp8LuS2FQMLO-JO6o10NKnc2QAI5gtvs'), title: 'Opening Ceremony',             category: 'Gathering',     tall: true  },
+  { id: 66, src: gd('1Ya5V-u4B1KG9AvkVNb3ZojXtEsVDJMSe'), title: 'Team Challenge Seru',          category: 'Team Building', tall: false },
+  { id: 67, src: gd('1FcEgguzMJdCeiaKVa4vS5BI91F47KVHj'), title: 'Aksi Kompak di Lapangan',      category: 'Outbound',      tall: false },
+  { id: 68, src: gd('1p7-gaoa-wfWrt4-jLdBK1sVEawBEKxOz'), title: 'Foto Bersama Tim Juara',       category: 'Gathering',     tall: true  },
+  { id: 69, src: gd('1ifKzKBkzdIry6TiYHQ8qR-K8hlhzMmRg'), title: 'Keseruan Games Indoor',        category: 'Team Building', tall: false },
+  // ── Batch 8 — PT.BAR folder ──
+  { id: 70, src: gd('1vgZTfxVWdSay9s3skJDVz0lJdQ0cHo2V'), title: 'Outbound Bareng PT BAR',       category: 'Outbound',      tall: false },
+  { id: 71, src: gd('1WvXmuLnQENkyZKTJU9J0ZN6ecS921QIY'), title: 'Semangat Pagi di Alam',        category: 'Outing',        tall: true  },
+  { id: 72, src: gd('180L41AliAfPqUf1ynz0kscx6WTHCd0y9'), title: 'Foto Group Korporat',          category: 'Gathering',     tall: false },
+  { id: 73, src: gd('1fUSZ6lsDjK9k0TNExxAsbhVZrg6ZdEkU'), title: 'Tantangan Bersama',            category: 'Team Building', tall: true  },
+  { id: 74, src: gd('1IHIQtFX9iyyOUFz0Dhltr7tMQnDfwN82'), title: 'Keseruan di Alam Terbuka',     category: 'Outing',        tall: false },
+  // ── Batch 9 — Beng2 folder ──
+  { id: 75, src: gd('1tzE0KCiZyK_wYt6XpjIFMs-uT8qZ1MBo'), title: 'Team Building Beng-Beng',      category: 'Team Building', tall: true  },
+  { id: 76, src: gd('1D1dTAlBBh80M3u985KL-WV2Tw-qnVlS4'), title: 'Games Kompetitif Seru',        category: 'Outbound',      tall: false },
+  { id: 77, src: gd('1ki_JQ6MaalkwmA5pzZ-uZFSq0nRYj5DU'), title: 'Kolaborasi Tim di Alam',       category: 'Outbound',      tall: false },
+  { id: 78, src: gd('1VJG9lw4hehBPRnNDkXYV5KhgwBR-Uqjs'), title: 'Energi Positif Bersama',       category: 'Gathering',     tall: true  },
+  { id: 79, src: gd('1piqE7u3MgocyiJa6AphYOZCoZPpREMUH'), title: 'Selebrasi Kemenangan Tim',     category: 'Gathering',     tall: false },
 ]
 
 const categories = ['Semua', 'Outbound', 'Team Building', 'Gathering', 'Outing']
