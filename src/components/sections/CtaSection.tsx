@@ -46,7 +46,7 @@ export default function CtaSection() {
                 Konsultasi Gratis <ArrowRight size={18} />
               </Link>
               <a
-                href={`https://wa.me/${CONTACT.phone1Wa}?text=Halo%20Sarau%20Luxury%2C%20saya%20ingin%20konsultasi%20event%20perusahaan%20kami.`}
+                href={`https://wa.me/${CONTACT.phone1Wa}?text=Halo%20Sarau%20Luxury%2C%20saya%20tertarik%20konsultasi%20event%20perusahaan.%20Bisa%20dibantu%3F`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold text-cream border-2 border-white/30 hover:bg-white/10 transition duration-300 hover:-translate-y-0.5 text-base"

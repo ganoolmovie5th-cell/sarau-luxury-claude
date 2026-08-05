@@ -8,7 +8,7 @@ export default function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(false)
 
   const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '6285711786561'
-  const waMessage = encodeURIComponent('Halo Sarau Luxury, saya ingin menanyakan tentang event perusahaan kami. 🌿')
+  const waMessage = encodeURIComponent('Halo Sarau Luxury, saya tertarik konsultasi event perusahaan. Bisa dibantu? 🌿')
   const waUrl = `https://wa.me/${waNumber}?text=${waMessage}`
 
   return (

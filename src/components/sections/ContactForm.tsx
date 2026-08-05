@@ -114,7 +114,7 @@ export default function ContactForm() {
 
             {/* WA quick contact */}
             <a
-              href={`https://wa.me/${CONTACT.phone1Wa}?text=Halo%20Sarau%20Luxury%2C%20saya%20ingin%20konsultasi!`}
+              href={`https://wa.me/${CONTACT.phone1Wa}?text=Halo%20Sarau%20Luxury%2C%20saya%20tertarik%20konsultasi%20event%20perusahaan.%20Bisa%20dibantu%3F`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 p-6 bg-white rounded-2xl border border-earth/10 shadow-sm hover:shadow-forest/15 hover:shadow-xl transition duration-300 hover:-translate-y-1 group"
@@ -250,7 +250,7 @@ export default function ContactForm() {
           <div className="rounded-3xl overflow-hidden border border-earth/10 shadow-sm" style={{ height: 340 }}>
             <iframe
               title="Lokasi Sarau Luxury"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0!2d106.5544!3d-6.2365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fbd3b0ea3c7f%3A0x301576d14feb960!2sBinong+Permai!5e0!3m2!1sid!2sid!4v1700000000000"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Binong+Permai,+Curug,+Tangerang,+Banten&zoom=15"
               width="100%"
               height="340"
               style={{ border: 0 }}
