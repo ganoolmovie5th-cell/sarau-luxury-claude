@@ -250,7 +250,7 @@ export default function ContactForm() {
           <div className="rounded-3xl overflow-hidden border border-earth/10 shadow-sm" style={{ height: 340 }}>
             <iframe
               title="Lokasi Sarau Luxury"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=106.54%2C-6.25%2C106.57%2C-6.23&layer=mapnik&marker=-6.24%2C106.555"
+              src="https://maps.google.com/maps?q=Binong+Permai+Curug+Tangerang+Banten&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="340"
               style={{ border: 0 }}
