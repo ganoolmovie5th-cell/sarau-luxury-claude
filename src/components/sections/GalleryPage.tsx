@@ -73,6 +73,16 @@ const items = [
   { id: 80, src: gd('18LnMDA4JSBQKG-gfNWBORLJmkWK5FVV4'), title: 'Kolaborasi Tanpa Batas',       category: 'Team Building', tall: false },
   { id: 81, src: gd('15iSdsgRFwY0UzzL-s2FL1gWPIay2WOao'), title: 'Energi Positif Bersama',       category: 'Gathering',     tall: false },
   { id: 82, src: gd('1EBL7ehhGSf0iEMCIHrcwDTMX896cKjIQ'), title: 'Selebrasi Tim Juara',          category: 'Gathering',     tall: true  },
+  // ── Batch 10 — New additions ──
+  { id: 83, src: gd('1WK3JE_hIiBBhcgxL1bBuMiuxIrx3OGy8'), title: 'Keseruan Outbound Pagi',       category: 'Outbound',      tall: false },
+  { id: 84, src: gd('1VTre4WoF2cjLTPdv-AHqQygIwU4OeqUA'), title: 'Momen Hangat Bersama',         category: 'Gathering',     tall: true  },
+  { id: 85, src: gd('16q2PU7oTkmMLGVoDWj3h5R7McZbYiHqs'), title: 'Kompetisi Seru Tim',           category: 'Team Building', tall: false },
+  { id: 86, src: gd('1WksjopzB9lVf5T8dKqMBm9zyShK06NBU'), title: 'Foto Grup di Alam',           category: 'Outing',        tall: true  },
+  { id: 87, src: gd('1NRJuxv27RVlV_D6yiOLrapaMibTaVfgo'), title: 'Petualangan Baru Bersama',    category: 'Outbound',      tall: false },
+  { id: 88, src: gd('1WhXU4spLZY_HuL9UzFuePnamY-DkDAW-'), title: 'Energi Tim yang Membara',     category: 'Team Building', tall: false },
+  { id: 89, src: gd('1Pym6yPKdCyMuUFOPS_ptP-LpY_mn_OxK'), title: 'Keceriaan di Lapangan',       category: 'Gathering',     tall: true  },
+  { id: 90, src: gd('1T7laZN3ZfKcuff8EPJK-3MKtyjasck8D'), title: 'Strategi Bareng di Alam',     category: 'Outbound',      tall: false },
+  { id: 91, src: gd('1ZfV1cjmKqO9j6MQLd2sgyu34PAsihRVz'), title: 'Aksi Seru Outdoor',           category: 'Outbound',      tall: true  },
 ]
 
 const categories = ['Semua', 'Outbound', 'Team Building', 'Gathering', 'Outing']
