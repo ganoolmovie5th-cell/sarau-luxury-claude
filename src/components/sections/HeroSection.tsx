@@ -46,9 +46,9 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-bark">
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-bark" style={{ perspective: '1000px' }}>
       {/* 3D Canvas background — hanya render setelah idle */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0" style={{ transform: 'translateZ(-1px) scale(1.5)', transformOrigin: 'center center' }}>
         {sceneReady && (
           <HeroSceneBoundary>
             <Suspense fallback={null}>

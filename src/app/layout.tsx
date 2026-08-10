@@ -9,6 +9,7 @@ import PageTransition from '@/components/ui/PageTransition'
 import ScrollProgressBar from '@/components/ui/ScrollProgressBar'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import BackToTop from '@/components/ui/BackToTop'
 import { CONTACT, SOCIAL, STATS, SITE_URL, BRAND } from '@/lib/constants'
 
 // ─── Fonts: self-hosted via next/font (tidak ada HTTP request ke Google runtime) ──
@@ -214,6 +215,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* GA4 di-handle sepenuhnya via GTM (GTM-5L5LR2KW) — tidak ada gtag.js langsung agar tidak double-tracking */}
         <Analytics />
         <SpeedInsights />
+        <BackToTop />
       </body>
     </html>
   )

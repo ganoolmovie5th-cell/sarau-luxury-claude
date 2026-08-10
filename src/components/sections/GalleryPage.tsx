@@ -46,14 +46,6 @@ const items = [
   { id: 50, src: gd('1qzA8erslJjWwzPGXwQY0Gsu6SLRPKtY8'), title: 'Kompak di Setiap Tantangan',    category: 'Team Building', tall: true  },
   { id: 51, src: gd('1Qx1gGt5G2HSqBEA88U8BiyC471GwJsLP'), title: 'Selebrasi Kebersamaan',         category: 'Gathering',     tall: false },
   // ── Batch 5 — Drive folder 1LfZ_NM… (Juli 2026) ──
-  { id: 52, src: gd('1JETPm6UZSefozvPjkZQ5pyir4ArXSsEi'), title: 'Pembukaan Event Meriah',        category: 'Gathering',     tall: false },
-  { id: 53, src: gd('157tFqbu6TszTkixHihJb4RxUlwMIlwkr'), title: 'Aksi Tim di Lapangan Hijau',    category: 'Outbound',      tall: true  },
-  { id: 54, src: gd('1EWKMDOohoMnF056L9CcI1CEaUT-yzNQ6'), title: 'Strategi Bersama untuk Menang', category: 'Team Building', tall: false },
-  { id: 55, src: gd('1UK8ELQK1jS1uuXNl5ZZzyXmC3KcXp1zw'), title: 'Tawa Lepas Saat Games',        category: 'Team Building', tall: true  },
-  { id: 56, src: gd('11VHpC3l3oQ_tn-fRor2eCE5qmVWDIKNM'), title: 'Tantangan Outdoor Seru',        category: 'Outbound',      tall: false },
-  { id: 57, src: gd('1-T596vuRxCJpk8NFgUF_N8cL-7gGDhCQ'), title: 'Energi Positif Tim',            category: 'Outing',        tall: false },
-  { id: 58, src: gd('1bg4xRaAiuiBOUQnMUeEsbYRaJqiRl6d5'), title: 'Momen Hangat Bersama Rekan',    category: 'Gathering',     tall: true  },
-  { id: 59, src: gd('1Gdc3gxmLqcOoxBZACHAOxEckxEhXvjzQ'), title: 'Dokumentasi Akhir Event',       category: 'Gathering',     tall: false },
   // ── Batch 6 — Konnichiwa ──
   { id: 60, src: gd('1Ub2GVY8qj-3eJGmpf9rMmGTw9sRP0aTO'), title: 'Kebersamaan Tim Konnichiwa',    category: 'Gathering',     tall: true  },
   { id: 61, src: gd('1ikgmS2pvOhKWYyiNODNKy_iQjuwHLsI9'), title: 'Aktivitas Outdoor Seru',        category: 'Outbound',      tall: false },
