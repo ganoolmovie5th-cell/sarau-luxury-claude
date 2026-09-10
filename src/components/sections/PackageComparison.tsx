@@ -6,21 +6,21 @@ import { motion, useInView } from 'framer-motion'
 import { Check, Minus, ArrowRight } from 'lucide-react'
 import { gatheringPackages } from './PackagesPreview'
 
-// Union semua fitur dari ketiga paket — urut sesuai kemunculan di Silver→Gold→Platinum.
-// Derive dari data yang sudah ada; tidak menduplikasi daftar fitur.
-const allFeatures: string[] = (() => {
-  const seen = new Set<string>()
-  const out: string[] = []
-  for (const pkg of gatheringPackages) {
-    for (const f of pkg.features) {
-      if (!seen.has(f)) {
-        seen.add(f)
-        out.push(f)
-      }
-    }
-  }
-  return out
-})()
+// Baris perbandingan terkurasi — label ringkas + status per paket [Silver, Gold, Platinum].
+// true = termasuk, false = tidak, string = catatan (mis. "Pilihan").
+type Cell = boolean | string
+const comparisonRows: { label: string; values: [Cell, Cell, Cell] }[] = [
+  { label: 'Penginapan 2D1N',              values: [true, true, true] },
+  { label: '3x Meal & 2x Coffee Break',    values: [true, true, true] },
+  { label: 'Aula, Lapangan & Kolam Renang', values: [true, true, true] },
+  { label: 'Fun Game + Game Master',       values: [true, true, true] },
+  { label: 'Pemandu & Dokumentasi',        values: [true, true, true] },
+  { label: 'Rafting 11 km',                values: [false, true, true] },
+  { label: 'Snack & Kelapa Muda',          values: [false, true, true] },
+  { label: 'Team Building',                values: [false, false, true] },
+  { label: 'Bus PP 2D1N (termasuk tol)',   values: [false, false, true] },
+  { label: 'Pilihan Rafting / Paintball',  values: [false, 'Ya', 'Ya'] },
+]
 
 export default function PackageComparison() {
   const ref = useRef(null)
@@ -98,36 +98,40 @@ export default function PackageComparison() {
               </tr>
             </thead>
             <tbody>
-              {allFeatures.map((feat) => (
-                <tr key={feat} className="group">
+              {comparisonRows.map((row) => (
+                <tr key={row.label} className="group">
                   <th
                     scope="row"
                     className="text-left font-medium text-sm text-bark p-4 bg-cream group-hover:bg-leaf/15 transition-colors"
                   >
-                    {feat}
+                    {row.label}
                   </th>
-                  {gatheringPackages.map((pkg) => {
-                    const has = pkg.features.includes(feat)
+                  {row.values.map((val, i) => {
+                    const popular = gatheringPackages[i].popular
                     return (
                       <td
-                        key={pkg.name}
+                        key={i}
                         className={`p-4 text-center border-b border-earth/8 ${
-                          pkg.popular ? 'bg-forest/5' : ''
+                          popular ? 'bg-forest/5' : ''
                         }`}
                       >
-                        {has ? (
+                        {val === true ? (
                           <span
                             className={`inline-flex items-center justify-center w-6 h-6 rounded-full ${
-                              pkg.popular ? 'bg-sun/25 text-sun' : 'bg-forest/15 text-forest'
+                              popular ? 'bg-sun/25 text-sun' : 'bg-forest/15 text-forest'
                             }`}
                           >
                             <Check size={13} aria-hidden="true" />
                             <span className="sr-only">Termasuk</span>
                           </span>
-                        ) : (
+                        ) : val === false ? (
                           <span className="inline-flex items-center justify-center text-earth/30">
                             <Minus size={16} aria-hidden="true" />
                             <span className="sr-only">Tidak termasuk</span>
+                          </span>
+                        ) : (
+                          <span className={`text-sm font-semibold ${popular ? 'text-cream' : 'text-bark'}`}>
+                            {val}
                           </span>
                         )}
                       </td>
