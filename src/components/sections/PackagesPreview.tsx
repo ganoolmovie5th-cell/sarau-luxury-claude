@@ -7,7 +7,7 @@ import { Check, ArrowRight, Bus, Gamepad2, Waves, Mountain, Tent, Bike, Users, U
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
-const gatheringPackages = [
+export const gatheringPackages = [
   {
     name: 'Gathering Silver',
     badge: null,

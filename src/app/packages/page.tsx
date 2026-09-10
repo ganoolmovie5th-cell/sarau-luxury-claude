@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { SITE_URL } from '@/lib/constants'
 import PackagesPreview from '@/components/sections/PackagesPreview'
+import PackageComparison from '@/components/sections/PackageComparison'
 import CtaSection from '@/components/sections/CtaSection'
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.sarau-luxury.com'
@@ -50,6 +51,8 @@ export default function PackagesPage() {
         </div>
       </div>
       <PackagesPreview hideHeader />
+
+      <PackageComparison />
 
       {/* SEO content block — panduan & ketentuan paket (hierarki heading h2–h6) */}
       <section className="py-16 bg-white">
