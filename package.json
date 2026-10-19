@@ -33,7 +33,7 @@
     "@types/react-dom": "^19.0.0",
     "@types/three": "^0.166.0",
     "autoprefixer": "^10.4.19",
-    "beasties": "^0.3.2",
+    "beasties": "^0.5.5",
     "critters": "^0.0.20",
     "eslint": "^8.57.0",
     "eslint-config-next": "^15.5.28",
