@@ -9,7 +9,9 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         disallow: [
-          '/api/',       // API routes tidak perlu diindex
+          '/api/',             // API routes tidak perlu diindex
+          '/opengraph-image',  // OG image route, bukan halaman - jangan diindex
+          '/*/opengraph-image', // OG image per-halaman (mis. /blog/[slug]/opengraph-image)
         ],
       },
     ],
